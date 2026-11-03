@@ -4,6 +4,9 @@ import { ERAS } from '../core/data/eras';
 import { EVENT_MAP } from '../core/data/events';
 import { PARTNER_MAP } from '../core/data/partners';
 import { RESEARCH_MAP } from '../core/data/research';
+import { ADVISOR_MAP } from '../core/data/advisors';
+import { CRISIS_MAP } from '../core/data/crises';
+import { MILESTONE_MAP } from '../core/sim/milestones';
 import { Bilingual, EraId, Lang, Notice } from '../core/types';
 import { STRINGS, StringKey } from './strings';
 
@@ -38,8 +41,18 @@ export function noticeText(lang: Lang, n: Notice): { title: string; body?: strin
     const ev = EVENT_MAP[n.key.slice(6)];
     return { title: L(ev?.name), body: L(ev?.desc) };
   }
+  if (n.key.startsWith('crisis.')) {
+    const c = CRISIS_MAP[n.key.slice(7)];
+    return { title: `⚠️ ${L(c?.name)}`, body: L(c?.desc) };
+  }
   const p = n.params ?? {};
   let name = '';
+  if (n.key === 'notice.crisisResolved' || n.key === 'notice.crisisAuto') {
+    const c = CRISIS_MAP[String(p.crisis)];
+    name = `${L(c?.name)}: ${L(c?.choices.find((ch) => ch.id === p.choice)?.name)}`;
+  }
+  if (n.key === 'notice.advisorJoined' || n.key === 'notice.advisorRetired') name = ADVISOR_MAP[String(p.id)]?.name ?? '';
+  if (n.key === 'notice.milestone') name = L(MILESTONE_MAP[String(p.id)]?.name);
   if (n.key === 'notice.techDone' || n.key === 'notice.civicDone') name = L(RESEARCH_MAP[String(p.id)]?.name);
   if (n.key === 'notice.newEra') name = L(ERAS[Number(p.era) as EraId]?.name);
   if (n.key === 'notice.offer') name = L(PARTNER_MAP[String(p.partner)]?.name);

@@ -2,6 +2,8 @@ import { z } from 'zod';
 import { BUILDING_MAP } from '../data/buildings';
 import { ERAS } from '../data/eras';
 import { RESEARCH_MAP } from '../data/research';
+import { ADVISOR_MAP } from '../data/advisors';
+import { CRISIS_MAP } from '../data/crises';
 import { createEmptyLayers } from '../map/terrain';
 import { SAVE_VERSION, emptyDerived } from '../sim/context';
 import { GOODS, GameState, Good } from '../types';
@@ -86,10 +88,18 @@ const stateSchema = z.object({
       entry: z.string().optional(),
     }),
   ),
-  history: z.array(z.object({ tick: z.number(), year: z.number(), population: z.number(), money: z.number(), happiness: z.number() })),
+  history: z.array(
+    z.object({ tick: z.number(), year: z.number(), population: z.number(), money: z.number(), happiness: z.number(), output: z.number().optional(), era: z.number().optional() }),
+  ),
   rngState: z.number(),
   victory: z.boolean(),
   happiness: z.number().min(0).max(100).optional(),
+  // v2 additions: optional, so version-1 saves from the 2D release load unchanged
+  scenario: z.string().max(40).optional(),
+  advisors: z.array(z.string()).optional(),
+  crisis: z.object({ id: z.string(), tick: z.number() }).nullable().optional(),
+  crisisLog: z.array(z.object({ id: z.string(), choice: z.string(), tick: z.number() })).optional(),
+  milestones: z.array(z.string()).optional(),
 });
 
 const fileSchema = z.object({
@@ -176,6 +186,8 @@ export function deserialize(input: string | unknown): GameState {
     if (b.x < 0 || b.y < 0 || b.x + b.w > width || b.y + b.h > height) throw new SaveError('Building out of bounds', 'corrupt');
   }
   for (const id of [...s.research.done, ...s.civics.done]) if (!RESEARCH_MAP[id]) throw new SaveError(`Unknown research "${id}"`, 'corrupt');
+  if (s.advisors) s.advisors = s.advisors.filter((a) => ADVISOR_MAP[a]);
+  if (s.crisis && !CRISIS_MAP[s.crisis.id]) s.crisis = null;
   if (!ERAS[s.era]) throw new SaveError('Unknown era', 'corrupt');
   const derived = emptyDerived();
   if (s.happiness != null) derived.happiness = s.happiness;

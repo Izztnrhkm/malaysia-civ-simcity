@@ -5,6 +5,7 @@ import { SEA_LEVEL } from '../map/terrain';
 import { Budget, GOODS, GameState, Good, GoodMap, ZONE, emptyGoods } from '../types';
 import { SimContext } from './context';
 import { costToEfficiency } from './transport';
+import { ADVISOR_MAP } from '../data/advisors';
 
 export const FOOD_PER_CAPITA = 0.012;
 export const WORKER_SHARE = 0.55;
@@ -126,7 +127,7 @@ export function runEconomy(state: GameState, ctx: SimContext, z: { population: n
     if (def.produces) {
       const ci = (b.y + (b.h >> 1)) * W + (b.x + (b.w >> 1));
       eff *= tileEfficiency(state, ctx, ci);
-      if (ctx.flood && m.elevation[ci] < SEA_LEVEL + 14 && ctx.waterDist[ci] <= 2) eff *= 0.5;
+      if (ctx.flood && m.elevation[ci] < SEA_LEVEL + 14 && ctx.waterDist[ci] <= 2 && !floodGuarded(state, b.x + (b.w >> 1), b.y + (b.h >> 1))) eff *= 0.5;
       eff *= siteFactor(state, b.x, b.y, b.w, b.h, def.placement);
       if (def.consumes) {
         let f = 1;
@@ -166,7 +167,7 @@ export function runEconomy(state: GameState, ctx: SimContext, z: { population: n
 
   // ---- food ----
   const imported = emptyGoods();
-  const budget: Budget = { taxR: 0, taxC: 0, taxI: 0, exports: 0, deals: 0, upkeepBuildings: 0, upkeepTransport: 0, imports: 0, interest: 0, admin: 0 };
+  const budget: Budget = { taxR: 0, taxC: 0, taxI: 0, exports: 0, deals: 0, upkeepBuildings: 0, upkeepTransport: 0, imports: 0, interest: 0, admin: 0, infrastructure: 0, advisors: 0 };
   const foodNeed = population * FOOD_PER_CAPITA;
   let foodGot = 0;
   for (const g of ['padi', 'ikan'] as Good[]) {
@@ -248,9 +249,11 @@ export function runEconomy(state: GameState, ctx: SimContext, z: { population: n
   }
   budget.interest = state.debt * 0.004;
   budget.admin = population * era.wealth * ADMIN_PER_CAPITA[state.era] * upMult;
+  budget.infrastructure = infrastructureUpkeep(state, budget, population) * upMult;
+  for (const id of state.advisors ?? []) budget.advisors += ADVISOR_MAP[id]?.upkeep ?? 0;
 
   const income = budget.taxR + budget.taxC + budget.taxI + budget.exports + budget.deals;
-  const expense = budget.upkeepBuildings + budget.upkeepTransport + budget.imports + budget.interest + budget.admin;
+  const expense = budget.upkeepBuildings + budget.upkeepTransport + budget.imports + budget.interest + budget.admin + budget.infrastructure + budget.advisors;
   const netIncome = income - expense;
   state.money += netIncome;
 
@@ -300,4 +303,46 @@ export function siteFactor(state: GameState, x: number, y: number, w: number, h:
   }
   const avg = sum / (w * h) / 255;
   return placement === 'tin' ? 0.4 + 1.2 * avg : 0.5 + avg;
+}
+
+/** Era 3 / era 4 rates for progressive infrastructure upkeep. */
+export const INFRA = {
+  /** share of the city's building capital (sum of build costs) lost to depreciation each turn */
+  depreciation: [0, 0, 0, 0.0006, 0.0015],
+  /** extra maintenance of the transport network, as a multiple of its upkeep */
+  network: [0, 0, 0, 0.5, 1.5],
+  /** extra building upkeep that grows with city size: k * log2(1 + population / 8000) */
+  urban: [0, 0, 0, 0.1, 0.5],
+};
+
+/**
+ * Late-game rebalance: in the industrial and digital eras ageing capital and
+ * a denser network cost more to keep running the bigger the city gets.
+ * Eras 1-2 are unchanged (returns 0).
+ */
+export function infrastructureUpkeep(state: GameState, budget: Pick<Budget, 'upkeepBuildings' | 'upkeepTransport'>, population: number): number {
+  const e = state.era;
+  if (e < 3) return 0;
+  let capital = 0;
+  for (const b of state.buildings) capital += BUILDING_MAP[b.def]?.cost ?? 0;
+  return capital * INFRA.depreciation[e] + budget.upkeepTransport * INFRA.network[e] + budget.upkeepBuildings * INFRA.urban[e] * Math.log2(1 + population / 8000);
+}
+
+/** True if a flood barrage protects tile (x, y). */
+export function floodGuarded(state: GameState, x: number, y: number): boolean {
+  for (const b of state.buildings) {
+    const r = BUILDING_MAP[b.def]?.floodGuard;
+    if (!r) continue;
+    const cx = b.x + b.w / 2;
+    const cy = b.y + b.h / 2;
+    if ((cx - x) ** 2 + (cy - y) ** 2 <= r * r) return true;
+  }
+  return false;
+}
+
+/** Value of a turn's production at base prices (for the timeline chart). */
+export function outputValue(state: GameState, production: GoodMap): number {
+  let v = 0;
+  for (const g of GOODS) v += production[g] * basePrice(g, state.era);
+  return v;
 }

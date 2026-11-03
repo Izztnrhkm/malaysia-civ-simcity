@@ -154,6 +154,10 @@ export interface Budget {
   interest: number;
   /** public administration, scales with population and prosperity */
   admin: number;
+  /** eras 3-4: capital depreciation and network maintenance that grow with the city */
+  infrastructure: number;
+  /** historical advisors' salaries */
+  advisors: number;
 }
 
 export interface Derived {
@@ -187,6 +191,9 @@ export interface HistoryPoint {
   population: number;
   money: number;
   happiness: number;
+  /** value of everything produced this turn at base prices (v2) */
+  output?: number;
+  era?: number;
 }
 
 export interface GameState {
@@ -217,6 +224,16 @@ export interface GameState {
   rngState: number;
   victory: boolean;
   derived: Derived;
+  // ---- v2 additions (optional so v1 saves load unchanged) ----
+  /** starting scenario id */
+  scenario?: string;
+  /** recruited historical advisors */
+  advisors?: string[];
+  /** crisis waiting for a policy decision */
+  crisis?: { id: string; tick: number } | null;
+  crisisLog?: Array<{ id: string; choice: string; tick: number }>;
+  /** achieved victory milestones */
+  milestones?: string[];
 }
 
 export interface CommandResult {

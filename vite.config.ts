@@ -7,6 +7,8 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 export default defineConfig(({ mode }) => ({
   base: './',
   plugins: mode === 'artifact' ? [react(), viteSingleFile()] : [react()],
+  // the single-file Artifact builds its 3D meshes inline; only regular builds ship public/models/*.glb
+  publicDir: mode === 'artifact' ? false : 'public',
   build: {
     outDir: mode === 'artifact' ? 'dist-artifact' : 'dist',
     target: 'es2022',

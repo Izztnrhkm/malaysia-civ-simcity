@@ -12,7 +12,7 @@ interface Props {
   renderer: Renderer;
   tool: Tool;
   onSelect: (tile: { x: number; y: number } | null) => void;
-  onResult: (r: CommandResult) => void;
+  onResult: (r: CommandResult, kind?: 'build' | 'transport' | 'zone' | 'bulldoze') => void;
   onCancelTool: () => void;
 }
 
@@ -108,8 +108,9 @@ export function GameCanvas({ engine, renderer, tool, onSelect, onResult, onCance
   };
 
   const commit = (a: { x: number; y: number }, b: { x: number; y: number }) => {
-    const r = commitTool(engine, toolRef.current, a, b);
-    if (r) onResult(r);
+    const tl = toolRef.current;
+    const r = commitTool(engine, tl, a, b);
+    if (r) onResult(r, tl.kind === 'building' ? 'build' : tl.kind === 'transport' ? 'transport' : tl.kind === 'zone' ? 'zone' : 'bulldoze');
   };
 
   const onPointerDown = (e: React.PointerEvent) => {

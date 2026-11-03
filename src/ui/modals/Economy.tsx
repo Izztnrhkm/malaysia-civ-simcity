@@ -42,6 +42,8 @@ export function Economy({ engine, onClose, onResult }: { engine: GameEngine; onC
     ['eco.upkeepBuildings', b.upkeepBuildings],
     ['eco.upkeepTransport', b.upkeepTransport],
     ['eco.admin', b.admin],
+    ['eco.infrastructure', b.infrastructure ?? 0],
+    ['eco.advisors', b.advisors ?? 0],
     ['eco.imports', b.imports],
     ['eco.interest', b.interest],
   ];

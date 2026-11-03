@@ -3,10 +3,11 @@ import { createGame } from '../core/sim/context';
 import { listSlots } from '../core/save/save';
 import { Lang } from '../core/types';
 import { Renderer } from '../render/renderer';
+import { SCENARIOS } from '../core/scenarios';
 import { useI18n } from '../i18n/i18n';
 
 interface Props {
-  onStart: (name: string, seed: number) => void;
+  onStart: (name: string, seed: number, scenario: string) => void;
   onOpenLoad: () => void;
   onContinue: (() => void) | null;
   setLang: (l: Lang) => void;
@@ -15,8 +16,10 @@ interface Props {
 const NAMES = ['Kota Baharu', 'Bandar Seri Selat', 'Kuala Muara', 'Pengkalan Emas', 'Bandar Hilir', 'Kuala Damai'];
 
 export function MainMenu({ onStart, onOpenLoad, onContinue, setLang }: Props) {
-  const { t, lang } = useI18n();
+  const { t, lang, L } = useI18n();
   const [name, setName] = useState(NAMES[0]);
+  const [scenario, setScenario] = useState(SCENARIOS[0].id);
+  const scen = SCENARIOS.find((x) => x.id === scenario) ?? SCENARIOS[0];
   const [seed, setSeed] = useState(() => Math.floor(Math.random() * 100000));
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const preview = useMemo(() => createGame(seed, 'preview', 128), [seed]);
@@ -50,7 +53,7 @@ export function MainMenu({ onStart, onOpenLoad, onContinue, setLang }: Props) {
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-70" />
       <div className="absolute inset-0 bg-gradient-to-b from-selat-900/60 via-transparent to-selat-900/80" />
       <div className="relative flex h-full items-center justify-center p-4">
-        <div className="panel w-full max-w-lg p-6">
+        <div className="panel scroll-thin max-h-full w-full max-w-xl overflow-y-auto p-4 sm:p-6">
           <div className="songket-border -mx-6 -mt-6 mb-4 h-2 rounded-t-xl" />
           <div className="flex items-start justify-between">
             <div>
@@ -87,8 +90,37 @@ export function MainMenu({ onStart, onOpenLoad, onContinue, setLang }: Props) {
               </div>
             </label>
           </div>
+          <fieldset className="mt-3">
+            <legend className="text-sm">{t('menu.scenario')}</legend>
+            <div className="mt-1 grid gap-1.5 sm:grid-cols-3" role="radiogroup">
+              {SCENARIOS.map((sc) => (
+                <button
+                  key={sc.id}
+                  role="radio"
+                  aria-checked={scenario === sc.id}
+                  className={`rounded-lg border p-2 text-left text-xs transition ${scenario === sc.id ? 'border-songket-300 bg-songket-700/60' : 'border-songket-500/30 bg-black/30 hover:bg-selat-700'}`}
+                  onClick={() => setScenario(sc.id)}
+                  data-testid={`scenario-${sc.id}`}
+                >
+                  <div className="text-lg leading-none">{sc.icon}</div>
+                  <div className="mt-1 font-semibold leading-tight">{L(sc.name)}</div>
+                </button>
+              ))}
+            </div>
+            <p className="mt-1.5 text-xs opacity-85" data-testid="scenario-desc">
+              {L(scen.desc)}
+            </p>
+            <div className="mt-1 text-xs">
+              <span className="text-songket-300">{t('menu.objectives')}:</span>
+              <ul className="list-disc pl-5 opacity-85">
+                {scen.objectives.map((o, k) => (
+                  <li key={k}>{L(o)}</li>
+                ))}
+              </ul>
+            </div>
+          </fieldset>
           <div className="mt-4 flex flex-wrap gap-2">
-            <button className="btn-gold px-4 py-2 text-base" onClick={() => onStart(name.trim() || NAMES[0], seed)} data-testid="start-game">
+            <button className="btn-gold px-4 py-2 text-base" onClick={() => onStart(name.trim() || NAMES[0], seed, scenario)} data-testid="start-game">
               🏗️ {t('menu.start')}
             </button>
             {onContinue && (

@@ -1,20 +1,15 @@
-import { EVENTS, EVENT_MAP } from '../data/events';
+import { EVENTS, EVENT_MAP, EventEffect } from '../data/events';
 import { RESEARCH_MAP } from '../data/research';
 import { GameState } from '../types';
 import { SimContext, ensurePartners, notify, refreshModifiers } from './context';
+import { onEventFired, tickCrises } from './crises';
 
-export function fireEvent(state: GameState, ctx: SimContext, id: string): void {
-  const ev = EVENT_MAP[id];
-  if (!ev) return;
-  if (ev.kind === 'historical') {
-    if (state.firedEvents.includes(id)) return;
-    state.firedEvents.push(id);
-  }
-  const e = ev.effect;
+/** Apply an event-style effect (also used by crisis choices). Duration effects are keyed by `effectId`. */
+export function applyEffect(state: GameState, _ctx: SimContext, effectId: string, e: EventEffect): void {
   if (e.duration) {
-    state.effects = state.effects.filter((x) => x.id !== id);
+    state.effects = state.effects.filter((x) => x.id !== effectId);
     state.effects.push({
-      id,
+      id: effectId,
       ticksLeft: e.duration,
       priceMult: e.priceMult,
       productionMult: e.productionMult,
@@ -24,7 +19,7 @@ export function fireEvent(state: GameState, ctx: SimContext, id: string): void {
       flood: e.flood,
     });
   } else if (e.happiness) {
-    state.effects.push({ id, ticksLeft: 6, happiness: e.happiness });
+    state.effects.push({ id: effectId, ticksLeft: 6, happiness: e.happiness });
   }
   if (e.money) state.money += e.money;
   if (e.research_once) {
@@ -42,9 +37,20 @@ export function fireEvent(state: GameState, ctx: SimContext, id: string): void {
     state.civics.done.push(e.grantCivic);
     if (state.civics.current === e.grantCivic) state.civics.current = null;
   }
+}
+
+export function fireEvent(state: GameState, ctx: SimContext, id: string): void {
+  const ev = EVENT_MAP[id];
+  if (!ev) return;
+  if (ev.kind === 'historical') {
+    if (state.firedEvents.includes(id)) return;
+    state.firedEvents.push(id);
+  }
+  applyEffect(state, ctx, id, ev.effect);
   ensurePartners(state);
   notify(state, 'event', `event.${id}`, {}, ev.entry);
   refreshModifiers(state, ctx);
+  onEventFired(state, ctx, id);
 }
 
 export function tickEvents(state: GameState, ctx: SimContext): void {
@@ -70,11 +76,14 @@ export function tickEvents(state: GameState, ctx: SimContext): void {
       if (ev.months && !ev.months.includes(state.month)) continue;
       if (state.effects.some((e) => e.id === ev.id)) continue;
       if (state.tick < 24) continue;
-      if (ctx.rng.chance(ev.chance ?? 0)) {
+      let chance = ev.chance ?? 0;
+      if (ev.id === 'lanun' && state.buildings.some((b) => b.def === 'menara_tinjau')) chance *= 0.4;
+      if (ctx.rng.chance(chance)) {
         fireEvent(state, ctx, ev.id);
         changed = false;
       }
     }
   }
+  if (tickCrises(state, ctx)) changed = true;
   if (changed) refreshModifiers(state, ctx);
 }

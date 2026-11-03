@@ -7,7 +7,7 @@ export type Tool =
   | { kind: 'transport'; key: TransportKey }
   | { kind: 'building'; id: string };
 
-export type ModalId = 'tech' | 'civics' | 'diplomacy' | 'economy' | 'encyclopedia' | 'save' | 'settings' | 'era' | null;
+export type ModalId = 'tech' | 'civics' | 'diplomacy' | 'economy' | 'advisors' | 'timeline' | 'encyclopedia' | 'save' | 'settings' | 'era' | 'crisis' | null;
 
 export interface Toast {
   id: number;

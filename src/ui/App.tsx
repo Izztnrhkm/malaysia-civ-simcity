@@ -22,6 +22,11 @@ import { SaveLoad } from './modals/SaveLoad';
 import { Sejarahpedia } from './modals/Sejarahpedia';
 import { Settings } from './modals/Settings';
 import { GameView3D } from './GameView3D';
+import { SfxId, sound } from '../audio/soundEngine';
+import { createScenario } from '../core/scenarios';
+import { Advisors } from './modals/Advisors';
+import { Crisis } from './modals/Crisis';
+import { Timeline } from './modals/Timeline';
 import { isWebGLAvailable } from '../render3d/view3d';
 import { DayMode, WeatherMode } from '../render3d/world';
 import { ModalId, SPEED_TPS, Toast, Tool, ViewController, ViewMode } from './types';
@@ -134,8 +139,14 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
   }, []);
 
   const onResult = useCallback(
-    (r: CommandResult) => {
-      if (!r.ok && r.reason) pushToast(translate(langRef.current, r.reason), 'bad');
+    (r: CommandResult, kind?: 'build' | 'transport' | 'zone' | 'bulldoze') => {
+      if (!r.ok) {
+        if (r.reason) pushToast(translate(langRef.current, r.reason), 'bad');
+        sound.play('error');
+        return;
+      }
+      const sfx: Record<string, SfxId> = { build: 'place', transport: 'road', zone: 'zone', bulldoze: 'bulldoze' };
+      if (kind) sound.play(sfx[kind]);
     },
     [pushToast],
   );
@@ -162,9 +173,17 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
     [renderer],
   );
 
-  const startNew = (name: string, seed: number) => {
-    const e = GameEngine.newGame(seed, name);
+  const startAudio = (era: number, seed: number) => {
+    if (sound.unlock()) {
+      sound.setEra(era);
+      sound.startMusic(seed);
+    }
+  };
+
+  const startNew = (name: string, seed: number, scenario = 'melaka_1400') => {
+    const e = scenario === 'melaka_1400' ? GameEngine.newGame(seed, name) : createScenario(scenario, seed, name);
     startEngine(e);
+    startAudio(e.state.era, seed);
     setSpeed(1);
     pushToast(translate(lang, 'menu.howto'), 'info', [1, 2, 3, 4].map((i) => `${i}. ${translate(lang, `menu.howto.${i}`)}`).join(' '));
   };
@@ -172,6 +191,7 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
   const loadState = (s: GameState) => {
     startEngine(new GameEngine(s));
     setSpeed(0);
+    startAudio(s.era, s.seed);
   };
 
   useGameLoop(screen === 'game' && !modal ? engine : null, SPEED_TPS[speed], (err) => {
@@ -179,16 +199,35 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
     pushToast(`Error: ${(err as Error).message}`, 'bad');
   });
 
-  // turn engine notices into toasts
+  // turn engine notices into toasts and sounds; open pending crises; keep the music in era
   useEffect(() => {
     if (!engine) return;
+    let lastYear = engine.state.year;
+    let lastCrisis = engine.state.crisis?.id ?? null;
     return engine.subscribe(() => {
-      const ns = engine.state.notices.filter((n) => n.id > lastNotice.current);
+      const st = engine.state;
+      sound.setEra(st.era);
+      if (st.year !== lastYear) {
+        if (st.derived.netIncome > 0 && st.year % 5 === 0) sound.play('coin');
+        lastYear = st.year;
+      }
+      const cid = st.crisis?.id ?? null;
+      if (cid && cid !== lastCrisis) {
+        sound.play('crisis');
+        setModal((m) => m ?? 'crisis');
+      }
+      lastCrisis = cid;
+      const ns = st.notices.filter((n) => n.id > lastNotice.current);
       if (!ns.length) return;
       lastNotice.current = ns[ns.length - 1].id;
       for (const n of ns) {
         const txt = noticeText(langRef.current, n);
         pushToast(txt.title, n.kind, txt.body, n.entry);
+        if (n.key === 'notice.techDone' || n.key === 'notice.civicDone') sound.play('fanfare');
+        else if (n.key === 'notice.newEra') sound.play('era');
+        else if (n.key === 'notice.milestone' || n.key === 'notice.victory') sound.play('victory');
+        else if (n.key === 'event.banjir_monsun') sound.play('thunder');
+        else if (n.key === 'notice.advisorJoined') sound.play('coin');
       }
     });
   }, [engine, pushToast]);
@@ -373,7 +412,8 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
                   renderer.selected = t;
                   setSelected(t);
                 }}
-                onResult={(r) => onResult(r)}
+                onResult={onResult}
+                onLightning={() => sound.play('thunder')}
                 onCancelTool={() => setTool({ kind: 'inspect' })}
                 onFail={() => setViewMode('2d')}
                 controllerRef={controllerRef}
@@ -390,6 +430,7 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
                 openModal={(m) => setModal(m)}
                 viewMode={viewMode}
                 setViewMode={setViewMode}
+                sound={sound}
               />
               <Toolbar engine={engine} tool={tool} setTool={setTool} />
               <InfoPanel
@@ -419,6 +460,22 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
               {modal === 'era' && <EraPanel engine={engine} onClose={() => setModal(null)} openEntry={openEntry} />}
               {modal === 'diplomacy' && <Diplomacy engine={engine} onClose={() => setModal(null)} openEntry={openEntry} onResult={onResult} />}
               {modal === 'economy' && <Economy engine={engine} onClose={() => setModal(null)} onResult={onResult} />}
+              {modal === 'advisors' && <Advisors engine={engine} onClose={() => setModal(null)} onResult={onResult} />}
+              {modal === 'timeline' && <Timeline engine={engine} onClose={() => setModal(null)} />}
+              {modal === 'crisis' && engine.state.crisis && (
+                <Crisis
+                  engine={engine}
+                  onClose={() => setModal(null)}
+                  onResult={(r) => {
+                    onResult(r);
+                    if (r.ok) {
+                      sound.play('click');
+                      setModal(null);
+                    }
+                  }}
+                  openEntry={openEntry}
+                />
+              )}
               {modal === 'encyclopedia' && (
                 <Sejarahpedia
                   initial={entry}

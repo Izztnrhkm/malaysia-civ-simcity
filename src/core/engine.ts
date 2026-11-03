@@ -25,6 +25,10 @@ import {
   toggleExchange,
 } from './sim/diplomacy';
 import { bulldoze, buildTransport, checkBuilding, linePath, placeBuilding, rectTiles, zoneArea } from './sim/placement';
+import { resolveCrisis } from './sim/crises';
+import { dismissAdvisor, recruitAdvisor, retireAdvisors } from './sim/advisors';
+import { checkMilestones } from './sim/milestones';
+import { outputValue } from './sim/economy';
 
 export const MAX_DEBT = [0, 8000, 20000, 80000, 250000];
 
@@ -163,10 +167,19 @@ export class GameEngine {
       s.month = 11;
     }
     if (s.tick % 6 === 0) {
-      s.history.push({ tick: s.tick, year: s.year, population: d.population, money: Math.round(s.money), happiness: Math.round(d.happiness) });
+      s.history.push({
+        tick: s.tick,
+        year: s.year,
+        population: d.population,
+        money: Math.round(s.money),
+        happiness: Math.round(d.happiness),
+        output: Math.round(outputValue(s, d.production)),
+        era: s.era,
+      });
       if (s.history.length > 400) s.history.splice(0, s.history.length - 400);
     }
     checkVictory(s);
+    checkMilestones(s);
     s.rngState = ctx.rng.state;
     this.emit();
   }
@@ -231,6 +244,7 @@ export class GameEngine {
   advanceEra(): CommandResult {
     const ok = advanceEra(this.state, this.ctx);
     if (ok) {
+      retireAdvisors(this.state, this.ctx);
       this.refreshNetwork();
       this.updateDerivedOnly();
       this.emit();
@@ -254,6 +268,25 @@ export class GameEngine {
     s.money -= a;
     this.emit();
     return { ok: true };
+  }
+  recruitAdvisor(id: string) {
+    const r = recruitAdvisor(this.state, this.ctx, id);
+    if (r.ok) this.emit();
+    return r;
+  }
+  dismissAdvisor(id: string) {
+    const r = dismissAdvisor(this.state, this.ctx, id);
+    if (r.ok) this.emit();
+    return r;
+  }
+  /** Choose a response to the pending historical crisis. */
+  resolveCrisis(choice: number) {
+    const r = resolveCrisis(this.state, this.ctx, choice);
+    if (r.ok) {
+      this.updateDerivedOnly();
+      this.emit();
+    }
+    return r;
   }
   sendEnvoy(partner: string) {
     const r = sendEnvoy(this.state, this.ctx, partner);

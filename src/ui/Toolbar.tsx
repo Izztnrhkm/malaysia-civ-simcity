@@ -89,6 +89,7 @@ export function Toolbar({ engine, tool, setTool }: Props) {
   useEngineVersion(engine);
   const { t, L } = useI18n();
   const [open, setOpen] = useState<BuildingCategory | null>(null);
+  const [collapsed, setCollapsed] = useState(() => typeof window !== 'undefined' && window.innerWidth < 640 && window.innerHeight < 700);
   const s = engine.state;
   const zoneNames = (z: ZoneKey) => L(ZONE_NAMES[z].era[Math.min(3, s.era - 1)]);
   const isTool = (tt: Tool) => JSON.stringify(tt) === JSON.stringify(tool);
@@ -97,9 +98,32 @@ export function Toolbar({ engine, tool, setTool }: Props) {
   };
   const list = open ? BUILDINGS.filter((b) => b.category === open && b.era <= s.era && !(b.obsolete && s.era > b.obsolete)) : [];
 
+  if (collapsed)
+    return (
+      <div className="pointer-events-auto absolute left-1 top-[7.5rem] sm:left-2 sm:top-24" data-testid="toolbar">
+        <button className="panel btn flex-col px-2 py-2" onClick={() => setCollapsed(false)} title={t('tool.expand')} aria-label={t('tool.expand')} aria-expanded={false} data-testid="toolbar-expand">
+          <span className="text-lg">🧰</span>
+          {tool.kind !== 'inspect' && <span className="text-[10px] text-songket-300">●</span>}
+        </button>
+      </div>
+    );
+
   return (
-    <div className="pointer-events-auto absolute left-2 top-[11.5rem] flex max-h-[calc(100%-12.5rem)] gap-2 sm:top-24 sm:max-h-[calc(100%-7rem)]" data-testid="toolbar">
+    <div className="pointer-events-auto absolute left-1 top-[7.5rem] flex max-h-[calc(100%-8.5rem)] gap-2 sm:left-2 sm:top-24 sm:max-h-[calc(100%-7rem)]" data-testid="toolbar">
       <div className="panel scroll-thin flex w-[4.25rem] flex-col items-stretch gap-1 overflow-y-auto p-1.5">
+        <button
+          className="btn py-0.5 text-xs"
+          onClick={() => {
+            setCollapsed(true);
+            setOpen(null);
+          }}
+          title={t('tool.collapse')}
+          aria-label={t('tool.collapse')}
+          aria-expanded={true}
+          data-testid="toolbar-collapse"
+        >
+          ◀
+        </button>
         <button className={`btn flex-col py-1.5 ${tool.kind === 'inspect' ? 'btn-active' : ''}`} onClick={() => setTool({ kind: 'inspect' })} title={t('tool.inspect')} data-testid="tool-inspect">
           <span className="text-lg">🔍</span>
           <span className="text-[10px]">{t('tool.inspect')}</span>

@@ -1,4 +1,5 @@
 import { addEffects, EffectTotals, emptyTotals } from '../data/effects';
+import { ADVISOR_MAP } from '../data/advisors';
 import { BUILDING_MAP, TRANSPORT_BY_KEY } from '../data/buildings';
 import { ERAS } from '../data/eras';
 import { EVENT_MAP } from '../data/events';
@@ -41,7 +42,7 @@ export function emptyDerived(): Derived {
     consumption: emptyGoods(),
     exported: emptyGoods(),
     imported: emptyGoods(),
-    budget: { taxR: 0, taxC: 0, taxI: 0, exports: 0, deals: 0, upkeepBuildings: 0, upkeepTransport: 0, imports: 0, interest: 0, admin: 0 },
+    budget: { taxR: 0, taxC: 0, taxI: 0, exports: 0, deals: 0, upkeepBuildings: 0, upkeepTransport: 0, imports: 0, interest: 0, admin: 0, infrastructure: 0, advisors: 0 },
     netIncome: 0,
     researchPerTick: 0,
     culturePerTick: 0,
@@ -120,6 +121,7 @@ export function refreshModifiers(state: GameState, ctx: SimContext): void {
   for (const id of state.research.done) addEffects(t, RESEARCH_MAP[id]?.effects);
   for (const id of state.civics.done) addEffects(t, RESEARCH_MAP[id]?.effects);
   for (const id of state.policies) addEffects(t, POLICY_MAP[id]?.effects);
+  for (const id of state.advisors ?? []) addEffects(t, ADVISOR_MAP[id]?.effects);
   ctx.effects = t;
   const priceMult: Partial<Record<Good, number>> = {};
   let prod = 1;
