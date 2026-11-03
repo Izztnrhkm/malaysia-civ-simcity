@@ -8,9 +8,11 @@ interface Props {
   autosave: boolean;
   setAutosave: (v: boolean) => void;
   onMainMenu: () => void;
+  gfx?: 'auto' | 'high' | 'low';
+  setGfx?: (v: 'auto' | 'high' | 'low') => void;
 }
 
-export function Settings({ onClose, setLang, autosave, setAutosave, onMainMenu }: Props) {
+export function Settings({ onClose, setLang, autosave, setAutosave, onMainMenu, gfx = 'auto', setGfx }: Props) {
   const { t, lang } = useI18n();
   return (
     <Modal title={`⚙ ${t('panel.settings')}`} onClose={onClose} testId="modal-settings">
@@ -25,6 +27,19 @@ export function Settings({ onClose, setLang, autosave, setAutosave, onMainMenu }
             ))}
           </div>
         </div>
+        {setGfx && (
+          <div>
+            <div className="mb-1 font-semibold text-songket-300">{t('settings.graphics')}</div>
+            <div className="flex flex-wrap gap-2">
+              {(['auto', 'high', 'low'] as const).map((q) => (
+                <button key={q} className={`btn ${gfx === q ? 'btn-active' : ''}`} onClick={() => setGfx(q)} data-testid={`gfx-${q}`}>
+                  {t(`settings.graphics.${q}`)}
+                </button>
+              ))}
+            </div>
+            <p className="mt-1 text-xs opacity-75">{t('settings.graphics.body')}</p>
+          </div>
+        )}
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={autosave} onChange={(e) => setAutosave(e.target.checked)} />
           {t('settings.autosave')}

@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { GameEngine } from '../core/engine';
-import { BUILDING_MAP, ZONE_COST } from '../core/data/buildings';
-import { linePath, rectTiles, transportTileCost } from '../core/sim/placement';
 import { CommandResult } from '../core/types';
 import { Camera, clampCamera, screenToTile, zoomAt } from '../render/iso';
 import { Renderer } from '../render/renderer';
-import { useI18n, formatMoney } from '../i18n/i18n';
+import { useI18n } from '../i18n/i18n';
+import { commitTool, computeToolPreview } from './toolLogic';
 import { Tool } from './types';
 
 interface Props {
@@ -102,54 +101,14 @@ export function GameCanvas({ engine, renderer, tool, onSelect, onResult, onCance
 
   /** Compute preview tiles, validity and cost for the active tool. */
   const updatePreview = (a: { x: number; y: number }, b: { x: number; y: number }, sx: number, sy: number) => {
-    const tl = toolRef.current;
-    const s = engine.state;
-    let tiles: Array<[number, number]> = [];
-    let cost = 0;
-    let ok = true;
-    let building: { id: string; x: number; y: number } | undefined;
-    if (tl.kind === 'zone' || tl.kind === 'bulldoze') {
-      tiles = rectTiles(a.x, a.y, b.x, b.y).filter(([x, y]) => inMap({ x, y }));
-      cost = tl.kind === 'zone' ? tiles.length * ZONE_COST : 0;
-    } else if (tl.kind === 'transport') {
-      tiles = linePath(a.x, a.y, b.x, b.y).filter(([x, y]) => inMap({ x, y }));
-      for (const [x, y] of tiles) {
-        const c = transportTileCost(s, engine.ctx, tl.key, x, y);
-        if (c == null) ok = false;
-        else cost += c;
-      }
-    } else if (tl.kind === 'building') {
-      const def = BUILDING_MAP[tl.id];
-      const ox = b.x - Math.floor((def.size - 1) / 2);
-      const oy = b.y - Math.floor((def.size - 1) / 2);
-      tiles = rectTiles(ox, oy, ox + def.size - 1, oy + def.size - 1);
-      const chk = engine.checkBuilding(tl.id, ox, oy);
-      ok = chk.ok;
-      cost = chk.cost ?? def.cost;
-      building = { id: tl.id, x: ox, y: oy };
-      if (!chk.ok && chk.reason) {
-        renderer.preview = { tiles, ok, building };
-        setLabel({ x: sx, y: sy, text: t(chk.reason), ok: false });
-        dirty.current = true;
-        return;
-      }
-    }
-    if (cost > s.money) ok = false;
-    renderer.preview = tiles.length ? { tiles, ok, building, color: tl.kind === 'bulldoze' ? 'rgba(240,120,40,0.4)' : undefined } : null;
-    setLabel(tiles.length && tl.kind !== 'bulldoze' ? { x: sx, y: sy, text: `${t('common.cost')}: ${formatMoney(cost)}`, ok } : null);
+    const r = computeToolPreview(engine, toolRef.current, a, b, t);
+    renderer.preview = r.preview;
+    setLabel(r.label ? { x: sx, y: sy, ...r.label } : null);
     dirty.current = true;
   };
 
   const commit = (a: { x: number; y: number }, b: { x: number; y: number }) => {
-    const tl = toolRef.current;
-    let r: CommandResult | null = null;
-    if (tl.kind === 'zone') r = engine.zone(tl.zone, a.x, a.y, b.x, b.y);
-    else if (tl.kind === 'bulldoze') r = engine.bulldoze(a.x, a.y, b.x, b.y);
-    else if (tl.kind === 'transport') r = engine.buildTransport(tl.key, a.x, a.y, b.x, b.y);
-    else if (tl.kind === 'building') {
-      const def = BUILDING_MAP[tl.id];
-      r = engine.placeBuilding(tl.id, b.x - Math.floor((def.size - 1) / 2), b.y - Math.floor((def.size - 1) / 2));
-    }
+    const r = commitTool(engine, toolRef.current, a, b);
     if (r) onResult(r);
   };
 

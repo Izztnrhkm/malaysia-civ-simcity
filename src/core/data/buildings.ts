@@ -42,6 +42,8 @@ export interface BuildingDef {
   pollution?: number;
   /** negative pollution = cleans the area */
   landmark?: boolean;
+  /** protects low-lying tiles within this radius from monsoon flood losses */
+  floodGuard?: number;
   /** era after which it can no longer be built (still works) */
   obsolete?: EraId;
   entry?: string;
@@ -103,6 +105,9 @@ export const BUILDINGS: BuildingDef[] = [
   B({ id: 'balai', era: 1, category: 'service', size: 1, cost: 200, upkeep: 1.5, jobs: 3, service: { kind: 'safety', radius: 6, strength: 45 },
     name: { ms: 'Balai Penghulu', en: 'Headman’s Hall' },
     desc: { ms: 'Ketua kampung menjaga keamanan dan adat.', en: 'The village headman keeps order and custom.' } }),
+  B({ id: 'menara_tinjau', era: 1, category: 'service', size: 1, cost: 180, upkeep: 1, jobs: 3, service: { kind: 'safety', radius: 7, strength: 40 },
+    name: { ms: 'Menara Tinjau', en: 'Watchtower' },
+    desc: { ms: 'Pengawal kuala memerhati lanun dan kapal yang tiba. Mengurangkan serangan lanun.', en: 'Guards watch the river mouth for pirates and arriving ships. Reduces pirate raids.' } }),
   B({ id: 'taman', era: 1, category: 'service', size: 1, cost: 60, upkeep: 0.2, service: { kind: 'leisure', radius: 4, strength: 30 },
     name: { ms: 'Padang / Taman', en: 'Green / Park' },
     desc: { ms: 'Ruang lapang untuk rekreasi dan sukan rakyat.', en: 'Open space for recreation and folk games.' } }),
@@ -187,6 +192,14 @@ export const BUILDINGS: BuildingDef[] = [
   B({ id: 'klinik_desa', era: 3, category: 'service', size: 1, cost: 900, upkeep: 3, jobs: 6, service: { kind: 'health', radius: 7, strength: 50 },
     name: { ms: 'Klinik Desa', en: 'Rural Clinic' },
     desc: { ms: 'Rawatan kesihatan asas dekat dengan rakyat.', en: 'Basic healthcare close to the people.' } }),
+  B({ id: 'tebatan_banjir', era: 3, category: 'utility', size: 2, cost: 7000, upkeep: 8, jobs: 8, floodGuard: 12, placement: 'river',
+    name: { ms: 'Tebatan Banjir', en: 'Flood Mitigation Barrage' },
+    desc: { ms: 'Pintu air dan benteng sungai melindungi kawasan rendah daripada banjir monsun. Mesti di tebing sungai.', en: 'Sluice gates and river walls protect low ground from monsoon floods. Must be on a riverbank.' },
+    entry: 'monsun' }),
+  B({ id: 'parlimen', era: 3, category: 'culture', size: 3, cost: 18000, upkeep: 16, jobs: 60, culture: 6, research: 2, happiness: 4, service: { kind: 'safety', radius: 12, strength: 50 },
+    name: { ms: 'Bangunan Parlimen', en: 'Parliament House' },
+    desc: { ms: 'Menara moden dan dewan berbumbung runcing, lambang demokrasi berparlimen.', en: 'A modernist tower and pointed-roof hall, symbol of parliamentary democracy.' },
+    entry: 'malaysia_1963' }),
   B({ id: 'stadium', era: 3, category: 'landmark', size: 3, cost: 25000, upkeep: 20, jobs: 30, culture: 15, happiness: 8, landmark: true, service: { kind: 'leisure', radius: 14, strength: 60 },
     name: { ms: 'Stadium Kemerdekaan', en: 'Independence Stadium' },
     desc: { ms: 'Stadium terbuka tempat laungan "Merdeka!". Mercu tanda Era 3.', en: 'Open-air stadium where "Merdeka!" was proclaimed. Era 3 landmark.' },
@@ -217,6 +230,9 @@ export const BUILDINGS: BuildingDef[] = [
   B({ id: 'kitar_semula', era: 4, category: 'utility', size: 2, cost: 10000, upkeep: 18, jobs: 30, pollution: -80, power: -50,
     name: { ms: 'Pusat Kitar Semula', en: 'Recycling Centre' },
     desc: { ms: 'Mengurangkan pencemaran di kawasan sekitar.', en: 'Reduces pollution in the surrounding area.' } }),
+  B({ id: 'menara_118', era: 4, category: 'landmark', size: 3, cost: 300000, upkeep: 100, jobs: 600, culture: 20, research: 8, happiness: 6, landmark: true, power: -350,
+    name: { ms: 'Menara Mega 118', en: 'Megatower 118' },
+    desc: { ms: 'Pencakar langit bersegi berlian dengan menara puncak, bermotif corak songket.', en: 'A faceted, diamond-patterned skyscraper with a spire, inspired by songket weaving.' } }),
   B({ id: 'menara_berkembar', era: 4, category: 'landmark', size: 3, cost: 400000, upkeep: 120, jobs: 400, culture: 30, research: 10, happiness: 10, landmark: true, power: -300,
     name: { ms: 'Menara Berkembar', en: 'Twin Towers' },
     desc: { ms: 'Pencakar langit berkembar bermotif geometri Islam. Mercu tanda kemenangan.', en: 'Twin skyscrapers with Islamic geometric motifs. Victory landmark.' },

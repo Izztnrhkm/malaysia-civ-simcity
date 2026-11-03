@@ -1,17 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { MutableRefObject, useEffect, useRef } from 'react';
 import { GameEngine } from '../core/engine';
-import { OVERLAYS, Overlay, Renderer, drawMinimap } from '../render/renderer';
+import { OVERLAYS, Overlay, drawMinimap } from '../render/renderer';
 import { useI18n } from '../i18n/i18n';
 import { useEngineVersion } from './hooks';
+import { ViewController } from './types';
 
 interface Props {
   engine: GameEngine;
-  renderer: Renderer;
+  controllerRef: MutableRefObject<ViewController | null>;
   overlay: Overlay;
   setOverlay: (o: Overlay) => void;
 }
 
-export function Minimap({ engine, renderer, overlay, setOverlay }: Props) {
+export function Minimap({ engine, controllerRef, overlay, setOverlay }: Props) {
   const version = useEngineVersion(engine);
   const { t } = useI18n();
   const ref = useRef<HTMLCanvasElement>(null);
@@ -33,8 +34,7 @@ export function Minimap({ engine, renderer, overlay, setOverlay }: Props) {
     const m = engine.state.map;
     const tx = ((dx + dy) / 2 + 0.5) * m.width;
     const ty = ((dy - dx) / 2 + 0.5) * m.height;
-    renderer.centerOn(Math.round(tx), Math.round(ty));
-    engine.emit();
+    controllerRef.current?.centerOn(Math.round(tx), Math.round(ty));
   };
 
   return (

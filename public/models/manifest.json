@@ -1,0 +1,762 @@
+{
+ "generator": "blender 4.0.2",
+ "version": 1,
+ "models": {
+  "building_pasar": {
+   "file": "building_pasar.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_jeti": {
+   "file": "building_jeti.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_pelabuhan": {
+   "file": "building_pelabuhan.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_gudang": {
+   "file": "building_gudang.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_sawah": {
+   "file": "building_sawah.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_nelayan": {
+   "file": "building_nelayan.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_pembalakan": {
+   "file": "building_pembalakan.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_pendulang": {
+   "file": "building_pendulang.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_kebun_lada": {
+   "file": "building_kebun_lada.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_relau_besi": {
+   "file": "building_relau_besi.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_limbungan": {
+   "file": "building_limbungan.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_surau": {
+   "file": "building_surau.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_masjid": {
+   "file": "building_masjid.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_madrasah": {
+   "file": "building_madrasah.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_balai": {
+   "file": "building_balai.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_menara_tinjau": {
+   "file": "building_menara_tinjau.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_taman": {
+   "file": "building_taman.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_candi": {
+   "file": "building_candi.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 1
+  },
+  "building_syahbandar": {
+   "file": "building_syahbandar.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 1
+  },
+  "building_istana": {
+   "file": "building_istana.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 1
+  },
+  "building_lombong": {
+   "file": "building_lombong.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 2
+  },
+  "building_kapal_korek": {
+   "file": "building_kapal_korek.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 2
+  },
+  "building_estet_getah": {
+   "file": "building_estet_getah.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 2
+  },
+  "building_stesen": {
+   "file": "building_stesen.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 2
+  },
+  "building_pelabuhan_dagang": {
+   "file": "building_pelabuhan_dagang.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 2
+  },
+  "building_sekolah": {
+   "file": "building_sekolah.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 2
+  },
+  "building_hospital": {
+   "file": "building_hospital.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 2
+  },
+  "building_balai_polis": {
+   "file": "building_balai_polis.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 2
+  },
+  "building_pejabat_pos": {
+   "file": "building_pejabat_pos.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 2
+  },
+  "building_bangunan_moorish": {
+   "file": "building_bangunan_moorish.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 2
+  },
+  "building_janakuasa": {
+   "file": "building_janakuasa.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 3
+  },
+  "building_empangan": {
+   "file": "building_empangan.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 3
+  },
+  "building_loji_air": {
+   "file": "building_loji_air.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 3
+  },
+  "building_ladang_sawit": {
+   "file": "building_ladang_sawit.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_ftz": {
+   "file": "building_ftz.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_kilang_kereta": {
+   "file": "building_kilang_kereta.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_pelabuhan_kontena": {
+   "file": "building_pelabuhan_kontena.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_universiti": {
+   "file": "building_universiti.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_klinik_desa": {
+   "file": "building_klinik_desa.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 3
+  },
+  "building_tebatan_banjir": {
+   "file": "building_tebatan_banjir.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 3
+  },
+  "building_parlimen": {
+   "file": "building_parlimen.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_stadium": {
+   "file": "building_stadium.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 3
+  },
+  "building_pusat_data": {
+   "file": "building_pusat_data.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 4
+  },
+  "building_hab_inovasi": {
+   "file": "building_hab_inovasi.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 4
+  },
+  "building_ladang_solar": {
+   "file": "building_ladang_solar.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 4
+  },
+  "building_stesen_mrt": {
+   "file": "building_stesen_mrt.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 4
+  },
+  "building_lapangan_terbang": {
+   "file": "building_lapangan_terbang.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 4
+  },
+  "building_menara_telekom": {
+   "file": "building_menara_telekom.glb",
+   "kind": "building",
+   "size": 1,
+   "era": 4
+  },
+  "building_kitar_semula": {
+   "file": "building_kitar_semula.glb",
+   "kind": "building",
+   "size": 2,
+   "era": 4
+  },
+  "building_menara_118": {
+   "file": "building_menara_118.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 4
+  },
+  "building_menara_berkembar": {
+   "file": "building_menara_berkembar.glb",
+   "kind": "building",
+   "size": 3,
+   "era": 4
+  },
+  "zone_R_d1_e1": {
+   "file": "zone_R_d1_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_R_d2_e1": {
+   "file": "zone_R_d2_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_R_d1_e2": {
+   "file": "zone_R_d1_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_R_d2_e2": {
+   "file": "zone_R_d2_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_R_d3_e2": {
+   "file": "zone_R_d3_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_R_d1_e3": {
+   "file": "zone_R_d1_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_R_d2_e3": {
+   "file": "zone_R_d2_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_R_d3_e3": {
+   "file": "zone_R_d3_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_R_d4_e3": {
+   "file": "zone_R_d4_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_R_d1_e4": {
+   "file": "zone_R_d1_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_R_d2_e4": {
+   "file": "zone_R_d2_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_R_d3_e4": {
+   "file": "zone_R_d3_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_R_d4_e4": {
+   "file": "zone_R_d4_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_C_d1_e1": {
+   "file": "zone_C_d1_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_C_d2_e1": {
+   "file": "zone_C_d2_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_C_d1_e2": {
+   "file": "zone_C_d1_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_C_d2_e2": {
+   "file": "zone_C_d2_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_C_d3_e2": {
+   "file": "zone_C_d3_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_C_d1_e3": {
+   "file": "zone_C_d1_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_C_d2_e3": {
+   "file": "zone_C_d2_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_C_d3_e3": {
+   "file": "zone_C_d3_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_C_d4_e3": {
+   "file": "zone_C_d4_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_C_d1_e4": {
+   "file": "zone_C_d1_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_C_d2_e4": {
+   "file": "zone_C_d2_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_C_d3_e4": {
+   "file": "zone_C_d3_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_C_d4_e4": {
+   "file": "zone_C_d4_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_I_d1_e1": {
+   "file": "zone_I_d1_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_I_d2_e1": {
+   "file": "zone_I_d2_e1.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 1
+  },
+  "zone_I_d1_e2": {
+   "file": "zone_I_d1_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_I_d2_e2": {
+   "file": "zone_I_d2_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_I_d3_e2": {
+   "file": "zone_I_d3_e2.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 2
+  },
+  "zone_I_d1_e3": {
+   "file": "zone_I_d1_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_I_d2_e3": {
+   "file": "zone_I_d2_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_I_d3_e3": {
+   "file": "zone_I_d3_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_I_d4_e3": {
+   "file": "zone_I_d4_e3.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 3
+  },
+  "zone_I_d1_e4": {
+   "file": "zone_I_d1_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_I_d2_e4": {
+   "file": "zone_I_d2_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_I_d3_e4": {
+   "file": "zone_I_d3_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "zone_I_d4_e4": {
+   "file": "zone_I_d4_e4.glb",
+   "kind": "zone",
+   "size": 1,
+   "era": 4
+  },
+  "vehicle_jong": {
+   "file": "vehicle_jong.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_junk": {
+   "file": "vehicle_junk.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_perahu": {
+   "file": "vehicle_perahu.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_steamship": {
+   "file": "vehicle_steamship.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_container_ship": {
+   "file": "vehicle_container_ship.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_steam_loco": {
+   "file": "vehicle_steam_loco.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_diesel_loco": {
+   "file": "vehicle_diesel_loco.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_rail_wagon": {
+   "file": "vehicle_rail_wagon.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_bullock_cart": {
+   "file": "vehicle_bullock_cart.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_vintage_car": {
+   "file": "vehicle_vintage_car.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_car": {
+   "file": "vehicle_car.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_car_white": {
+   "file": "vehicle_car_white.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_bus": {
+   "file": "vehicle_bus.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "vehicle_mrt": {
+   "file": "vehicle_mrt.glb",
+   "kind": "vehicle",
+   "size": 1,
+   "era": 0
+  },
+  "tree_rainforest": {
+   "file": "tree_rainforest.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "tree_rainforest_small": {
+   "file": "tree_rainforest_small.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "tree_mangrove": {
+   "file": "tree_mangrove.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "tree_coconut": {
+   "file": "tree_coconut.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "tree_oilpalm": {
+   "file": "tree_oilpalm.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "tree_rubber": {
+   "file": "tree_rubber.glb",
+   "kind": "tree",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_center_e1": {
+   "file": "infra_road_center_e1.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_center_e2": {
+   "file": "infra_road_center_e2.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_center_e3": {
+   "file": "infra_road_center_e3.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_center_e4": {
+   "file": "infra_road_center_e4.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_arm_e1": {
+   "file": "infra_road_arm_e1.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_arm_e2": {
+   "file": "infra_road_arm_e2.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_arm_e3": {
+   "file": "infra_road_arm_e3.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_road_arm_e4": {
+   "file": "infra_road_arm_e4.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_rail_center": {
+   "file": "infra_rail_center.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_rail_arm": {
+   "file": "infra_rail_arm.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_highway_center": {
+   "file": "infra_highway_center.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_highway_arm": {
+   "file": "infra_highway_arm.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_mrt_center": {
+   "file": "infra_mrt_center.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_mrt_arm": {
+   "file": "infra_mrt_arm.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_bridge_pier": {
+   "file": "infra_bridge_pier.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  },
+  "infra_streetlamp": {
+   "file": "infra_streetlamp.glb",
+   "kind": "infra",
+   "size": 1,
+   "era": 0
+  }
+ }
+}

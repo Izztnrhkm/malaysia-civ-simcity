@@ -9,6 +9,7 @@ import { useGameLoop, useInterval } from './hooks';
 import { InfoPanel } from './InfoPanel';
 import { MainMenu } from './MainMenu';
 import { Minimap } from './Minimap';
+import { ViewControls } from './ViewControls';
 import { Notifications } from './Notifications';
 import { TopBar } from './TopBar';
 import { Toolbar } from './Toolbar';
@@ -20,9 +21,24 @@ import { ResearchTree } from './modals/ResearchTree';
 import { SaveLoad } from './modals/SaveLoad';
 import { Sejarahpedia } from './modals/Sejarahpedia';
 import { Settings } from './modals/Settings';
-import { ModalId, SPEED_TPS, Toast, Tool } from './types';
+import { GameView3D } from './GameView3D';
+import { isWebGLAvailable } from '../render3d/view3d';
+import { DayMode, WeatherMode } from '../render3d/world';
+import { ModalId, SPEED_TPS, Toast, Tool, ViewController, ViewMode } from './types';
 
 const LANG_KEY = 'tamadun-kota:lang';
+const VIEW_KEY = 'tamadun-kota:view';
+
+function readView(): ViewMode {
+  const gl = isWebGLAvailable();
+  try {
+    const v = localStorage.getItem(VIEW_KEY);
+    if (v === '2d') return '2d';
+  } catch {
+    /* storage unavailable */
+  }
+  return gl ? '3d' : '2d';
+}
 
 function readLang(): Lang {
   try {
@@ -76,8 +92,37 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
   const [selected, setSelected] = useState<{ x: number; y: number } | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [autosave, setAutosave] = useState(true);
+  const [gfx, setGfxState] = useState<'auto' | 'high' | 'low'>(() => {
+    try {
+      const v = localStorage.getItem('tamadun-kota:gfx');
+      return v === 'high' || v === 'low' ? v : 'auto';
+    } catch {
+      return 'auto';
+    }
+  });
+  const setGfx = (v: 'auto' | 'high' | 'low') => {
+    setGfxState(v);
+    try {
+      localStorage.setItem('tamadun-kota:gfx', v);
+    } catch {
+      /* storage unavailable */
+    }
+  };
   const [victorySeen, setVictorySeen] = useState(false);
   const [menuLoad, setMenuLoad] = useState(false);
+  const [viewMode, setViewModeState] = useState<ViewMode>(readView);
+  const [dayMode, setDayMode] = useState<DayMode>('day');
+  const [weather, setWeather] = useState<WeatherMode>('auto');
+  const controllerRef = useRef<ViewController | null>(null);
+  const setViewMode = useCallback((v: ViewMode) => {
+    const next = v === '3d' && !isWebGLAvailable() ? '2d' : v;
+    setViewModeState(next);
+    try {
+      localStorage.setItem(VIEW_KEY, next);
+    } catch {
+      /* storage unavailable */
+    }
+  }, []);
   const toastId = useRef(1);
   const lastNotice = useRef(0);
   const langRef = useRef(lang);
@@ -170,36 +215,80 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
     autosave ? 120000 : null,
   );
 
+  // camera controller for the 2D canvas
+  useEffect(() => {
+    if (viewMode !== '2d' || !engine) return;
+    controllerRef.current = {
+      mode: '2d',
+      centerOn: (x, y) => {
+        renderer.centerOn(x, y);
+        engine.emit();
+      },
+      pan: (dx, dy) => {
+        renderer.camera = { ...renderer.camera, x: renderer.camera.x + dx * 32, y: renderer.camera.y + dy * 32 };
+        engine.emit();
+      },
+      zoom: (f) => {
+        renderer.camera = { ...renderer.camera, zoom: Math.max(0.35, Math.min(2.5, renderer.camera.zoom * f)) };
+        engine.emit();
+      },
+      resetCamera: () => {
+        focusStart(renderer, engine.state);
+        renderer.camera = { ...renderer.camera, zoom: 1 };
+        engine.emit();
+      },
+      tileToScreen: (x, y) => {
+        const c = document.querySelector('[data-testid=game-canvas]') as HTMLCanvasElement | null;
+        const r = c?.getBoundingClientRect() ?? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+        const cam = renderer.camera;
+        const wx = (x - y) * 32;
+        const wy = (x + y) * 16 + 16;
+        return { x: r.left + (wx - cam.x) * cam.zoom + r.width / 2, y: r.top + (wy - cam.y) * cam.zoom + r.height / 2 };
+      },
+    };
+    return () => {
+      if (controllerRef.current?.mode === '2d') controllerRef.current = null;
+    };
+  }, [viewMode, engine, renderer]);
+
   // keyboard
   useEffect(() => {
     if (screen !== 'game' || !engine) return;
     const onKey = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'SELECT') return;
-      const step = 60 / renderer.camera.zoom;
-      const cam = renderer.camera;
+      const ctl = controllerRef.current;
       switch (e.key) {
         case 'ArrowUp':
         case 'w':
-          renderer.camera = { ...cam, y: cam.y - step };
+          ctl?.pan(0, ctl.mode === '3d' ? 3 : -2 / renderer.camera.zoom);
           break;
         case 'ArrowDown':
         case 's':
-          renderer.camera = { ...cam, y: cam.y + step };
+          ctl?.pan(0, ctl.mode === '3d' ? -3 : 2 / renderer.camera.zoom);
           break;
         case 'ArrowLeft':
         case 'a':
-          renderer.camera = { ...cam, x: cam.x - step };
+          ctl?.pan(ctl.mode === '3d' ? -3 : -2 / renderer.camera.zoom, 0);
           break;
         case 'ArrowRight':
         case 'd':
-          renderer.camera = { ...cam, x: cam.x + step };
+          ctl?.pan(ctl.mode === '3d' ? 3 : 2 / renderer.camera.zoom, 0);
           break;
         case '+':
         case '=':
-          renderer.camera = { ...cam, zoom: Math.min(2.5, cam.zoom * 1.15) };
+          ctl?.zoom(1.15);
           break;
         case '-':
-          renderer.camera = { ...cam, zoom: Math.max(0.35, cam.zoom / 1.15) };
+          ctl?.zoom(1 / 1.15);
+          break;
+        case 'q':
+          ctl?.rotate?.(0.2);
+          break;
+        case 'e':
+          ctl?.rotate?.(-0.2);
+          break;
+        case 'Home':
+          ctl?.resetCamera();
           break;
         case 'Escape':
           if (!modal) setTool({ kind: 'inspect' });
@@ -256,8 +345,8 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
 
   // debug / automation handle used by the E2E smoke test
   useEffect(() => {
-    (window as unknown as { __tamadun?: unknown }).__tamadun = { engine, renderer, setSpeed, setTool };
-  }, [engine, renderer]);
+    (window as unknown as { __tamadun?: unknown }).__tamadun = { engine, renderer, setSpeed, setTool, controller: controllerRef, viewMode, setViewMode };
+  }, [engine, renderer, viewMode, setViewMode]);
 
   const showVictory = engine?.state.victory && !victorySeen;
 
@@ -272,9 +361,36 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
         )}
         {screen === 'game' && engine && (
           <>
-            <GameCanvas engine={engine} renderer={renderer} tool={tool} onSelect={setSelected} onResult={onResult} onCancelTool={() => setTool({ kind: 'inspect' })} />
+            {viewMode === '3d' ? (
+              <GameView3D
+                engine={engine}
+                tool={tool}
+                overlay={overlay}
+                dayMode={dayMode}
+                weather={weather}
+                selected={selected}
+                onSelect={(t) => {
+                  renderer.selected = t;
+                  setSelected(t);
+                }}
+                onResult={(r) => onResult(r)}
+                onCancelTool={() => setTool({ kind: 'inspect' })}
+                onFail={() => setViewMode('2d')}
+                controllerRef={controllerRef}
+                quality={gfx}
+              />
+            ) : (
+              <GameCanvas engine={engine} renderer={renderer} tool={tool} onSelect={setSelected} onResult={onResult} onCancelTool={() => setTool({ kind: 'inspect' })} />
+            )}
             <div className="pointer-events-none absolute inset-0">
-              <TopBar engine={engine} speed={speed} setSpeed={setSpeed} openModal={(m) => setModal(m)} />
+              <TopBar
+                engine={engine}
+                speed={speed}
+                setSpeed={setSpeed}
+                openModal={(m) => setModal(m)}
+                viewMode={viewMode}
+                setViewMode={setViewMode}
+              />
               <Toolbar engine={engine} tool={tool} setTool={setTool} />
               <InfoPanel
                 engine={engine}
@@ -286,7 +402,17 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
                 }}
                 openEntry={openEntry}
               />
-              <Minimap engine={engine} renderer={renderer} overlay={overlay} setOverlay={setOverlay} />
+              <Minimap engine={engine} controllerRef={controllerRef} overlay={overlay} setOverlay={setOverlay} />
+              {viewMode === '3d' && (
+                <ViewControls
+                  dayMode={dayMode}
+                  setDayMode={setDayMode}
+                  weather={weather}
+                  setWeather={setWeather}
+                  onReset={() => controllerRef.current?.resetCamera()}
+                  onRotate={(a) => controllerRef.current?.rotate?.(a)}
+                />
+              )}
               <Notifications toasts={toasts} dismiss={(id) => setToasts((ts) => ts.filter((x) => x.id !== id))} openEntry={openEntry} />
               {modal === 'tech' && <ResearchTree engine={engine} kind="tech" onClose={() => setModal(null)} openEntry={openEntry} onResult={onResult} />}
               {modal === 'civics' && <ResearchTree engine={engine} kind="civic" onClose={() => setModal(null)} openEntry={openEntry} onResult={onResult} />}
@@ -308,6 +434,8 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
                   onClose={() => setModal(null)}
                   setLang={setLang}
                   autosave={autosave}
+                  gfx={gfx}
+                  setGfx={setGfx}
                   setAutosave={setAutosave}
                   onMainMenu={() => {
                     setModal(null);

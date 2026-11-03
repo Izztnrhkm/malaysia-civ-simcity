@@ -3,13 +3,15 @@ import { ERAS } from '../core/data/eras';
 import { canAdvanceEra } from '../core/sim/research';
 import { formatMoney, formatNumber, useI18n } from '../i18n/i18n';
 import { useEngineVersion } from './hooks';
-import { ModalId } from './types';
+import { ModalId, ViewMode } from './types';
 
 interface Props {
   engine: GameEngine;
   speed: number;
   setSpeed: (s: number) => void;
   openModal: (m: ModalId) => void;
+  viewMode: ViewMode;
+  setViewMode: (v: ViewMode) => void;
 }
 
 function DemandBar({ label, value, color }: { label: string; value: number; color: string }) {
@@ -33,7 +35,7 @@ function DemandBar({ label, value, color }: { label: string; value: number; colo
   );
 }
 
-export function TopBar({ engine, speed, setSpeed, openModal }: Props) {
+export function TopBar({ engine, speed, setSpeed, openModal, viewMode, setViewMode }: Props) {
   useEngineVersion(engine);
   const { t, L } = useI18n();
   const s = engine.state;
@@ -102,6 +104,15 @@ export function TopBar({ engine, speed, setSpeed, openModal }: Props) {
           </button>
         ))}
       </div>
+      <button
+        className="btn px-2 font-bold"
+        onClick={() => setViewMode(viewMode === '3d' ? '2d' : '3d')}
+        title={t(viewMode === '3d' ? 'view.to2d' : 'view.to3d')}
+        aria-label={t(viewMode === '3d' ? 'view.to2d' : 'view.to3d')}
+        data-testid="toggle-view"
+      >
+        {viewMode === '3d' ? '3D' : '2D'}
+      </button>
       <div className="ml-auto flex flex-wrap items-center gap-1">
         {panels.map(([id, icon, key]) => (
           <button key={id} className="btn" onClick={() => openModal(id)} title={t(key)} data-testid={`open-${id}`}>

@@ -20,6 +20,38 @@ export interface Preview {
 
 export const ZONE_TINT: Record<number, string> = { 1: '#3fbf5f', 2: '#3f8fdf', 3: '#e0b030' };
 
+/** Normalised overlay value of a tile (null = not shown). Shared by the 2D and 3D views. */
+export function overlayValueFor(state: GameState, overlay: Overlay, i: number): number | null {
+  const m = state.map;
+  if (isWater(m.terrain[i]) && overlay !== 'logistics') return null;
+  switch (overlay) {
+    case 'landValue':
+      return m.landValue[i] / 255;
+    case 'pollution':
+      return m.pollution[i] / 255;
+    case 'coverage':
+      return m.coverage[i] / 250;
+    case 'logistics':
+      return isSea(m.terrain[i]) ? null : m.logistics[i] / 255;
+    case 'resources':
+      return m.tin[i] ? 0.6 + m.tin[i] / 640 : m.terrain[i] === T.PLAIN ? (m.fertility[i] / 255) * 0.45 : null;
+    case 'access':
+      return m.access[i] ? 1 : 0;
+    default:
+      return null;
+  }
+}
+
+/** Overlay colour as [r, g, b (0-255), alpha (0-1)]. */
+export function overlayRGBA(overlay: Overlay, v: number): [number, number, number, number] {
+  if (overlay === 'pollution') return [Math.round(120 + 135 * v), Math.round(90 * (1 - v)), Math.round(40 * (1 - v)), 0.15 + v * 0.55];
+  if (overlay === 'resources') return v >= 0.6 ? [220, 225, 235, 0.35 + (v - 0.6)] : [90, 200, 60, v];
+  // red -> yellow -> green
+  const r = v < 0.5 ? 220 : Math.round(220 - (v - 0.5) * 2 * 170);
+  const g = v < 0.5 ? Math.round(60 + v * 2 * 160) : 210;
+  return [r, g, 60, 0.5];
+}
+
 /** Which neighbours connect visually for a transport kind. */
 function connects(a: number, b: number): boolean {
   if (!a || !b) return false;
@@ -108,33 +140,12 @@ export class Renderer {
   }
 
   overlayValue(state: GameState, i: number): number | null {
-    const m = state.map;
-    if (isWater(m.terrain[i]) && this.overlay !== 'logistics') return null;
-    switch (this.overlay) {
-      case 'landValue':
-        return m.landValue[i] / 255;
-      case 'pollution':
-        return m.pollution[i] / 255;
-      case 'coverage':
-        return m.coverage[i] / 250;
-      case 'logistics':
-        return isSea(m.terrain[i]) ? null : m.logistics[i] / 255;
-      case 'resources':
-        return m.tin[i] ? 0.6 + m.tin[i] / 640 : m.terrain[i] === T.PLAIN ? (m.fertility[i] / 255) * 0.45 : null;
-      case 'access':
-        return m.access[i] ? 1 : 0;
-      default:
-        return null;
-    }
+    return overlayValueFor(state, this.overlay, i);
   }
 
   overlayColor(v: number): string {
-    if (this.overlay === 'pollution') return `rgba(${Math.round(120 + 135 * v)},${Math.round(90 * (1 - v))},${Math.round(40 * (1 - v))},${0.15 + v * 0.55})`;
-    if (this.overlay === 'resources') return v >= 0.6 ? `rgba(220,225,235,${0.35 + (v - 0.6)})` : `rgba(90,200,60,${v})`;
-    // red -> yellow -> green
-    const r = v < 0.5 ? 220 : Math.round(220 - (v - 0.5) * 2 * 170);
-    const g = v < 0.5 ? Math.round(60 + v * 2 * 160) : 210;
-    return `rgba(${r},${g},60,0.5)`;
+    const [r, g, b, a] = overlayRGBA(this.overlay, v);
+    return `rgba(${r},${g},${b},${a})`;
   }
 
   render(ctx: CanvasRenderingContext2D, state: GameState, vw: number, vh: number, time: number) {

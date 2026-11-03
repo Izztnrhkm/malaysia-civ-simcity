@@ -1,7 +1,7 @@
 {
   "name": "tamadun-kota",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Tamadun & Kota: Sejarah Malaysia - an isometric city-building and era-progression strategy game set in Malaysian history.",
   "type": "module",
   "scripts": {
@@ -15,11 +15,15 @@
     "test:watch": "vitest",
     "e2e": "vite build && node e2e/smoke.mjs",
     "screenshots": "vite build && node e2e/shot.mjs docs/screenshots && node e2e/eras.mjs docs/screenshots",
-    "check": "npm run typecheck && npm run lint && npm test"
+    "check": "npm run typecheck && npm run lint && npm test",
+    "models:spec": "vite-node scripts/generate-glb.ts --spec-only",
+    "models:node": "vite-node scripts/generate-glb.ts",
+    "models:blender": "npm run models:spec && blender --background --factory-startup --python scripts/generate_blender_models.py -- --spec scripts/model_spec.json --out public/models"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "three": "^0.170.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -31,6 +35,7 @@
     "@types/node": "^22.20.5",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
+    "@types/three": "^0.170.0",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.6.2",
     "eslint": "^9.39.5",

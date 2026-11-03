@@ -16,6 +16,7 @@ import {
   pyramidRoof,
   shade,
   speckle,
+  stilts,
   stall,
   tieredRoof,
   tree,
@@ -771,6 +772,63 @@ export const BUILDING_DRAW: Record<string, Draw> = {
     const cols = ['#2e86c1', '#27ae60', '#f1c40f'];
     for (let k = 0; k < 3; k++) box(ctx, { cx: f.cx - f.hw * 0.55 + k * 10, cy: f.cy + f.hh * 0.45, hw: 4, hh: 2 }, 7, wallColors(cols[k]));
   },
+  menara_tinjau: (ctx, f, rng) => {
+    ground(ctx, f, '#9a8a62', rng);
+    const post = inset(f, 0.32);
+    stilts(ctx, { ...post, cy: post.cy }, 44, '#5a3a1e');
+    const deck = box(ctx, { ...inset(f, 0.42), cy: f.cy - 44 }, 10, wallColors(TIMBER));
+    pyramidRoof(ctx, deck, 16, ATTAP, 1.35);
+  },
+  tebatan_banjir: (ctx, f, rng) => {
+    water(ctx, inset(f, 0.95));
+    for (let k = -2; k <= 2; k++) {
+      const pier = { cx: f.cx + k * f.hw * 0.32, cy: f.cy + k * f.hh * 0.32, hw: 5, hh: 2.5 };
+      box(ctx, pier, 22, wallColors('#cfcfc8'));
+    }
+    poly(ctx, [f.cx - f.hw * 0.7, f.cy - f.hh * 0.7 - 20, f.cx + f.hw * 0.7, f.cy + f.hh * 0.7 - 20, f.cx + f.hw * 0.7, f.cy + f.hh * 0.7 - 26, f.cx - f.hw * 0.7, f.cy - f.hh * 0.7 - 26], '#d8d8d0', '#8a8a84', 0.8);
+    const ch = box(ctx, inset(subFoot(f, 1, 0, 2), 0.6), 14, wallColors('#e6e2d6'));
+    pyramidRoof(ctx, ch, 6, '#3d5f8a');
+    speckle(ctx, f, ['#6aa84f'], 6, rng, 3);
+  },
+  parlimen: (ctx, f, rng) => {
+    ground(ctx, f, '#7fae5a', rng);
+    const hall = inset(subFoot(f, 1, 1, 2), 1.4);
+    const ht = box(ctx, hall, 20, wallColors('#f2f0ea'));
+    for (let k = 0; k < 6; k++) {
+      const pf = { cx: ht.cx - ht.hw * 0.7 + k * ht.hw * 0.28, cy: ht.cy - ht.hh * 0.7 + k * ht.hh * 0.28, hw: ht.hw * 0.16, hh: ht.hh * 0.16 };
+      pyramidRoof(ctx, pf, 18, '#cfcfc8', 1);
+    }
+    const tw = { ...inset(subFoot(f, 0, 0, 2), 0.7) };
+    const tt = box(ctx, tw, 110, wallColors('#f4f2ec'));
+    windows(ctx, tw, 110, -1, 14, 3, '#3a5a7a');
+    windows(ctx, tw, 110, 1, 14, 3, '#3a5a7a');
+    void tt;
+    flag(ctx, f.cx + f.hw * 0.7, f.cy + 4, 34, ['#cc0001', '#ffffff', '#010066']);
+  },
+  menara_118: (ctx, f, rng) => {
+    ground(ctx, f, '#9aa29a', rng);
+    let cur = inset(f, 0.62);
+    const glass = { top: '#cfe6f2', left: '#8fb6cc', right: '#5f88a2', outline: '#3e5a6c' };
+    for (const h of [140, 110, 80, 45, 28]) {
+      cur = box(ctx, cur, h, glass);
+      ctx.strokeStyle = 'rgba(230,240,250,0.45)';
+      ctx.lineWidth = 0.6;
+      for (let y = 8; y < h; y += 10) {
+        ctx.beginPath();
+        ctx.moveTo(cur.cx - cur.hw, cur.cy + h - y);
+        ctx.lineTo(cur.cx, cur.cy + cur.hh + h - y - 5);
+        ctx.lineTo(cur.cx + cur.hw, cur.cy + h - y);
+        ctx.stroke();
+      }
+      cur = inset(cur, 0.8);
+    }
+    ctx.strokeStyle = '#e0e6ea';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cur.cx, cur.cy);
+    ctx.lineTo(cur.cx, cur.cy - 90);
+    ctx.stroke();
+  },
   menara_berkembar: (ctx, f, rng) => {
     ground(ctx, f, '#7fa96a', rng);
     // two stepped steel towers with a skybridge, 8-point-star plan suggested by facets
@@ -830,6 +888,9 @@ function stiltsHouse(ctx: Ctx, f: Foot, wall: string, roof: string, rng: Rng, h:
 function headroom(id: string, size: number): number {
   const tall: Record<string, number> = {
     menara_berkembar: 420,
+    menara_118: 520,
+    parlimen: 150,
+    menara_tinjau: 100,
     menara_telekom: 170,
     hab_inovasi: 140,
     janakuasa: 120,
