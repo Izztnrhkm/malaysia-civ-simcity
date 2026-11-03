@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #0b2733;
+  font-family: 'Trebuchet MS', system-ui, sans-serif;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-songket-500/40 bg-[#0d2430]/95 text-songket-50 shadow-2xl backdrop-blur;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1 rounded-md border border-songket-500/40 bg-selat-700/80 px-2.5 py-1 text-sm text-songket-50 transition hover:bg-selat-500 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-gold {
+    @apply btn border-songket-300 bg-songket-700 hover:bg-songket-500;
+  }
+  .btn-active {
+    @apply border-songket-300 bg-songket-700 ring-1 ring-songket-300;
+  }
+  .chip {
+    @apply rounded-full bg-black/30 px-2 py-0.5 text-xs;
+  }
+  .songket-border {
+    background-image: repeating-linear-gradient(45deg, rgba(201, 150, 43, 0.35) 0 6px, transparent 6px 12px);
+  }
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: rgba(201, 150, 43, 0.4);
+  border-radius: 3px;
+}

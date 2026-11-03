@@ -8,7 +8,7 @@ import { GOODS, GameState, Good } from '../types';
 import { decodeInt32Layer, decodeLayer, encodeInt32Layer, encodeLayer } from './codec';
 
 export const SAVE_FORMAT = 'tamadun-kota-save';
-const LAYERS = ['terrain', 'elevation', 'fertility', 'tin', 'zone', 'density', 'transport'] as const;
+const LAYERS = ['terrain', 'elevation', 'fertility', 'tin', 'zone', 'density', 'style', 'transport'] as const;
 
 const goodMap = z.object(Object.fromEntries(GOODS.map((g) => [g, z.number().finite()])) as Record<Good, z.ZodNumber>);
 const track = z.object({

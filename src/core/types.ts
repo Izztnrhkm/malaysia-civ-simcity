@@ -54,6 +54,8 @@ export interface MapLayers {
   zone: Uint8Array;
   /** developed density level of a zoned tile, 0 (empty lot) .. 4 */
   density: Uint8Array;
+  /** era in which the lot last developed (drives its architectural style) */
+  style: Uint8Array;
   transport: Uint8Array;
   /** building instance id covering this tile, or -1 */
   building: Int32Array;

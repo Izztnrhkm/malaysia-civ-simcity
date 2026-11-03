@@ -16,6 +16,7 @@ export function createEmptyLayers(width: number, height: number, seed: number): 
     tin: new Uint8Array(n),
     zone: new Uint8Array(n),
     density: new Uint8Array(n),
+    style: new Uint8Array(n),
     transport: new Uint8Array(n),
     building: new Int32Array(n).fill(-1),
     landValue: new Uint8Array(n),
@@ -224,7 +225,8 @@ function carveRiver(map: MapLayers, rng: Rng): Array<[number, number]> {
     y = ny;
   }
   // ensure the river ends in the sea: extend straight west if needed
-  let [lx, ly] = path[path.length - 1];
+  const ly = path[path.length - 1][1];
+  let lx = path[path.length - 1][0];
   while (!isSea(map.terrain[ly * W + lx]) && lx > 0) {
     lx -= 1;
     path.push([lx, ly]);

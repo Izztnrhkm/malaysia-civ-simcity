@@ -9,6 +9,8 @@ import { costToEfficiency } from './transport';
 export const FOOD_PER_CAPITA = 0.012;
 export const WORKER_SHARE = 0.55;
 export const BASE_STORAGE = 300;
+export const BASE_RESEARCH = 1;
+export const BASE_CULTURE = 0.5;
 /** public-service cost per resident (x era wealth) */
 export const ADMIN_PER_CAPITA = [0, 0.004, 0.02, 0.07, 0.12];
 
@@ -85,8 +87,14 @@ export function runEconomy(state: GameState, ctx: SimContext, z: { population: n
   for (const b of state.buildings) {
     const d = BUILDING_MAP[b.def];
     if (!d) continue;
-    if (d.power) d.power > 0 ? (pSupply += d.power * staffRatioFor(d.jobs, staffRatio)) : (pDemand -= d.power);
-    if (d.water) d.water > 0 ? (wSupply += d.water * staffRatioFor(d.jobs, staffRatio)) : (wDemand -= d.water);
+    if (d.power) {
+      if (d.power > 0) pSupply += d.power * staffRatioFor(d.jobs, staffRatio);
+      else pDemand -= d.power;
+    }
+    if (d.water) {
+      if (d.water > 0) wSupply += d.water * staffRatioFor(d.jobs, staffRatio);
+      else wDemand -= d.water;
+    }
   }
   const powerRatio = state.era < 3 ? 1 : pDemand <= 0 ? 1 : Math.min(1, pSupply / pDemand);
   const waterRatio = state.era < 3 ? 1 : wDemand <= 0 ? 1 : Math.min(1, wSupply / wDemand);
@@ -246,8 +254,9 @@ export function runEconomy(state: GameState, ctx: SimContext, z: { population: n
   const netIncome = income - expense;
   state.money += netIncome;
 
-  const researchPerTick = (population / 250 + research) * Math.max(0, 1 + fx.research) + ctx.eventResearch;
-  const culturePerTick = (population / 400 + culture) * Math.max(0, 1 + fx.culture);
+  // the court and its scholars provide a small baseline of knowledge and culture
+  const researchPerTick = (BASE_RESEARCH + population / 250 + research) * Math.max(0, 1 + fx.research) + ctx.eventResearch;
+  const culturePerTick = (BASE_CULTURE + population / 400 + culture) * Math.max(0, 1 + fx.culture);
 
   return {
     population,

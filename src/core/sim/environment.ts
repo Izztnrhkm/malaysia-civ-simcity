@@ -149,7 +149,7 @@ export function computeHappinessTarget(state: GameState, ctx: SimContext, inp: H
   }
   const avgCov = cnt ? cov / cnt : 60;
   const avgPol = cnt ? pol / cnt : 0;
-  let h = 48;
+  let h = 55;
   h += (inp.foodSatisfaction - 1) * 45;
   h -= inp.unemployment * 45;
   h += Math.min(30, avgCov * 0.15);

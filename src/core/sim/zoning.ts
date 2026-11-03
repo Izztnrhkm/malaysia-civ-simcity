@@ -99,7 +99,10 @@ export function growZones(state: GameState, ctx: SimContext, g: GrowthInputs): v
     }
     if (dem > 0 && d < maxD) {
       const p = 0.05 * (dem / 100) * (0.5 + lv / 255) * growthMult;
-      if (rng.chance(p)) d++;
+      if (rng.chance(p)) {
+        d++;
+        m.style[i] = state.era;
+      }
     } else if (dem < -25 && d > 0) {
       const p = 0.02 * ((-dem - 25) / 75);
       if (rng.chance(p)) d--;
