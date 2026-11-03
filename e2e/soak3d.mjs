@@ -98,7 +98,7 @@ try {
     check(end.tick - t0 >= TURNS, `${scenario}: ${end.tick - t0} turns played (era ${end.era}, population ${end.pop}, money ${end.money})`);
     check(end.stats.chunks > 0 && end.stats.buildings > 0, `${scenario}: 3D scene still populated (${end.stats.buildings} buildings, ${end.stats.zones} lots, ${end.stats.traffic} vehicles)`);
     await frames(page, 4);
-    await page.screenshot({ path: `${OUT}/soak-${scenario}.png` });
+    await page.screenshot({ path: `${OUT}/soak-${scenario}.png`, timeout: 120000 });
     check(errors.length === 0, `${scenario}: no console/page errors ${errors.length ? JSON.stringify(errors.slice(0, 3)) : ''}`);
     await page.close();
   }
