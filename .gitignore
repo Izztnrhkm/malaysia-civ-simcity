@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-artifact
+*.tsbuildinfo
+e2e/screenshots
+.DS_Store
