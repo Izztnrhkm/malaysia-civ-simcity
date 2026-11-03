@@ -12,6 +12,8 @@ const errors = [];
 page.on('pageerror', (e) => errors.push(String(e)));
 page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
 await page.goto('http://localhost:4180/');
+await page.evaluate(() => localStorage.setItem('tamadun-kota:view', '2d')); // classic 2D shots
+await page.reload();
 await page.waitForTimeout(1500);
 await page.screenshot({ path: `${out}/menu.jpg`, type: 'jpeg', quality: 82 });
 await page.fill('[data-testid=seed]', '42');

@@ -13,12 +13,14 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "e2e": "vite build && node e2e/smoke.mjs",
-    "screenshots": "vite build && node e2e/shot.mjs docs/screenshots && node e2e/eras.mjs docs/screenshots",
+    "e2e": "vite build && node e2e/smoke.mjs && node e2e/soak3d.mjs",
+    "screenshots": "vite build && node e2e/shot.mjs docs/screenshots && node e2e/eras.mjs docs/screenshots && node e2e/shots3d.mjs docs/screenshots",
     "check": "npm run typecheck && npm run lint && npm test",
     "models:spec": "vite-node scripts/generate-glb.ts --spec-only",
     "models:node": "vite-node scripts/generate-glb.ts",
-    "models:blender": "npm run models:spec && blender --background --factory-startup --python scripts/generate_blender_models.py -- --spec scripts/model_spec.json --out public/models"
+    "models:blender": "npm run models:spec && blender --background --factory-startup --python scripts/generate_blender_models.py -- --spec scripts/model_spec.json --out public/models",
+    "e2e:smoke": "vite build && node e2e/smoke.mjs",
+    "e2e:soak": "vite build && node e2e/soak3d.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

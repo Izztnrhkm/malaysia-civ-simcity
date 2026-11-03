@@ -24,6 +24,7 @@ import { Settings } from './modals/Settings';
 import { GameView3D } from './GameView3D';
 import { SfxId, sound } from '../audio/soundEngine';
 import { createScenario } from '../core/scenarios';
+import { availableResearch } from '../core/sim/research';
 import { Advisors } from './modals/Advisors';
 import { Crisis } from './modals/Crisis';
 import { Timeline } from './modals/Timeline';
@@ -384,7 +385,7 @@ export function App({ initialSave }: { initialSave?: string } = {}) {
 
   // debug / automation handle used by the E2E smoke test
   useEffect(() => {
-    (window as unknown as { __tamadun?: unknown }).__tamadun = { engine, renderer, setSpeed, setTool, controller: controllerRef, viewMode, setViewMode };
+    (window as unknown as { __tamadun?: unknown }).__tamadun = { engine, renderer, setSpeed, setTool, controller: controllerRef, viewMode, setViewMode, availableResearch, sound };
   }, [engine, renderer, viewMode, setViewMode]);
 
   const showVictory = engine?.state.victory && !victorySeen;

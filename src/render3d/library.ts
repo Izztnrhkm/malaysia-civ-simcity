@@ -88,7 +88,7 @@ export class ModelLibrary {
     this.night = f;
     for (const id of MATERIAL_IDS) {
       const d = MATERIALS[id] as MaterialDef;
-      if (d.emissive) this.materials[id].emissiveIntensity = (d.emissiveBase ?? 0) + f * (d.glow ?? 0);
+      if (d.emissive) this.materials[id].emissiveIntensity = (d.emissiveBase ?? 0) + f * f * (d.glow ?? 0);
     }
   }
 

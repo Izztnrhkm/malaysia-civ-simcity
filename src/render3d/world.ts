@@ -490,7 +490,7 @@ export class World3D {
 
   update(dt: number, time: number) {
     if (this.dayMode === 'cycle') this.timeOfDay = (this.timeOfDay + dt / 240) % 1;
-    else this.timeOfDay += ((this.dayMode === 'day' ? 0.36 : 0.86) - this.timeOfDay) * Math.min(1, dt * 2);
+    else this.timeOfDay += ((this.dayMode === 'day' ? 0.36 : 0.86) - this.timeOfDay) * Math.min(1, dt * 3);
     this.rain.setTarget(this.rainTarget());
     this.lightning = this.rain.update(dt, this.focus);
     this.vehicles.update(dt);
@@ -525,8 +525,9 @@ export class World3D {
     }
     this.sun.color.copy(SUN_DAY).lerp(SUN_DUSK, dusk).lerp(MOON, this.night);
     const rainDim = 1 - this.rain.intensity * 0.45;
-    this.sun.intensity = (0.35 + 2.3 * day) * rainDim + this.lightning * 3;
-    this.hemi.intensity = (0.35 + 0.85 * day) * rainDim + this.lightning * 1.5;
+    this.sun.intensity = (0.28 + 2.3 * day) * rainDim + this.lightning * 3;
+    this.hemi.intensity = (0.12 + 0.78 * day) * rainDim + this.lightning * 1.5;
+    this.scene.environmentIntensity = (0.025 + 0.42 * day) * rainDim;
     const sky = this.scene.background as THREE.Color;
     sky.copy(SKY_DAY).lerp(SKY_DUSK, dusk * 0.7).lerp(SKY_NIGHT, this.night);
     if (this.rain.intensity > 0.02) sky.lerp(new THREE.Color('#6b7680'), this.rain.intensity * 0.5 * day);

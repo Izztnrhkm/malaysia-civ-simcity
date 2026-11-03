@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { GameState, T } from '../core/types';
 import { Overlay, Preview } from '../render/renderer';
 import { ModelLibrary } from './library';
@@ -67,6 +68,7 @@ export class View3D {
   private home = new THREE.Vector3();
   fps = 0;
   frames = 0;
+  private envMap: THREE.Texture;
   onContextLost: (() => void) | null = null;
 
   constructor(
@@ -84,7 +86,7 @@ export class View3D {
     r.setPixelRatio(this.quality === 'low' ? 1 : Math.min(2, window.devicePixelRatio || 1));
     r.outputColorSpace = THREE.SRGBColorSpace;
     r.toneMapping = THREE.ACESFilmicToneMapping;
-    r.toneMappingExposure = 1.05;
+    r.toneMappingExposure = 0.95;
     r.shadowMap.enabled = this.quality === 'high';
     r.shadowMap.type = THREE.PCFSoftShadowMap;
     r.domElement.dataset.testid = 'game-canvas-3d';
@@ -99,6 +101,13 @@ export class View3D {
     container.appendChild(r.domElement);
 
     this.world = new World3D(state, getModelLibrary(), this.quality);
+    // image-based lighting so metallic steel, chrome and reflective glass read correctly
+    const pmrem = new THREE.PMREMGenerator(r);
+    const room = new RoomEnvironment();
+    this.envMap = pmrem.fromScene(room, 0.04).texture;
+    room.traverse((o) => (o as THREE.Mesh).geometry?.dispose());
+    pmrem.dispose();
+    this.world.scene.environment = this.envMap;
     this.camera = new THREE.PerspectiveCamera(40, 1, 0.1, 1200);
     this.controls = new OrbitControls(this.camera, r.domElement);
     const c = this.controls;
@@ -271,6 +280,7 @@ export class View3D {
     this.ro?.disconnect();
     this.controls.dispose();
     this.world.dispose();
+    this.envMap.dispose();
     this.renderer.dispose();
     this.renderer.domElement.remove();
   }

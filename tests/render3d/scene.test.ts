@@ -157,7 +157,7 @@ describe('World3D scene graph (renderer-independent)', () => {
     for (let i = 0; i < 40; i++) w.update(0.1, i * 100);
     expect(w.night).toBeGreaterThan(0.9);
     expect(w.sun.intensity).toBeLessThan(daySun);
-    expect(l.materials.window.emissiveIntensity).toBeGreaterThan(1);
+    expect(l.materials.window.emissiveIntensity).toBeGreaterThan(0.6);
     expect(l.materials.concrete.emissiveIntensity).toBe(1);
     w.dispose();
   });

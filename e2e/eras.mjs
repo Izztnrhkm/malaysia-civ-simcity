@@ -11,6 +11,8 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 const errors = [];
 page.on('pageerror', (e) => errors.push(String(e)));
 await page.goto('http://localhost:4182/');
+await page.evaluate(() => localStorage.setItem('tamadun-kota:view', '2d')); // classic 2D shots
+await page.reload();
 await page.fill('[data-testid=seed]', '42');
 await page.click('[data-testid=start-game]');
 await page.waitForTimeout(500);
