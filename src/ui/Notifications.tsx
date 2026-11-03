@@ -12,7 +12,7 @@ const KIND_STYLE: Record<Toast['kind'], string> = {
 export function Notifications({ toasts, dismiss, openEntry }: { toasts: Toast[]; dismiss: (id: number) => void; openEntry: (id: string) => void }) {
   const { t } = useI18n();
   return (
-    <div className="pointer-events-none absolute bottom-2 left-24 flex w-[22rem] max-w-[calc(100%-7rem)] flex-col-reverse gap-1.5" data-testid="notifications">
+    <div className="pointer-events-none absolute bottom-2 left-[5rem] flex w-[22rem] max-w-[calc(100%-6rem)] flex-col-reverse gap-1.5" data-testid="notifications">
       {toasts.slice(-5).map((n) => (
         <div key={n.id} className={`panel pointer-events-auto border-l-4 p-2 text-xs ${KIND_STYLE[n.kind]}`} role="status">
           <div className="flex items-start gap-2">

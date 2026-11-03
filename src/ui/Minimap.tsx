@@ -38,7 +38,7 @@ export function Minimap({ engine, renderer, overlay, setOverlay }: Props) {
   };
 
   return (
-    <div className="panel pointer-events-auto absolute bottom-2 right-2 p-2" data-testid="minimap">
+    <div className="panel pointer-events-auto absolute bottom-2 right-2 hidden p-2 sm:block" data-testid="minimap">
       <div className="relative mx-auto h-[92px] w-[184px] cursor-pointer overflow-hidden" onClick={onClick}>
         <canvas
           ref={ref}

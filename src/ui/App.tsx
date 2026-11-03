@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GameEngine } from '../core/engine';
-import { saveToSlot } from '../core/save/save';
+import { deserialize, saveToSlot, toJSON } from '../core/save/save';
 import { CommandResult, GameState, Lang, T } from '../core/types';
 import { Overlay, Renderer } from '../render/renderer';
 import { I18nContext, makeI18n, noticeText, translate } from '../i18n/i18n';
@@ -54,7 +54,7 @@ function focusStart(renderer: Renderer, state: GameState) {
   renderer.centerOn(pos.x, pos.y);
 }
 
-export function App() {
+export function App({ initialSave }: { initialSave?: string } = {}) {
   const [lang, setLangState] = useState<Lang>(readLang);
   const i18n = useMemo(() => makeI18n(lang), [lang]);
   const setLang = (l: Lang) => {
@@ -232,6 +232,27 @@ export function App() {
     setEntry(id);
     setModal('encyclopedia');
   };
+
+  // restore a game handed back by an embedding viewer after an update
+  useEffect(() => {
+    if (!initialSave) return;
+    try {
+      loadState(deserialize(initialSave));
+    } catch {
+      /* ignore an incompatible snapshot */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialSave]);
+
+  // let an embedding viewer snapshot the running game so it survives updates
+  useEffect(() => {
+    const hot = (window as unknown as { claude?: { hot?: { snapshot?: (fn: () => unknown) => void } } }).claude?.hot;
+    try {
+      hot?.snapshot?.(() => (engine ? { save: toJSON(engine.state) } : {}));
+    } catch {
+      /* viewer without snapshot support */
+    }
+  }, [engine]);
 
   // debug / automation handle used by the E2E smoke test
   useEffect(() => {

@@ -98,7 +98,7 @@ export function Toolbar({ engine, tool, setTool }: Props) {
   const list = open ? BUILDINGS.filter((b) => b.category === open && b.era <= s.era && !(b.obsolete && s.era > b.obsolete)) : [];
 
   return (
-    <div className="pointer-events-auto absolute left-2 top-24 flex max-h-[calc(100%-7rem)] gap-2" data-testid="toolbar">
+    <div className="pointer-events-auto absolute left-2 top-[11.5rem] flex max-h-[calc(100%-12.5rem)] gap-2 sm:top-24 sm:max-h-[calc(100%-7rem)]" data-testid="toolbar">
       <div className="panel scroll-thin flex w-[4.25rem] flex-col items-stretch gap-1 overflow-y-auto p-1.5">
         <button className={`btn flex-col py-1.5 ${tool.kind === 'inspect' ? 'btn-active' : ''}`} onClick={() => setTool({ kind: 'inspect' })} title={t('tool.inspect')} data-testid="tool-inspect">
           <span className="text-lg">🔍</span>
@@ -160,7 +160,7 @@ export function Toolbar({ engine, tool, setTool }: Props) {
         ))}
       </div>
       {open && (
-        <div className="panel scroll-thin w-80 overflow-y-auto p-2" data-testid="build-menu">
+        <div className="panel scroll-thin w-[min(20rem,calc(100vw-6rem))] overflow-y-auto p-2" data-testid="build-menu">
           <div className="mb-1 flex items-center justify-between">
             <span className="font-display font-bold text-songket-300">{t(`cat.${open}`)}</span>
             <button className="btn px-2" onClick={() => setOpen(null)} aria-label={t('panel.close')}>

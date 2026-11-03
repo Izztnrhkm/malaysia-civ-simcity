@@ -42,7 +42,7 @@ export function InfoPanel({ engine, tile, onClose, openEntry }: Props) {
   const zone = m.zone[i];
   const zoneKey = zone === 1 ? 'R' : zone === 2 ? 'C' : zone === 3 ? 'I' : null;
   return (
-    <div className="panel pointer-events-auto absolute right-2 top-24 w-72 p-3" data-testid="info-panel">
+    <div className="panel scroll-thin pointer-events-auto absolute bottom-2 left-[5rem] right-2 max-h-[45%] overflow-y-auto p-3 sm:bottom-auto sm:left-auto sm:top-24 sm:max-h-[calc(100%-7rem)] sm:w-72" data-testid="info-panel">
       <div className="mb-2 flex items-center justify-between">
         <div className="font-display font-bold text-songket-300">
           {def ? L(def.name) : t(`terrain.${terrainKey}`)}{' '}

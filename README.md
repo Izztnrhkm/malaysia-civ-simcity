@@ -26,7 +26,7 @@ It combines city-builder mechanics (zoning, road/rail/river logistics, utilities
 - **Historical events** (Zheng He's fleet, the fall of Melaka in 1511, the Larut tin discovery, the first railway in 1885, the rubber boom, the Great Depression, Merdeka, ASEAN, the 1985 tin crisis, the Asian financial crisis, monsoon floods, haze and more).
 - **Sejarahpedia**: a bilingual in-game encyclopedia with 40 entries, each with sources; disputed dates are presented as disputed.
 - **Bilingual UI**: Bahasa Melayu and English, switchable at any time.
-- **Save / Load**: three slots plus autosave in localStorage, and JSON export/import. Saves are versioned and validated with zod; map layers are run-length encoded.
+- **Save / Load**: three slots plus autosave in localStorage, JSON file export/import, and copy/paste of the save JSON. Saves are versioned and validated with zod; map layers are run-length encoded.
 
 ## Playing
 
@@ -53,7 +53,7 @@ Then open the printed local URL.
 | --- | --- |
 | `npm run dev` | Vite dev server |
 | `npm run build` | Typecheck and production build to `dist/` |
-| `npm run build:artifact` | Single self-contained HTML file in `dist-artifact/` |
+| `npm run build:artifact` | Single self-contained HTML page (`dist-artifact/tamadun-kota.html`) for hosts that supply their own page skeleton; file export is hidden there in favour of copy/paste JSON |
 | `npm test` | Vitest unit, integration, render and UI tests |
 | `npm run typecheck` / `npm run lint` | TypeScript and ESLint |
 | `npm run check` | All three of the above |
@@ -82,7 +82,7 @@ The simulation runs one tick per "turn" (6 months in era 1, 4 in era 2, 2 in era
 
 ### Tests
 
-`npm test` runs 167 tests in 11 files, including a 650-tick soak test on three map seeds in which a scripted player must progress to at least era 3 without NaN, negative stock or out-of-range values. `npm run e2e` runs 18 browser checks (placing buildings with the mouse, dragging roads and zones, running time, choosing research, saving, reloading the page and loading, switching language) and fails on any console error.
+`npm test` runs 168 tests in 11 files, including a 650-tick soak test on three map seeds in which a scripted player must progress to at least era 3 without NaN, negative stock or out-of-range values. `npm run e2e` runs 18 browser checks (placing buildings with the mouse, dragging roads and zones, running time, choosing research, saving, reloading the page and loading, switching language) and fails on any console error.
 
 ## Historical accuracy
 

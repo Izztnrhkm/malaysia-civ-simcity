@@ -10,7 +10,7 @@ import { Sejarahpedia } from '../../src/ui/modals/Sejarahpedia';
 import { SaveLoad } from '../../src/ui/modals/SaveLoad';
 import { Toolbar } from '../../src/ui/Toolbar';
 import { ReactNode } from 'react';
-import { saveToSlot } from '../../src/core/save/save';
+import { saveToSlot, toJSON } from '../../src/core/save/save';
 
 afterEach(() => cleanup());
 beforeEach(() => localStorage.clear());
@@ -145,5 +145,28 @@ describe('panels', () => {
     fireEvent.click(screen.getByTestId('save-slot3'));
     expect(notify).toHaveBeenCalledWith('Game saved.', 'good');
     expect(screen.getByTestId('slot-slot3')).toHaveTextContent('Simpanan');
+  });
+
+  it('asks in-page before overwriting a slot and loads pasted JSON', () => {
+    const e = GameEngine.newGame(42, 'Pertama', 48);
+    saveToSlot(GameEngine.newGame(7, 'Lama', 32).state, 'slot2');
+    const notify = vi.fn();
+    const onLoad = vi.fn();
+    wrap(<SaveLoad engine={e} onClose={() => {}} onLoad={onLoad} notify={notify} />);
+    fireEvent.click(screen.getByTestId('save-slot2'));
+    expect(screen.getByTestId('save-slot2')).toHaveTextContent('Click again to overwrite');
+    expect(screen.getByTestId('slot-slot2')).toHaveTextContent('Lama');
+    fireEvent.click(screen.getByTestId('save-slot2'));
+    expect(screen.getByTestId('slot-slot2')).toHaveTextContent('Pertama');
+    fireEvent.click(screen.getByTestId('paste-toggle'));
+    fireEvent.change(screen.getByTestId('paste-json'), { target: { value: toJSON(GameEngine.newGame(3, 'Ditampal', 32).state) } });
+    fireEvent.click(screen.getByTestId('paste-load'));
+    expect(onLoad).toHaveBeenCalledTimes(1);
+    expect(onLoad.mock.calls[0][0].name).toBe('Ditampal');
+    fireEvent.click(screen.getByTestId('paste-toggle'));
+    fireEvent.click(screen.getByTestId('paste-toggle'));
+    fireEvent.change(screen.getByTestId('paste-json'), { target: { value: '{broken' } });
+    fireEvent.click(screen.getByTestId('paste-load'));
+    expect(notify).toHaveBeenLastCalledWith(expect.stringContaining('JSON'), 'bad');
   });
 });

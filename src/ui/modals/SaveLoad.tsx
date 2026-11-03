@@ -16,13 +16,21 @@ interface Props {
 export function SaveLoad({ engine, onClose, onLoad, notify }: Props) {
   const { t, L } = useI18n();
   const [slots, setSlots] = useState(listSlots);
+  const [confirming, setConfirming] = useState<SlotId | null>(null);
+  const [paste, setPaste] = useState('');
+  const [showPaste, setShowPaste] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const refresh = () => setSlots(listSlots());
 
   const doSave = (id: SlotId) => {
     if (!engine) return;
     const slot = slots.find((s) => s.id === id);
-    if (slot && !slot.empty && !window.confirm(t('save.confirmOverwrite'))) return;
+    // in-page confirmation (native confirm dialogs are unavailable in some embeds)
+    if (slot && !slot.empty && confirming !== id) {
+      setConfirming(id);
+      return;
+    }
+    setConfirming(null);
     try {
       saveToSlot(engine.state, id);
       notify(t('save.saved'), 'good');
@@ -40,6 +48,15 @@ export function SaveLoad({ engine, onClose, onLoad, notify }: Props) {
       notify(`${t('save.error')}: ${(e as Error).message}`, 'bad');
     }
   };
+  const loadText = (text: string) => {
+    try {
+      onLoad(deserialize(text));
+      notify(t('save.loaded'), 'good');
+      onClose();
+    } catch (e) {
+      notify(`${t('save.error')}: ${(e as Error).message}`, 'bad');
+    }
+  };
   const doExport = () => {
     if (!engine) return;
     const blob = new Blob([toJSON(engine.state)], { type: 'application/json' });
@@ -49,15 +66,17 @@ export function SaveLoad({ engine, onClose, onLoad, notify }: Props) {
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
-  const doImport = async (f: File) => {
-    try {
-      const text = await f.text();
-      onLoad(deserialize(text));
-      notify(t('save.loaded'), 'good');
-      onClose();
-    } catch (e) {
-      notify(`${t('save.error')}: ${(e as Error).message}`, 'bad');
-    }
+  const doCopy = () => {
+    if (!engine) return;
+    const json = toJSON(engine.state);
+    navigator.clipboard
+      ?.writeText(json)
+      .then(() => notify(t('save.copied'), 'good'))
+      .catch(() => {
+        setPaste(json);
+        setShowPaste(true);
+        notify(t('save.copyFallback'));
+      });
   };
 
   return (
@@ -79,8 +98,8 @@ export function SaveLoad({ engine, onClose, onLoad, notify }: Props) {
                 )}
               </div>
               {id !== 'autosave' && engine && (
-                <button className="btn" onClick={() => doSave(id)} data-testid={`save-${id}`}>
-                  {t('save.save')}
+                <button className={confirming === id ? 'btn-gold' : 'btn'} onClick={() => doSave(id)} data-testid={`save-${id}`}>
+                  {confirming === id ? t('save.confirmOverwrite') : t('save.save')}
                 </button>
               )}
               <button className="btn" disabled={s.empty} onClick={() => doLoad(id)} data-testid={`load-${id}`}>
@@ -101,25 +120,53 @@ export function SaveLoad({ engine, onClose, onLoad, notify }: Props) {
         })}
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
-        <button className="btn-gold" disabled={!engine} onClick={doExport} data-testid="export-json">
-          ⬇️ {t('save.export')}
+        {/* file downloads are unavailable in the embedded (artifact) build; copy/paste JSON covers it */}
+        {import.meta.env.MODE !== 'artifact' && (
+          <button className="btn-gold" disabled={!engine} onClick={doExport} data-testid="export-json">
+            ⬇️ {t('save.export')}
+          </button>
+        )}
+        <button className="btn" disabled={!engine} onClick={doCopy} data-testid="copy-json">
+          📋 {t('save.copy')}
         </button>
         <button className="btn" onClick={() => fileRef.current?.click()} data-testid="import-json">
           ⬆️ {t('save.import')}
         </button>
+        <button className="btn" onClick={() => setShowPaste((v) => !v)} data-testid="paste-toggle">
+          📥 {t('save.paste')}
+        </button>
         <input
           ref={fileRef}
+          id="import-file"
           type="file"
           accept="application/json,.json"
           className="hidden"
           data-testid="import-file"
           onChange={(e) => {
             const f = e.target.files?.[0];
-            if (f) void doImport(f);
+            if (f) void f.text().then(loadText);
             e.target.value = '';
           }}
         />
       </div>
+      {showPaste && (
+        <div className="mt-3">
+          <label htmlFor="paste-json" className="text-xs opacity-80">
+            {t('save.pasteHelp')}
+          </label>
+          <textarea
+            id="paste-json"
+            className="mt-1 h-28 w-full rounded bg-black/40 p-2 font-mono text-[11px]"
+            value={paste}
+            onChange={(e) => setPaste(e.target.value)}
+            onFocus={(e) => e.target.select()}
+            data-testid="paste-json"
+          />
+          <button className="btn-gold mt-1" disabled={!paste.trim()} onClick={() => loadText(paste)} data-testid="paste-load">
+            {t('save.load')}
+          </button>
+        </div>
+      )}
     </Modal>
   );
 }
