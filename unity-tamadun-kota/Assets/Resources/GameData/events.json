@@ -1,0 +1,903 @@
+{
+ "items": [
+  {
+   "id": "zheng_he",
+   "kind": "historical",
+   "eras": [
+    1
+   ],
+   "year": 1409,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Armada Laksamana Cheng Ho",
+   "nameEn": "Admiral Zheng He’s Fleet",
+   "descMs": "Armada harta Ming singgah di pelabuhan anda. Hubungan dengan China bertambah baik.",
+   "descEn": "The Ming treasure fleet calls at your port. Relations with China improve.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 600,
+    "researchOnce": 15,
+    "relations": [
+     {
+      "key": "ming",
+      "value": 25
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "zheng_he"
+  },
+  {
+   "id": "kejatuhan_melaka",
+   "kind": "historical",
+   "eras": [
+    1
+   ],
+   "year": 1511,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Kejatuhan Melaka (1511)",
+   "nameEn": "The Fall of Melaka (1511)",
+   "descMs": "Portugis menawan Melaka. Pedagang Muslim beralih ke pelabuhan lain di rantau ini, termasuk pelabuhan anda.",
+   "descEn": "The Portuguese capture Melaka. Muslim traders shift to other ports in the region, including yours.",
+   "effect": {
+    "duration": 40,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "gujerat",
+      "value": 10
+     },
+     {
+      "key": "arab_parsi",
+      "value": 10
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1.25
+   },
+   "entryId": "melaka_1511"
+  },
+  {
+   "id": "lanun",
+   "kind": "random",
+   "eras": [
+    1,
+    2
+   ],
+   "year": 0,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0.006,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Serangan Lanun",
+   "nameEn": "Pirate Raids",
+   "descMs": "Lanun mengganggu laluan kapal. Eksport berkurang buat sementara.",
+   "descEn": "Pirates disrupt shipping lanes. Exports fall for a while.",
+   "effect": {
+    "duration": 6,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 0.7
+   },
+   "entryId": ""
+  },
+  {
+   "id": "perjanjian_1824",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 0,
+   "onEraStart": true,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Perjanjian Inggeris-Belanda 1824",
+   "nameEn": "Anglo-Dutch Treaty of 1824",
+   "descMs": "Selat Melaka dibahagi antara British dan Belanda. Negeri-Negeri Selat dibentuk pada 1826.",
+   "descEn": "The Straits are divided between the British and the Dutch. The Straits Settlements follow in 1826.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "perjanjian_1824"
+  },
+  {
+   "id": "larut",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 1848,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Bijih Timah di Larut",
+   "nameEn": "Tin Found in Larut",
+   "descMs": "Bijih timah ditemui di Larut (dikaitkan dengan Long Jaafar). Harga timah melonjak dan pelombong berpusu-pusu tiba.",
+   "descEn": "Tin is found in Larut (credited to Long Jaafar). Tin prices jump and miners flock in.",
+   "effect": {
+    "duration": 40,
+    "priceMult": [
+     {
+      "key": "timah",
+      "value": 1.3
+     }
+    ],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "larut"
+  },
+  {
+   "id": "pangkor",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 1874,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Perjanjian Pangkor",
+   "nameEn": "Pangkor Treaty",
+   "descMs": "Perjanjian 1874 memperkenalkan Sistem Residen di Perak.",
+   "descEn": "The 1874 treaty introduces the Residential System in Perak.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "pangkor"
+  },
+  {
+   "id": "kereta_api_1885",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 1885,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Kereta Api Pertama",
+   "nameEn": "The First Railway",
+   "descMs": "Landasan Taiping–Port Weld dibuka pada 1885 untuk mengangkut bijih timah ke laut.",
+   "descEn": "The Taiping–Port Weld line opens in 1885 to carry tin to the sea.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 40,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "kereta_api"
+  },
+  {
+   "id": "ledakan_getah",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 1905,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Ledakan Getah",
+   "nameEn": "The Rubber Boom",
+   "descMs": "Industri kereta di Amerika memerlukan tayar. Harga getah melambung.",
+   "descEn": "The American car industry needs tyres. Rubber prices soar.",
+   "effect": {
+    "duration": 36,
+    "priceMult": [
+     {
+      "key": "getah",
+      "value": 1.8
+     }
+    ],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "amerika",
+      "value": 10
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "getah"
+  },
+  {
+   "id": "kemelesetan_besar",
+   "kind": "historical",
+   "eras": [
+    2
+   ],
+   "year": 1930,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Kemelesetan Besar",
+   "nameEn": "The Great Depression",
+   "descMs": "Permintaan dunia runtuh. Harga timah dan getah jatuh menjunam.",
+   "descEn": "World demand collapses. Tin and rubber prices plunge.",
+   "effect": {
+    "duration": 36,
+    "priceMult": [
+     {
+      "key": "timah",
+      "value": 0.5
+     },
+     {
+      "key": "getah",
+      "value": 0.45
+     }
+    ],
+    "productionMult": 1,
+    "happiness": -5,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "wabak",
+   "kind": "random",
+   "eras": [
+    1,
+    2
+   ],
+   "year": 0,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0.004,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Wabak Penyakit",
+   "nameEn": "Epidemic",
+   "descMs": "Wabak merebak. Hospital dan klinik mengurangkan kesannya.",
+   "descEn": "An epidemic spreads. Hospitals and clinics reduce its impact.",
+   "effect": {
+    "duration": 6,
+    "priceMult": [],
+    "productionMult": 0.9,
+    "happiness": -6,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "merdeka_1957",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 0,
+   "onEraStart": true,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Merdeka!",
+   "nameEn": "Merdeka!",
+   "descMs": "Pada 31 Ogos 1957, Persekutuan Tanah Melayu mencapai kemerdekaan.",
+   "descEn": "On 31 August 1957 the Federation of Malaya gains independence.",
+   "effect": {
+    "duration": 24,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 10,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "kemerdekaan",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "merdeka"
+  },
+  {
+   "id": "malaysia_1963",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1963,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Pembentukan Malaysia",
+   "nameEn": "Formation of Malaysia",
+   "descMs": "Malaysia dibentuk pada 16 September 1963.",
+   "descEn": "Malaysia is formed on 16 September 1963.",
+   "effect": {
+    "duration": 12,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 4,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "malaysia_1963"
+  },
+  {
+   "id": "asean_1967",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1967,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Penubuhan ASEAN",
+   "nameEn": "ASEAN Founded",
+   "descMs": "Deklarasi Bangkok 1967 menubuhkan ASEAN.",
+   "descEn": "The 1967 Bangkok Declaration founds ASEAN.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "asean",
+      "value": 15
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "asean"
+  },
+  {
+   "id": "fiz_1972",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1972,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "zon_perdagangan_bebas",
+   "nameMs": "Zon Perindustrian Bebas Pertama",
+   "nameEn": "First Free Industrial Zone",
+   "descMs": "Zon di Bayan Lepas dibuka pada 1972 dan menarik kilang semikonduktor antarabangsa.",
+   "descEn": "The Bayan Lepas zone opens in 1972 and draws international chip plants.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 3000,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "amerika",
+      "value": 10
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "bayan_lepas"
+  },
+  {
+   "id": "pandang_timur_1982",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1982,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Pandang ke Timur",
+   "nameEn": "Look East",
+   "descMs": "Dasar Pandang ke Timur diumumkan pada 8 Februari 1982.",
+   "descEn": "The Look East Policy is announced on 8 February 1982.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "jepun",
+      "value": 15
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "pandang_timur"
+  },
+  {
+   "id": "krisis_timah_1985",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1985,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Krisis Timah 1985",
+   "nameEn": "The 1985 Tin Crisis",
+   "descMs": "Pasaran timah antarabangsa runtuh pada Oktober 1985. Harga timah jatuh dan ekonomi meleset.",
+   "descEn": "The international tin market collapses in October 1985. Tin prices crash and the economy slumps.",
+   "effect": {
+    "duration": 30,
+    "priceMult": [
+     {
+      "key": "timah",
+      "value": 0.45
+     },
+     {
+      "key": "getah",
+      "value": 0.8
+     },
+     {
+      "key": "sawit",
+      "value": 0.8
+     }
+    ],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "kereta_nasional_1985",
+   "kind": "historical",
+   "eras": [
+    3
+   ],
+   "year": 1985,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "kilang_kereta",
+   "requiresResearch": "",
+   "nameMs": "Kereta Nasional Pertama",
+   "nameEn": "The First National Car",
+   "descMs": "Kereta nasional pertama keluar dari barisan pengeluaran pada Julai 1985.",
+   "descEn": "The first national car rolls off the line in July 1985.",
+   "effect": {
+    "duration": 12,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 5,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "kereta_nasional"
+  },
+  {
+   "id": "jerebu",
+   "kind": "random",
+   "eras": [
+    3,
+    4
+   ],
+   "year": 0,
+   "onEraStart": false,
+   "months": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "chance": 0.02,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Jerebu",
+   "nameEn": "Haze",
+   "descMs": "Jerebu merentas sempadan menyelubungi bandar.",
+   "descEn": "Transboundary haze blankets the city.",
+   "effect": {
+    "duration": 3,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": -4,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "msc_1996",
+   "kind": "historical",
+   "eras": [
+    4
+   ],
+   "year": 0,
+   "onEraStart": true,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Koridor Raya Multimedia",
+   "nameEn": "Multimedia Super Corridor",
+   "descMs": "MSC dilancarkan pada 1996 untuk menarik syarikat teknologi.",
+   "descEn": "The MSC is launched in 1996 to attract technology companies.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 300,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "msc"
+  },
+  {
+   "id": "krisis_asia_1997",
+   "kind": "historical",
+   "eras": [
+    4
+   ],
+   "year": 1997,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Krisis Kewangan Asia",
+   "nameEn": "Asian Financial Crisis",
+   "descMs": "Ringgit jatuh nilai. Pada September 1998 kawalan modal terpilih diperkenalkan dan ringgit dipaku pada RM3.80/USD.",
+   "descEn": "The ringgit plunges. In September 1998 selective capital controls are introduced and the ringgit is pegged at RM3.80/USD.",
+   "effect": {
+    "duration": 18,
+    "priceMult": [],
+    "productionMult": 0.85,
+    "happiness": -6,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "klia_1998",
+   "kind": "historical",
+   "eras": [
+    4
+   ],
+   "year": 1998,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Lapangan Terbang Antarabangsa Baharu",
+   "nameEn": "New International Airport",
+   "descMs": "Lapangan terbang antarabangsa utama dibuka pada Jun 1998.",
+   "descEn": "The main international airport opens in June 1998.",
+   "effect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [
+     {
+      "key": "jepun",
+      "value": 5
+     },
+     {
+      "key": "kesatuan_eropah",
+      "value": 5
+     }
+    ],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": "klia"
+  },
+  {
+   "id": "krisis_global_2008",
+   "kind": "historical",
+   "eras": [
+    4
+   ],
+   "year": 2008,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Krisis Kewangan Global",
+   "nameEn": "Global Financial Crisis",
+   "descMs": "Permintaan eksport dunia merosot.",
+   "descEn": "Global export demand slumps.",
+   "effect": {
+    "duration": 18,
+    "priceMult": [
+     {
+      "key": "elektronik",
+      "value": 0.75
+     },
+     {
+      "key": "sawit",
+      "value": 0.8
+     },
+     {
+      "key": "barang",
+      "value": 0.85
+     }
+    ],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "pandemik_2020",
+   "kind": "historical",
+   "eras": [
+    4
+   ],
+   "year": 2020,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Pandemik",
+   "nameEn": "Pandemic",
+   "descMs": "Perintah kawalan pergerakan. Perniagaan terjejas tetapi permintaan digital melonjak.",
+   "descEn": "Movement control orders. Businesses suffer but digital demand surges.",
+   "effect": {
+    "duration": 18,
+    "priceMult": [
+     {
+      "key": "digital",
+      "value": 1.5
+     }
+    ],
+    "productionMult": 0.8,
+    "happiness": -8,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  },
+  {
+   "id": "banjir_monsun",
+   "kind": "random",
+   "eras": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "year": 0,
+   "onEraStart": false,
+   "months": [
+    10,
+    11,
+    0
+   ],
+   "chance": 0.05,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Banjir Monsun",
+   "nameEn": "Monsoon Floods",
+   "descMs": "Monsun timur laut membawa banjir. Kawasan rendah tepi sungai terjejas.",
+   "descEn": "The north-east monsoon brings floods. Low riverside areas are hit.",
+   "effect": {
+    "duration": 3,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": -3,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": true,
+    "exportCapMult": 1
+   },
+   "entryId": "monsun"
+  },
+  {
+   "id": "harga_naik",
+   "kind": "random",
+   "eras": [
+    2,
+    3,
+    4
+   ],
+   "year": 0,
+   "onEraStart": false,
+   "months": [],
+   "chance": 0.008,
+   "requiresBuilding": "",
+   "requiresResearch": "",
+   "nameMs": "Lonjakan Harga Komoditi",
+   "nameEn": "Commodity Price Spike",
+   "descMs": "Permintaan dunia meningkat; harga komoditi naik.",
+   "descEn": "World demand rises; commodity prices climb.",
+   "effect": {
+    "duration": 12,
+    "priceMult": [
+     {
+      "key": "timah",
+      "value": 1.3
+     },
+     {
+      "key": "getah",
+      "value": 1.3
+     },
+     {
+      "key": "sawit",
+      "value": 1.3
+     }
+    ],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "entryId": ""
+  }
+ ]
+}

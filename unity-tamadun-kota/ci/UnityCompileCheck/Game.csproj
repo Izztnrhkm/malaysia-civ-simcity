@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Compiles the game's Runtime scripts (TamadunKota.Simulation + TamadunKota.Runtime) and Editor scripts
+    (TamadunKota.Editor) against real Unity reference assemblies and real package sources.
+    Run: ./fetch-deps.sh && dotnet build Game.csproj   (from ci/UnityCompileCheck)
+  -->
+  <PropertyGroup>
+    <AssemblyName>TamadunKota.CompileCheck</AssemblyName>
+    <DefineConstants>$(UnityDefines);UNITY_EDITOR</DefineConstants>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/**/*.cs" />
+    <Compile Include="../../Assets/Editor/**/*.cs" />
+    <Compile Include="Stubs/URPStubs.cs" />
+    <ProjectReference Include="Packages/InputSystem.csproj" />
+    <ProjectReference Include="Packages/AINavigation.csproj" />
+  </ItemGroup>
+  <Target Name="AddUnityEditorReference" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Reference Include="$(PkgUnity3D_SDK)/lib/UnityEditor.dll" Private="false" />
+    </ItemGroup>
+  </Target>
+</Project>

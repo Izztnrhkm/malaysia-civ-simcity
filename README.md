@@ -138,6 +138,10 @@ The simulation runs one tick per "turn" (6 months in era 1, 4 in era 2, 2 in era
 
 `npm run e2e` drives the production build in Chromium with software WebGL: placing buildings by raycast, dragging roads and zones in 3D and in 2D, the ghost preview, overlays, camera orbit and reset, day/night and rain, sound, every panel, a crisis decision, save/reload/load, language and the phone layout, then plays 660 turns across the three scenarios with the 3D view rendering. Both fail on any console error.
 
+## Unity 6 LTS edition
+
+[`unity-tamadun-kota/`](unity-tamadun-kota/README.md) is a separate Unity 6.3 LTS (URP) project built on the same catalog: a pure C# port of the rules engine (with parity tests against this TypeScript code), an RTS camera, grid placement, NavMesh citizens and traffic, 3-LOD Blender FBX models on one shared texture atlas, save/load with Steam Cloud, and optional Steamworks achievements. Open the folder in Unity Hub and run **Tamadun & Kota > 1. Build All ScriptableObjects, LOD Prefabs & Playable Scene**. The design document is [`unity-tamadun-kota/docs/GDD.md`](unity-tamadun-kota/docs/GDD.md). `npm run unity:data` re-exports the catalog for it.
+
 ## Deployment
 
 `.github/workflows/deploy.yml` typechecks, lints, tests and builds on every push to `main`, then publishes `dist/` to GitHub Pages. Vite builds with a relative base (`base: './'`), so the game works from the repository's Pages sub-path. One-time setup: in the repository settings, **Pages → Build and deployment → Source: GitHub Actions**.

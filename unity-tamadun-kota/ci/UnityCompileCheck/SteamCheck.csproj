@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Same as Game.csproj but with STEAMWORKS_NET defined and the official Steamworks.NET build
+    (nuget.org, by rlabrecque) referenced, so the #if !DISABLESTEAMWORKS && STEAMWORKS_NET branch of
+    SteamworksManager is compiled too.
+  -->
+  <PropertyGroup>
+    <AssemblyName>TamadunKota.CompileCheck.Steam</AssemblyName>
+    <DefineConstants>$(UnityDefines);UNITY_EDITOR;STEAMWORKS_NET</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/**/*.cs" />
+    <Compile Include="Stubs/URPStubs.cs" />
+    <ProjectReference Include="Packages/InputSystem.csproj" />
+    <ProjectReference Include="Packages/AINavigation.csproj" />
+    <PackageReference Include="Steamworks.NET" Version="2024.8.0" />
+  </ItemGroup>
+</Project>

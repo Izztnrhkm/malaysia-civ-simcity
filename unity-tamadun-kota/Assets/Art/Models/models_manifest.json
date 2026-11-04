@@ -1,0 +1,2104 @@
+{
+ "generator": "blender 4.0.2",
+ "unitsPerMetre": 1,
+ "cellMetres": 4,
+ "atlas": "Assets/Art/Textures/MasterPaletteAtlas.png",
+ "models": {
+  "building_pasar": {
+   "file": "Assets/Art/Models/Buildings/building_pasar.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    920,
+    432,
+    24
+   ]
+  },
+  "building_jeti": {
+   "file": "Assets/Art/Models/Buildings/building_jeti.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    304,
+    200,
+    12
+   ]
+  },
+  "building_pelabuhan": {
+   "file": "Assets/Art/Models/Buildings/building_pelabuhan.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    782,
+    438,
+    48
+   ]
+  },
+  "building_gudang": {
+   "file": "Assets/Art/Models/Buildings/building_gudang.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    176,
+    128,
+    24
+   ]
+  },
+  "building_sawah": {
+   "file": "Assets/Art/Models/Buildings/building_sawah.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    612,
+    540,
+    12
+   ]
+  },
+  "building_nelayan": {
+   "file": "Assets/Art/Models/Buildings/building_nelayan.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    408,
+    288,
+    48
+   ]
+  },
+  "building_pembalakan": {
+   "file": "Assets/Art/Models/Buildings/building_pembalakan.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    286,
+    112,
+    24
+   ]
+  },
+  "building_pendulang": {
+   "file": "Assets/Art/Models/Buildings/building_pendulang.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    236,
+    80,
+    24
+   ]
+  },
+  "building_kebun_lada": {
+   "file": "Assets/Art/Models/Buildings/building_kebun_lada.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    1280,
+    608,
+    24
+   ]
+  },
+  "building_relau_besi": {
+   "file": "Assets/Art/Models/Buildings/building_relau_besi.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    160,
+    108,
+    12
+   ]
+  },
+  "building_limbungan": {
+   "file": "Assets/Art/Models/Buildings/building_limbungan.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    292,
+    220,
+    12
+   ]
+  },
+  "building_surau": {
+   "file": "Assets/Art/Models/Buildings/building_surau.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    290,
+    182,
+    48
+   ]
+  },
+  "building_masjid": {
+   "file": "Assets/Art/Models/Buildings/building_masjid.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    794,
+    238,
+    48
+   ]
+  },
+  "building_madrasah": {
+   "file": "Assets/Art/Models/Buildings/building_madrasah.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    208,
+    160,
+    24
+   ]
+  },
+  "building_balai": {
+   "file": "Assets/Art/Models/Buildings/building_balai.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    392,
+    268,
+    24
+   ]
+  },
+  "building_menara_tinjau": {
+   "file": "Assets/Art/Models/Buildings/building_menara_tinjau.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    238,
+    170,
+    48
+   ]
+  },
+  "building_taman": {
+   "file": "Assets/Art/Models/Buildings/building_taman.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    234,
+    88,
+    24
+   ]
+  },
+  "building_candi": {
+   "file": "Assets/Art/Models/Buildings/building_candi.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    254,
+    196,
+    48
+   ]
+  },
+  "building_syahbandar": {
+   "file": "Assets/Art/Models/Buildings/building_syahbandar.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    166,
+    118,
+    48
+   ]
+  },
+  "building_istana": {
+   "file": "Assets/Art/Models/Buildings/building_istana.fbx",
+   "kind": "building",
+   "era": 1,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    1402,
+    554,
+    48
+   ]
+  },
+  "building_lombong": {
+   "file": "Assets/Art/Models/Buildings/building_lombong.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    160,
+    120,
+    24
+   ]
+  },
+  "building_kapal_korek": {
+   "file": "Assets/Art/Models/Buildings/building_kapal_korek.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    252,
+    156,
+    48
+   ]
+  },
+  "building_estet_getah": {
+   "file": "Assets/Art/Models/Buildings/building_estet_getah.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    2718,
+    784,
+    48
+   ]
+  },
+  "building_stesen": {
+   "file": "Assets/Art/Models/Buildings/building_stesen.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    606,
+    158,
+    48
+   ]
+  },
+  "building_pelabuhan_dagang": {
+   "file": "Assets/Art/Models/Buildings/building_pelabuhan_dagang.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    632,
+    504,
+    36
+   ]
+  },
+  "building_sekolah": {
+   "file": "Assets/Art/Models/Buildings/building_sekolah.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    216,
+    164,
+    24
+   ]
+  },
+  "building_hospital": {
+   "file": "Assets/Art/Models/Buildings/building_hospital.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    754,
+    424,
+    48
+   ]
+  },
+  "building_balai_polis": {
+   "file": "Assets/Art/Models/Buildings/building_balai_polis.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    120,
+    116,
+    24
+   ]
+  },
+  "building_pejabat_pos": {
+   "file": "Assets/Art/Models/Buildings/building_pejabat_pos.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    212,
+    156,
+    24
+   ]
+  },
+  "building_bangunan_moorish": {
+   "file": "Assets/Art/Models/Buildings/building_bangunan_moorish.fbx",
+   "kind": "building",
+   "era": 2,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    2608,
+    424,
+    48
+   ]
+  },
+  "building_janakuasa": {
+   "file": "Assets/Art/Models/Buildings/building_janakuasa.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    642,
+    366,
+    48
+   ]
+  },
+  "building_empangan": {
+   "file": "Assets/Art/Models/Buildings/building_empangan.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    192,
+    184,
+    48
+   ]
+  },
+  "building_loji_air": {
+   "file": "Assets/Art/Models/Buildings/building_loji_air.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    314,
+    206,
+    12
+   ]
+  },
+  "building_ladang_sawit": {
+   "file": "Assets/Art/Models/Buildings/building_ladang_sawit.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    2840,
+    596,
+    24
+   ]
+  },
+  "building_ftz": {
+   "file": "Assets/Art/Models/Buildings/building_ftz.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    264,
+    128,
+    48
+   ]
+  },
+  "building_kilang_kereta": {
+   "file": "Assets/Art/Models/Buildings/building_kilang_kereta.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    412,
+    128,
+    48
+   ]
+  },
+  "building_pelabuhan_kontena": {
+   "file": "Assets/Art/Models/Buildings/building_pelabuhan_kontena.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    3660,
+    432,
+    48
+   ]
+  },
+  "building_universiti": {
+   "file": "Assets/Art/Models/Buildings/building_universiti.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    752,
+    506,
+    48
+   ]
+  },
+  "building_klinik_desa": {
+   "file": "Assets/Art/Models/Buildings/building_klinik_desa.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    200,
+    152,
+    24
+   ]
+  },
+  "building_tebatan_banjir": {
+   "file": "Assets/Art/Models/Buildings/building_tebatan_banjir.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    372,
+    264,
+    36
+   ]
+  },
+  "building_parlimen": {
+   "file": "Assets/Art/Models/Buildings/building_parlimen.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    1110,
+    968,
+    48
+   ]
+  },
+  "building_stadium": {
+   "file": "Assets/Art/Models/Buildings/building_stadium.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    596,
+    416,
+    48
+   ]
+  },
+  "building_pusat_data": {
+   "file": "Assets/Art/Models/Buildings/building_pusat_data.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    714,
+    410,
+    48
+   ]
+  },
+  "building_hab_inovasi": {
+   "file": "Assets/Art/Models/Buildings/building_hab_inovasi.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    596,
+    386,
+    48
+   ]
+  },
+  "building_ladang_solar": {
+   "file": "Assets/Art/Models/Buildings/building_ladang_solar.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    1176,
+    600,
+    24
+   ]
+  },
+  "building_stesen_mrt": {
+   "file": "Assets/Art/Models/Buildings/building_stesen_mrt.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    216,
+    128,
+    36
+   ]
+  },
+  "building_lapangan_terbang": {
+   "file": "Assets/Art/Models/Buildings/building_lapangan_terbang.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    572,
+    328,
+    48
+   ]
+  },
+  "building_menara_telekom": {
+   "file": "Assets/Art/Models/Buildings/building_menara_telekom.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    248,
+    72,
+    48
+   ]
+  },
+  "building_kitar_semula": {
+   "file": "Assets/Art/Models/Buildings/building_kitar_semula.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    138,
+    106,
+    48
+   ]
+  },
+  "building_menara_118": {
+   "file": "Assets/Art/Models/Buildings/building_menara_118.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    376,
+    348,
+    48
+   ]
+  },
+  "building_menara_berkembar": {
+   "file": "Assets/Art/Models/Buildings/building_menara_berkembar.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    2280,
+    1960,
+    48
+   ]
+  },
+  "zone_R_d1_e1": {
+   "file": "Assets/Art/Models/Zones/zone_R_d1_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    376,
+    280,
+    24
+   ]
+  },
+  "zone_R_d2_e1": {
+   "file": "Assets/Art/Models/Zones/zone_R_d2_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    832,
+    592,
+    24
+   ]
+  },
+  "zone_R_d1_e2": {
+   "file": "Assets/Art/Models/Zones/zone_R_d1_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    474,
+    312,
+    24
+   ]
+  },
+  "zone_R_d2_e2": {
+   "file": "Assets/Art/Models/Zones/zone_R_d2_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    416,
+    416,
+    24
+   ]
+  },
+  "zone_R_d3_e2": {
+   "file": "Assets/Art/Models/Zones/zone_R_d3_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    1008,
+    560,
+    48
+   ]
+  },
+  "zone_R_d1_e3": {
+   "file": "Assets/Art/Models/Zones/zone_R_d1_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    210,
+    120,
+    24
+   ]
+  },
+  "zone_R_d2_e3": {
+   "file": "Assets/Art/Models/Zones/zone_R_d2_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    308,
+    308,
+    24
+   ]
+  },
+  "zone_R_d3_e3": {
+   "file": "Assets/Art/Models/Zones/zone_R_d3_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    382,
+    340,
+    48
+   ]
+  },
+  "zone_R_d4_e3": {
+   "file": "Assets/Art/Models/Zones/zone_R_d4_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    756,
+    756,
+    48
+   ]
+  },
+  "zone_R_d1_e4": {
+   "file": "Assets/Art/Models/Zones/zone_R_d1_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    172,
+    148,
+    24
+   ]
+  },
+  "zone_R_d2_e4": {
+   "file": "Assets/Art/Models/Zones/zone_R_d2_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    192,
+    192,
+    24
+   ]
+  },
+  "zone_R_d3_e4": {
+   "file": "Assets/Art/Models/Zones/zone_R_d3_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    576,
+    576,
+    48
+   ]
+  },
+  "zone_R_d4_e4": {
+   "file": "Assets/Art/Models/Zones/zone_R_d4_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    312,
+    308,
+    48
+   ]
+  },
+  "zone_C_d1_e1": {
+   "file": "Assets/Art/Models/Zones/zone_C_d1_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    184,
+    152,
+    24
+   ]
+  },
+  "zone_C_d2_e1": {
+   "file": "Assets/Art/Models/Zones/zone_C_d2_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    224,
+    176,
+    24
+   ]
+  },
+  "zone_C_d1_e2": {
+   "file": "Assets/Art/Models/Zones/zone_C_d1_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    68,
+    68,
+    24
+   ]
+  },
+  "zone_C_d2_e2": {
+   "file": "Assets/Art/Models/Zones/zone_C_d2_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    416,
+    416,
+    24
+   ]
+  },
+  "zone_C_d3_e2": {
+   "file": "Assets/Art/Models/Zones/zone_C_d3_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    764,
+    428,
+    48
+   ]
+  },
+  "zone_C_d1_e3": {
+   "file": "Assets/Art/Models/Zones/zone_C_d1_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    84,
+    84,
+    24
+   ]
+  },
+  "zone_C_d2_e3": {
+   "file": "Assets/Art/Models/Zones/zone_C_d2_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    156,
+    156,
+    24
+   ]
+  },
+  "zone_C_d3_e3": {
+   "file": "Assets/Art/Models/Zones/zone_C_d3_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    60,
+    60,
+    24
+   ]
+  },
+  "zone_C_d4_e3": {
+   "file": "Assets/Art/Models/Zones/zone_C_d4_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    756,
+    756,
+    48
+   ]
+  },
+  "zone_C_d1_e4": {
+   "file": "Assets/Art/Models/Zones/zone_C_d1_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    146,
+    86,
+    24
+   ]
+  },
+  "zone_C_d2_e4": {
+   "file": "Assets/Art/Models/Zones/zone_C_d2_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    84,
+    84,
+    48
+   ]
+  },
+  "zone_C_d3_e4": {
+   "file": "Assets/Art/Models/Zones/zone_C_d3_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    154,
+    82,
+    48
+   ]
+  },
+  "zone_C_d4_e4": {
+   "file": "Assets/Art/Models/Zones/zone_C_d4_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    168,
+    156,
+    48
+   ]
+  },
+  "zone_I_d1_e1": {
+   "file": "Assets/Art/Models/Zones/zone_I_d1_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    120,
+    68,
+    24
+   ]
+  },
+  "zone_I_d2_e1": {
+   "file": "Assets/Art/Models/Zones/zone_I_d2_e1.fbx",
+   "kind": "zone",
+   "era": 1,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    136,
+    104,
+    24
+   ]
+  },
+  "zone_I_d1_e2": {
+   "file": "Assets/Art/Models/Zones/zone_I_d1_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    44,
+    44,
+    24
+   ]
+  },
+  "zone_I_d2_e2": {
+   "file": "Assets/Art/Models/Zones/zone_I_d2_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    124,
+    92,
+    48
+   ]
+  },
+  "zone_I_d3_e2": {
+   "file": "Assets/Art/Models/Zones/zone_I_d3_e2.fbx",
+   "kind": "zone",
+   "era": 2,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    408,
+    248,
+    48
+   ]
+  },
+  "zone_I_d1_e3": {
+   "file": "Assets/Art/Models/Zones/zone_I_d1_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    182,
+    86,
+    24
+   ]
+  },
+  "zone_I_d2_e3": {
+   "file": "Assets/Art/Models/Zones/zone_I_d2_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    124,
+    92,
+    24
+   ]
+  },
+  "zone_I_d3_e3": {
+   "file": "Assets/Art/Models/Zones/zone_I_d3_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    314,
+    186,
+    48
+   ]
+  },
+  "zone_I_d4_e3": {
+   "file": "Assets/Art/Models/Zones/zone_I_d4_e3.fbx",
+   "kind": "zone",
+   "era": 3,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    514,
+    182,
+    48
+   ]
+  },
+  "zone_I_d1_e4": {
+   "file": "Assets/Art/Models/Zones/zone_I_d1_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    48,
+    48,
+    24
+   ]
+  },
+  "zone_I_d2_e4": {
+   "file": "Assets/Art/Models/Zones/zone_I_d2_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    96,
+    96,
+    24
+   ]
+  },
+  "zone_I_d3_e4": {
+   "file": "Assets/Art/Models/Zones/zone_I_d3_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    84,
+    84,
+    24
+   ]
+  },
+  "zone_I_d4_e4": {
+   "file": "Assets/Art/Models/Zones/zone_I_d4_e4.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    300,
+    156,
+    48
+   ]
+  },
+  "vehicle_jong": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_jong.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    92,
+    76,
+    36
+   ]
+  },
+  "vehicle_junk": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_junk.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    176,
+    160,
+    36
+   ]
+  },
+  "vehicle_perahu": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_perahu.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    44,
+    32,
+    12
+   ]
+  },
+  "vehicle_steamship": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_steamship.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    116,
+    76,
+    12
+   ]
+  },
+  "vehicle_container_ship": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_container_ship.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    192,
+    192,
+    12
+   ]
+  },
+  "vehicle_steam_loco": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_steam_loco.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    354,
+    174,
+    12
+   ]
+  },
+  "vehicle_diesel_loco": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_diesel_loco.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    60,
+    60,
+    12
+   ]
+  },
+  "vehicle_rail_wagon": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_rail_wagon.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    116,
+    68,
+    12
+   ]
+  },
+  "vehicle_bullock_cart": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_bullock_cart.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    100,
+    68,
+    12
+   ]
+  },
+  "vehicle_vintage_car": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_vintage_car.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    128,
+    80,
+    12
+   ]
+  },
+  "vehicle_car": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_car.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    116,
+    68,
+    12
+   ]
+  },
+  "vehicle_car_white": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_car_white.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    116,
+    68,
+    12
+   ]
+  },
+  "vehicle_bus": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_bus.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    116,
+    68,
+    12
+   ]
+  },
+  "vehicle_mrt": {
+   "file": "Assets/Art/Models/Vehicles/vehicle_mrt.fbx",
+   "kind": "vehicle",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    22.0,
+    22.0
+   ],
+   "triangles": [
+    60,
+    60,
+    12
+   ]
+  },
+  "tree_rainforest": {
+   "file": "Assets/Art/Models/Trees/tree_rainforest.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    164,
+    72,
+    36
+   ]
+  },
+  "tree_rainforest_small": {
+   "file": "Assets/Art/Models/Trees/tree_rainforest_small.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    58,
+    16,
+    12
+   ]
+  },
+  "tree_mangrove": {
+   "file": "Assets/Art/Models/Trees/tree_mangrove.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    104,
+    76,
+    12
+   ]
+  },
+  "tree_coconut": {
+   "file": "Assets/Art/Models/Trees/tree_coconut.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    112,
+    88,
+    12
+   ]
+  },
+  "tree_oilpalm": {
+   "file": "Assets/Art/Models/Trees/tree_oilpalm.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    76,
+    24,
+    12
+   ]
+  },
+  "tree_rubber": {
+   "file": "Assets/Art/Models/Trees/tree_rubber.fbx",
+   "kind": "tree",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    18.0,
+    18.0
+   ],
+   "triangles": [
+    58,
+    16,
+    12
+   ]
+  },
+  "infra_road_center_e1": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_center_e1.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_road_center_e2": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_center_e2.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_road_center_e3": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_center_e3.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_road_center_e4": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_center_e4.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_road_arm_e1": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_arm_e1.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_road_arm_e2": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_arm_e2.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    36,
+    36,
+    12
+   ]
+  },
+  "infra_road_arm_e3": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_arm_e3.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    48,
+    48,
+    12
+   ]
+  },
+  "infra_road_arm_e4": {
+   "file": "Assets/Art/Models/Infrastructure/infra_road_arm_e4.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    48,
+    48,
+    12
+   ]
+  },
+  "infra_rail_center": {
+   "file": "Assets/Art/Models/Infrastructure/infra_rail_center.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    12,
+    12,
+    12
+   ]
+  },
+  "infra_rail_arm": {
+   "file": "Assets/Art/Models/Infrastructure/infra_rail_arm.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    84,
+    84,
+    12
+   ]
+  },
+  "infra_highway_center": {
+   "file": "Assets/Art/Models/Infrastructure/infra_highway_center.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    52,
+    36,
+    12
+   ]
+  },
+  "infra_highway_arm": {
+   "file": "Assets/Art/Models/Infrastructure/infra_highway_arm.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    72,
+    72,
+    12
+   ]
+  },
+  "infra_mrt_center": {
+   "file": "Assets/Art/Models/Infrastructure/infra_mrt_center.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    52,
+    36,
+    36
+   ]
+  },
+  "infra_mrt_arm": {
+   "file": "Assets/Art/Models/Infrastructure/infra_mrt_arm.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    60,
+    60,
+    12
+   ]
+  },
+  "infra_bridge_pier": {
+   "file": "Assets/Art/Models/Infrastructure/infra_bridge_pier.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    52,
+    28,
+    12
+   ]
+  },
+  "infra_streetlamp": {
+   "file": "Assets/Art/Models/Infrastructure/infra_streetlamp.fbx",
+   "kind": "infra",
+   "era": 0,
+   "size": 1,
+   "footprintMeters": null,
+   "scale": [
+    4.0,
+    12.0
+   ],
+   "triangles": [
+    36,
+    32,
+    12
+   ]
+  },
+  "unity_kilang_minyak": {
+   "file": "Assets/Art/Models/UnityOnly/unity_kilang_minyak.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 3,
+   "footprintMeters": 16.0,
+   "scale": [
+    5.333333333333333,
+    10.666666666666666
+   ],
+   "triangles": [
+    1364,
+    644,
+    48
+   ]
+  },
+  "unity_pelantar_minyak": {
+   "file": "Assets/Art/Models/UnityOnly/unity_pelantar_minyak.fbx",
+   "kind": "building",
+   "era": 3,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    312,
+    192,
+    36
+   ]
+  },
+  "unity_ladang_menegak": {
+   "file": "Assets/Art/Models/UnityOnly/unity_ladang_menegak.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    372,
+    372,
+    48
+   ]
+  },
+  "unity_hab_siber": {
+   "file": "Assets/Art/Models/UnityOnly/unity_hab_siber.fbx",
+   "kind": "building",
+   "era": 4,
+   "size": 2,
+   "footprintMeters": 8.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    198,
+    114,
+    48
+   ]
+  },
+  "unity_eco_tower": {
+   "file": "Assets/Art/Models/UnityOnly/unity_eco_tower.fbx",
+   "kind": "zone",
+   "era": 4,
+   "size": 1,
+   "footprintMeters": 4.0,
+   "scale": [
+    4.0,
+    8.0
+   ],
+   "triangles": [
+    478,
+    446,
+    48
+   ]
+  }
+ }
+}

@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- com.unity.ai.navigation 1.1.7 runtime (API-identical stand-in for 2.0.9), compiled from the package source (fetch-deps.sh) -->
+  <PropertyGroup>
+    <AssemblyName>Unity.AI.Navigation</AssemblyName>
+    <DefineConstants>$(UnityDefines)</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(CacheDir)packages/com.unity.ai.navigation/Runtime/**/*.cs" />
+  </ItemGroup>
+</Project>

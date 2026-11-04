@@ -4,3 +4,6 @@ dist-artifact
 *.tsbuildinfo
 e2e/screenshots
 .DS_Store
+
+# Python bytecode (Blender pipelines)
+__pycache__/

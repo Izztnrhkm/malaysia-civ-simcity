@@ -1,0 +1,137 @@
+{
+ "items": [
+  {
+   "id": 1,
+   "nameMs": "Zaman Entrepôt Maritim",
+   "nameEn": "Maritime Entrepôt Age",
+   "shortMs": "Entrepôt",
+   "shortEn": "Entrepôt",
+   "spanMs": "Lembah Bujang hingga Kesultanan Melaka",
+   "spanEn": "Bujang Valley to the Melaka Sultanate",
+   "startYear": 1400,
+   "endYear": 1823,
+   "monthsPerTick": 6,
+   "currencyMs": "Kupang emas & pitis timah",
+   "currencyEn": "Gold kupang & tin pitis",
+   "currencySymbol": "Kp",
+   "maxDensity": 2,
+   "wealth": 0.3,
+   "commercialRatio": 0.16,
+   "industrialRatio": 0.12,
+   "policySlots": 1,
+   "advanceTechs": [
+    "navigasi_monsun",
+    "pembinaan_jong",
+    "mata_wang_timah"
+   ],
+   "advanceCivics": [
+    "kesultanan_melaka",
+    "undang_laut"
+   ],
+   "advancePopulation": 1200,
+   "advanceLandmark": "istana",
+   "introMs": "Angin monsun membawa kapal dari Gujerat, China dan Jawa. Bina pelabuhan entrepôt, kampung di tebing sungai dan bazar yang sibuk.",
+   "introEn": "Monsoon winds bring ships from Gujarat, China and Java. Build an entrepôt port, riverside kampung and a busy bazaar.",
+   "entryId": "era_entrepot"
+  },
+  {
+   "id": 2,
+   "nameMs": "Era Bijih Timah, Getah & Kereta Api",
+   "nameEn": "Tin, Rubber & Rail Era",
+   "shortMs": "Timah & Getah",
+   "shortEn": "Tin & Rubber",
+   "spanMs": "Perjanjian 1824 hingga Pilihan Raya 1955",
+   "spanEn": "The 1824 Treaty to the 1955 election",
+   "startYear": 1824,
+   "endYear": 1956,
+   "monthsPerTick": 4,
+   "currencyMs": "Dolar Negeri-Negeri Selat",
+   "currencyEn": "Straits dollar",
+   "currencySymbol": "$",
+   "maxDensity": 3,
+   "wealth": 0.45,
+   "commercialRatio": 0.18,
+   "industrialRatio": 0.16,
+   "policySlots": 2,
+   "advanceTechs": [
+    "kereta_api",
+    "getah_para",
+    "perlombongan_timah"
+   ],
+   "advanceCivics": [
+    "negeri_bersekutu",
+    "pilihan_raya"
+   ],
+   "advancePopulation": 5000,
+   "advanceLandmark": "bangunan_moorish",
+   "introMs": "Bijih timah ditemui di kaki bukit dan pokok getah tiba dari Brazil melalui Ceylon. Hubungkan lombong ke pelabuhan dengan landasan kereta api.",
+   "introEn": "Tin is found in the foothills and rubber seedlings arrive from Brazil via Ceylon. Link the mines to the port by railway.",
+   "entryId": "era_timah"
+  },
+  {
+   "id": 3,
+   "nameMs": "Perindustrian Pasca-Merdeka",
+   "nameEn": "Post-Merdeka Industrialisation",
+   "shortMs": "Merdeka",
+   "shortEn": "Merdeka",
+   "spanMs": "1957 hingga 1995",
+   "spanEn": "1957 to 1995",
+   "startYear": 1957,
+   "endYear": 1995,
+   "monthsPerTick": 2,
+   "currencyMs": "Ringgit",
+   "currencyEn": "Ringgit",
+   "currencySymbol": "RM",
+   "maxDensity": 4,
+   "wealth": 0.7,
+   "commercialRatio": 0.2,
+   "industrialRatio": 0.2,
+   "policySlots": 3,
+   "advanceTechs": [
+    "semikonduktor",
+    "automotif",
+    "lebuhraya"
+   ],
+   "advanceCivics": [
+    "dasar_ekonomi_baru",
+    "pembentukan_malaysia"
+   ],
+   "advancePopulation": 15000,
+   "advanceLandmark": "stadium",
+   "introMs": "Merdeka! Bina taman perumahan, zon perdagangan bebas dan kilang. Bekalan elektrik dan air kini penting untuk pembangunan.",
+   "introEn": "Merdeka! Build housing estates, free trade zones and factories. Power and water now matter for development.",
+   "entryId": "era_merdeka"
+  },
+  {
+   "id": 4,
+   "nameMs": "Era Bandar Pintar Digital",
+   "nameEn": "Digital Smart City Era",
+   "shortMs": "Digital",
+   "shortEn": "Digital",
+   "spanMs": "1996 dan seterusnya",
+   "spanEn": "1996 onwards",
+   "startYear": 1996,
+   "endYear": 2100,
+   "monthsPerTick": 1,
+   "currencyMs": "Ringgit",
+   "currencyEn": "Ringgit",
+   "currencySymbol": "RM",
+   "maxDensity": 4,
+   "wealth": 1.1,
+   "commercialRatio": 0.24,
+   "industrialRatio": 0.16,
+   "policySlots": 4,
+   "advanceTechs": [
+    "bandar_pintar"
+   ],
+   "advanceCivics": [
+    "negara_maju"
+   ],
+   "advancePopulation": 30000,
+   "advanceLandmark": "menara_berkembar",
+   "introMs": "Koridor Raya Multimedia dilancarkan. Bina pusat data, MRT dan hab inovasi untuk menjadi negara maju.",
+   "introEn": "The Multimedia Super Corridor is launched. Build data centres, MRT and innovation hubs to become a developed nation.",
+   "entryId": "era_digital"
+  }
+ ]
+}

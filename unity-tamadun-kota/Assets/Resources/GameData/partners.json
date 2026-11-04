@@ -1,0 +1,511 @@
+{
+ "items": [
+  {
+   "id": "ming",
+   "nameMs": "Dinasti Ming",
+   "nameEn": "Ming China",
+   "descMs": "Kuasa besar yang mengiktiraf Melaka. Membeli lada, timah dan kayu wangi.",
+   "descEn": "The great power that recognised Melaka. Buys pepper, tin and aromatic wood.",
+   "eras": [
+    1
+   ],
+   "color": "#c0392b",
+   "buys": [
+    {
+     "key": "rempah",
+     "value": 1.3
+    },
+    {
+     "key": "timah",
+     "value": 1.2
+    },
+    {
+     "key": "kayu",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 1.5
+  },
+  {
+   "id": "gujerat",
+   "nameMs": "Pedagang Gujerat",
+   "nameEn": "Gujarati Merchants",
+   "descMs": "Saudagar kain dari Cambay, rakan dagang terpenting.",
+   "descEn": "Cloth merchants from Cambay, the most important trading partners.",
+   "eras": [
+    1
+   ],
+   "color": "#e67e22",
+   "buys": [
+    {
+     "key": "rempah",
+     "value": 1.35
+    },
+    {
+     "key": "timah",
+     "value": 1.1
+    },
+    {
+     "key": "besi",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 15,
+   "requiresEvent": "",
+   "knowledge": 1
+  },
+  {
+   "id": "jawa",
+   "nameMs": "Pedagang Jawa",
+   "nameEn": "Javanese Traders",
+   "descMs": "Membekalkan beras dan membeli barangan logam.",
+   "descEn": "Supply rice and buy metal goods.",
+   "eras": [
+    1
+   ],
+   "color": "#16a085",
+   "buys": [
+    {
+     "key": "besi",
+     "value": 1.2
+    },
+    {
+     "key": "barang",
+     "value": 1.2
+    },
+    {
+     "key": "ikan",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 0.6
+  },
+  {
+   "id": "ryukyu",
+   "nameMs": "Kerajaan Ryukyu",
+   "nameEn": "Ryukyu Kingdom",
+   "descMs": "Pelaut dari Okinawa yang menghubungkan Asia Timur.",
+   "descEn": "Seafarers from Okinawa linking East Asia.",
+   "eras": [
+    1
+   ],
+   "color": "#8e44ad",
+   "buys": [
+    {
+     "key": "rempah",
+     "value": 1.2
+    },
+    {
+     "key": "kayu",
+     "value": 1.25
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 0.6
+  },
+  {
+   "id": "ayutthaya",
+   "nameMs": "Ayutthaya",
+   "nameEn": "Ayutthaya",
+   "descMs": "Kerajaan Siam di utara; hubungan sering tegang.",
+   "descEn": "The Siamese kingdom to the north; relations often tense.",
+   "eras": [
+    1
+   ],
+   "color": "#d4ac0d",
+   "buys": [
+    {
+     "key": "barang",
+     "value": 1.15
+    },
+    {
+     "key": "timah",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": -10,
+   "requiresEvent": "",
+   "knowledge": 0.6
+  },
+  {
+   "id": "arab_parsi",
+   "nameMs": "Pedagang Arab & Parsi",
+   "nameEn": "Arab & Persian Merchants",
+   "descMs": "Membawa ilmu, kitab dan permintaan rempah.",
+   "descEn": "Bring scholarship, books and demand for spices.",
+   "eras": [
+    1
+   ],
+   "color": "#27ae60",
+   "buys": [
+    {
+     "key": "rempah",
+     "value": 1.4
+    },
+    {
+     "key": "kayu",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 1.2
+  },
+  {
+   "id": "portugis",
+   "nameMs": "Portugis",
+   "nameEn": "Portuguese",
+   "descMs": "Menawan Melaka pada 1511 dan cuba memonopoli rempah.",
+   "descEn": "Captured Melaka in 1511 and sought a spice monopoly.",
+   "eras": [
+    1
+   ],
+   "color": "#2c3e50",
+   "buys": [
+    {
+     "key": "rempah",
+     "value": 1.5
+    }
+   ],
+   "baseRelation": -30,
+   "requiresEvent": "kejatuhan_melaka",
+   "knowledge": 1
+  },
+  {
+   "id": "negeri_selat",
+   "nameMs": "Negeri-Negeri Selat",
+   "nameEn": "Straits Settlements",
+   "descMs": "Pulau Pinang, Melaka dan Singapura di bawah British sejak 1826.",
+   "descEn": "Penang, Melaka and Singapore under the British from 1826.",
+   "eras": [
+    2
+   ],
+   "color": "#1f4e79",
+   "buys": [
+    {
+     "key": "timah",
+     "value": 1.25
+    },
+    {
+     "key": "getah",
+     "value": 1.2
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 1.5
+  },
+  {
+   "id": "hindia_belanda",
+   "nameMs": "Hindia Timur Belanda",
+   "nameEn": "Dutch East Indies",
+   "descMs": "Pesaing dalam timah dan getah di seberang Selat.",
+   "descEn": "A rival in tin and rubber across the Straits.",
+   "eras": [
+    2
+   ],
+   "color": "#e67e22",
+   "buys": [
+    {
+     "key": "barang",
+     "value": 1.2
+    },
+    {
+     "key": "padi",
+     "value": 1.2
+    }
+   ],
+   "baseRelation": 0,
+   "requiresEvent": "",
+   "knowledge": 0.8
+  },
+  {
+   "id": "amerika",
+   "nameMs": "Amerika Syarikat",
+   "nameEn": "United States",
+   "descMs": "Industri kereta dan elektronik memerlukan getah, timah dan cip.",
+   "descEn": "Car and electronics industries need rubber, tin and chips.",
+   "eras": [
+    2,
+    3,
+    4
+   ],
+   "color": "#2e86c1",
+   "buys": [
+    {
+     "key": "getah",
+     "value": 1.35
+    },
+    {
+     "key": "timah",
+     "value": 1.2
+    },
+    {
+     "key": "elektronik",
+     "value": 1.25
+    },
+    {
+     "key": "digital",
+     "value": 1.2
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 1.5
+  },
+  {
+   "id": "china",
+   "nameMs": "China",
+   "nameEn": "China",
+   "descMs": "Rakan dagang lama dengan permintaan bahan mentah yang besar.",
+   "descEn": "An old trading partner with huge demand for raw materials.",
+   "eras": [
+    2,
+    3,
+    4
+   ],
+   "color": "#c0392b",
+   "buys": [
+    {
+     "key": "getah",
+     "value": 1.1
+    },
+    {
+     "key": "sawit",
+     "value": 1.2
+    },
+    {
+     "key": "kayu",
+     "value": 1.25
+    },
+    {
+     "key": "elektronik",
+     "value": 1.1
+    },
+    {
+     "key": "digital",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 1
+  },
+  {
+   "id": "india",
+   "nameMs": "India",
+   "nameEn": "India",
+   "descMs": "Sumber pekerja estet dan pasaran minyak sawit.",
+   "descEn": "Source of estate workers and a market for palm oil.",
+   "eras": [
+    2,
+    4
+   ],
+   "color": "#f39c12",
+   "buys": [
+    {
+     "key": "barang",
+     "value": 1.15
+    },
+    {
+     "key": "sawit",
+     "value": 1.35
+    },
+    {
+     "key": "kayu",
+     "value": 1.1
+    },
+    {
+     "key": "digital",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 1
+  },
+  {
+   "id": "komanwel",
+   "nameMs": "United Kingdom & Komanwel",
+   "nameEn": "UK & Commonwealth",
+   "descMs": "Bekas kuasa penjajah dan rakan Komanwel.",
+   "descEn": "Former colonial power and Commonwealth partner.",
+   "eras": [
+    3
+   ],
+   "color": "#1f4e79",
+   "buys": [
+    {
+     "key": "timah",
+     "value": 1.15
+    },
+    {
+     "key": "getah",
+     "value": 1.15
+    },
+    {
+     "key": "sawit",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 15,
+   "requiresEvent": "",
+   "knowledge": 1.5
+  },
+  {
+   "id": "jepun",
+   "nameMs": "Jepun",
+   "nameEn": "Japan",
+   "descMs": "Pelabur utama dan model Dasar Pandang ke Timur.",
+   "descEn": "A key investor and model for the Look East Policy.",
+   "eras": [
+    3,
+    4
+   ],
+   "color": "#e74c3c",
+   "buys": [
+    {
+     "key": "timah",
+     "value": 1.2
+    },
+    {
+     "key": "kayu",
+     "value": 1.3
+    },
+    {
+     "key": "elektronik",
+     "value": 1.1
+    },
+    {
+     "key": "sawit",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 2
+  },
+  {
+   "id": "asean",
+   "nameMs": "Negara ASEAN",
+   "nameEn": "ASEAN Members",
+   "descMs": "Jiran serantau dalam pasaran bersama.",
+   "descEn": "Regional neighbours in a common market.",
+   "eras": [
+    3,
+    4
+   ],
+   "color": "#2874a6",
+   "buys": [
+    {
+     "key": "barang",
+     "value": 1.2
+    },
+    {
+     "key": "padi",
+     "value": 1.15
+    },
+    {
+     "key": "sawit",
+     "value": 1.1
+    },
+    {
+     "key": "elektronik",
+     "value": 1.05
+    }
+   ],
+   "baseRelation": 20,
+   "requiresEvent": "",
+   "knowledge": 1
+  },
+  {
+   "id": "kesatuan_eropah",
+   "nameMs": "Kesatuan Eropah",
+   "nameEn": "European Union",
+   "descMs": "Pasaran besar yang menuntut standard kemampanan.",
+   "descEn": "A large market demanding sustainability standards.",
+   "eras": [
+    4
+   ],
+   "color": "#1a5276",
+   "buys": [
+    {
+     "key": "elektronik",
+     "value": 1.2
+    },
+    {
+     "key": "sawit",
+     "value": 0.95
+    },
+    {
+     "key": "digital",
+     "value": 1.25
+    }
+   ],
+   "baseRelation": 5,
+   "requiresEvent": "",
+   "knowledge": 1.8
+  },
+  {
+   "id": "korea",
+   "nameMs": "Korea Selatan",
+   "nameEn": "South Korea",
+   "descMs": "Rakan teknologi dan pembinaan.",
+   "descEn": "A technology and construction partner.",
+   "eras": [
+    4
+   ],
+   "color": "#5d6d7e",
+   "buys": [
+    {
+     "key": "elektronik",
+     "value": 1.15
+    },
+    {
+     "key": "digital",
+     "value": 1.15
+    },
+    {
+     "key": "barang",
+     "value": 1.1
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 1.8
+  },
+  {
+   "id": "teluk",
+   "nameMs": "Negara Teluk",
+   "nameEn": "Gulf States",
+   "descMs": "Pelabur dan pengimport makanan halal.",
+   "descEn": "Investors and importers of halal food.",
+   "eras": [
+    4
+   ],
+   "color": "#117a65",
+   "buys": [
+    {
+     "key": "padi",
+     "value": 1.3
+    },
+    {
+     "key": "sawit",
+     "value": 1.2
+    },
+    {
+     "key": "barang",
+     "value": 1.15
+    }
+   ],
+   "baseRelation": 10,
+   "requiresEvent": "",
+   "knowledge": 0.8
+  }
+ ]
+}

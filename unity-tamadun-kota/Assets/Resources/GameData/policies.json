@@ -1,0 +1,220 @@
+{
+ "items": [
+  {
+   "id": "gotong_royong",
+   "nameMs": "Gotong-royong",
+   "nameEn": "Gotong-royong",
+   "descMs": "-15% kos pembinaan, +1 kesejahteraan.",
+   "descEn": "-15% construction cost, +1 wellbeing.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 1,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": -0.15,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "pelabuhan_bebas",
+   "nameMs": "Pelabuhan Bebas",
+   "nameEn": "Free Port",
+   "descMs": "+25% kapasiti eksport, +5% harga, -10% cukai.",
+   "descEn": "+25% export capacity, +5% prices, -10% taxes.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0.25,
+    "exportPrice": 0.05,
+    "tax": -0.1,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0.05
+   }
+  },
+  {
+   "id": "adat_hukum",
+   "nameMs": "Kedaulatan Undang-undang",
+   "nameEn": "Rule of Law",
+   "descMs": "+2 kesejahteraan, +5% cukai.",
+   "descEn": "+2 wellbeing, +5% taxes.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.05,
+    "research": 0,
+    "culture": 0,
+    "happiness": 2,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "imigrasi_terbuka",
+   "nameMs": "Imigrasi Terbuka",
+   "nameEn": "Open Migration",
+   "descMs": "+25% pertumbuhan, -2 kesejahteraan.",
+   "descEn": "+25% growth, -2 wellbeing.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": -2,
+    "pollution": 0,
+    "growth": 0.25,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "koperasi",
+   "nameMs": "Koperasi Rakyat",
+   "nameEn": "People’s Cooperatives",
+   "descMs": "+3 kesejahteraan, +10% padi & getah, -5% cukai.",
+   "descEn": "+3 wellbeing, +10% rice & rubber, -5% taxes.",
+   "effects": {
+    "production": [
+     {
+      "key": "padi",
+      "value": 0.1
+     },
+     {
+      "key": "getah",
+      "value": 0.1
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": -0.05,
+    "research": 0,
+    "culture": 0,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "deb",
+   "nameMs": "Dasar Ekonomi Baru",
+   "nameEn": "New Economic Policy",
+   "descMs": "+5 kesejahteraan, +10% pertumbuhan, +5% kos penyelenggaraan.",
+   "descEn": "+5 wellbeing, +10% growth, +5% upkeep.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 5,
+    "pollution": 0,
+    "growth": 0.1,
+    "upkeep": 0.05,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "pandang_timur",
+   "nameMs": "Pandang ke Timur",
+   "nameEn": "Look East",
+   "descMs": "+10% ilmu, +10% barangan & elektronik.",
+   "descEn": "+10% research, +10% goods & electronics.",
+   "effects": {
+    "production": [
+     {
+      "key": "barang",
+      "value": 0.1
+     },
+     {
+      "key": "elektronik",
+      "value": 0.1
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.1,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "wawasan",
+   "nameMs": "Wawasan 2020",
+   "nameEn": "Vision 2020",
+   "descMs": "+15% ilmu, +10% pertumbuhan, +5% kos penyelenggaraan.",
+   "descEn": "+15% research, +10% growth, +5% upkeep.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.15,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0.1,
+    "upkeep": 0.05,
+    "construction": 0,
+    "relationGain": 0
+   }
+  },
+  {
+   "id": "hijau",
+   "nameMs": "Bandar Hijau",
+   "nameEn": "Green City",
+   "descMs": "-30% pencemaran, +2 kesejahteraan, +5% kos penyelenggaraan.",
+   "descEn": "-30% pollution, +2 wellbeing, +5% upkeep.",
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 2,
+    "pollution": -0.3,
+    "growth": 0,
+    "upkeep": 0.05,
+    "construction": 0,
+    "relationGain": 0
+   }
+  }
+ ]
+}

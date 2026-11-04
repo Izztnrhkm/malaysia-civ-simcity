@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- com.unity.inputsystem 1.14.2 runtime, compiled from the package source (fetch-deps.sh) -->
+  <PropertyGroup>
+    <AssemblyName>Unity.InputSystem</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>$(UnityDefines);PACKAGE_DOCS_GENERATION_DISABLED</DefineConstants>
+    <NoWarn>$(NoWarn);CS0612;CS0436;CS0108;CS0114;CS0162;CS0219;CS0168</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(CacheDir)packages/com.unity.inputsystem/InputSystem/**/*.cs" Exclude="$(CacheDir)packages/com.unity.inputsystem/InputSystem/Plugins/InputForUI/**;$(CacheDir)packages/com.unity.inputsystem/InputSystem/Plugins/UI/**" />
+    <Compile Include="../Stubs/InputSystemUIStub.cs" />
+  </ItemGroup>
+</Project>

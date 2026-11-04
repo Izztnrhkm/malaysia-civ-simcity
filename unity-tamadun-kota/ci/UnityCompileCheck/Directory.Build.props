@@ -1,0 +1,26 @@
+<Project>
+  <!-- Shared settings for the Unity compile check (see README.md in this folder). -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>$(NoWarn);CS0618;CS0649;CS0414;CS0067;CS0169;CS1701;CS1702;CS8632;NU1701</NoWarn>
+    <UnityDefines>UNITY_5_3_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_STANDALONE;ENABLE_INPUT_SYSTEM;NMC_CAN_ACCESS_TERRAIN</UnityDefines>
+    <CacheDir>$(MSBuildThisFileDirectory)../.cache/</CacheDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Real UnityEngine reference assemblies (Unity 2021.3.33) and UnityEditor (2021.1) from nuget.org -->
+    <PackageReference Include="UnityEngine.Modules" Version="2021.3.33" ExcludeAssets="all" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="Unity3D.SDK" Version="2021.1.14.1" ExcludeAssets="all" GeneratePathProperty="true" PrivateAssets="all" />
+    <PackageReference Include="Unity3D.UnityEngine.UI" Version="2018.3.5.1" ExcludeAssets="all" GeneratePathProperty="true" PrivateAssets="all" />
+  </ItemGroup>
+  <Target Name="AddUnityReferences" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Reference Include="$(PkgUnityEngine_Modules)/lib/netstandard2.0/*.dll" Private="false" />
+      <Reference Include="$(PkgUnity3D_UnityEngine_UI)/lib/**/UnityEngine.UI.dll" Private="false" />
+    </ItemGroup>
+  </Target>
+</Project>

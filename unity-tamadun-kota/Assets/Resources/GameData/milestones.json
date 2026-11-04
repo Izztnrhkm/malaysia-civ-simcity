@@ -1,0 +1,25 @@
+{
+ "items": [
+  {
+   "id": "economic_hegemon",
+   "nameMs": "Kuasa Ekonomi Serantau",
+   "nameEn": "Economic Hegemon",
+   "descMs": "Jadikan bandar anda hab perdagangan rantau: tabung besar, eksport tinggi dan rakan dagang yang setia.",
+   "descEn": "Make your city the region’s trading hub: a deep treasury, booming exports and loyal partners."
+  },
+  {
+   "id": "smart_nation",
+   "nameMs": "Perintis Negara Pintar",
+   "nameEn": "Smart Nation Pioneer",
+   "descMs": "Bina bandar pintar yang dipacu ilmu: AI, data, MRT dan tenaga bersih.",
+   "descEn": "Build a knowledge-driven smart city: AI, data, MRT and clean power."
+  },
+  {
+   "id": "heritage_metropolis",
+   "nameMs": "Metropolis Warisan Budaya",
+   "nameEn": "Cultural Heritage Metropolis",
+   "descMs": "Bangunkan bandar moden tanpa memusnahkan warisan: kekalkan mercu tanda lama dan kampung serta rumah kedai bersejarah.",
+   "descEn": "Grow a modern city without erasing its past: keep the old landmarks and historic kampung and shophouses."
+  }
+ ]
+}

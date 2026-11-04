@@ -1,0 +1,2257 @@
+{
+ "items": [
+  {
+   "id": "navigasi_monsun",
+   "kind": "tech",
+   "era": 1,
+   "date": "c. 1st millennium",
+   "cost": 25,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0.15,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Navigasi Angin Monsun",
+   "nameEn": "Monsoon Navigation",
+   "descMs": "Memahami pusingan angin monsun barat daya dan timur laut. +15% kapasiti eksport.",
+   "descEn": "Mastering the south-west and north-east monsoon cycle. +15% export capacity.",
+   "entryId": "monsun"
+  },
+  {
+   "id": "sistem_gudang",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 25,
+   "prereqs": [],
+   "unlockBuildings": [
+    "gudang"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Gudang & Timbangan",
+   "nameEn": "Warehousing & Weights",
+   "descMs": "Gudang dan sukatan piawai untuk perdagangan.",
+   "descEn": "Warehouses and standard measures for trade.",
+   "entryId": ""
+  },
+  {
+   "id": "peleburan_besi",
+   "kind": "tech",
+   "era": 1,
+   "date": "2nd c. AD",
+   "cost": 30,
+   "prereqs": [],
+   "unlockBuildings": [
+    "relau_besi"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Peleburan Besi",
+   "nameEn": "Iron Smelting",
+   "descMs": "Teknik relau seperti di Sungai Batu, Kedah.",
+   "descEn": "Furnace techniques like those at Sungai Batu, Kedah.",
+   "entryId": "sungai_batu"
+  },
+  {
+   "id": "pendulangan",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 35,
+   "prereqs": [],
+   "unlockBuildings": [
+    "pendulang"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pendulangan Bijih",
+   "nameEn": "Tin Panning",
+   "descMs": "Mendulang bijih timah aluvium di sungai.",
+   "descEn": "Panning alluvial tin from streams.",
+   "entryId": "timah"
+  },
+  {
+   "id": "pertanian_lada",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 35,
+   "prereqs": [],
+   "unlockBuildings": [
+    "kebun_lada"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Penanaman Lada",
+   "nameEn": "Pepper Cultivation",
+   "descMs": "Lada untuk pasaran rempah dunia.",
+   "descEn": "Pepper for the global spice market.",
+   "entryId": ""
+  },
+  {
+   "id": "pengairan",
+   "kind": "tech",
+   "era": 1,
+   "date": "—",
+   "cost": 40,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "padi",
+      "value": 0.25
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pengairan Sawah",
+   "nameEn": "Paddy Irrigation",
+   "descMs": "Taliair dan batas sawah. +25% hasil padi.",
+   "descEn": "Channels and bunds. +25% rice yield.",
+   "entryId": "padi"
+  },
+  {
+   "id": "tulisan_jawi",
+   "kind": "tech",
+   "era": 1,
+   "date": "14th c.",
+   "cost": 40,
+   "prereqs": [],
+   "unlockBuildings": [
+    "madrasah"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Tulisan Jawi",
+   "nameEn": "Jawi Script",
+   "descMs": "Bahasa Melayu ditulis dalam huruf Jawi; bahasa perdagangan rantau.",
+   "descEn": "Malay written in Jawi; the region’s trade language.",
+   "entryId": "jawi"
+  },
+  {
+   "id": "pembinaan_jong",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 60,
+   "prereqs": [
+    "navigasi_monsun"
+   ],
+   "unlockBuildings": [
+    "limbungan"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pembinaan Kapal Jong",
+   "nameEn": "Jong Shipbuilding",
+   "descMs": "Kapal besar berlapis papan untuk pelayaran jauh.",
+   "descEn": "Large multi-planked ships for long voyages.",
+   "entryId": ""
+  },
+  {
+   "id": "mata_wang_timah",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 60,
+   "prereqs": [
+    "pendulangan",
+    "sistem_gudang"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.1,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Mata Wang Timah",
+   "nameEn": "Tin Currency",
+   "descMs": "Jongkong dan syiling timah sebagai mata wang. +10% cukai.",
+   "descEn": "Tin ingots and coins as currency. +10% taxes.",
+   "entryId": "timah"
+  },
+  {
+   "id": "ilmu_pelayaran",
+   "kind": "tech",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 90,
+   "prereqs": [
+    "pembinaan_jong",
+    "tulisan_jawi"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0.15,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.1,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Ilmu Falak & Pelayaran",
+   "nameEn": "Astronomy & Seamanship",
+   "descMs": "Kompas, bintang dan peta laut. +15% eksport, +10% ilmu.",
+   "descEn": "Compass, stars and sea charts. +15% exports, +10% research.",
+   "entryId": ""
+  },
+  {
+   "id": "perlombongan_timah",
+   "kind": "tech",
+   "era": 2,
+   "date": "1848",
+   "cost": 120,
+   "prereqs": [],
+   "unlockBuildings": [
+    "lombong"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Lombong Dedah",
+   "nameEn": "Open-cast Mining",
+   "descMs": "Lombong berskala besar selepas penemuan bijih di Larut.",
+   "descEn": "Large-scale mining after the Larut tin discovery.",
+   "entryId": "larut"
+  },
+  {
+   "id": "kapal_wap",
+   "kind": "tech",
+   "era": 2,
+   "date": "19th c.",
+   "cost": 140,
+   "prereqs": [],
+   "unlockBuildings": [
+    "pelabuhan_dagang"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kapal Wap",
+   "nameEn": "Steamships",
+   "descMs": "Kapal wap tidak lagi bergantung kepada angin monsun.",
+   "descEn": "Steamships no longer depend on the monsoon.",
+   "entryId": ""
+  },
+  {
+   "id": "getah_para",
+   "kind": "tech",
+   "era": 2,
+   "date": "1877",
+   "cost": 150,
+   "prereqs": [],
+   "unlockBuildings": [
+    "estet_getah"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Getah Para",
+   "nameEn": "Pará Rubber",
+   "descMs": "Anak pokok Hevea brasiliensis ditanam di Kuala Kangsar.",
+   "descEn": "Hevea brasiliensis seedlings planted at Kuala Kangsar.",
+   "entryId": "getah"
+  },
+  {
+   "id": "telegraf",
+   "kind": "tech",
+   "era": 2,
+   "date": "19th c.",
+   "cost": 140,
+   "prereqs": [],
+   "unlockBuildings": [
+    "pejabat_pos"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Telegraf",
+   "nameEn": "Telegraph",
+   "descMs": "Berita harga komoditi tiba dalam beberapa jam.",
+   "descEn": "Commodity prices arrive within hours.",
+   "entryId": ""
+  },
+  {
+   "id": "pendidikan",
+   "kind": "tech",
+   "era": 2,
+   "date": "19th c.",
+   "cost": 150,
+   "prereqs": [],
+   "unlockBuildings": [
+    "sekolah"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Persekolahan Formal",
+   "nameEn": "Formal Schooling",
+   "descMs": "Sekolah Melayu, Cina, Tamil dan Inggeris.",
+   "descEn": "Malay, Chinese, Tamil and English schools.",
+   "entryId": ""
+  },
+  {
+   "id": "kereta_api",
+   "kind": "tech",
+   "era": 2,
+   "date": "1885",
+   "cost": 200,
+   "prereqs": [
+    "kapal_wap"
+   ],
+   "unlockBuildings": [
+    "stesen"
+   ],
+   "unlockTransport": [
+    "rail"
+   ],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Landasan Kereta Api",
+   "nameEn": "Railways",
+   "descMs": "Landasan pertama dibuka 1885 antara Taiping dan Port Weld untuk mengangkut bijih timah.",
+   "descEn": "The first line opened in 1885 between Taiping and Port Weld to carry tin.",
+   "entryId": "kereta_api"
+  },
+  {
+   "id": "torehan_ridley",
+   "kind": "tech",
+   "era": 2,
+   "date": "1890s",
+   "cost": 200,
+   "prereqs": [
+    "getah_para"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "getah",
+      "value": 0.4
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Torehan Ibidem",
+   "nameEn": "Excision Tapping",
+   "descMs": "Kaedah torehan Ridley yang tidak membunuh pokok. +40% getah.",
+   "descEn": "Ridley’s tapping method that spares the tree. +40% rubber.",
+   "entryId": "getah"
+  },
+  {
+   "id": "perubatan_tropika",
+   "kind": "tech",
+   "era": 2,
+   "date": "1900",
+   "cost": 200,
+   "prereqs": [],
+   "unlockBuildings": [
+    "hospital"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Perubatan Tropika",
+   "nameEn": "Tropical Medicine",
+   "descMs": "Penyelidikan beri-beri dan malaria.",
+   "descEn": "Research into beriberi and malaria.",
+   "entryId": ""
+  },
+  {
+   "id": "kapal_korek",
+   "kind": "tech",
+   "era": 2,
+   "date": "1912",
+   "cost": 300,
+   "prereqs": [
+    "perlombongan_timah",
+    "kereta_api"
+   ],
+   "unlockBuildings": [
+    "kapal_korek"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kapal Korek Baldi",
+   "nameEn": "Bucket Dredging",
+   "descMs": "Kapal korek pertama dipasang di Batu Gajah sekitar 1912.",
+   "descEn": "The first dredge was installed at Batu Gajah around 1912.",
+   "entryId": "kapal_korek"
+  },
+  {
+   "id": "seni_bina_moorish",
+   "kind": "tech",
+   "era": 2,
+   "date": "1910",
+   "cost": 260,
+   "prereqs": [
+    "kereta_api"
+   ],
+   "unlockBuildings": [
+    "bangunan_moorish"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Seni Bina Indo-Saracenic",
+   "nameEn": "Indo-Saracenic Architecture",
+   "descMs": "Kubah, menara dan gerbang ladam kuda.",
+   "descEn": "Domes, minarets and horseshoe arches.",
+   "entryId": "seni_bina_moorish"
+  },
+  {
+   "id": "elektrik_negara",
+   "kind": "tech",
+   "era": 3,
+   "date": "1949",
+   "cost": 350,
+   "prereqs": [],
+   "unlockBuildings": [
+    "janakuasa",
+    "kilang_minyak",
+    "pelantar_minyak"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Grid Elektrik Nasional",
+   "nameEn": "National Power Grid",
+   "descMs": "Bekalan elektrik ke seluruh negara.",
+   "descEn": "Electricity across the nation.",
+   "entryId": ""
+  },
+  {
+   "id": "bekalan_air",
+   "kind": "tech",
+   "era": 3,
+   "date": "—",
+   "cost": 350,
+   "prereqs": [],
+   "unlockBuildings": [
+    "loji_air"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Bekalan Air Bersih",
+   "nameEn": "Clean Water Supply",
+   "descMs": "Loji rawatan dan paip air.",
+   "descEn": "Treatment plants and piped water.",
+   "entryId": ""
+  },
+  {
+   "id": "lebuhraya",
+   "kind": "tech",
+   "era": 3,
+   "date": "1994",
+   "cost": 450,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [
+    "highway"
+   ],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Lebuhraya",
+   "nameEn": "Expressways",
+   "descMs": "Lebuhraya bertol menghubungkan pelabuhan dan bandar.",
+   "descEn": "Tolled expressways link ports and cities.",
+   "entryId": ""
+  },
+  {
+   "id": "pengajian_tinggi",
+   "kind": "tech",
+   "era": 3,
+   "date": "1960s",
+   "cost": 500,
+   "prereqs": [],
+   "unlockBuildings": [
+    "universiti"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pengajian Tinggi",
+   "nameEn": "Higher Education",
+   "descMs": "Universiti awam untuk tenaga mahir.",
+   "descEn": "Public universities for skilled workers.",
+   "entryId": ""
+  },
+  {
+   "id": "kesihatan_luar_bandar",
+   "kind": "tech",
+   "era": 3,
+   "date": "1960s",
+   "cost": 380,
+   "prereqs": [],
+   "unlockBuildings": [
+    "klinik_desa"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kesihatan Luar Bandar",
+   "nameEn": "Rural Health Service",
+   "descMs": "Rangkaian klinik desa.",
+   "descEn": "A network of rural clinics.",
+   "entryId": ""
+  },
+  {
+   "id": "kuasa_hidro",
+   "kind": "tech",
+   "era": 3,
+   "date": "1970s",
+   "cost": 550,
+   "prereqs": [
+    "elektrik_negara"
+   ],
+   "unlockBuildings": [
+    "empangan",
+    "tebatan_banjir"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kuasa Hidro",
+   "nameEn": "Hydropower",
+   "descMs": "Empangan besar di sungai.",
+   "descEn": "Large dams on rivers.",
+   "entryId": ""
+  },
+  {
+   "id": "semikonduktor",
+   "kind": "tech",
+   "era": 3,
+   "date": "1972",
+   "cost": 650,
+   "prereqs": [
+    "elektrik_negara"
+   ],
+   "unlockBuildings": [
+    "ftz"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pemasangan Semikonduktor",
+   "nameEn": "Semiconductor Assembly",
+   "descMs": "Kilang cip di zon perindustrian bebas seperti Bayan Lepas (1972).",
+   "descEn": "Chip plants in free industrial zones such as Bayan Lepas (1972).",
+   "entryId": "bayan_lepas"
+  },
+  {
+   "id": "kontena",
+   "kind": "tech",
+   "era": 3,
+   "date": "1970s",
+   "cost": 600,
+   "prereqs": [
+    "lebuhraya"
+   ],
+   "unlockBuildings": [
+    "pelabuhan_kontena"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Perkapalan Kontena",
+   "nameEn": "Containerisation",
+   "descMs": "Kontena piawai merevolusikan perdagangan.",
+   "descEn": "Standard containers revolutionise trade.",
+   "entryId": ""
+  },
+  {
+   "id": "penyelidikan_sawit",
+   "kind": "tech",
+   "era": 3,
+   "date": "1979",
+   "cost": 450,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "sawit",
+      "value": 0.3
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Penyelidikan Sawit",
+   "nameEn": "Oil Palm Research",
+   "descMs": "Baka dan kaedah baharu. +30% sawit.",
+   "descEn": "New breeds and methods. +30% palm oil.",
+   "entryId": ""
+  },
+  {
+   "id": "automotif",
+   "kind": "tech",
+   "era": 3,
+   "date": "1985",
+   "cost": 850,
+   "prereqs": [
+    "semikonduktor",
+    "lebuhraya"
+   ],
+   "unlockBuildings": [
+    "kilang_kereta"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Industri Automotif Nasional",
+   "nameEn": "National Automotive Industry",
+   "descMs": "Syarikat kereta nasional diasaskan 1983; kereta pertamanya dilancar 1985.",
+   "descEn": "A national car company founded in 1983; its first car launched in 1985.",
+   "entryId": "kereta_nasional"
+  },
+  {
+   "id": "internet",
+   "kind": "tech",
+   "era": 4,
+   "date": "1990s",
+   "cost": 1200,
+   "prereqs": [],
+   "unlockBuildings": [
+    "menara_telekom"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Internet & Jalur Lebar",
+   "nameEn": "Internet & Broadband",
+   "descMs": "Rangkaian global dalam setiap rumah.",
+   "descEn": "A global network in every home.",
+   "entryId": ""
+  },
+  {
+   "id": "msc_koridor",
+   "kind": "tech",
+   "era": 4,
+   "date": "1996",
+   "cost": 1600,
+   "prereqs": [
+    "internet"
+   ],
+   "unlockBuildings": [
+    "hab_inovasi"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Koridor Raya Multimedia",
+   "nameEn": "Multimedia Super Corridor",
+   "descMs": "Zon teknologi tinggi yang dilancarkan pada 1996.",
+   "descEn": "A high-tech zone launched in 1996.",
+   "entryId": "msc"
+  },
+  {
+   "id": "pengkomputeran_awan",
+   "kind": "tech",
+   "era": 4,
+   "date": "2010s",
+   "cost": 1800,
+   "prereqs": [
+    "internet"
+   ],
+   "unlockBuildings": [
+    "pusat_data"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pengkomputeran Awan",
+   "nameEn": "Cloud Computing",
+   "descMs": "Pusat data berskala besar.",
+   "descEn": "Hyperscale data centres.",
+   "entryId": ""
+  },
+  {
+   "id": "mrt",
+   "kind": "tech",
+   "era": 4,
+   "date": "2017",
+   "cost": 1800,
+   "prereqs": [],
+   "unlockBuildings": [
+    "stesen_mrt"
+   ],
+   "unlockTransport": [
+    "mrt"
+   ],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Transit Aliran Massa",
+   "nameEn": "Mass Rapid Transit",
+   "descMs": "Laluan MRT Sungai Buloh–Kajang beroperasi sepenuhnya pada 2017.",
+   "descEn": "The Sungai Buloh–Kajang MRT line became fully operational in 2017.",
+   "entryId": "mrt"
+  },
+  {
+   "id": "penerbangan",
+   "kind": "tech",
+   "era": 4,
+   "date": "1998",
+   "cost": 2000,
+   "prereqs": [],
+   "unlockBuildings": [
+    "lapangan_terbang"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Hab Penerbangan",
+   "nameEn": "Aviation Hub",
+   "descMs": "Lapangan terbang antarabangsa baharu dibuka pada 1998.",
+   "descEn": "A new international airport opened in 1998.",
+   "entryId": "klia"
+  },
+  {
+   "id": "tenaga_solar",
+   "kind": "tech",
+   "era": 4,
+   "date": "2010s",
+   "cost": 1600,
+   "prereqs": [],
+   "unlockBuildings": [
+    "ladang_solar"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Tenaga Solar",
+   "nameEn": "Solar Power",
+   "descMs": "Tenaga boleh baharu berskala besar.",
+   "descEn": "Utility-scale renewable energy.",
+   "entryId": ""
+  },
+  {
+   "id": "teknologi_hijau",
+   "kind": "tech",
+   "era": 4,
+   "date": "2010s",
+   "cost": 2200,
+   "prereqs": [
+    "tenaga_solar"
+   ],
+   "unlockBuildings": [
+    "kitar_semula",
+    "ladang_menegak"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": -0.2,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Teknologi Hijau",
+   "nameEn": "Green Technology",
+   "descMs": "-20% pencemaran.",
+   "descEn": "-20% pollution.",
+   "entryId": ""
+  },
+  {
+   "id": "rangkaian_5g",
+   "kind": "tech",
+   "era": 4,
+   "date": "2020s",
+   "cost": 2800,
+   "prereqs": [
+    "pengkomputeran_awan"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "digital",
+      "value": 0.3
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Rangkaian 5G",
+   "nameEn": "5G Networks",
+   "descMs": "+30% perkhidmatan digital.",
+   "descEn": "+30% digital services.",
+   "entryId": ""
+  },
+  {
+   "id": "pencakar_langit",
+   "kind": "tech",
+   "era": 4,
+   "date": "1998",
+   "cost": 2600,
+   "prereqs": [],
+   "unlockBuildings": [
+    "menara_berkembar",
+    "menara_118"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kejuruteraan Pencakar Langit",
+   "nameEn": "Skyscraper Engineering",
+   "descMs": "Konkrit kekuatan tinggi dan struktur tiub.",
+   "descEn": "High-strength concrete and tube structures.",
+   "entryId": "menara_berkembar"
+  },
+  {
+   "id": "kecerdasan_buatan",
+   "kind": "tech",
+   "era": 4,
+   "date": "2020s",
+   "cost": 3600,
+   "prereqs": [
+    "rangkaian_5g",
+    "msc_koridor"
+   ],
+   "unlockBuildings": [
+    "hab_siber"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "digital",
+      "value": 0.2
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.25,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kecerdasan Buatan",
+   "nameEn": "Artificial Intelligence",
+   "descMs": "+25% ilmu, +20% digital.",
+   "descEn": "+25% research, +20% digital.",
+   "entryId": ""
+  },
+  {
+   "id": "bandar_pintar",
+   "kind": "tech",
+   "era": 4,
+   "date": "2020s",
+   "cost": 4500,
+   "prereqs": [
+    "kecerdasan_buatan",
+    "mrt"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 5,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": -0.1,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Sistem Bandar Pintar",
+   "nameEn": "Smart City Systems",
+   "descMs": "Sensor, data dan pengangkutan bersepadu. +5 kesejahteraan, -10% kos penyelenggaraan.",
+   "descEn": "Sensors, data and integrated transport. +5 wellbeing, -10% upkeep.",
+   "entryId": ""
+  },
+  {
+   "id": "gotong_royong",
+   "kind": "civic",
+   "era": 1,
+   "date": "—",
+   "cost": 15,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "gotong_royong"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Gotong-royong",
+   "nameEn": "Gotong-royong",
+   "descMs": "Semangat kerjasama kampung. +3 kesejahteraan.",
+   "descEn": "The village spirit of mutual help. +3 wellbeing.",
+   "entryId": ""
+  },
+  {
+   "id": "kedah_tua",
+   "kind": "civic",
+   "era": 1,
+   "date": "2nd–10th c.",
+   "cost": 15,
+   "prereqs": [],
+   "unlockBuildings": [
+    "candi"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Warisan Kedah Tua",
+   "nameEn": "Old Kedah Heritage",
+   "descMs": "Warisan pelabuhan purba Lembah Bujang.",
+   "descEn": "The legacy of the ancient Bujang Valley ports.",
+   "entryId": "lembah_bujang"
+  },
+  {
+   "id": "islam_melaka",
+   "kind": "civic",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 35,
+   "prereqs": [],
+   "unlockBuildings": [
+    "masjid"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pusat Penyebaran Islam",
+   "nameEn": "Centre of Islamic Learning",
+   "descMs": "Melaka menjadi pusat penyebaran Islam di Nusantara.",
+   "descEn": "Melaka becomes a centre for the spread of Islam in the archipelago.",
+   "entryId": "islam_melaka"
+  },
+  {
+   "id": "empat_syahbandar",
+   "kind": "civic",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 40,
+   "prereqs": [],
+   "unlockBuildings": [
+    "syahbandar",
+    "menara_tinjau"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0.1
+   },
+   "nameMs": "Empat Syahbandar",
+   "nameEn": "Four Harbour Masters",
+   "descMs": "Empat syahbandar mengurus pedagang mengikut asal mereka.",
+   "descEn": "Four shahbandars manage traders by their origin.",
+   "entryId": "syahbandar"
+  },
+  {
+   "id": "kesultanan_melaka",
+   "kind": "civic",
+   "era": 1,
+   "date": "c. 1400",
+   "cost": 60,
+   "prereqs": [
+    "gotong_royong"
+   ],
+   "unlockBuildings": [
+    "istana"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kesultanan Melaka",
+   "nameEn": "Melaka Sultanate",
+   "descMs": "Kerajaan yang diasaskan sekitar 1400 oleh Parameswara.",
+   "descEn": "The kingdom founded around 1400 by Parameswara.",
+   "entryId": "kesultanan_melaka"
+  },
+  {
+   "id": "undang_laut",
+   "kind": "civic",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 70,
+   "prereqs": [
+    "empat_syahbandar"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "pelabuhan_bebas"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0.05,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Undang-Undang Laut Melaka",
+   "nameEn": "Maritime Laws of Melaka",
+   "descMs": "Kod undang-undang pelayaran dan perdagangan. +5% harga eksport.",
+   "descEn": "A code of shipping and trade law. +5% export prices.",
+   "entryId": "undang_laut"
+  },
+  {
+   "id": "hukum_kanun",
+   "kind": "civic",
+   "era": 1,
+   "date": "15th c.",
+   "cost": 70,
+   "prereqs": [
+    "kesultanan_melaka"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "adat_hukum"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 2,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Hukum Kanun Melaka",
+   "nameEn": "Hukum Kanun Melaka",
+   "descMs": "Kanun undang-undang darat kesultanan.",
+   "descEn": "The sultanate’s legal code for land.",
+   "entryId": "undang_laut"
+  },
+  {
+   "id": "pentadbiran_residen",
+   "kind": "civic",
+   "era": 2,
+   "date": "1874",
+   "cost": 120,
+   "prereqs": [],
+   "unlockBuildings": [
+    "balai_polis"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.1,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Sistem Residen",
+   "nameEn": "Residential System",
+   "descMs": "Selepas Perjanjian Pangkor 1874, Residen British menasihati pentadbiran. +10% cukai.",
+   "descEn": "After the 1874 Pangkor Treaty, British Residents advised the administration. +10% taxes.",
+   "entryId": "pangkor"
+  },
+  {
+   "id": "masyarakat_majmuk",
+   "kind": "civic",
+   "era": 2,
+   "date": "19th c.",
+   "cost": 130,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "imigrasi_terbuka"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0.15,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Masyarakat Majmuk",
+   "nameEn": "Plural Society",
+   "descMs": "Pekerja dari China dan India tiba untuk lombong dan estet.",
+   "descEn": "Workers from China and India arrive for mines and estates.",
+   "entryId": "masyarakat_majmuk"
+  },
+  {
+   "id": "koperasi",
+   "kind": "civic",
+   "era": 2,
+   "date": "1922",
+   "cost": 150,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "koperasi"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Gerakan Koperasi",
+   "nameEn": "Cooperative Movement",
+   "descMs": "Koperasi membantu petani dan pekebun kecil.",
+   "descEn": "Cooperatives help farmers and smallholders.",
+   "entryId": ""
+  },
+  {
+   "id": "akhbar_melayu",
+   "kind": "civic",
+   "era": 2,
+   "date": "1939",
+   "cost": 160,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0.15,
+    "happiness": 1,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Akhbar & Persuratan",
+   "nameEn": "Press & Letters",
+   "descMs": "Akhbar dan sastera membangkitkan kesedaran. +15% budaya.",
+   "descEn": "Newspapers and literature awaken awareness. +15% culture.",
+   "entryId": ""
+  },
+  {
+   "id": "negeri_bersekutu",
+   "kind": "civic",
+   "era": 2,
+   "date": "1896",
+   "cost": 220,
+   "prereqs": [
+    "pentadbiran_residen"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0.1,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.05,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Negeri-Negeri Melayu Bersekutu",
+   "nameEn": "Federated Malay States",
+   "descMs": "Perak, Selangor, Negeri Sembilan dan Pahang disatukan pada 1896.",
+   "descEn": "Perak, Selangor, Negeri Sembilan and Pahang federated in 1896.",
+   "entryId": "nnmb"
+  },
+  {
+   "id": "pilihan_raya",
+   "kind": "civic",
+   "era": 2,
+   "date": "1955",
+   "cost": 260,
+   "prereqs": [
+    "akhbar_melayu",
+    "negeri_bersekutu"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pilihan Raya Persekutuan 1955",
+   "nameEn": "The 1955 Federal Election",
+   "descMs": "Pilihan raya umum pertama membuka jalan ke kemerdekaan.",
+   "descEn": "The first general election paves the way to independence.",
+   "entryId": "merdeka"
+  },
+  {
+   "id": "kemerdekaan",
+   "kind": "civic",
+   "era": 3,
+   "date": "1957",
+   "cost": 300,
+   "prereqs": [],
+   "unlockBuildings": [
+    "stadium"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 4,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kemerdekaan",
+   "nameEn": "Independence",
+   "descMs": "Persekutuan Tanah Melayu merdeka pada 31 Ogos 1957.",
+   "descEn": "The Federation of Malaya became independent on 31 August 1957.",
+   "entryId": "merdeka"
+  },
+  {
+   "id": "felda",
+   "kind": "civic",
+   "era": 3,
+   "date": "1956",
+   "cost": 350,
+   "prereqs": [],
+   "unlockBuildings": [
+    "ladang_sawit"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Tanah Rancangan",
+   "nameEn": "Land Development Schemes",
+   "descMs": "Lembaga kemajuan tanah ditubuhkan pada 1956 untuk peneroka.",
+   "descEn": "A land development authority founded in 1956 for settlers.",
+   "entryId": "felda"
+  },
+  {
+   "id": "pembentukan_malaysia",
+   "kind": "civic",
+   "era": 3,
+   "date": "1963",
+   "cost": 450,
+   "prereqs": [
+    "kemerdekaan"
+   ],
+   "unlockBuildings": [
+    "parlimen"
+   ],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0.1,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pembentukan Malaysia",
+   "nameEn": "Formation of Malaysia",
+   "descMs": "Malaysia dibentuk pada 16 September 1963.",
+   "descEn": "Malaysia was formed on 16 September 1963.",
+   "entryId": "malaysia_1963"
+  },
+  {
+   "id": "asean",
+   "kind": "civic",
+   "era": 3,
+   "date": "1967",
+   "cost": 400,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0.15
+   },
+   "nameMs": "ASEAN",
+   "nameEn": "ASEAN",
+   "descMs": "Persatuan Negara-Negara Asia Tenggara ditubuhkan 1967.",
+   "descEn": "The Association of Southeast Asian Nations was founded in 1967.",
+   "entryId": "asean"
+  },
+  {
+   "id": "zon_perdagangan_bebas",
+   "kind": "civic",
+   "era": 3,
+   "date": "1971",
+   "cost": 450,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "elektronik",
+      "value": 0.25
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Akta Zon Perdagangan Bebas",
+   "nameEn": "Free Trade Zones Act",
+   "descMs": "Insentif untuk pelabur asing. +25% elektronik.",
+   "descEn": "Incentives for foreign investors. +25% electronics.",
+   "entryId": "bayan_lepas"
+  },
+  {
+   "id": "dasar_ekonomi_baru",
+   "kind": "civic",
+   "era": 3,
+   "date": "1971",
+   "cost": 600,
+   "prereqs": [
+    "pembentukan_malaysia"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "deb"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Dasar Ekonomi Baru",
+   "nameEn": "New Economic Policy",
+   "descMs": "Dasar 1971 untuk membasmi kemiskinan dan menyusun semula masyarakat.",
+   "descEn": "The 1971 policy to eradicate poverty and restructure society.",
+   "entryId": "deb"
+  },
+  {
+   "id": "pandang_ke_timur",
+   "kind": "civic",
+   "era": 3,
+   "date": "1982",
+   "cost": 650,
+   "prereqs": [
+    "kemerdekaan"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "pandang_timur"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Dasar Pandang ke Timur",
+   "nameEn": "Look East Policy",
+   "descMs": "Diumumkan pada 1982 untuk mencontohi etika kerja Jepun dan Korea.",
+   "descEn": "Announced in 1982 to emulate Japanese and Korean work ethics.",
+   "entryId": "pandang_timur"
+  },
+  {
+   "id": "wawasan_2020",
+   "kind": "civic",
+   "era": 4,
+   "date": "1991",
+   "cost": 1000,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "wawasan"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Wawasan 2020",
+   "nameEn": "Vision 2020",
+   "descMs": "Matlamat menjadi negara maju menjelang 2020.",
+   "descEn": "The goal of becoming a developed nation by 2020.",
+   "entryId": ""
+  },
+  {
+   "id": "kerajaan_elektronik",
+   "kind": "civic",
+   "era": 4,
+   "date": "1990s",
+   "cost": 1300,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.1,
+    "research": 0,
+    "culture": 0,
+    "happiness": 1,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Kerajaan Elektronik",
+   "nameEn": "E-Government",
+   "descMs": "Perkhidmatan awam dalam talian. +10% cukai.",
+   "descEn": "Online public services. +10% taxes.",
+   "entryId": ""
+  },
+  {
+   "id": "pembangunan_mampan",
+   "kind": "civic",
+   "era": 4,
+   "date": "2010s",
+   "cost": 1500,
+   "prereqs": [],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [
+    "hijau"
+   ],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Pembangunan Mampan",
+   "nameEn": "Sustainable Development",
+   "descMs": "Keseimbangan ekonomi, masyarakat dan alam sekitar.",
+   "descEn": "Balancing economy, society and environment.",
+   "entryId": ""
+  },
+  {
+   "id": "mydigital",
+   "kind": "civic",
+   "era": 4,
+   "date": "2021",
+   "cost": 2000,
+   "prereqs": [
+    "kerajaan_elektronik"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [
+     {
+      "key": "digital",
+      "value": 0.25
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Rangka Tindakan Ekonomi Digital",
+   "nameEn": "Digital Economy Blueprint",
+   "descMs": "MyDIGITAL dilancarkan pada Februari 2021. +25% digital.",
+   "descEn": "MyDIGITAL was launched in February 2021. +25% digital.",
+   "entryId": "mydigital"
+  },
+  {
+   "id": "negara_maju",
+   "kind": "civic",
+   "era": 4,
+   "date": "—",
+   "cost": 3500,
+   "prereqs": [
+    "wawasan_2020",
+    "mydigital"
+   ],
+   "unlockBuildings": [],
+   "unlockTransport": [],
+   "unlockPolicies": [],
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 5,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "nameMs": "Negara Maju",
+   "nameEn": "Developed Nation",
+   "descMs": "Kemuncak perjalanan pembangunan.",
+   "descEn": "The culmination of the development journey.",
+   "entryId": ""
+  }
+ ]
+}

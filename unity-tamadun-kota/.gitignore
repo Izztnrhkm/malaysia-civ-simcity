@@ -1,0 +1,53 @@
+# Unity (paths are relative to unity-tamadun-kota/)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/Assets/Plugins/Editor/JetBrains*
+/Assets/AssetStoreTools*
+.vs/
+.vscode/
+.idea/
+.gradle/
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+*.app
+crashlytics-buildid.txt
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+# Steamworks redistributables are added by the developer locally
+steam_appid.txt
+# compile-verification build output
+/ci/**/bin/
+/ci/**/obj/
+# ...but keep the standalone compile-verification projects
+!/ci/**/*.csproj
+!/ci/**/*.sln
+# compile-check package sources (ci/UnityCompileCheck/fetch-deps.sh)
+/ci/.cache/

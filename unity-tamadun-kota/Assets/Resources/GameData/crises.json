@@ -1,0 +1,544 @@
+{
+ "items": [
+  {
+   "id": "angin_monsun",
+   "eras": [
+    1
+   ],
+   "triggerEvent": "",
+   "triggerYear": 0,
+   "triggerMonths": [
+    3,
+    4,
+    9,
+    10
+   ],
+   "triggerChance": 0.03,
+   "cooldown": 40,
+   "minTick": 30,
+   "hasBase": true,
+   "baseEffect": {
+    "duration": 4,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 0.75
+   },
+   "nameMs": "Angin Monsun Berubah",
+   "nameEn": "The Monsoon Winds Shift",
+   "descMs": "Angin peralihan monsun datang lewat tahun ini. Armada dari Gujerat dan China tertahan dan gudang mula penuh.",
+   "descEn": "The inter-monsoon winds turn late this year. Fleets from Gujarat and China are delayed and warehouses fill up.",
+   "defaultChoice": 0,
+   "entryId": "monsun",
+   "choices": [
+    {
+     "id": "tunggu",
+     "nameMs": "Tunggu angin",
+     "nameEn": "Wait for the winds",
+     "descMs": "Tiada kos, tetapi eksport perlahan lebih lama.",
+     "descEn": "No cost, but exports stay slow for longer.",
+     "cost": 0,
+     "effect": {
+      "duration": 6,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": 0,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 0.8
+     }
+    },
+    {
+     "id": "gudang",
+     "nameMs": "Simpan dagangan di gudang",
+     "nameEn": "Hold cargo in warehouses",
+     "descMs": "Bayar sewa gudang supaya dagangan tidak rosak; pedagang berpuas hati.",
+     "descEn": "Pay for storage so cargo does not spoil; merchants are pleased.",
+     "cost": 400,
+     "effect": {
+      "duration": 0,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": 1,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [
+       {
+        "key": "gujerat",
+        "value": 5
+       },
+       {
+        "key": "ming",
+        "value": 5
+       }
+      ],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "jurumudi",
+     "nameMs": "Upah jurumudi tempatan",
+     "nameEn": "Hire local pilots",
+     "descMs": "Jurumudi Orang Laut membawa kapal melalui angin lemah. Ilmu pelayaran bertambah.",
+     "descEn": "Orang Laut pilots guide ships through the slack winds. Seamanship knowledge grows.",
+     "cost": 250,
+     "effect": {
+      "duration": 4,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": 0,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 12,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "bah_besar",
+   "eras": [
+    2
+   ],
+   "triggerEvent": "",
+   "triggerYear": 1926,
+   "triggerMonths": [],
+   "triggerChance": 0,
+   "cooldown": 0,
+   "minTick": 0,
+   "hasBase": true,
+   "baseEffect": {
+    "duration": 4,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": -6,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": true,
+    "exportCapMult": 1
+   },
+   "nameMs": "Bah Besar 1926",
+   "nameEn": "The Great Flood of 1926",
+   "descMs": "Pada akhir Disember 1926 hujan luar biasa (dikaitkan dengan La Niña) membanjiri Pahang, Kelantan, Terengganu, Perak dan Selangor. Penebangan hutan untuk estet dan lombong memburukkan banjir.",
+   "descEn": "In late December 1926 extraordinary rains (linked to La Niña) flood Pahang, Kelantan, Terengganu, Perak and Selangor. Forest clearing for estates and mines made the floods worse.",
+   "defaultChoice": 2,
+   "entryId": "monsun",
+   "choices": [
+    {
+     "id": "bantuan",
+     "nameMs": "Dapur bantuan & pemindahan",
+     "nameEn": "Relief kitchens and evacuation",
+     "descMs": "Lindungi rakyat; kebahagiaan pulih dengan cepat.",
+     "descEn": "Protect the people; happiness recovers quickly.",
+     "cost": 2000,
+     "effect": {
+      "duration": 8,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": 6,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "tebatan",
+     "nameMs": "Bina semula tebatan & parit",
+     "nameEn": "Rebuild bunds and drains",
+     "descMs": "Pemulihan lebih pantas; pengeluaran kembali normal.",
+     "descEn": "Faster recovery; production returns to normal.",
+     "cost": 3500,
+     "effect": {
+      "duration": 10,
+      "priceMult": [],
+      "productionMult": 1.08,
+      "happiness": 0,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "biarkan",
+     "nameMs": "Biarkan daerah pulih sendiri",
+     "nameEn": "Leave the districts to recover",
+     "descMs": "Tiada kos, tetapi pengeluaran dan semangat rakyat merosot.",
+     "descEn": "No cost, but output and morale suffer.",
+     "cost": 0,
+     "effect": {
+      "duration": 8,
+      "priceMult": [],
+      "productionMult": 0.88,
+      "happiness": -4,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "kemelesetan_1930",
+   "eras": [
+    2
+   ],
+   "triggerEvent": "kemelesetan_besar",
+   "triggerYear": 0,
+   "triggerMonths": [],
+   "triggerChance": 0,
+   "cooldown": 0,
+   "minTick": 0,
+   "hasBase": false,
+   "baseEffect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "nameMs": "Kemelesetan: Kejatuhan Harga Komoditi",
+   "nameEn": "Depression: the Commodity Crash",
+   "descMs": "Harga timah dan getah runtuh. Pada 1 Mac 1931 Tanah Melayu, Bolivia, Hindia Timur Belanda dan Nigeria memulakan Skim Kawalan Timah Antarabangsa untuk menyekat pengeluaran.",
+   "descEn": "Tin and rubber prices collapse. On 1 March 1931 British Malaya, Bolivia, the Netherlands East Indies and Nigeria begin the International Tin Control Scheme to restrict output.",
+   "defaultChoice": 2,
+   "entryId": "",
+   "choices": [
+    {
+     "id": "kuota",
+     "nameMs": "Sertai skim sekatan pengeluaran",
+     "nameEn": "Join the output-restriction scheme",
+     "descMs": "Harga timah dan getah disokong, tetapi pengeluaran dihadkan.",
+     "descEn": "Tin and rubber prices are propped up, but output is capped.",
+     "cost": 0,
+     "effect": {
+      "duration": 30,
+      "priceMult": [
+       {
+        "key": "timah",
+        "value": 1.4
+       },
+       {
+        "key": "getah",
+        "value": 1.25
+       }
+      ],
+      "productionMult": 0.88,
+      "happiness": 0,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "kerja_awam",
+     "nameMs": "Kerja awam & bantuan",
+     "nameEn": "Public works and relief",
+     "descMs": "Belanja untuk jalan dan bantuan; rakyat lebih tenang.",
+     "descEn": "Spend on roads and relief; the people stay calm.",
+     "cost": 3000,
+     "effect": {
+      "duration": 18,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": 5,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "jimat",
+     "nameMs": "Berjimat cermat",
+     "nameEn": "Austerity",
+     "descMs": "Potong perbelanjaan untuk menambah tabung, tetapi rakyat menderita.",
+     "descEn": "Cut spending to rebuild the treasury, but people suffer.",
+     "cost": 0,
+     "effect": {
+      "duration": 18,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": -5,
+      "research": 0,
+      "money": 1500,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "krisis_timah",
+   "eras": [
+    3
+   ],
+   "triggerEvent": "krisis_timah_1985",
+   "triggerYear": 0,
+   "triggerMonths": [],
+   "triggerChance": 0,
+   "cooldown": 0,
+   "minTick": 0,
+   "hasBase": false,
+   "baseEffect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "nameMs": "Keruntuhan Pasaran Timah 1985",
+   "nameEn": "The 1985 Tin Market Collapse",
+   "descMs": "Pada 24 Oktober 1985 Majlis Timah Antarabangsa gagal membayar hutangnya dan Bursa Logam London menggantung dagangan timah. Malaysia menutup hampir separuh lombongnya.",
+   "descEn": "On 24 October 1985 the International Tin Council defaults on its debts and the London Metal Exchange suspends tin trading. Malaysia closes nearly half its mines.",
+   "defaultChoice": 2,
+   "entryId": "",
+   "choices": [
+    {
+     "id": "pelbagai",
+     "nameMs": "Pelbagaikan ke perkilangan",
+     "nameEn": "Diversify into manufacturing",
+     "descMs": "Latih semula pelombong untuk kilang elektronik.",
+     "descEn": "Retrain miners for electronics plants.",
+     "cost": 8000,
+     "effect": {
+      "duration": 24,
+      "priceMult": [
+       {
+        "key": "elektronik",
+        "value": 1.15
+       },
+       {
+        "key": "barang",
+        "value": 1.1
+       }
+      ],
+      "productionMult": 1,
+      "happiness": 0,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 120,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "selamatkan",
+     "nameMs": "Selamatkan pelombong",
+     "nameEn": "Bail out the miners",
+     "descMs": "Subsidi menyokong harga timah tempatan untuk sementara.",
+     "descEn": "Subsidies prop up local tin prices for a while.",
+     "cost": 12000,
+     "effect": {
+      "duration": 24,
+      "priceMult": [
+       {
+        "key": "timah",
+        "value": 1.6
+       }
+      ],
+      "productionMult": 1,
+      "happiness": 2,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "pasaran",
+     "nameMs": "Biarkan pasaran menyesuaikan diri",
+     "nameEn": "Let the market adjust",
+     "descMs": "Tiada kos; bandar timah merana.",
+     "descEn": "No cost; tin towns suffer.",
+     "cost": 0,
+     "effect": {
+      "duration": 12,
+      "priceMult": [],
+      "productionMult": 1,
+      "happiness": -4,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "krisis_kewangan",
+   "eras": [
+    4
+   ],
+   "triggerEvent": "krisis_asia_1997",
+   "triggerYear": 0,
+   "triggerMonths": [],
+   "triggerChance": 0,
+   "cooldown": 0,
+   "minTick": 0,
+   "hasBase": false,
+   "baseEffect": {
+    "duration": 0,
+    "priceMult": [],
+    "productionMult": 1,
+    "happiness": 0,
+    "research": 0,
+    "money": 0,
+    "researchOnce": 0,
+    "relations": [],
+    "grantCivic": "",
+    "flood": false,
+    "exportCapMult": 1
+   },
+   "nameMs": "Krisis Kewangan Asia 1997",
+   "nameEn": "The 1997 Asian Financial Crisis",
+   "descMs": "Ringgit menjunam dan modal asing lari. Pada 1 September 1998 Malaysia memperkenalkan kawalan modal terpilih dan memaku ringgit pada RM3.80 se-USD (dimansuhkan 2005).",
+   "descEn": "The ringgit plunges and foreign capital flees. On 1 September 1998 Malaysia introduces selective capital controls and pegs the ringgit at RM3.80 per US dollar (dropped in 2005).",
+   "defaultChoice": 0,
+   "entryId": "",
+   "choices": [
+    {
+     "id": "kawalan",
+     "nameMs": "Kawalan modal & tambatan ringgit",
+     "nameEn": "Capital controls and a ringgit peg",
+     "descMs": "Kestabilan pulih, tetapi rakan Barat kurang senang.",
+     "descEn": "Stability returns, but Western partners are uneasy.",
+     "cost": 0,
+     "effect": {
+      "duration": 18,
+      "priceMult": [],
+      "productionMult": 1.1,
+      "happiness": 2,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [
+       {
+        "key": "kesatuan_eropah",
+        "value": -6
+       },
+       {
+        "key": "amerika",
+        "value": -6
+       }
+      ],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "imf",
+     "nameMs": "Pakej penjimatan gaya IMF",
+     "nameEn": "IMF-style austerity",
+     "descMs": "Kadar faedah tinggi dan potongan belanja; pelabur Barat lega.",
+     "descEn": "High interest rates and spending cuts; Western investors relax.",
+     "cost": 0,
+     "effect": {
+      "duration": 18,
+      "priceMult": [],
+      "productionMult": 0.95,
+      "happiness": -6,
+      "research": 0,
+      "money": 15000,
+      "researchOnce": 0,
+      "relations": [
+       {
+        "key": "kesatuan_eropah",
+        "value": 8
+       },
+       {
+        "key": "amerika",
+        "value": 8
+       }
+      ],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    },
+    {
+     "id": "rangsangan",
+     "nameMs": "Rangsangan fiskal",
+     "nameEn": "Fiscal stimulus",
+     "descMs": "Belanja besar untuk projek awam memastikan pekerjaan.",
+     "descEn": "Big public spending keeps people in work.",
+     "cost": 40000,
+     "effect": {
+      "duration": 18,
+      "priceMult": [],
+      "productionMult": 1.08,
+      "happiness": 4,
+      "research": 0,
+      "money": 0,
+      "researchOnce": 0,
+      "relations": [],
+      "grantCivic": "",
+      "flood": false,
+      "exportCapMult": 1
+     }
+    }
+   ]
+  }
+ ]
+}

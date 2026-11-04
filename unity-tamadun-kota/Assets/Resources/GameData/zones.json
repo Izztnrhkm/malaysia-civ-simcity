@@ -1,0 +1,328 @@
+{
+ "items": [
+  {
+   "id": "zone_R_1",
+   "zone": "R",
+   "density": 1,
+   "capacity": 6,
+   "footprintMeters": 4,
+   "nameMs": "Kediaman (tahap 1)",
+   "nameEn": "Residential (level 1)",
+   "eraNamesMs": [
+    "Kampung",
+    "Kampung & Rumah Kedai",
+    "Taman Perumahan",
+    "Kondominium & Taman"
+   ],
+   "eraNamesEn": [
+    "Kampung",
+    "Kampung & Shophouses",
+    "Housing Taman",
+    "Condominiums & Taman"
+   ],
+   "eraModelIds": [
+    "zone_R_d1_e1",
+    "zone_R_d1_e2",
+    "zone_R_d1_e3",
+    "zone_R_d1_e4"
+   ]
+  },
+  {
+   "id": "zone_R_2",
+   "zone": "R",
+   "density": 2,
+   "capacity": 18,
+   "footprintMeters": 4,
+   "nameMs": "Kediaman (tahap 2)",
+   "nameEn": "Residential (level 2)",
+   "eraNamesMs": [
+    "Kampung",
+    "Kampung & Rumah Kedai",
+    "Taman Perumahan",
+    "Kondominium & Taman"
+   ],
+   "eraNamesEn": [
+    "Kampung",
+    "Kampung & Shophouses",
+    "Housing Taman",
+    "Condominiums & Taman"
+   ],
+   "eraModelIds": [
+    "zone_R_d2_e1",
+    "zone_R_d2_e2",
+    "zone_R_d2_e3",
+    "zone_R_d2_e4"
+   ]
+  },
+  {
+   "id": "zone_R_3",
+   "zone": "R",
+   "density": 3,
+   "capacity": 50,
+   "footprintMeters": 4,
+   "nameMs": "Kediaman (tahap 3)",
+   "nameEn": "Residential (level 3)",
+   "eraNamesMs": [
+    "Kampung",
+    "Kampung & Rumah Kedai",
+    "Taman Perumahan",
+    "Kondominium & Taman"
+   ],
+   "eraNamesEn": [
+    "Kampung",
+    "Kampung & Shophouses",
+    "Housing Taman",
+    "Condominiums & Taman"
+   ],
+   "eraModelIds": [
+    "zone_R_d2_e1",
+    "zone_R_d3_e2",
+    "zone_R_d3_e3",
+    "unity_eco_tower"
+   ]
+  },
+  {
+   "id": "zone_R_4",
+   "zone": "R",
+   "density": 4,
+   "capacity": 120,
+   "footprintMeters": 4,
+   "nameMs": "Kediaman (tahap 4)",
+   "nameEn": "Residential (level 4)",
+   "eraNamesMs": [
+    "Kampung",
+    "Kampung & Rumah Kedai",
+    "Taman Perumahan",
+    "Kondominium & Taman"
+   ],
+   "eraNamesEn": [
+    "Kampung",
+    "Kampung & Shophouses",
+    "Housing Taman",
+    "Condominiums & Taman"
+   ],
+   "eraModelIds": [
+    "zone_R_d2_e1",
+    "zone_R_d3_e2",
+    "zone_R_d4_e3",
+    "unity_eco_tower"
+   ]
+  },
+  {
+   "id": "zone_C_1",
+   "zone": "C",
+   "density": 1,
+   "capacity": 3,
+   "footprintMeters": 4,
+   "nameMs": "Komersial (tahap 1)",
+   "nameEn": "Commercial (level 1)",
+   "eraNamesMs": [
+    "Bazar",
+    "Rumah Kedai",
+    "Pusat Beli-belah",
+    "Menara Pejabat"
+   ],
+   "eraNamesEn": [
+    "Bazaar",
+    "Shophouses",
+    "Shopping Centres",
+    "Office Towers"
+   ],
+   "eraModelIds": [
+    "zone_C_d1_e1",
+    "zone_C_d1_e2",
+    "zone_C_d1_e3",
+    "zone_C_d1_e4"
+   ]
+  },
+  {
+   "id": "zone_C_2",
+   "zone": "C",
+   "density": 2,
+   "capacity": 8,
+   "footprintMeters": 4,
+   "nameMs": "Komersial (tahap 2)",
+   "nameEn": "Commercial (level 2)",
+   "eraNamesMs": [
+    "Bazar",
+    "Rumah Kedai",
+    "Pusat Beli-belah",
+    "Menara Pejabat"
+   ],
+   "eraNamesEn": [
+    "Bazaar",
+    "Shophouses",
+    "Shopping Centres",
+    "Office Towers"
+   ],
+   "eraModelIds": [
+    "zone_C_d2_e1",
+    "zone_C_d2_e2",
+    "zone_C_d2_e3",
+    "zone_C_d2_e4"
+   ]
+  },
+  {
+   "id": "zone_C_3",
+   "zone": "C",
+   "density": 3,
+   "capacity": 22,
+   "footprintMeters": 4,
+   "nameMs": "Komersial (tahap 3)",
+   "nameEn": "Commercial (level 3)",
+   "eraNamesMs": [
+    "Bazar",
+    "Rumah Kedai",
+    "Pusat Beli-belah",
+    "Menara Pejabat"
+   ],
+   "eraNamesEn": [
+    "Bazaar",
+    "Shophouses",
+    "Shopping Centres",
+    "Office Towers"
+   ],
+   "eraModelIds": [
+    "zone_C_d2_e1",
+    "zone_C_d3_e2",
+    "zone_C_d3_e3",
+    "zone_C_d3_e4"
+   ]
+  },
+  {
+   "id": "zone_C_4",
+   "zone": "C",
+   "density": 4,
+   "capacity": 55,
+   "footprintMeters": 4,
+   "nameMs": "Komersial (tahap 4)",
+   "nameEn": "Commercial (level 4)",
+   "eraNamesMs": [
+    "Bazar",
+    "Rumah Kedai",
+    "Pusat Beli-belah",
+    "Menara Pejabat"
+   ],
+   "eraNamesEn": [
+    "Bazaar",
+    "Shophouses",
+    "Shopping Centres",
+    "Office Towers"
+   ],
+   "eraModelIds": [
+    "zone_C_d2_e1",
+    "zone_C_d3_e2",
+    "zone_C_d4_e3",
+    "zone_C_d4_e4"
+   ]
+  },
+  {
+   "id": "zone_I_1",
+   "zone": "I",
+   "density": 1,
+   "capacity": 4,
+   "footprintMeters": 4,
+   "nameMs": "Perindustrian (tahap 1)",
+   "nameEn": "Industrial (level 1)",
+   "eraNamesMs": [
+    "Bengkel Tukang",
+    "Bengkel & Kilang Kecil",
+    "Kilang",
+    "Industri Teknologi Tinggi"
+   ],
+   "eraNamesEn": [
+    "Craft Workshops",
+    "Workshops & Small Mills",
+    "Factories",
+    "High-tech Industry"
+   ],
+   "eraModelIds": [
+    "zone_I_d1_e1",
+    "zone_I_d1_e2",
+    "zone_I_d1_e3",
+    "zone_I_d1_e4"
+   ]
+  },
+  {
+   "id": "zone_I_2",
+   "zone": "I",
+   "density": 2,
+   "capacity": 12,
+   "footprintMeters": 4,
+   "nameMs": "Perindustrian (tahap 2)",
+   "nameEn": "Industrial (level 2)",
+   "eraNamesMs": [
+    "Bengkel Tukang",
+    "Bengkel & Kilang Kecil",
+    "Kilang",
+    "Industri Teknologi Tinggi"
+   ],
+   "eraNamesEn": [
+    "Craft Workshops",
+    "Workshops & Small Mills",
+    "Factories",
+    "High-tech Industry"
+   ],
+   "eraModelIds": [
+    "zone_I_d2_e1",
+    "zone_I_d2_e2",
+    "zone_I_d2_e3",
+    "zone_I_d2_e4"
+   ]
+  },
+  {
+   "id": "zone_I_3",
+   "zone": "I",
+   "density": 3,
+   "capacity": 30,
+   "footprintMeters": 4,
+   "nameMs": "Perindustrian (tahap 3)",
+   "nameEn": "Industrial (level 3)",
+   "eraNamesMs": [
+    "Bengkel Tukang",
+    "Bengkel & Kilang Kecil",
+    "Kilang",
+    "Industri Teknologi Tinggi"
+   ],
+   "eraNamesEn": [
+    "Craft Workshops",
+    "Workshops & Small Mills",
+    "Factories",
+    "High-tech Industry"
+   ],
+   "eraModelIds": [
+    "zone_I_d2_e1",
+    "zone_I_d3_e2",
+    "zone_I_d3_e3",
+    "zone_I_d3_e4"
+   ]
+  },
+  {
+   "id": "zone_I_4",
+   "zone": "I",
+   "density": 4,
+   "capacity": 70,
+   "footprintMeters": 4,
+   "nameMs": "Perindustrian (tahap 4)",
+   "nameEn": "Industrial (level 4)",
+   "eraNamesMs": [
+    "Bengkel Tukang",
+    "Bengkel & Kilang Kecil",
+    "Kilang",
+    "Industri Teknologi Tinggi"
+   ],
+   "eraNamesEn": [
+    "Craft Workshops",
+    "Workshops & Small Mills",
+    "Factories",
+    "High-tech Industry"
+   ],
+   "eraModelIds": [
+    "zone_I_d2_e1",
+    "zone_I_d3_e2",
+    "zone_I_d4_e3",
+    "zone_I_d4_e4"
+   ]
+  }
+ ]
+}

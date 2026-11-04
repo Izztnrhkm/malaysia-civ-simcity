@@ -1,0 +1,48 @@
+{
+ "items": [
+  {
+   "key": "road",
+   "id": 1,
+   "nameMs": "Jalan",
+   "nameEn": "Road",
+   "cost": 8,
+   "upkeep": 0.03,
+   "step": 2,
+   "era": 1,
+   "bridge": true
+  },
+  {
+   "key": "rail",
+   "id": 2,
+   "nameMs": "Landasan Kereta Api",
+   "nameEn": "Railway",
+   "cost": 40,
+   "upkeep": 0.12,
+   "step": 0.6,
+   "era": 2,
+   "bridge": true
+  },
+  {
+   "key": "highway",
+   "id": 3,
+   "nameMs": "Lebuhraya",
+   "nameEn": "Expressway",
+   "cost": 90,
+   "upkeep": 0.25,
+   "step": 0.8,
+   "era": 3,
+   "bridge": true
+  },
+  {
+   "key": "mrt",
+   "id": 4,
+   "nameMs": "Landasan MRT",
+   "nameEn": "MRT Line",
+   "cost": 160,
+   "upkeep": 0.6,
+   "step": 0.4,
+   "era": 4,
+   "bridge": true
+  }
+ ]
+}

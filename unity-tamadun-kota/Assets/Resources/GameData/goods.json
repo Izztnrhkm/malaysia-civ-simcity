@@ -1,0 +1,147 @@
+{
+ "items": [
+  {
+   "id": "padi",
+   "nameMs": "Padi",
+   "nameEn": "Rice",
+   "color": "#d9c45a",
+   "food": true,
+   "prices": [
+    2,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "id": "ikan",
+   "nameMs": "Ikan",
+   "nameEn": "Fish",
+   "color": "#5aa6c9",
+   "food": true,
+   "prices": [
+    2,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "id": "kayu",
+   "nameMs": "Kayu",
+   "nameEn": "Timber",
+   "color": "#8a5a2b",
+   "food": false,
+   "prices": [
+    3,
+    4,
+    8,
+    11
+   ]
+  },
+  {
+   "id": "rempah",
+   "nameMs": "Rempah & Lada",
+   "nameEn": "Spices & Pepper",
+   "color": "#b5402a",
+   "food": false,
+   "prices": [
+    12,
+    9,
+    10,
+    13
+   ]
+  },
+  {
+   "id": "besi",
+   "nameMs": "Besi",
+   "nameEn": "Iron",
+   "color": "#6f6f7a",
+   "food": false,
+   "prices": [
+    9,
+    10,
+    15,
+    18
+   ]
+  },
+  {
+   "id": "timah",
+   "nameMs": "Bijih Timah",
+   "nameEn": "Tin",
+   "color": "#b8bcc4",
+   "food": false,
+   "prices": [
+    10,
+    14,
+    18,
+    22
+   ]
+  },
+  {
+   "id": "getah",
+   "nameMs": "Getah",
+   "nameEn": "Rubber",
+   "color": "#e8e0c8",
+   "food": false,
+   "prices": [
+    -1,
+    12,
+    14,
+    16
+   ]
+  },
+  {
+   "id": "sawit",
+   "nameMs": "Minyak Sawit",
+   "nameEn": "Palm Oil",
+   "color": "#e07b1f",
+   "food": false,
+   "prices": [
+    -1,
+    -1,
+    16,
+    21
+   ]
+  },
+  {
+   "id": "barang",
+   "nameMs": "Barangan Buatan",
+   "nameEn": "Manufactured Goods",
+   "color": "#a77b4f",
+   "food": false,
+   "prices": [
+    6,
+    9,
+    15,
+    20
+   ]
+  },
+  {
+   "id": "elektronik",
+   "nameMs": "Elektronik",
+   "nameEn": "Electronics",
+   "color": "#3e8e7e",
+   "food": false,
+   "prices": [
+    -1,
+    -1,
+    26,
+    30
+   ]
+  },
+  {
+   "id": "digital",
+   "nameMs": "Perkhidmatan Digital",
+   "nameEn": "Digital Services",
+   "color": "#7a5af5",
+   "food": false,
+   "prices": [
+    -1,
+    -1,
+    -1,
+    40
+   ]
+  }
+ ]
+}

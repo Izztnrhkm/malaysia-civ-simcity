@@ -1,0 +1,388 @@
+{
+ "items": [
+  {
+   "id": "tun_perak",
+   "name": "Tun Perak",
+   "titleMs": "Bendahara Melaka",
+   "titleEn": "Bendahara (chief minister) of Melaka",
+   "life": "d. 1498",
+   "eras": [
+    1
+   ],
+   "cost": 600,
+   "upkeep": 2,
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.1,
+    "research": 0,
+    "culture": 0,
+    "happiness": 2,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0.05
+   },
+   "bonusMs": "+10% cukai, +2 kebahagiaan, hubungan dagang lebih cepat",
+   "bonusEn": "+10% taxes, +2 happiness, faster trade relations",
+   "bioMs": "Bendahara Kesultanan Melaka dari 1456 hingga wafat pada 1498, berkhidmat di bawah empat sultan. Beliau memimpin pertahanan menentang Siam dan dianggap pembina kemuncak kuasa Melaka; kematiannya sering dilihat sebagai permulaan kemerosotan kesultanan.",
+   "bioEn": "Bendahara of the Melaka Sultanate from 1456 until his death in 1498, serving four sultans. He led the defence against Siam and is seen as the architect of Melaka at its height; his death is often taken as the start of the sultanate’s decline.",
+   "sources": [
+    "https://www.britannica.com/biography/Tun-Perak",
+    "https://en.wikipedia.org/wiki/Tun_Perak"
+   ]
+  },
+  {
+   "id": "tun_sri_lanang",
+   "name": "Tun Sri Lanang",
+   "titleMs": "Bendahara Johor, penyusun Sulalatus Salatin",
+   "titleEn": "Bendahara of Johor, compiler of the Sulalatus Salatin",
+   "life": "16th–17th c.",
+   "eras": [
+    1,
+    2
+   ],
+   "cost": 700,
+   "upkeep": 2,
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.05,
+    "culture": 0.25,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+25% budaya, +5% ilmu",
+   "bonusEn": "+25% culture, +5% research",
+   "bioMs": "Bendahara Johor yang dikaitkan dengan penyusunan Sulalatus Salatin (Sejarah Melayu), riwayat kesultanan Melaka. Tarikh dan peranannya dipertikaikan: ada sumber menyebut 1612, ada yang menyebut beliau menyiapkannya ketika ditawan di Aceh (1614–1615), dan sesetengah sarjana melihatnya sebagai penyunting naskhah yang lebih awal.",
+   "bioEn": "Bendahara of Johor associated with the Sulalatus Salatin (Malay Annals), the chronicle of the Melaka sultanate. Dates and role are disputed: some sources give 1612, others say he finished it in captivity in Aceh (1614–1615), and some scholars see him as the editor of earlier texts.",
+   "sources": [
+    "https://eresources.nlb.gov.sg/infopedia/articles/SIP_1086_2006-08-03.html"
+   ]
+  },
+  {
+   "id": "long_jaafar",
+   "name": "Long Jaafar",
+   "titleMs": "Pembesar Larut",
+   "titleEn": "Malay chief of Larut",
+   "life": "d. 1857",
+   "eras": [
+    2
+   ],
+   "cost": 2200,
+   "upkeep": 5,
+   "effects": {
+    "production": [
+     {
+      "key": "timah",
+      "value": 0.3
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+30% pengeluaran bijih timah",
+   "bonusEn": "+30% tin output",
+   "bioMs": "Pembesar Melayu yang dikreditkan dengan penemuan bijih timah di Larut pada 1848 (walaupun orang Melayu telah lama mendulang timah aluvium di situ). Beliau membawa pelombong Cina dari Pulau Pinang, mencetuskan ledakan perlombongan Larut.",
+   "bioEn": "Malay chief credited with finding tin in Larut in 1848 (though Malays had long panned alluvial tin there). He brought Chinese miners from Penang, sparking the Larut mining boom.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Long_Jaafar"
+   ]
+  },
+  {
+   "id": "yap_ah_loy",
+   "name": "Yap Ah Loy",
+   "titleMs": "Kapitan Cina Kuala Lumpur",
+   "titleEn": "Kapitan Cina of Kuala Lumpur",
+   "life": "1837–1885",
+   "eras": [
+    2
+   ],
+   "cost": 2500,
+   "upkeep": 6,
+   "effects": {
+    "production": [
+     {
+      "key": "timah",
+      "value": 0.1
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0.15,
+    "upkeep": 0,
+    "construction": -0.15,
+    "relationGain": 0
+   },
+   "bonusMs": "+15% pertumbuhan, -15% kos pembinaan, +10% timah",
+   "bonusEn": "+15% growth, -15% construction cost, +10% tin",
+   "bioMs": "Pemimpin masyarakat Cina Kuala Lumpur yang banyak membangunkannya sebagai pusat perdagangan dan perlombongan. Beliau terkenal kerana membina semula bandar itu selepas musnah dalam Perang Klang. Meninggal dunia pada April 1885.",
+   "bioEn": "Leader of Kuala Lumpur’s Chinese community, largely responsible for developing it as a commercial and mining centre, and remembered for rebuilding the town after the Klang War. Died April 1885.",
+   "sources": [
+    "https://www.britannica.com/biography/Yap-Ah-Loy"
+   ]
+  },
+  {
+   "id": "ridley",
+   "name": "H. N. Ridley",
+   "titleMs": "Pengarah Taman Botani Singapura",
+   "titleEn": "Director, Singapore Botanic Gardens",
+   "life": "1855–1956",
+   "eras": [
+    2
+   ],
+   "cost": 2400,
+   "upkeep": 5,
+   "effects": {
+    "production": [
+     {
+      "key": "getah",
+      "value": 0.35
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+35% pengeluaran getah",
+   "bonusEn": "+35% rubber output",
+   "bioMs": "Pengarah pertama Taman Botani Singapura (1888–1912), digelar \"Mad Ridley\" atau \"Rubber Ridley\" kerana gigih memujuk peladang menanam getah. Beliau memperhalusi kaedah torehan \"tulang ikan\" (herringbone) pada 1890-an yang menuai susu getah tanpa merosakkan pokok.",
+   "bioEn": "First director of the Singapore Botanic Gardens (1888–1912), nicknamed \"Mad Ridley\" or \"Rubber Ridley\" for urging planters to grow rubber. In the 1890s he refined the herringbone tapping method that harvests latex without killing the tree.",
+   "sources": [
+    "https://eresources.nlb.gov.sg/infopedia/articles/SIP_518_2004-12-28.html",
+    "https://www.nparks.gov.sg/sbg/about/our-history/1888-ridley-and-the-malayan-rubber-industry-from-1896"
+   ]
+  },
+  {
+   "id": "zaba",
+   "name": "Za’ba",
+   "titleMs": "Pendeta bahasa Melayu",
+   "titleEn": "Malay language scholar",
+   "life": "1895–1973",
+   "eras": [
+    2,
+    3
+   ],
+   "cost": 3000,
+   "upkeep": 8,
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0.15,
+    "culture": 0.15,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+15% ilmu, +15% budaya",
+   "bonusEn": "+15% research, +15% culture",
+   "bioMs": "Zainal Abidin bin Ahmad, penulis dan ahli bahasa yang karya tatabahasanya Pelita Bahasa Melayu menjadi rujukan utama pembelajaran bahasa Melayu. Tarikh terbitan awalnya berbeza antara sumber (1936 atau 1948).",
+   "bioEn": "Zainal Abidin bin Ahmad, writer and linguist whose grammar Pelita Bahasa Melayu became the standard reference for learning Malay. Sources differ on its first publication date (1936 or 1948).",
+   "sources": [
+    "https://umlibguides.um.edu.my/zaaba",
+    "https://en.wikipedia.org/wiki/Zainal_Abidin_Ahmad_(writer)"
+   ]
+  },
+  {
+   "id": "tun_razak",
+   "name": "Tun Abdul Razak",
+   "titleMs": "Perdana Menteri kedua, bapa pembangunan luar bandar",
+   "titleEn": "Second Prime Minister, father of rural development",
+   "life": "1922–1976",
+   "eras": [
+    3
+   ],
+   "cost": 9000,
+   "upkeep": 18,
+   "effects": {
+    "production": [
+     {
+      "key": "sawit",
+      "value": 0.25
+     },
+     {
+      "key": "padi",
+      "value": 0.15
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0.1,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+25% sawit, +15% padi, +10% pertumbuhan",
+   "bonusEn": "+25% palm oil, +15% rice, +10% growth",
+   "bioMs": "Sebagai Timbalan Perdana Menteri dan Menteri Pembangunan Luar Bandar beliau memacu tanah rancangan FELDA (ditubuhkan 1956); sebagai Perdana Menteri (1970–1976) beliau melancarkan Dasar Ekonomi Baru.",
+   "bioEn": "As Deputy Prime Minister and Minister of Rural Development he drove the FELDA land schemes (founded 1956); as Prime Minister (1970–1976) he launched the New Economic Policy.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Abdul_Razak_Hussein"
+   ]
+  },
+  {
+   "id": "lim_chong_eu",
+   "name": "Lim Chong Eu",
+   "titleMs": "Ketua Menteri Pulau Pinang",
+   "titleEn": "Chief Minister of Penang",
+   "life": "1919–2010",
+   "eras": [
+    3,
+    4
+   ],
+   "cost": 11000,
+   "upkeep": 22,
+   "effects": {
+    "production": [
+     {
+      "key": "elektronik",
+      "value": 0.25
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0.1,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0,
+    "happiness": 0,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+25% elektronik, +10% kapasiti eksport",
+   "bonusEn": "+25% electronics, +10% export capacity",
+   "bioMs": "Ketua Menteri Pulau Pinang 1969–1990. Beliau membuka Zon Perindustrian Bebas Bayan Lepas pada 1972, yang menarik kilang semikonduktor antarabangsa dan menjadikan Pulau Pinang hab elektronik.",
+   "bioEn": "Chief Minister of Penang 1969–1990. He opened the Bayan Lepas Free Industrial Zone in 1972, drawing international semiconductor plants and turning Penang into an electronics hub.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Lim_Chong_Eu",
+    "https://en.wikipedia.org/wiki/Bayan_Lepas_Free_Industrial_Zone"
+   ]
+  },
+  {
+   "id": "ungku_aziz",
+   "name": "Ungku Aziz",
+   "titleMs": "Profesor Diraja ekonomi, pejuang koperasi",
+   "titleEn": "Royal Professor of economics, co-operative pioneer",
+   "life": "1922–2020",
+   "eras": [
+    3,
+    4
+   ],
+   "cost": 10000,
+   "upkeep": 20,
+   "effects": {
+    "production": [
+     {
+      "key": "padi",
+      "value": 0.15
+     }
+    ],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0.05,
+    "research": 0,
+    "culture": 0,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+3 kebahagiaan, +5% cukai, +15% padi",
+   "bonusEn": "+3 happiness, +5% taxes, +15% rice",
+   "bioMs": "Ahli ekonomi yang mengkaji kemiskinan luar bandar, Naib Canselor Universiti Malaya dan presiden ANGKASA (gerakan koperasi) sejak 1971. Cadangannya membawa kepada tabung simpanan bakal haji yang kemudian menjadi Tabung Haji (tarikh berbeza antara sumber: 1959, 1962 atau 1969).",
+   "bioEn": "Economist of rural poverty, Vice-Chancellor of the University of Malaya and president of ANGKASA (the co-operative movement) from 1971. His proposal led to the pilgrims’ savings fund that became Tabung Haji (sources differ on the date: 1959, 1962 or 1969).",
+   "sources": [
+    "https://www.merdekaaward.my/past-recipients/for-the-awards/2008/allahyarham-royal-professor-ungku-abdul-aziz-bin-ungku-abdul-hamid",
+    "https://www.thenews.coop/obituary-ungku-a-aziz-leading-light-of-the-malaysian-co-op-movement/"
+   ]
+  },
+  {
+   "id": "p_ramlee",
+   "name": "P. Ramlee",
+   "titleMs": "Seniman Agung",
+   "titleEn": "Film-maker, actor and composer",
+   "life": "1929–1973",
+   "eras": [
+    3,
+    4
+   ],
+   "cost": 8000,
+   "upkeep": 16,
+   "effects": {
+    "production": [],
+    "productionAll": 0,
+    "exportCap": 0,
+    "exportPrice": 0,
+    "tax": 0,
+    "research": 0,
+    "culture": 0.35,
+    "happiness": 3,
+    "pollution": 0,
+    "growth": 0,
+    "upkeep": 0,
+    "construction": 0,
+    "relationGain": 0
+   },
+   "bonusMs": "+35% budaya, +3 kebahagiaan",
+   "bonusEn": "+35% culture, +3 happiness",
+   "bioMs": "Pelakon, pengarah, penyanyi dan komposer yang filem dan lagunya menjadi warisan budaya popular Malaysia dan Singapura.",
+   "bioEn": "Actor, director, singer and composer whose films and songs became a shared popular-culture heritage of Malaysia and Singapore.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/P._Ramlee"
+   ]
+  }
+ ]
+}

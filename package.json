@@ -20,7 +20,8 @@
     "models:node": "vite-node scripts/generate-glb.ts",
     "models:blender": "npm run models:spec && blender --background --factory-startup --python scripts/generate_blender_models.py -- --spec scripts/model_spec.json --out public/models",
     "e2e:smoke": "vite build && node e2e/smoke.mjs",
-    "e2e:soak": "vite build && node e2e/soak3d.mjs"
+    "e2e:soak": "vite build && node e2e/soak3d.mjs",
+    "unity:data": "vite-node scripts/export-unity-data.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
