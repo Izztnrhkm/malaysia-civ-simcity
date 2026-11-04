@@ -75,7 +75,13 @@ namespace TamadunKota.EditorTools
                 Step("Scene", 0.8f); BuildScene(catalog, mats);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-                string summary = $"Built {catalog.buildings.Count} buildings, {catalog.zoneLots.Count} zone lots, " +
+                int lfsPointers = CountLfsPointers(out int artFiles);
+                string summary = (lfsPointers > 0
+                        ? $"WARNING: {lfsPointers} of {artFiles} model/texture files in Assets/Art are Git LFS placeholders, not the real files, " +
+                          "so the game uses greybox cubes. In a terminal in the repository folder run:\n  git lfs install\n  git lfs pull\n" +
+                          "then run this menu again. (A GitHub 'Download ZIP' does not include LFS files: clone with git instead.)\n\n"
+                        : "") +
+                                 $"Built {catalog.buildings.Count} buildings, {catalog.zoneLots.Count} zone lots, " +
                                  $"{prefabs.Count} LOD prefabs ({prefabs.Values.Count(p => p.fromModel)} from Blender models).\n" +
                                  $"Render pipeline: {(urp != null ? urp.name : "none")}, SRP Batcher on, Linear colour space.\n" +
                                  $"Scene saved to {ScenePath}. Press Play.";
@@ -137,6 +143,28 @@ namespace TamadunKota.EditorTools
                 EditorUtility.ClearProgressBar();
             }
             AssetDatabase.Refresh();
+        }
+
+        /// <summary>Counts files under Assets/Art that are still Git LFS pointer stubs (the clone skipped LFS).</summary>
+        public static int CountLfsPointers(out int total)
+        {
+            int pointers = 0;
+            total = 0;
+            if (!Directory.Exists("Assets/Art")) return 0;
+            var buffer = new byte[64];
+            foreach (var path in Directory.GetFiles("Assets/Art", "*.*", SearchOption.AllDirectories))
+            {
+                string ext = Path.GetExtension(path).ToLowerInvariant();
+                if (ext != ".fbx" && ext != ".png") continue;
+                total++;
+                using (var fs = File.OpenRead(path))
+                {
+                    int n = fs.Read(buffer, 0, buffer.Length);
+                    if (n > 20 && System.Text.Encoding.ASCII.GetString(buffer, 0, n).StartsWith("version https://git-lfs", StringComparison.Ordinal))
+                        pointers++;
+                }
+            }
+            return pointers;
         }
 
         static void Step(string what, float progress)
@@ -759,7 +787,7 @@ namespace TamadunKota.EditorTools
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             var scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1920, 1080);
+            scaler.referenceResolution = new Vector2(1600, 900);
             scaler.matchWidthOrHeight = 0.5f;
             var button = CreateArtToggleButton(canvasGo.transform, artToggle);
             var ui = canvasGo.AddComponent<UIManager>();

@@ -38,7 +38,7 @@ namespace TamadunKota.Systems
         public Color buttonColor = new Color(0.16f, 0.22f, 0.19f, 1f);
         public Color accentColor = new Color(0.93f, 0.72f, 0.25f, 1f);
         public Color textColor = new Color(0.95f, 0.93f, 0.86f, 1f);
-        public int fontSize = 18;
+        public int fontSize = 20;
 
         Font font;
         Text resourceText, dateText, statusText, messageText, inspectorText, artToggleLabel, researchStatus;
@@ -162,8 +162,15 @@ namespace TamadunKota.Systems
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
                 var scaler = go.GetComponent<CanvasScaler>();
                 scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                scaler.referenceResolution = new Vector2(1920, 1080);
+                scaler.referenceResolution = new Vector2(1600, 900);
                 scaler.matchWidthOrHeight = 0.5f;
+            }
+            var existingScaler = canvas.GetComponent<CanvasScaler>();
+            if (existingScaler != null)
+            {
+                existingScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                existingScaler.referenceResolution = new Vector2(1600, 900);
+                existingScaler.matchWidthOrHeight = 0.5f;
             }
             var root = (RectTransform)canvas.transform;
 
@@ -519,7 +526,7 @@ namespace TamadunKota.Systems
             for (int i = 0; i < db.Buildings.Length; i++)
             {
                 var rec = db.Buildings[i];
-                if (rec.startingBuilding || !sim.IsUnlocked(i)) continue;
+                if (!sim.IsUnlocked(i)) continue;
                 if (rec.obsoleteAfterEra > 0 && sim.CurrentEra > rec.obsoleteAfterEra) continue;
                 var data = catalog.Find(rec.id);
                 if (data == null) continue;
@@ -571,6 +578,8 @@ namespace TamadunKota.Systems
                 sb.Append("<b>").Append(t.ToString()).Append("</b>\n");
                 sb.Append(T("Kesuburan ", "Fertility ")).Append(sim.Map.Fertility[i]).Append("   ").Append(T("Timah ", "Tin ")).Append(sim.Map.Tin[i]);
             }
+            sb.Append("\n\n<size=").Append(fontSize - 6).Append(">").Append(T("Petak ", "Cell ")).Append(x).Append(", ").Append(y)
+              .Append("  (").Append(((TerrainType)sim.Map.Terrain[i]).ToString()).Append(")</size>");
             inspectorText.supportRichText = true;
             inspectorText.text = sb.ToString();
             inspectorPanel.gameObject.SetActive(true);

@@ -104,6 +104,39 @@ namespace TamadunKota.Core
             }
         }
 
+        void OnEnable()
+        {
+            if (GameRoot.Instance != null) GameRoot.Instance.SimulationChanged += FrameSettlement;
+        }
+
+        void OnDisable()
+        {
+            if (GameRoot.Instance != null) GameRoot.Instance.SimulationChanged -= FrameSettlement;
+        }
+
+        void Start()
+        {
+            if (GameRoot.Instance != null && GameRoot.Instance.Sim != null) FrameSettlement(GameRoot.Instance.Sim);
+        }
+
+        /// <summary>
+        /// Start over the river mouth, where the first settlement belongs: the pivot sits a few cells
+        /// inland of the mouth so the coast, the river and open land are all in view.
+        /// </summary>
+        public void FrameSettlement(TamadunKota.Simulation.GameSimulation sim)
+        {
+            if (sim == null) return;
+            var map = sim.Map;
+            var grid = sim.City.Grid;
+            int dx = map.MouthX < map.Width / 2 ? 8 : -8;
+            int cx = Mathf.Clamp(map.MouthX + dx, 0, map.Width - 1);
+            grid.CellCenter(cx, map.MouthY, out float wx, out float wz);
+            FocusOn(new Vector3(wx, 0, wz), true);
+            targetDistance = distance = Mathf.Clamp(170f, minDistance, maxDistance);
+            targetPitch = pitch = Mathf.Clamp(55f, minPitch, maxPitch);
+            SaveHome();
+        }
+
         void Update()
         {
             float dt = Time.unscaledDeltaTime;
