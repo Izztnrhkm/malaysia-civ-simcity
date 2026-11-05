@@ -1349,6 +1349,10 @@
    "value": "Era"
   },
   {
+   "key": "unity.panel.eraTimeline",
+   "value": "Era & Garis Masa"
+  },
+  {
    "key": "unity.top.advisors",
    "value": "Penasihat"
   },

@@ -293,6 +293,7 @@ const UNITY_STRINGS: Record<string, { ms: string; en: string }> = {
   'unity.menu.noSaves': { ms: 'Tiada permainan disimpan', en: 'No saved games' },
   'unity.top.research': { ms: 'Kajian', en: 'Research' },
   'unity.top.era': { ms: 'Era', en: 'Era' },
+  'unity.panel.eraTimeline': { ms: 'Era & Garis Masa', en: 'Era & Timeline' },
   'unity.top.advisors': { ms: 'Penasihat', en: 'Advisors' },
   'unity.settings.volume': { ms: 'Kelantangan utama', en: 'Master volume' },
   'unity.settings.music': { ms: 'Muzik', en: 'Music' },

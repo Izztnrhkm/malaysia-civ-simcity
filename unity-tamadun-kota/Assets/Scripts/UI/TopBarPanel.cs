@@ -8,7 +8,8 @@ namespace TamadunKota.UI
 {
     /// <summary>
     /// Top bar (resources on the left, population / happiness / date / era on the right) and the
-    /// controls row under it: speed, research, era advance, save/load, language, the
+    /// controls row under it: speed, the window buttons (research, era & timeline, economy,
+    /// advisors, save/load, menu), language, the
     /// "Greybox / Full 3D Art" toggle and the demand / tax status.
     /// </summary>
     public sealed class TopBarPanel : HudPanel
@@ -37,7 +38,7 @@ namespace TamadunKota.UI
             Kit.Btn(bar, ">>>", () => ctx.Time?.SetSpeed(3), 60);
             Kit.Spacer(bar, 16);
             Kit.Btn(bar, () => T("Kajian", "Research"), () => ctx.Research.Toggle(), 130);
-            Kit.Btn(bar, () => T("Maju Era", "Advance Era"), AdvanceEra, 150);
+            Kit.Btn(bar, () => Loc.Get("unity.top.era"), () => ctx.EraWindow.Toggle(), 80);
             Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
             Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
@@ -94,26 +95,6 @@ namespace TamadunKota.UI
             sb.Append("R ").Append(((int)s.demandR).ToString()).Append("  C ").Append(((int)s.demandC).ToString()).Append("  I ").Append(((int)s.demandI).ToString());
             if (sim != null) sb.Append("   ").Append(T("Cukai ", "Tax ")).Append(sim.TaxR.ToString("0")).Append('/').Append(sim.TaxC.ToString("0")).Append('/').Append(sim.TaxI.ToString("0")).Append('%');
             statusText.text = sb.ToString();
-        }
-
-        void AdvanceEra()
-        {
-            var sim = Sim;
-            if (sim == null) return;
-            if (ctx.EraManager != null ? ctx.EraManager.TryAdvance() : sim.AdvanceEra()) return;
-            sb.Clear();
-            sb.Append(T("Belum cukup syarat: ", "Requirements not met: "));
-            foreach (var r in sim.Era.Requirements(sim.Tech, sim.Economy.Population, sim.City))
-            {
-                if (r.met) continue;
-                string name = r.id;
-                int ri = sim.Db.ResearchIndex(r.id);
-                if (ri >= 0) name = T(sim.Db.Research[ri].nameMs, sim.Db.Research[ri].nameEn);
-                else { var b = sim.Db.Building(r.id); if (b != null) name = T(b.nameMs, b.nameEn); }
-                if (r.kind == "population") name = T("Penduduk ", "Population ") + HudFormat.Fmt(r.current) + "/" + HudFormat.Fmt(r.target);
-                sb.Append(name).Append("; ");
-            }
-            ctx.ShowMessage(sb.ToString());
         }
     }
 }

@@ -1349,6 +1349,10 @@
    "value": "Era"
   },
   {
+   "key": "unity.panel.eraTimeline",
+   "value": "Era & Timeline"
+  },
+  {
    "key": "unity.top.advisors",
    "value": "Advisors"
   },
