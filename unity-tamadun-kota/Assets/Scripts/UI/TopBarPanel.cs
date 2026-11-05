@@ -41,6 +41,7 @@ namespace TamadunKota.UI
             Kit.Btn(bar, () => Loc.Get("unity.top.era"), () => ctx.EraWindow.Toggle(), 80);
             Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
+            Kit.Btn(bar, () => Loc.Get("panel.encyclopedia"), () => ctx.Sejarahpedia.Toggle(), 140);
             Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
             Kit.Btn(bar, () => "BM / EN", () => GameRoot.Instance?.SetLanguage(!Malay), 110);
             Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 80);

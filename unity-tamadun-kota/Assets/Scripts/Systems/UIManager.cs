@@ -184,6 +184,8 @@ namespace TamadunKota.Systems
             Add(ctx.Research = new ResearchPanel(ctx), root);
             Add(ctx.SaveLoadMenu = new SaveLoadPanel(ctx), root);
             Add(ctx.EraWindow = new EraTimelinePanel(ctx), root);
+            Add(ctx.Sejarahpedia = new SejarahpediaPanel(ctx), root);
+            ctx.OpenEntry = ctx.Sejarahpedia.OpenAt;
             Add(ctx.EconomyWindow = new EconomyPanel(ctx), root);
             Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
@@ -224,7 +226,11 @@ namespace TamadunKota.Systems
         {
             ctx.Palette.Invalidate();
             var e = ctx.Sim != null ? ctx.Sim.EraDef : null;
-            if (e != null) ShowMessage(T("Era baharu: " + e.nameMs, "New era: " + e.nameEn));
+            if (e != null)
+            {
+                ShowMessage(T("Era baharu: " + e.nameMs, "New era: " + e.nameEn));
+                if (ctx.Sim.Db.Entry(e.entryId) != null) ctx.Sejarahpedia.OpenAt(e.entryId);   // read about the new era
+            }
         }
 
         void OnAchievement(string id) => ShowMessage(T("Pencapaian: ", "Achievement: ") + id);

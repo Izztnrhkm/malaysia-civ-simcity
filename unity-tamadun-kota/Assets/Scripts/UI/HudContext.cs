@@ -46,6 +46,7 @@ namespace TamadunKota.UI
         public AdvisorsPanel Advisors;
         public EconomyPanel EconomyWindow;
         public EraTimelinePanel EraWindow;
+        public SejarahpediaPanel Sejarahpedia;
 
         public HudContext(HudKit kit) { Kit = kit; }
 

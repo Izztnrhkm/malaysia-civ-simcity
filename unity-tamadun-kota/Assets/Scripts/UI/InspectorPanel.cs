@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 namespace TamadunKota.UI
 {
-    /// <summary>Right-hand inspector for the clicked cell: building (with its Sejarahpedia summary), zone, transport or terrain.</summary>
+    /// <summary>
+    /// Right-hand inspector for the clicked cell: building (with its Sejarahpedia summary and a
+    /// button to read the full entry), zone, transport or terrain.
+    /// </summary>
     public sealed class InspectorPanel : HudPanel
     {
         static readonly string[] ZoneMs = { "", "Kediaman", "Perniagaan", "Perindustrian" };
@@ -13,6 +16,8 @@ namespace TamadunKota.UI
 
         RectTransform inspectorPanel;
         Text inspectorText;
+        Button readButton;
+        string entryId;
         readonly StringBuilder sb = new StringBuilder(256);
 
         public InspectorPanel(HudContext context) : base(context) { }
@@ -21,8 +26,12 @@ namespace TamadunKota.UI
         {
             inspectorPanel = Kit.Panel(root, "Inspector", new Vector2(1, 1), new Vector2(1, 1), new Vector2(-460, -520), new Vector2(-8, -124));
             inspectorText = Kit.Label(inspectorPanel, "Text", FontSize - 3, TextAnchor.UpperLeft);
-            HudKit.Stretch(inspectorText.rectTransform, Vector2.zero, Vector2.one, new Vector2(12, 12), new Vector2(-12, -12));
+            HudKit.Stretch(inspectorText.rectTransform, Vector2.zero, Vector2.one, new Vector2(12, 56), new Vector2(-12, -12));
             inspectorText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            readButton = Kit.Btn(inspectorPanel, "", () => { if (entryId != null) ctx.OpenEntry?.Invoke(entryId); }, 0);
+            HudKit.Stretch((RectTransform)readButton.transform, Vector2.zero, new Vector2(1, 0), new Vector2(12, 10), new Vector2(-12, 48));
+            Kit.Localize(readButton.GetComponentInChildren<Text>(), () => "> " + Loc.Get("info.readMore"));
+            readButton.gameObject.SetActive(false);
             inspectorPanel.gameObject.SetActive(false);
         }
 
@@ -35,6 +44,7 @@ namespace TamadunKota.UI
             if (!g.InBounds(x, y)) { inspectorPanel.gameObject.SetActive(false); return; }
             int i = g.Index(x, y);
             sb.Clear();
+            entryId = null;
             int id = city.BuildingAt[i];
             if (id >= 0)
             {
@@ -46,6 +56,7 @@ namespace TamadunKota.UI
                     sb.Append(T(rec.descMs, rec.descEn)).Append("\n\n");
                     sb.Append(T("Pekerja: ", "Jobs: ")).Append(rec.jobs).Append("   ").Append(T("Kecekapan: ", "Efficiency: ")).Append((int)(b.efficiency * 100)).Append("%\n\n");
                     var entry = sim.Db.Entry(rec.entryId);
+                    if (entry != null) entryId = entry.id;
                     if (entry != null) sb.Append("<b>Sejarahpedia: ").Append(T(entry.titleMs, entry.titleEn)).Append("</b>\n").Append(T(entry.summaryMs, entry.summaryEn));
                 }
             }
@@ -69,6 +80,7 @@ namespace TamadunKota.UI
               .Append("  (").Append(((TerrainType)sim.Map.Terrain[i]).ToString()).Append(")</size>");
             inspectorText.supportRichText = true;
             inspectorText.text = sb.ToString();
+            readButton.gameObject.SetActive(entryId != null && ctx.OpenEntry != null);
             inspectorPanel.gameObject.SetActive(true);
         }
     }
