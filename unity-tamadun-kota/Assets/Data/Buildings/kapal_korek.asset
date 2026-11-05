@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: kapal_korek
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: kapal_korek
+  kind: 0
+  era: 2
+  category: production
+  zoneDensity: 0
+  nameMs: Kapal Korek
+  descriptionMs: Kapal korek baldi raksasa yang mengorek bijih dari kolam lombong.
+  sejarahpediaTitleMs: Kapal Korek Bijih
+  sejarahpediaMs: Kapal korek baldi raksasa yang terapung di kolam lombong.
+  nameEn: Tin Dredge
+  descriptionEn: A giant bucket dredge scooping ore from a mining pond.
+  sejarahpediaTitleEn: Tin Dredges
+  sejarahpediaEn: Giant bucket dredges floating in mining ponds.
+  footprint: 16
+  cost: 4000
+  upkeep: 14
+  jobs: 25
+  yields:
+  - resource: 5
+    amountPerTick: 16
+  inputs: []
+  placement: tin
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 5284408977999904877, guid: cc189ddcd070d7c4bbeda6e6a9e4245c, type: 3}
+  Era2Mesh: {fileID: 5284408977999904877, guid: cc189ddcd070d7c4bbeda6e6a9e4245c, type: 3}
+  Era3Mesh: {fileID: 5284408977999904877, guid: cc189ddcd070d7c4bbeda6e6a9e4245c, type: 3}
+  Era4Mesh: {fileID: 5284408977999904877, guid: cc189ddcd070d7c4bbeda6e6a9e4245c, type: 3}
+  GreyboxPrefab: {fileID: 5015835025863817407, guid: 660ef05516851cd4eb1aedb554cddaea, type: 3}

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: pendulang
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: pendulang
+  kind: 0
+  era: 1
+  category: production
+  zoneDensity: 0
+  nameMs: Pendulang Bijih
+  descriptionMs: Mendulang bijih timah aluvium dengan dulang kayu.
+  sejarahpediaTitleMs: Bijih Timah
+  sejarahpediaMs: Logam yang menjadi mata wang Melaka dan tunjang ekonomi kolonial.
+  nameEn: Tin Panning (Dulang)
+  descriptionEn: Panning alluvial tin with wooden pans (dulang).
+  sejarahpediaTitleEn: Tin
+  sejarahpediaEn: "The metal that served as Melaka\u2019s currency and the backbone
+    of the colonial economy."
+  footprint: 4
+  cost: 160
+  upkeep: 0.8
+  jobs: 8
+  yields:
+  - resource: 5
+    amountPerTick: 2
+  inputs: []
+  placement: tin
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 2602287156430718460, guid: c11c0fd878b5fec42a512f559830709c, type: 3}
+  Era2Mesh: {fileID: 2602287156430718460, guid: c11c0fd878b5fec42a512f559830709c, type: 3}
+  Era3Mesh: {fileID: 2602287156430718460, guid: c11c0fd878b5fec42a512f559830709c, type: 3}
+  Era4Mesh: {fileID: 2602287156430718460, guid: c11c0fd878b5fec42a512f559830709c, type: 3}
+  GreyboxPrefab: {fileID: 7658692174889179149, guid: cb2bac4a656fc0046ba6fe1fc9fa107f, type: 3}

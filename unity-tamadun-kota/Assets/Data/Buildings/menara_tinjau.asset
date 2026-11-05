@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: menara_tinjau
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: menara_tinjau
+  kind: 0
+  era: 1
+  category: service
+  zoneDensity: 0
+  nameMs: Menara Tinjau
+  descriptionMs: Pengawal kuala memerhati lanun dan kapal yang tiba. Mengurangkan
+    serangan lanun.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Watchtower
+  descriptionEn: Guards watch the river mouth for pirates and arriving ships. Reduces
+    pirate raids.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 180
+  upkeep: 1
+  jobs: 3
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 1981930389316659341, guid: d1029f6498cf45c4f8d7e6bb9203f152, type: 3}
+  Era2Mesh: {fileID: 1981930389316659341, guid: d1029f6498cf45c4f8d7e6bb9203f152, type: 3}
+  Era3Mesh: {fileID: 1981930389316659341, guid: d1029f6498cf45c4f8d7e6bb9203f152, type: 3}
+  Era4Mesh: {fileID: 1981930389316659341, guid: d1029f6498cf45c4f8d7e6bb9203f152, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

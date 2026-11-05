@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: lombong
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: lombong
+  kind: 0
+  era: 2
+  category: production
+  zoneDensity: 0
+  nameMs: Lombong Bijih Timah
+  descriptionMs: Lombong dedah yang dikendalikan kongsi pelombong.
+  sejarahpediaTitleMs: Bijih Timah
+  sejarahpediaMs: Logam yang menjadi mata wang Melaka dan tunjang ekonomi kolonial.
+  nameEn: Open-cast Tin Mine
+  descriptionEn: An open-cast mine run by mining kongsi.
+  sejarahpediaTitleEn: Tin
+  sejarahpediaEn: "The metal that served as Melaka\u2019s currency and the backbone
+    of the colonial economy."
+  footprint: 8
+  cost: 900
+  upkeep: 4
+  jobs: 30
+  yields:
+  - resource: 5
+    amountPerTick: 6
+  inputs: []
+  placement: tin
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 2976067470219844142, guid: 117498f68fda18b4c9edf2926aef78b4, type: 3}
+  Era2Mesh: {fileID: 2976067470219844142, guid: 117498f68fda18b4c9edf2926aef78b4, type: 3}
+  Era3Mesh: {fileID: 2976067470219844142, guid: 117498f68fda18b4c9edf2926aef78b4, type: 3}
+  Era4Mesh: {fileID: 2976067470219844142, guid: 117498f68fda18b4c9edf2926aef78b4, type: 3}
+  GreyboxPrefab: {fileID: 8113584703222351717, guid: 2be4b07332e057949b515f2f5613d957, type: 3}

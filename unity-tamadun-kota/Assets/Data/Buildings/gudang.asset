@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: gudang
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: gudang
+  kind: 0
+  era: 1
+  category: trade
+  zoneDensity: 0
+  nameMs: Gudang
+  descriptionMs: Menyimpan barang dagangan sementara menunggu kapal.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Warehouse (Gudang)
+  descriptionEn: Stores trade goods while waiting for ships.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 250
+  upkeep: 1.5
+  jobs: 6
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 1
+  Era1Mesh: {fileID: 9188764980989837989, guid: c32f2e605a2439940bf820cbfae32678, type: 3}
+  Era2Mesh: {fileID: 1000169626350256697, guid: 12167fb41babe954dbc60c2989fcf0a0, type: 3}
+  Era3Mesh: {fileID: 2947920626588149596, guid: 8c89798a417e78e46b629cf4eed14c35, type: 3}
+  Era4Mesh: {fileID: 2947920626588149596, guid: 8c89798a417e78e46b629cf4eed14c35, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: menara_118
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: menara_118
+  kind: 0
+  era: 4
+  category: landmark
+  zoneDensity: 0
+  nameMs: Menara Mega 118
+  descriptionMs: Pencakar langit bersegi berlian dengan menara puncak, bermotif corak
+    songket.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Megatower 118
+  descriptionEn: A faceted, diamond-patterned skyscraper with a spire, inspired by
+    songket weaving.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 16
+  cost: 300000
+  upkeep: 100
+  jobs: 600
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 1
+  upgradable: 0
+  Era1Mesh: {fileID: 5004442608205281312, guid: 8543310cea810294cb15ecc41e2196bd, type: 3}
+  Era2Mesh: {fileID: 5004442608205281312, guid: 8543310cea810294cb15ecc41e2196bd, type: 3}
+  Era3Mesh: {fileID: 5004442608205281312, guid: 8543310cea810294cb15ecc41e2196bd, type: 3}
+  Era4Mesh: {fileID: 5004442608205281312, guid: 8543310cea810294cb15ecc41e2196bd, type: 3}
+  GreyboxPrefab: {fileID: 670091409298727647, guid: 98e4529ec73cec3419552a8addbbbf3e, type: 3}

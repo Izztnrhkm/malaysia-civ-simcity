@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: loji_air
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: loji_air
+  kind: 0
+  era: 3
+  category: utility
+  zoneDensity: 0
+  nameMs: Loji Rawatan Air
+  descriptionMs: Air paip bersih untuk rumah dan kilang.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Water Treatment Plant
+  descriptionEn: Clean piped water for homes and factories.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 8
+  cost: 4000
+  upkeep: 9
+  jobs: 12
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 3502215605807382798, guid: ea04fb4cf93a2624d88ab39ac85e52dc, type: 3}
+  Era2Mesh: {fileID: 3502215605807382798, guid: ea04fb4cf93a2624d88ab39ac85e52dc, type: 3}
+  Era3Mesh: {fileID: 3502215605807382798, guid: ea04fb4cf93a2624d88ab39ac85e52dc, type: 3}
+  Era4Mesh: {fileID: 3502215605807382798, guid: ea04fb4cf93a2624d88ab39ac85e52dc, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

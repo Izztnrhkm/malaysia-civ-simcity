@@ -1,0 +1,1206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446b00abc5563834ea5d80582983a568, type: 3}
+  m_Name: TechCivicTree
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.TechCivicTreeSO
+  technologies:
+  - id: navigasi_monsun
+    isCivic: 0
+    era: 1
+    historicalDate: c. 1st millennium
+    cost: 25
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Navigasi Angin Monsun
+    nameEn: Monsoon Navigation
+    descriptionMs: Memahami pusingan angin monsun barat daya dan timur laut. +15%
+      kapasiti eksport.
+    descriptionEn: Mastering the south-west and north-east monsoon cycle. +15% export
+      capacity.
+    sejarahpediaEntry: monsun
+  - id: sistem_gudang
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 25
+    prerequisites: []
+    unlocksBuildings:
+    - gudang
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Gudang & Timbangan
+    nameEn: Warehousing & Weights
+    descriptionMs: Gudang dan sukatan piawai untuk perdagangan.
+    descriptionEn: Warehouses and standard measures for trade.
+    sejarahpediaEntry: 
+  - id: peleburan_besi
+    isCivic: 0
+    era: 1
+    historicalDate: 2nd c. AD
+    cost: 30
+    prerequisites: []
+    unlocksBuildings:
+    - relau_besi
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Peleburan Besi
+    nameEn: Iron Smelting
+    descriptionMs: Teknik relau seperti di Sungai Batu, Kedah.
+    descriptionEn: Furnace techniques like those at Sungai Batu, Kedah.
+    sejarahpediaEntry: sungai_batu
+  - id: pendulangan
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 35
+    prerequisites: []
+    unlocksBuildings:
+    - pendulang
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pendulangan Bijih
+    nameEn: Tin Panning
+    descriptionMs: Mendulang bijih timah aluvium di sungai.
+    descriptionEn: Panning alluvial tin from streams.
+    sejarahpediaEntry: timah
+  - id: pertanian_lada
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 35
+    prerequisites: []
+    unlocksBuildings:
+    - kebun_lada
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Penanaman Lada
+    nameEn: Pepper Cultivation
+    descriptionMs: Lada untuk pasaran rempah dunia.
+    descriptionEn: Pepper for the global spice market.
+    sejarahpediaEntry: 
+  - id: pengairan
+    isCivic: 0
+    era: 1
+    historicalDate: "\u2014"
+    cost: 40
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pengairan Sawah
+    nameEn: Paddy Irrigation
+    descriptionMs: Taliair dan batas sawah. +25% hasil padi.
+    descriptionEn: Channels and bunds. +25% rice yield.
+    sejarahpediaEntry: padi
+  - id: tulisan_jawi
+    isCivic: 0
+    era: 1
+    historicalDate: 14th c.
+    cost: 40
+    prerequisites: []
+    unlocksBuildings:
+    - madrasah
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Tulisan Jawi
+    nameEn: Jawi Script
+    descriptionMs: Bahasa Melayu ditulis dalam huruf Jawi; bahasa perdagangan rantau.
+    descriptionEn: "Malay written in Jawi; the region\u2019s trade language."
+    sejarahpediaEntry: jawi
+  - id: pembinaan_jong
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 60
+    prerequisites:
+    - navigasi_monsun
+    unlocksBuildings:
+    - limbungan
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pembinaan Kapal Jong
+    nameEn: Jong Shipbuilding
+    descriptionMs: Kapal besar berlapis papan untuk pelayaran jauh.
+    descriptionEn: Large multi-planked ships for long voyages.
+    sejarahpediaEntry: 
+  - id: mata_wang_timah
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 60
+    prerequisites:
+    - pendulangan
+    - sistem_gudang
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Mata Wang Timah
+    nameEn: Tin Currency
+    descriptionMs: Jongkong dan syiling timah sebagai mata wang. +10% cukai.
+    descriptionEn: Tin ingots and coins as currency. +10% taxes.
+    sejarahpediaEntry: timah
+  - id: ilmu_pelayaran
+    isCivic: 0
+    era: 1
+    historicalDate: 15th c.
+    cost: 90
+    prerequisites:
+    - pembinaan_jong
+    - tulisan_jawi
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Ilmu Falak & Pelayaran
+    nameEn: Astronomy & Seamanship
+    descriptionMs: Kompas, bintang dan peta laut. +15% eksport, +10% ilmu.
+    descriptionEn: Compass, stars and sea charts. +15% exports, +10% research.
+    sejarahpediaEntry: 
+  - id: perlombongan_timah
+    isCivic: 0
+    era: 2
+    historicalDate: 1848
+    cost: 120
+    prerequisites: []
+    unlocksBuildings:
+    - lombong
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Lombong Dedah
+    nameEn: Open-cast Mining
+    descriptionMs: Lombong berskala besar selepas penemuan bijih di Larut.
+    descriptionEn: Large-scale mining after the Larut tin discovery.
+    sejarahpediaEntry: larut
+  - id: kapal_wap
+    isCivic: 0
+    era: 2
+    historicalDate: 19th c.
+    cost: 140
+    prerequisites: []
+    unlocksBuildings:
+    - pelabuhan_dagang
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kapal Wap
+    nameEn: Steamships
+    descriptionMs: Kapal wap tidak lagi bergantung kepada angin monsun.
+    descriptionEn: Steamships no longer depend on the monsoon.
+    sejarahpediaEntry: 
+  - id: getah_para
+    isCivic: 0
+    era: 2
+    historicalDate: 1877
+    cost: 150
+    prerequisites: []
+    unlocksBuildings:
+    - estet_getah
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Getah Para
+    nameEn: "Par\xE1 Rubber"
+    descriptionMs: Anak pokok Hevea brasiliensis ditanam di Kuala Kangsar.
+    descriptionEn: Hevea brasiliensis seedlings planted at Kuala Kangsar.
+    sejarahpediaEntry: getah
+  - id: telegraf
+    isCivic: 0
+    era: 2
+    historicalDate: 19th c.
+    cost: 140
+    prerequisites: []
+    unlocksBuildings:
+    - pejabat_pos
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Telegraf
+    nameEn: Telegraph
+    descriptionMs: Berita harga komoditi tiba dalam beberapa jam.
+    descriptionEn: Commodity prices arrive within hours.
+    sejarahpediaEntry: 
+  - id: pendidikan
+    isCivic: 0
+    era: 2
+    historicalDate: 19th c.
+    cost: 150
+    prerequisites: []
+    unlocksBuildings:
+    - sekolah
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Persekolahan Formal
+    nameEn: Formal Schooling
+    descriptionMs: Sekolah Melayu, Cina, Tamil dan Inggeris.
+    descriptionEn: Malay, Chinese, Tamil and English schools.
+    sejarahpediaEntry: 
+  - id: kereta_api
+    isCivic: 0
+    era: 2
+    historicalDate: 1885
+    cost: 200
+    prerequisites:
+    - kapal_wap
+    unlocksBuildings:
+    - stesen
+    unlocksTransport:
+    - rail
+    unlocksPolicies: []
+    nameMs: Landasan Kereta Api
+    nameEn: Railways
+    descriptionMs: Landasan pertama dibuka 1885 antara Taiping dan Port Weld untuk
+      mengangkut bijih timah.
+    descriptionEn: The first line opened in 1885 between Taiping and Port Weld to
+      carry tin.
+    sejarahpediaEntry: kereta_api
+  - id: torehan_ridley
+    isCivic: 0
+    era: 2
+    historicalDate: 1890s
+    cost: 200
+    prerequisites:
+    - getah_para
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Torehan Ibidem
+    nameEn: Excision Tapping
+    descriptionMs: Kaedah torehan Ridley yang tidak membunuh pokok. +40% getah.
+    descriptionEn: "Ridley\u2019s tapping method that spares the tree. +40% rubber."
+    sejarahpediaEntry: getah
+  - id: perubatan_tropika
+    isCivic: 0
+    era: 2
+    historicalDate: 1900
+    cost: 200
+    prerequisites: []
+    unlocksBuildings:
+    - hospital
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Perubatan Tropika
+    nameEn: Tropical Medicine
+    descriptionMs: Penyelidikan beri-beri dan malaria.
+    descriptionEn: Research into beriberi and malaria.
+    sejarahpediaEntry: 
+  - id: kapal_korek
+    isCivic: 0
+    era: 2
+    historicalDate: 1912
+    cost: 300
+    prerequisites:
+    - perlombongan_timah
+    - kereta_api
+    unlocksBuildings:
+    - kapal_korek
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kapal Korek Baldi
+    nameEn: Bucket Dredging
+    descriptionMs: Kapal korek pertama dipasang di Batu Gajah sekitar 1912.
+    descriptionEn: The first dredge was installed at Batu Gajah around 1912.
+    sejarahpediaEntry: kapal_korek
+  - id: seni_bina_moorish
+    isCivic: 0
+    era: 2
+    historicalDate: 1910
+    cost: 260
+    prerequisites:
+    - kereta_api
+    unlocksBuildings:
+    - bangunan_moorish
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Seni Bina Indo-Saracenic
+    nameEn: Indo-Saracenic Architecture
+    descriptionMs: Kubah, menara dan gerbang ladam kuda.
+    descriptionEn: Domes, minarets and horseshoe arches.
+    sejarahpediaEntry: seni_bina_moorish
+  - id: elektrik_negara
+    isCivic: 0
+    era: 3
+    historicalDate: 1949
+    cost: 350
+    prerequisites: []
+    unlocksBuildings:
+    - janakuasa
+    - kilang_minyak
+    - pelantar_minyak
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Grid Elektrik Nasional
+    nameEn: National Power Grid
+    descriptionMs: Bekalan elektrik ke seluruh negara.
+    descriptionEn: Electricity across the nation.
+    sejarahpediaEntry: 
+  - id: bekalan_air
+    isCivic: 0
+    era: 3
+    historicalDate: "\u2014"
+    cost: 350
+    prerequisites: []
+    unlocksBuildings:
+    - loji_air
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Bekalan Air Bersih
+    nameEn: Clean Water Supply
+    descriptionMs: Loji rawatan dan paip air.
+    descriptionEn: Treatment plants and piped water.
+    sejarahpediaEntry: 
+  - id: lebuhraya
+    isCivic: 0
+    era: 3
+    historicalDate: 1994
+    cost: 450
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport:
+    - highway
+    unlocksPolicies: []
+    nameMs: Lebuhraya
+    nameEn: Expressways
+    descriptionMs: Lebuhraya bertol menghubungkan pelabuhan dan bandar.
+    descriptionEn: Tolled expressways link ports and cities.
+    sejarahpediaEntry: 
+  - id: pengajian_tinggi
+    isCivic: 0
+    era: 3
+    historicalDate: 1960s
+    cost: 500
+    prerequisites: []
+    unlocksBuildings:
+    - universiti
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pengajian Tinggi
+    nameEn: Higher Education
+    descriptionMs: Universiti awam untuk tenaga mahir.
+    descriptionEn: Public universities for skilled workers.
+    sejarahpediaEntry: 
+  - id: kesihatan_luar_bandar
+    isCivic: 0
+    era: 3
+    historicalDate: 1960s
+    cost: 380
+    prerequisites: []
+    unlocksBuildings:
+    - klinik_desa
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kesihatan Luar Bandar
+    nameEn: Rural Health Service
+    descriptionMs: Rangkaian klinik desa.
+    descriptionEn: A network of rural clinics.
+    sejarahpediaEntry: 
+  - id: kuasa_hidro
+    isCivic: 0
+    era: 3
+    historicalDate: 1970s
+    cost: 550
+    prerequisites:
+    - elektrik_negara
+    unlocksBuildings:
+    - empangan
+    - tebatan_banjir
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kuasa Hidro
+    nameEn: Hydropower
+    descriptionMs: Empangan besar di sungai.
+    descriptionEn: Large dams on rivers.
+    sejarahpediaEntry: 
+  - id: semikonduktor
+    isCivic: 0
+    era: 3
+    historicalDate: 1972
+    cost: 650
+    prerequisites:
+    - elektrik_negara
+    unlocksBuildings:
+    - ftz
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pemasangan Semikonduktor
+    nameEn: Semiconductor Assembly
+    descriptionMs: Kilang cip di zon perindustrian bebas seperti Bayan Lepas (1972).
+    descriptionEn: Chip plants in free industrial zones such as Bayan Lepas (1972).
+    sejarahpediaEntry: bayan_lepas
+  - id: kontena
+    isCivic: 0
+    era: 3
+    historicalDate: 1970s
+    cost: 600
+    prerequisites:
+    - lebuhraya
+    unlocksBuildings:
+    - pelabuhan_kontena
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Perkapalan Kontena
+    nameEn: Containerisation
+    descriptionMs: Kontena piawai merevolusikan perdagangan.
+    descriptionEn: Standard containers revolutionise trade.
+    sejarahpediaEntry: 
+  - id: penyelidikan_sawit
+    isCivic: 0
+    era: 3
+    historicalDate: 1979
+    cost: 450
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Penyelidikan Sawit
+    nameEn: Oil Palm Research
+    descriptionMs: Baka dan kaedah baharu. +30% sawit.
+    descriptionEn: New breeds and methods. +30% palm oil.
+    sejarahpediaEntry: 
+  - id: automotif
+    isCivic: 0
+    era: 3
+    historicalDate: 1985
+    cost: 850
+    prerequisites:
+    - semikonduktor
+    - lebuhraya
+    unlocksBuildings:
+    - kilang_kereta
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Industri Automotif Nasional
+    nameEn: National Automotive Industry
+    descriptionMs: Syarikat kereta nasional diasaskan 1983; kereta pertamanya dilancar
+      1985.
+    descriptionEn: A national car company founded in 1983; its first car launched
+      in 1985.
+    sejarahpediaEntry: kereta_nasional
+  - id: internet
+    isCivic: 0
+    era: 4
+    historicalDate: 1990s
+    cost: 1200
+    prerequisites: []
+    unlocksBuildings:
+    - menara_telekom
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Internet & Jalur Lebar
+    nameEn: Internet & Broadband
+    descriptionMs: Rangkaian global dalam setiap rumah.
+    descriptionEn: A global network in every home.
+    sejarahpediaEntry: 
+  - id: msc_koridor
+    isCivic: 0
+    era: 4
+    historicalDate: 1996
+    cost: 1600
+    prerequisites:
+    - internet
+    unlocksBuildings:
+    - hab_inovasi
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Koridor Raya Multimedia
+    nameEn: Multimedia Super Corridor
+    descriptionMs: Zon teknologi tinggi yang dilancarkan pada 1996.
+    descriptionEn: A high-tech zone launched in 1996.
+    sejarahpediaEntry: msc
+  - id: pengkomputeran_awan
+    isCivic: 0
+    era: 4
+    historicalDate: 2010s
+    cost: 1800
+    prerequisites:
+    - internet
+    unlocksBuildings:
+    - pusat_data
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pengkomputeran Awan
+    nameEn: Cloud Computing
+    descriptionMs: Pusat data berskala besar.
+    descriptionEn: Hyperscale data centres.
+    sejarahpediaEntry: 
+  - id: mrt
+    isCivic: 0
+    era: 4
+    historicalDate: 2017
+    cost: 1800
+    prerequisites: []
+    unlocksBuildings:
+    - stesen_mrt
+    unlocksTransport:
+    - mrt
+    unlocksPolicies: []
+    nameMs: Transit Aliran Massa
+    nameEn: Mass Rapid Transit
+    descriptionMs: "Laluan MRT Sungai Buloh\u2013Kajang beroperasi sepenuhnya pada
+      2017."
+    descriptionEn: "The Sungai Buloh\u2013Kajang MRT line became fully operational
+      in 2017."
+    sejarahpediaEntry: mrt
+  - id: penerbangan
+    isCivic: 0
+    era: 4
+    historicalDate: 1998
+    cost: 2000
+    prerequisites: []
+    unlocksBuildings:
+    - lapangan_terbang
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Hab Penerbangan
+    nameEn: Aviation Hub
+    descriptionMs: Lapangan terbang antarabangsa baharu dibuka pada 1998.
+    descriptionEn: A new international airport opened in 1998.
+    sejarahpediaEntry: klia
+  - id: tenaga_solar
+    isCivic: 0
+    era: 4
+    historicalDate: 2010s
+    cost: 1600
+    prerequisites: []
+    unlocksBuildings:
+    - ladang_solar
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Tenaga Solar
+    nameEn: Solar Power
+    descriptionMs: Tenaga boleh baharu berskala besar.
+    descriptionEn: Utility-scale renewable energy.
+    sejarahpediaEntry: 
+  - id: teknologi_hijau
+    isCivic: 0
+    era: 4
+    historicalDate: 2010s
+    cost: 2200
+    prerequisites:
+    - tenaga_solar
+    unlocksBuildings:
+    - kitar_semula
+    - ladang_menegak
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Teknologi Hijau
+    nameEn: Green Technology
+    descriptionMs: -20% pencemaran.
+    descriptionEn: -20% pollution.
+    sejarahpediaEntry: 
+  - id: rangkaian_5g
+    isCivic: 0
+    era: 4
+    historicalDate: 2020s
+    cost: 2800
+    prerequisites:
+    - pengkomputeran_awan
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Rangkaian 5G
+    nameEn: 5G Networks
+    descriptionMs: +30% perkhidmatan digital.
+    descriptionEn: +30% digital services.
+    sejarahpediaEntry: 
+  - id: pencakar_langit
+    isCivic: 0
+    era: 4
+    historicalDate: 1998
+    cost: 2600
+    prerequisites: []
+    unlocksBuildings:
+    - menara_berkembar
+    - menara_118
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kejuruteraan Pencakar Langit
+    nameEn: Skyscraper Engineering
+    descriptionMs: Konkrit kekuatan tinggi dan struktur tiub.
+    descriptionEn: High-strength concrete and tube structures.
+    sejarahpediaEntry: menara_berkembar
+  - id: kecerdasan_buatan
+    isCivic: 0
+    era: 4
+    historicalDate: 2020s
+    cost: 3600
+    prerequisites:
+    - rangkaian_5g
+    - msc_koridor
+    unlocksBuildings:
+    - hab_siber
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kecerdasan Buatan
+    nameEn: Artificial Intelligence
+    descriptionMs: +25% ilmu, +20% digital.
+    descriptionEn: +25% research, +20% digital.
+    sejarahpediaEntry: 
+  - id: bandar_pintar
+    isCivic: 0
+    era: 4
+    historicalDate: 2020s
+    cost: 4500
+    prerequisites:
+    - kecerdasan_buatan
+    - mrt
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Sistem Bandar Pintar
+    nameEn: Smart City Systems
+    descriptionMs: Sensor, data dan pengangkutan bersepadu. +5 kesejahteraan, -10%
+      kos penyelenggaraan.
+    descriptionEn: Sensors, data and integrated transport. +5 wellbeing, -10% upkeep.
+    sejarahpediaEntry: 
+  civics:
+  - id: gotong_royong
+    isCivic: 1
+    era: 1
+    historicalDate: "\u2014"
+    cost: 15
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - gotong_royong
+    nameMs: Gotong-royong
+    nameEn: Gotong-royong
+    descriptionMs: Semangat kerjasama kampung. +3 kesejahteraan.
+    descriptionEn: The village spirit of mutual help. +3 wellbeing.
+    sejarahpediaEntry: 
+  - id: kedah_tua
+    isCivic: 1
+    era: 1
+    historicalDate: "2nd\u201310th c."
+    cost: 15
+    prerequisites: []
+    unlocksBuildings:
+    - candi
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Warisan Kedah Tua
+    nameEn: Old Kedah Heritage
+    descriptionMs: Warisan pelabuhan purba Lembah Bujang.
+    descriptionEn: The legacy of the ancient Bujang Valley ports.
+    sejarahpediaEntry: lembah_bujang
+  - id: islam_melaka
+    isCivic: 1
+    era: 1
+    historicalDate: 15th c.
+    cost: 35
+    prerequisites: []
+    unlocksBuildings:
+    - masjid
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pusat Penyebaran Islam
+    nameEn: Centre of Islamic Learning
+    descriptionMs: Melaka menjadi pusat penyebaran Islam di Nusantara.
+    descriptionEn: Melaka becomes a centre for the spread of Islam in the archipelago.
+    sejarahpediaEntry: islam_melaka
+  - id: empat_syahbandar
+    isCivic: 1
+    era: 1
+    historicalDate: 15th c.
+    cost: 40
+    prerequisites: []
+    unlocksBuildings:
+    - syahbandar
+    - menara_tinjau
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Empat Syahbandar
+    nameEn: Four Harbour Masters
+    descriptionMs: Empat syahbandar mengurus pedagang mengikut asal mereka.
+    descriptionEn: Four shahbandars manage traders by their origin.
+    sejarahpediaEntry: syahbandar
+  - id: kesultanan_melaka
+    isCivic: 1
+    era: 1
+    historicalDate: c. 1400
+    cost: 60
+    prerequisites:
+    - gotong_royong
+    unlocksBuildings:
+    - istana
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kesultanan Melaka
+    nameEn: Melaka Sultanate
+    descriptionMs: Kerajaan yang diasaskan sekitar 1400 oleh Parameswara.
+    descriptionEn: The kingdom founded around 1400 by Parameswara.
+    sejarahpediaEntry: kesultanan_melaka
+  - id: undang_laut
+    isCivic: 1
+    era: 1
+    historicalDate: 15th c.
+    cost: 70
+    prerequisites:
+    - empat_syahbandar
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - pelabuhan_bebas
+    nameMs: Undang-Undang Laut Melaka
+    nameEn: Maritime Laws of Melaka
+    descriptionMs: Kod undang-undang pelayaran dan perdagangan. +5% harga eksport.
+    descriptionEn: A code of shipping and trade law. +5% export prices.
+    sejarahpediaEntry: undang_laut
+  - id: hukum_kanun
+    isCivic: 1
+    era: 1
+    historicalDate: 15th c.
+    cost: 70
+    prerequisites:
+    - kesultanan_melaka
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - adat_hukum
+    nameMs: Hukum Kanun Melaka
+    nameEn: Hukum Kanun Melaka
+    descriptionMs: Kanun undang-undang darat kesultanan.
+    descriptionEn: "The sultanate\u2019s legal code for land."
+    sejarahpediaEntry: undang_laut
+  - id: pentadbiran_residen
+    isCivic: 1
+    era: 2
+    historicalDate: 1874
+    cost: 120
+    prerequisites: []
+    unlocksBuildings:
+    - balai_polis
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Sistem Residen
+    nameEn: Residential System
+    descriptionMs: Selepas Perjanjian Pangkor 1874, Residen British menasihati pentadbiran.
+      +10% cukai.
+    descriptionEn: After the 1874 Pangkor Treaty, British Residents advised the administration.
+      +10% taxes.
+    sejarahpediaEntry: pangkor
+  - id: masyarakat_majmuk
+    isCivic: 1
+    era: 2
+    historicalDate: 19th c.
+    cost: 130
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - imigrasi_terbuka
+    nameMs: Masyarakat Majmuk
+    nameEn: Plural Society
+    descriptionMs: Pekerja dari China dan India tiba untuk lombong dan estet.
+    descriptionEn: Workers from China and India arrive for mines and estates.
+    sejarahpediaEntry: masyarakat_majmuk
+  - id: koperasi
+    isCivic: 1
+    era: 2
+    historicalDate: 1922
+    cost: 150
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - koperasi
+    nameMs: Gerakan Koperasi
+    nameEn: Cooperative Movement
+    descriptionMs: Koperasi membantu petani dan pekebun kecil.
+    descriptionEn: Cooperatives help farmers and smallholders.
+    sejarahpediaEntry: 
+  - id: akhbar_melayu
+    isCivic: 1
+    era: 2
+    historicalDate: 1939
+    cost: 160
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Akhbar & Persuratan
+    nameEn: Press & Letters
+    descriptionMs: Akhbar dan sastera membangkitkan kesedaran. +15% budaya.
+    descriptionEn: Newspapers and literature awaken awareness. +15% culture.
+    sejarahpediaEntry: 
+  - id: negeri_bersekutu
+    isCivic: 1
+    era: 2
+    historicalDate: 1896
+    cost: 220
+    prerequisites:
+    - pentadbiran_residen
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Negeri-Negeri Melayu Bersekutu
+    nameEn: Federated Malay States
+    descriptionMs: Perak, Selangor, Negeri Sembilan dan Pahang disatukan pada 1896.
+    descriptionEn: Perak, Selangor, Negeri Sembilan and Pahang federated in 1896.
+    sejarahpediaEntry: nnmb
+  - id: pilihan_raya
+    isCivic: 1
+    era: 2
+    historicalDate: 1955
+    cost: 260
+    prerequisites:
+    - akhbar_melayu
+    - negeri_bersekutu
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pilihan Raya Persekutuan 1955
+    nameEn: The 1955 Federal Election
+    descriptionMs: Pilihan raya umum pertama membuka jalan ke kemerdekaan.
+    descriptionEn: The first general election paves the way to independence.
+    sejarahpediaEntry: merdeka
+  - id: kemerdekaan
+    isCivic: 1
+    era: 3
+    historicalDate: 1957
+    cost: 300
+    prerequisites: []
+    unlocksBuildings:
+    - stadium
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kemerdekaan
+    nameEn: Independence
+    descriptionMs: Persekutuan Tanah Melayu merdeka pada 31 Ogos 1957.
+    descriptionEn: The Federation of Malaya became independent on 31 August 1957.
+    sejarahpediaEntry: merdeka
+  - id: felda
+    isCivic: 1
+    era: 3
+    historicalDate: 1956
+    cost: 350
+    prerequisites: []
+    unlocksBuildings:
+    - ladang_sawit
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Tanah Rancangan
+    nameEn: Land Development Schemes
+    descriptionMs: Lembaga kemajuan tanah ditubuhkan pada 1956 untuk peneroka.
+    descriptionEn: A land development authority founded in 1956 for settlers.
+    sejarahpediaEntry: felda
+  - id: pembentukan_malaysia
+    isCivic: 1
+    era: 3
+    historicalDate: 1963
+    cost: 450
+    prerequisites:
+    - kemerdekaan
+    unlocksBuildings:
+    - parlimen
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Pembentukan Malaysia
+    nameEn: Formation of Malaysia
+    descriptionMs: Malaysia dibentuk pada 16 September 1963.
+    descriptionEn: Malaysia was formed on 16 September 1963.
+    sejarahpediaEntry: malaysia_1963
+  - id: asean
+    isCivic: 1
+    era: 3
+    historicalDate: 1967
+    cost: 400
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: ASEAN
+    nameEn: ASEAN
+    descriptionMs: Persatuan Negara-Negara Asia Tenggara ditubuhkan 1967.
+    descriptionEn: The Association of Southeast Asian Nations was founded in 1967.
+    sejarahpediaEntry: asean
+  - id: zon_perdagangan_bebas
+    isCivic: 1
+    era: 3
+    historicalDate: 1971
+    cost: 450
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Akta Zon Perdagangan Bebas
+    nameEn: Free Trade Zones Act
+    descriptionMs: Insentif untuk pelabur asing. +25% elektronik.
+    descriptionEn: Incentives for foreign investors. +25% electronics.
+    sejarahpediaEntry: bayan_lepas
+  - id: dasar_ekonomi_baru
+    isCivic: 1
+    era: 3
+    historicalDate: 1971
+    cost: 600
+    prerequisites:
+    - pembentukan_malaysia
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - deb
+    nameMs: Dasar Ekonomi Baru
+    nameEn: New Economic Policy
+    descriptionMs: Dasar 1971 untuk membasmi kemiskinan dan menyusun semula masyarakat.
+    descriptionEn: The 1971 policy to eradicate poverty and restructure society.
+    sejarahpediaEntry: deb
+  - id: pandang_ke_timur
+    isCivic: 1
+    era: 3
+    historicalDate: 1982
+    cost: 650
+    prerequisites:
+    - kemerdekaan
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - pandang_timur
+    nameMs: Dasar Pandang ke Timur
+    nameEn: Look East Policy
+    descriptionMs: Diumumkan pada 1982 untuk mencontohi etika kerja Jepun dan Korea.
+    descriptionEn: Announced in 1982 to emulate Japanese and Korean work ethics.
+    sejarahpediaEntry: pandang_timur
+  - id: wawasan_2020
+    isCivic: 1
+    era: 4
+    historicalDate: 1991
+    cost: 1000
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - wawasan
+    nameMs: Wawasan 2020
+    nameEn: Vision 2020
+    descriptionMs: Matlamat menjadi negara maju menjelang 2020.
+    descriptionEn: The goal of becoming a developed nation by 2020.
+    sejarahpediaEntry: 
+  - id: kerajaan_elektronik
+    isCivic: 1
+    era: 4
+    historicalDate: 1990s
+    cost: 1300
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Kerajaan Elektronik
+    nameEn: E-Government
+    descriptionMs: Perkhidmatan awam dalam talian. +10% cukai.
+    descriptionEn: Online public services. +10% taxes.
+    sejarahpediaEntry: 
+  - id: pembangunan_mampan
+    isCivic: 1
+    era: 4
+    historicalDate: 2010s
+    cost: 1500
+    prerequisites: []
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies:
+    - hijau
+    nameMs: Pembangunan Mampan
+    nameEn: Sustainable Development
+    descriptionMs: Keseimbangan ekonomi, masyarakat dan alam sekitar.
+    descriptionEn: Balancing economy, society and environment.
+    sejarahpediaEntry: 
+  - id: mydigital
+    isCivic: 1
+    era: 4
+    historicalDate: 2021
+    cost: 2000
+    prerequisites:
+    - kerajaan_elektronik
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Rangka Tindakan Ekonomi Digital
+    nameEn: Digital Economy Blueprint
+    descriptionMs: MyDIGITAL dilancarkan pada Februari 2021. +25% digital.
+    descriptionEn: MyDIGITAL was launched in February 2021. +25% digital.
+    sejarahpediaEntry: mydigital
+  - id: negara_maju
+    isCivic: 1
+    era: 4
+    historicalDate: "\u2014"
+    cost: 3500
+    prerequisites:
+    - wawasan_2020
+    - mydigital
+    unlocksBuildings: []
+    unlocksTransport: []
+    unlocksPolicies: []
+    nameMs: Negara Maju
+    nameEn: Developed Nation
+    descriptionMs: Kemuncak perjalanan pembangunan.
+    descriptionEn: The culmination of the development journey.
+    sejarahpediaEntry: 
+  crises:
+  - id: angin_monsun
+    eras: 01000000
+    triggerYear: 0
+    triggerEvent: 
+    nameMs: Angin Monsun Berubah
+    nameEn: The Monsoon Winds Shift
+    descriptionMs: Angin peralihan monsun datang lewat tahun ini. Armada dari Gujerat
+      dan China tertahan dan gudang mula penuh.
+    descriptionEn: The inter-monsoon winds turn late this year. Fleets from Gujarat
+      and China are delayed and warehouses fill up.
+    defaultChoice: 0
+    choices:
+    - id: tunggu
+      nameMs: Tunggu angin
+      nameEn: Wait for the winds
+      descriptionMs: Tiada kos, tetapi eksport perlahan lebih lama.
+      descriptionEn: No cost, but exports stay slow for longer.
+      cost: 0
+    - id: gudang
+      nameMs: Simpan dagangan di gudang
+      nameEn: Hold cargo in warehouses
+      descriptionMs: Bayar sewa gudang supaya dagangan tidak rosak; pedagang berpuas
+        hati.
+      descriptionEn: Pay for storage so cargo does not spoil; merchants are pleased.
+      cost: 400
+    - id: jurumudi
+      nameMs: Upah jurumudi tempatan
+      nameEn: Hire local pilots
+      descriptionMs: Jurumudi Orang Laut membawa kapal melalui angin lemah. Ilmu
+        pelayaran bertambah.
+      descriptionEn: Orang Laut pilots guide ships through the slack winds. Seamanship
+        knowledge grows.
+      cost: 250
+  - id: bah_besar
+    eras: 02000000
+    triggerYear: 1926
+    triggerEvent: 
+    nameMs: Bah Besar 1926
+    nameEn: The Great Flood of 1926
+    descriptionMs: "Pada akhir Disember 1926 hujan luar biasa (dikaitkan dengan La
+      Ni\xF1a) membanjiri Pahang, Kelantan, Terengganu, Perak dan Selangor. Penebangan
+      hutan untuk estet dan lombong memburukkan banjir."
+    descriptionEn: "In late December 1926 extraordinary rains (linked to La Ni\xF1a)
+      flood Pahang, Kelantan, Terengganu, Perak and Selangor. Forest clearing for
+      estates and mines made the floods worse."
+    defaultChoice: 2
+    choices:
+    - id: bantuan
+      nameMs: Dapur bantuan & pemindahan
+      nameEn: Relief kitchens and evacuation
+      descriptionMs: Lindungi rakyat; kebahagiaan pulih dengan cepat.
+      descriptionEn: Protect the people; happiness recovers quickly.
+      cost: 2000
+    - id: tebatan
+      nameMs: Bina semula tebatan & parit
+      nameEn: Rebuild bunds and drains
+      descriptionMs: Pemulihan lebih pantas; pengeluaran kembali normal.
+      descriptionEn: Faster recovery; production returns to normal.
+      cost: 3500
+    - id: biarkan
+      nameMs: Biarkan daerah pulih sendiri
+      nameEn: Leave the districts to recover
+      descriptionMs: Tiada kos, tetapi pengeluaran dan semangat rakyat merosot.
+      descriptionEn: No cost, but output and morale suffer.
+      cost: 0
+  - id: kemelesetan_1930
+    eras: 02000000
+    triggerYear: 0
+    triggerEvent: kemelesetan_besar
+    nameMs: 'Kemelesetan: Kejatuhan Harga Komoditi'
+    nameEn: 'Depression: the Commodity Crash'
+    descriptionMs: Harga timah dan getah runtuh. Pada 1 Mac 1931 Tanah Melayu, Bolivia,
+      Hindia Timur Belanda dan Nigeria memulakan Skim Kawalan Timah Antarabangsa
+      untuk menyekat pengeluaran.
+    descriptionEn: Tin and rubber prices collapse. On 1 March 1931 British Malaya,
+      Bolivia, the Netherlands East Indies and Nigeria begin the International Tin
+      Control Scheme to restrict output.
+    defaultChoice: 2
+    choices:
+    - id: kuota
+      nameMs: Sertai skim sekatan pengeluaran
+      nameEn: Join the output-restriction scheme
+      descriptionMs: Harga timah dan getah disokong, tetapi pengeluaran dihadkan.
+      descriptionEn: Tin and rubber prices are propped up, but output is capped.
+      cost: 0
+    - id: kerja_awam
+      nameMs: Kerja awam & bantuan
+      nameEn: Public works and relief
+      descriptionMs: Belanja untuk jalan dan bantuan; rakyat lebih tenang.
+      descriptionEn: Spend on roads and relief; the people stay calm.
+      cost: 3000
+    - id: jimat
+      nameMs: Berjimat cermat
+      nameEn: Austerity
+      descriptionMs: Potong perbelanjaan untuk menambah tabung, tetapi rakyat menderita.
+      descriptionEn: Cut spending to rebuild the treasury, but people suffer.
+      cost: 0
+  - id: krisis_timah
+    eras: 03000000
+    triggerYear: 0
+    triggerEvent: krisis_timah_1985
+    nameMs: Keruntuhan Pasaran Timah 1985
+    nameEn: The 1985 Tin Market Collapse
+    descriptionMs: Pada 24 Oktober 1985 Majlis Timah Antarabangsa gagal membayar
+      hutangnya dan Bursa Logam London menggantung dagangan timah. Malaysia menutup
+      hampir separuh lombongnya.
+    descriptionEn: On 24 October 1985 the International Tin Council defaults on its
+      debts and the London Metal Exchange suspends tin trading. Malaysia closes nearly
+      half its mines.
+    defaultChoice: 2
+    choices:
+    - id: pelbagai
+      nameMs: Pelbagaikan ke perkilangan
+      nameEn: Diversify into manufacturing
+      descriptionMs: Latih semula pelombong untuk kilang elektronik.
+      descriptionEn: Retrain miners for electronics plants.
+      cost: 8000
+    - id: selamatkan
+      nameMs: Selamatkan pelombong
+      nameEn: Bail out the miners
+      descriptionMs: Subsidi menyokong harga timah tempatan untuk sementara.
+      descriptionEn: Subsidies prop up local tin prices for a while.
+      cost: 12000
+    - id: pasaran
+      nameMs: Biarkan pasaran menyesuaikan diri
+      nameEn: Let the market adjust
+      descriptionMs: Tiada kos; bandar timah merana.
+      descriptionEn: No cost; tin towns suffer.
+      cost: 0
+  - id: krisis_kewangan
+    eras: 04000000
+    triggerYear: 0
+    triggerEvent: krisis_asia_1997
+    nameMs: Krisis Kewangan Asia 1997
+    nameEn: The 1997 Asian Financial Crisis
+    descriptionMs: Ringgit menjunam dan modal asing lari. Pada 1 September 1998 Malaysia
+      memperkenalkan kawalan modal terpilih dan memaku ringgit pada RM3.80 se-USD
+      (dimansuhkan 2005).
+    descriptionEn: The ringgit plunges and foreign capital flees. On 1 September
+      1998 Malaysia introduces selective capital controls and pegs the ringgit at
+      RM3.80 per US dollar (dropped in 2005).
+    defaultChoice: 0
+    choices:
+    - id: kawalan
+      nameMs: Kawalan modal & tambatan ringgit
+      nameEn: Capital controls and a ringgit peg
+      descriptionMs: Kestabilan pulih, tetapi rakan Barat kurang senang.
+      descriptionEn: Stability returns, but Western partners are uneasy.
+      cost: 0
+    - id: imf
+      nameMs: Pakej penjimatan gaya IMF
+      nameEn: IMF-style austerity
+      descriptionMs: Kadar faedah tinggi dan potongan belanja; pelabur Barat lega.
+      descriptionEn: High interest rates and spending cuts; Western investors relax.
+      cost: 0
+    - id: rangsangan
+      nameMs: Rangsangan fiskal
+      nameEn: Fiscal stimulus
+      descriptionMs: Belanja besar untuk projek awam memastikan pekerjaan.
+      descriptionEn: Big public spending keeps people in work.
+      cost: 40000

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: ftz
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: ftz
+  kind: 0
+  era: 3
+  category: production
+  zoneDensity: 0
+  nameMs: Zon Perdagangan Bebas
+  descriptionMs: Kilang pemasangan semikonduktor untuk eksport.
+  sejarahpediaTitleMs: Zon Perindustrian Bebas Bayan Lepas
+  sejarahpediaMs: Zon perdagangan bebas pertama Malaysia, dibuka di Pulau Pinang
+    pada 1972.
+  nameEn: Free Trade Zone
+  descriptionEn: Semiconductor assembly plants for export.
+  sejarahpediaTitleEn: Bayan Lepas Free Industrial Zone
+  sejarahpediaEn: "Malaysia\u2019s first free trade zone, opened in Penang in 1972."
+  footprint: 16
+  cost: 15000
+  upkeep: 18
+  jobs: 220
+  yields:
+  - resource: 9
+    amountPerTick: 12
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 196884219295679355, guid: 30183e919cd2fe34bbd721cfba8a2a7a, type: 3}
+  Era2Mesh: {fileID: 196884219295679355, guid: 30183e919cd2fe34bbd721cfba8a2a7a, type: 3}
+  Era3Mesh: {fileID: 196884219295679355, guid: 30183e919cd2fe34bbd721cfba8a2a7a, type: 3}
+  Era4Mesh: {fileID: 196884219295679355, guid: 30183e919cd2fe34bbd721cfba8a2a7a, type: 3}
+  GreyboxPrefab: {fileID: 5015835025863817407, guid: 660ef05516851cd4eb1aedb554cddaea, type: 3}

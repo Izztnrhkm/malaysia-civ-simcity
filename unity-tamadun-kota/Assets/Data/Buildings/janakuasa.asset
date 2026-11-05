@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: janakuasa
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: janakuasa
+  kind: 0
+  era: 3
+  category: utility
+  zoneDensity: 0
+  nameMs: Stesen Janakuasa
+  descriptionMs: Janakuasa haba yang membekalkan grid nasional.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Power Station
+  descriptionEn: A thermal power station feeding the national grid.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 8
+  cost: 6000
+  upkeep: 18
+  jobs: 20
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 556549579060590449, guid: e1d418076a530874e8b9c3c5fe17952a, type: 3}
+  Era2Mesh: {fileID: 556549579060590449, guid: e1d418076a530874e8b9c3c5fe17952a, type: 3}
+  Era3Mesh: {fileID: 556549579060590449, guid: e1d418076a530874e8b9c3c5fe17952a, type: 3}
+  Era4Mesh: {fileID: 556549579060590449, guid: e1d418076a530874e8b9c3c5fe17952a, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

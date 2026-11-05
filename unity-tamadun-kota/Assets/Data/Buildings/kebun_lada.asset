@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: kebun_lada
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: kebun_lada
+  kind: 0
+  era: 1
+  category: production
+  zoneDensity: 0
+  nameMs: Kebun Lada
+  descriptionMs: Lada hitam, komoditi utama perdagangan rempah.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Pepper Garden
+  descriptionEn: Black pepper, a staple of the spice trade.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 8
+  cost: 220
+  upkeep: 0.8
+  jobs: 10
+  yields:
+  - resource: 3
+    amountPerTick: 3
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 4028932062309803287, guid: c743e8b6872dbf9419b1678f2fb686cc, type: 3}
+  Era2Mesh: {fileID: 4028932062309803287, guid: c743e8b6872dbf9419b1678f2fb686cc, type: 3}
+  Era3Mesh: {fileID: 4028932062309803287, guid: c743e8b6872dbf9419b1678f2fb686cc, type: 3}
+  Era4Mesh: {fileID: 4028932062309803287, guid: c743e8b6872dbf9419b1678f2fb686cc, type: 3}
+  GreyboxPrefab: {fileID: 8113584703222351717, guid: 2be4b07332e057949b515f2f5613d957, type: 3}

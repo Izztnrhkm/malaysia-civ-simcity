@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: istana
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: istana
+  kind: 0
+  era: 1
+  category: landmark
+  zoneDensity: 0
+  nameMs: Istana Kesultanan
+  descriptionMs: Istana kayu berukir, pusat pemerintahan kesultanan. Mercu tanda
+    Era 1.
+  sejarahpediaTitleMs: Kesultanan Melaka
+  sejarahpediaMs: Kerajaan maritim yang diasaskan sekitar 1400 oleh Parameswara.
+  nameEn: Sultanate Palace
+  descriptionEn: A carved timber palace, seat of the sultanate. Era 1 landmark.
+  sejarahpediaTitleEn: The Melaka Sultanate
+  sejarahpediaEn: A maritime kingdom founded around 1400 by Parameswara.
+  footprint: 16
+  cost: 4000
+  upkeep: 8
+  jobs: 20
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 1
+  upgradable: 0
+  Era1Mesh: {fileID: 7501006783243662115, guid: 5c6aa80319c9e5a4c911e5a8667685a5, type: 3}
+  Era2Mesh: {fileID: 7501006783243662115, guid: 5c6aa80319c9e5a4c911e5a8667685a5, type: 3}
+  Era3Mesh: {fileID: 7501006783243662115, guid: 5c6aa80319c9e5a4c911e5a8667685a5, type: 3}
+  Era4Mesh: {fileID: 7501006783243662115, guid: 5c6aa80319c9e5a4c911e5a8667685a5, type: 3}
+  GreyboxPrefab: {fileID: 670091409298727647, guid: 98e4529ec73cec3419552a8addbbbf3e, type: 3}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: hab_inovasi
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: hab_inovasi
+  kind: 0
+  era: 4
+  category: research
+  zoneDensity: 0
+  nameMs: Hab Inovasi
+  descriptionMs: Kampus teknologi untuk syarikat pemula dan R&D.
+  sejarahpediaTitleMs: Koridor Raya Multimedia (MSC)
+  sejarahpediaMs: Zon ekonomi khas teknologi tinggi yang dilancarkan pada 1996.
+  nameEn: Innovation Hub
+  descriptionEn: A tech campus for start-ups and R&D.
+  sejarahpediaTitleEn: The Multimedia Super Corridor (MSC)
+  sejarahpediaEn: A high-tech special economic zone launched in 1996.
+  footprint: 16
+  cost: 40000
+  upkeep: 60
+  jobs: 300
+  yields:
+  - resource: 10
+    amountPerTick: 6
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 4317848903308687476, guid: 9dc123597e7cf1d41a50cd2c60cfb24d, type: 3}
+  Era2Mesh: {fileID: 4317848903308687476, guid: 9dc123597e7cf1d41a50cd2c60cfb24d, type: 3}
+  Era3Mesh: {fileID: 4317848903308687476, guid: 9dc123597e7cf1d41a50cd2c60cfb24d, type: 3}
+  Era4Mesh: {fileID: 4317848903308687476, guid: 9dc123597e7cf1d41a50cd2c60cfb24d, type: 3}
+  GreyboxPrefab: {fileID: 2170998101986769790, guid: 620df034c3efe7b478b12d7fe223f8ac, type: 3}

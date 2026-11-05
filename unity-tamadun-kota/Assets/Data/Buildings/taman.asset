@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: taman
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: taman
+  kind: 0
+  era: 1
+  category: service
+  zoneDensity: 0
+  nameMs: Padang / Taman
+  descriptionMs: Ruang lapang untuk rekreasi dan sukan rakyat.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Green / Park
+  descriptionEn: Open space for recreation and folk games.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 60
+  upkeep: 0.2
+  jobs: 0
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 5515305432201710841, guid: b1a9147e0e7f9444a81d120503595d02, type: 3}
+  Era2Mesh: {fileID: 5515305432201710841, guid: b1a9147e0e7f9444a81d120503595d02, type: 3}
+  Era3Mesh: {fileID: 5515305432201710841, guid: b1a9147e0e7f9444a81d120503595d02, type: 3}
+  Era4Mesh: {fileID: 5515305432201710841, guid: b1a9147e0e7f9444a81d120503595d02, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: pelabuhan_kontena
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: pelabuhan_kontena
+  kind: 0
+  era: 3
+  category: trade
+  zoneDensity: 0
+  nameMs: Pelabuhan Kontena
+  descriptionMs: Kren gantri raksasa memunggah kontena.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Container Port
+  descriptionEn: Giant gantry cranes handling containers.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 16
+  cost: 18000
+  upkeep: 30
+  jobs: 120
+  yields: []
+  inputs: []
+  placement: coast
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 4848160824227354055, guid: bbc0a0e3d9175aa4c93e1b48321ac9e3, type: 3}
+  Era2Mesh: {fileID: 4848160824227354055, guid: bbc0a0e3d9175aa4c93e1b48321ac9e3, type: 3}
+  Era3Mesh: {fileID: 4848160824227354055, guid: bbc0a0e3d9175aa4c93e1b48321ac9e3, type: 3}
+  Era4Mesh: {fileID: 4848160824227354055, guid: bbc0a0e3d9175aa4c93e1b48321ac9e3, type: 3}
+  GreyboxPrefab: {fileID: 2170998101986769790, guid: 620df034c3efe7b478b12d7fe223f8ac, type: 3}

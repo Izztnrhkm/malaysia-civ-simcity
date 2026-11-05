@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: zone_C_1
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: zone_C_1
+  kind: 2
+  era: 1
+  category: zone
+  zoneDensity: 1
+  nameMs: Komersial (tahap 1)
+  descriptionMs: Bazar / Rumah Kedai / Pusat Beli-belah / Menara Pejabat
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Commercial (level 1)
+  descriptionEn: Bazaar / Shophouses / Shopping Centres / Office Towers
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 0
+  upkeep: 0
+  jobs: 3
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 1
+  Era1Mesh: {fileID: 5974463914526459328, guid: 852d5739b135f044a8fbf0133c760e69, type: 3}
+  Era2Mesh: {fileID: 8489347327101105077, guid: d349c42ee30f5b44e9d348d29a665329, type: 3}
+  Era3Mesh: {fileID: 1617283792854856197, guid: d402dfc7fd53719418f8dd1687eeedfe, type: 3}
+  Era4Mesh: {fileID: 3345442962733423029, guid: d7a3d4af215c9ca4dacd6e590cb33068, type: 3}
+  GreyboxPrefab: {fileID: 7658692174889179149, guid: cb2bac4a656fc0046ba6fe1fc9fa107f, type: 3}

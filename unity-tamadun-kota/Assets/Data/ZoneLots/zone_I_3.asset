@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: zone_I_3
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: zone_I_3
+  kind: 3
+  era: 1
+  category: zone
+  zoneDensity: 3
+  nameMs: Perindustrian (tahap 3)
+  descriptionMs: Bengkel Tukang / Bengkel & Kilang Kecil / Kilang / Industri Teknologi
+    Tinggi
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Industrial (level 3)
+  descriptionEn: Craft Workshops / Workshops & Small Mills / Factories / High-tech
+    Industry
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 0
+  upkeep: 0
+  jobs: 30
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 1
+  Era1Mesh: {fileID: 7983589046641144326, guid: 0dd4990332804584498dddd22022224f, type: 3}
+  Era2Mesh: {fileID: 1873878360114398395, guid: 702551a302b028b40a4196f4da0b380b, type: 3}
+  Era3Mesh: {fileID: 4114520592765218651, guid: 6021bd75eb87f5849a4317ffe0c730cb, type: 3}
+  Era4Mesh: {fileID: 1513486883054283677, guid: 3bf7bb7d711c5f048991667f5f9f8452, type: 3}
+  GreyboxPrefab: {fileID: 4894736331695027579, guid: fcf3e27ab56a94440945b6ff44934b4d, type: 3}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: zone_R_3
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: zone_R_3
+  kind: 1
+  era: 1
+  category: zone
+  zoneDensity: 3
+  nameMs: Kediaman (tahap 3)
+  descriptionMs: Kampung / Kampung & Rumah Kedai / Taman Perumahan / Kondominium
+    & Taman
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Residential (level 3)
+  descriptionEn: Kampung / Kampung & Shophouses / Housing Taman / Condominiums &
+    Taman
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 0
+  upkeep: 0
+  jobs: 50
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 1
+  Era1Mesh: {fileID: 4664166936523266008, guid: 7ae1d5e934f8cf94ebcc0d94a28dbe69, type: 3}
+  Era2Mesh: {fileID: 3311779392599153140, guid: 9594dc325e6cd4144aedc509e86d7b0c, type: 3}
+  Era3Mesh: {fileID: 3913060092999376772, guid: 8cd9f10f05edef34c8a8459b2e969797, type: 3}
+  Era4Mesh: {fileID: 6665794719929437577, guid: 90b6a0c228b98d545ada1a04c39002e0, type: 3}
+  GreyboxPrefab: {fileID: 4894736331695027579, guid: fcf3e27ab56a94440945b6ff44934b4d, type: 3}

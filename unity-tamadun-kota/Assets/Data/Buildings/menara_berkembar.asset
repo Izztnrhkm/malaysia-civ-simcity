@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: menara_berkembar
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: menara_berkembar
+  kind: 0
+  era: 4
+  category: landmark
+  zoneDensity: 0
+  nameMs: Menara Berkembar
+  descriptionMs: Pencakar langit berkembar bermotif geometri Islam. Mercu tanda kemenangan.
+  sejarahpediaTitleMs: Menara Berkembar
+  sejarahpediaMs: Pencakar langit berkembar Kuala Lumpur ialah bangunan tertinggi
+    dunia dari 1998 hingga 2004.
+  nameEn: Twin Towers
+  descriptionEn: Twin skyscrapers with Islamic geometric motifs. Victory landmark.
+  sejarahpediaTitleEn: The Twin Towers
+  sejarahpediaEn: "Kuala Lumpur\u2019s twin skyscrapers were the world\u2019s tallest
+    buildings from 1998 to 2004."
+  footprint: 16
+  cost: 400000
+  upkeep: 120
+  jobs: 400
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 1
+  upgradable: 0
+  Era1Mesh: {fileID: 5937910080948243059, guid: f8b9e36c658bcd34c8691511937f67ad, type: 3}
+  Era2Mesh: {fileID: 5937910080948243059, guid: f8b9e36c658bcd34c8691511937f67ad, type: 3}
+  Era3Mesh: {fileID: 5937910080948243059, guid: f8b9e36c658bcd34c8691511937f67ad, type: 3}
+  Era4Mesh: {fileID: 5937910080948243059, guid: f8b9e36c658bcd34c8691511937f67ad, type: 3}
+  GreyboxPrefab: {fileID: 670091409298727647, guid: 98e4529ec73cec3419552a8addbbbf3e, type: 3}

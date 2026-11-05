@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: sekolah
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: sekolah
+  kind: 0
+  era: 2
+  category: research
+  zoneDensity: 0
+  nameMs: Sekolah
+  descriptionMs: Sekolah vernakular dan Inggeris.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: School
+  descriptionEn: Vernacular and English-medium schools.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 700
+  upkeep: 3.5
+  jobs: 8
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 1244982414556660339, guid: 744791b09f61da44692b83192569f2d5, type: 3}
+  Era2Mesh: {fileID: 1244982414556660339, guid: 744791b09f61da44692b83192569f2d5, type: 3}
+  Era3Mesh: {fileID: 1244982414556660339, guid: 744791b09f61da44692b83192569f2d5, type: 3}
+  Era4Mesh: {fileID: 1244982414556660339, guid: 744791b09f61da44692b83192569f2d5, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

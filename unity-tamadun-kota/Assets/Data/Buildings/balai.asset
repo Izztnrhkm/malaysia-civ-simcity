@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: balai
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: balai
+  kind: 0
+  era: 1
+  category: service
+  zoneDensity: 0
+  nameMs: Balai Penghulu
+  descriptionMs: Ketua kampung menjaga keamanan dan adat.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: "Headman\u2019s Hall"
+  descriptionEn: The village headman keeps order and custom.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 200
+  upkeep: 1.5
+  jobs: 3
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 1723062747942849912, guid: 721a5b948f5926946a483937deda7626, type: 3}
+  Era2Mesh: {fileID: 1723062747942849912, guid: 721a5b948f5926946a483937deda7626, type: 3}
+  Era3Mesh: {fileID: 1723062747942849912, guid: 721a5b948f5926946a483937deda7626, type: 3}
+  Era4Mesh: {fileID: 1723062747942849912, guid: 721a5b948f5926946a483937deda7626, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

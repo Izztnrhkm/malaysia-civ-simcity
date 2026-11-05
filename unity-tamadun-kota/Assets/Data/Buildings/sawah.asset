@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: sawah
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: sawah
+  kind: 0
+  era: 1
+  category: production
+  zoneDensity: 0
+  nameMs: Sawah Padi
+  descriptionMs: Bendang di dataran aluvium yang subur.
+  sejarahpediaTitleMs: Padi & Sawah
+  sejarahpediaMs: Makanan ruji yang ditanam di dataran aluvium yang subur.
+  nameEn: Paddy Field
+  descriptionEn: Rice paddies on fertile alluvial plains.
+  sejarahpediaTitleEn: Rice & Paddy Fields
+  sejarahpediaEn: The staple food, grown on fertile alluvial plains.
+  footprint: 8
+  cost: 120
+  upkeep: 0.5
+  jobs: 10
+  yields:
+  - resource: 1
+    amountPerTick: 8
+  inputs: []
+  placement: fertile
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 7706272144150928529, guid: fa558b933232fdd4f869cad72251b8c1, type: 3}
+  Era2Mesh: {fileID: 7706272144150928529, guid: fa558b933232fdd4f869cad72251b8c1, type: 3}
+  Era3Mesh: {fileID: 7706272144150928529, guid: fa558b933232fdd4f869cad72251b8c1, type: 3}
+  Era4Mesh: {fileID: 7706272144150928529, guid: fa558b933232fdd4f869cad72251b8c1, type: 3}
+  GreyboxPrefab: {fileID: 8113584703222351717, guid: 2be4b07332e057949b515f2f5613d957, type: 3}

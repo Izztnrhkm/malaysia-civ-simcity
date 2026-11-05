@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: menara_telekom
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: menara_telekom
+  kind: 0
+  era: 4
+  category: research
+  zoneDensity: 0
+  nameMs: Menara Telekomunikasi
+  descriptionMs: Menara jalur lebar dan rangkaian mudah alih.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Telecom Tower
+  descriptionEn: A broadband and mobile network tower.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 15000
+  upkeep: 15
+  jobs: 10
+  yields:
+  - resource: 10
+    amountPerTick: 3
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 8485553582497198050, guid: 69cb0633bd0a74148a1eca238f599087, type: 3}
+  Era2Mesh: {fileID: 8485553582497198050, guid: 69cb0633bd0a74148a1eca238f599087, type: 3}
+  Era3Mesh: {fileID: 8485553582497198050, guid: 69cb0633bd0a74148a1eca238f599087, type: 3}
+  Era4Mesh: {fileID: 8485553582497198050, guid: 69cb0633bd0a74148a1eca238f599087, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

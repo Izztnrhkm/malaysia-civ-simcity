@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: pelabuhan_dagang
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: pelabuhan_dagang
+  kind: 0
+  era: 2
+  category: trade
+  zoneDensity: 0
+  nameMs: Pelabuhan Kapal Wap
+  descriptionMs: Dermaga berbumbung zink dan kren untuk kapal wap.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Steamship Port
+  descriptionEn: Zinc-roofed wharves and cranes for steamships.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 16
+  cost: 5000
+  upkeep: 15
+  jobs: 60
+  yields: []
+  inputs: []
+  placement: coast
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 3092936665279121463, guid: d84a25ac6c4627148a870beb9d29ba00, type: 3}
+  Era2Mesh: {fileID: 3092936665279121463, guid: d84a25ac6c4627148a870beb9d29ba00, type: 3}
+  Era3Mesh: {fileID: 3092936665279121463, guid: d84a25ac6c4627148a870beb9d29ba00, type: 3}
+  Era4Mesh: {fileID: 3092936665279121463, guid: d84a25ac6c4627148a870beb9d29ba00, type: 3}
+  GreyboxPrefab: {fileID: 2170998101986769790, guid: 620df034c3efe7b478b12d7fe223f8ac, type: 3}

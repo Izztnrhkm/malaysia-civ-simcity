@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: empangan
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: empangan
+  kind: 0
+  era: 3
+  category: utility
+  zoneDensity: 0
+  nameMs: Empangan Hidroelektrik
+  descriptionMs: Tenaga bersih dari sungai. Mesti di tebing sungai.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Hydroelectric Dam
+  descriptionEn: Clean power from the river. Must be on a riverbank.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 8
+  cost: 12000
+  upkeep: 12
+  jobs: 10
+  yields: []
+  inputs: []
+  placement: river
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 5824231152455872011, guid: 5ea2e19d19031984283e1a89e4e6a1e4, type: 3}
+  Era2Mesh: {fileID: 5824231152455872011, guid: 5ea2e19d19031984283e1a89e4e6a1e4, type: 3}
+  Era3Mesh: {fileID: 5824231152455872011, guid: 5ea2e19d19031984283e1a89e4e6a1e4, type: 3}
+  Era4Mesh: {fileID: 5824231152455872011, guid: 5ea2e19d19031984283e1a89e4e6a1e4, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

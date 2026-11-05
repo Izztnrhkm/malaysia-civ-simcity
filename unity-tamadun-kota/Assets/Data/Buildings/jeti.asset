@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: jeti
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: jeti
+  kind: 0
+  era: 1
+  category: trade
+  zoneDensity: 0
+  nameMs: Jeti
+  descriptionMs: Menghubungkan jalan darat dengan laluan sungai dan laut.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Jetty
+  descriptionEn: Links land routes with river and sea lanes.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 150
+  upkeep: 1
+  jobs: 4
+  yields: []
+  inputs: []
+  placement: water
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 2774809378421180675, guid: 33356e54b02951e4e9d3c779746b9ebb, type: 3}
+  Era2Mesh: {fileID: 2774809378421180675, guid: 33356e54b02951e4e9d3c779746b9ebb, type: 3}
+  Era3Mesh: {fileID: 2774809378421180675, guid: 33356e54b02951e4e9d3c779746b9ebb, type: 3}
+  Era4Mesh: {fileID: 2774809378421180675, guid: 33356e54b02951e4e9d3c779746b9ebb, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

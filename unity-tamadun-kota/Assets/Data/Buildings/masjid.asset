@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: masjid
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: masjid
+  kind: 0
+  era: 1
+  category: culture
+  zoneDensity: 0
+  nameMs: Masjid Bumbung Bertingkat
+  descriptionMs: Masjid berbumbung tiga tingkat gaya Nusantara.
+  sejarahpediaTitleMs: Islam di Alam Melayu
+  sejarahpediaMs: Pelabuhan dagang menjadi saluran penyebaran Islam di Nusantara.
+  nameEn: Tiered-Roof Mosque
+  descriptionEn: A three-tiered-roof mosque in the Nusantara style.
+  sejarahpediaTitleEn: Islam in the Malay World
+  sejarahpediaEn: Trading ports became channels for the spread of Islam across the
+    archipelago.
+  footprint: 8
+  cost: 800
+  upkeep: 3
+  jobs: 4
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 7572440641086026606, guid: 5aec5a2359b70c0479de38da1d8c58f7, type: 3}
+  Era2Mesh: {fileID: 7572440641086026606, guid: 5aec5a2359b70c0479de38da1d8c58f7, type: 3}
+  Era3Mesh: {fileID: 7572440641086026606, guid: 5aec5a2359b70c0479de38da1d8c58f7, type: 3}
+  Era4Mesh: {fileID: 7572440641086026606, guid: 5aec5a2359b70c0479de38da1d8c58f7, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

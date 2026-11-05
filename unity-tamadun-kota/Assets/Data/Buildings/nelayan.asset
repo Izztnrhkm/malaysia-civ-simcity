@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: nelayan
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: nelayan
+  kind: 0
+  era: 1
+  category: production
+  zoneDensity: 0
+  nameMs: Perkampungan Nelayan
+  descriptionMs: Nelayan menangkap ikan di sungai dan Selat Melaka.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Fishing Village
+  descriptionEn: Fishers working the river and the Straits.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 80
+  upkeep: 0.4
+  jobs: 6
+  yields:
+  - resource: 1
+    amountPerTick: 4
+  inputs: []
+  placement: water
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 3855856664573448605, guid: 7feed421ea4f44f419d9235f4263c390, type: 3}
+  Era2Mesh: {fileID: 3855856664573448605, guid: 7feed421ea4f44f419d9235f4263c390, type: 3}
+  Era3Mesh: {fileID: 3855856664573448605, guid: 7feed421ea4f44f419d9235f4263c390, type: 3}
+  Era4Mesh: {fileID: 3855856664573448605, guid: 7feed421ea4f44f419d9235f4263c390, type: 3}
+  GreyboxPrefab: {fileID: 7658692174889179149, guid: cb2bac4a656fc0046ba6fe1fc9fa107f, type: 3}

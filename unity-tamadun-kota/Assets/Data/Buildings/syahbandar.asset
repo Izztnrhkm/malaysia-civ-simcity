@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: syahbandar
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: syahbandar
+  kind: 0
+  era: 1
+  category: trade
+  zoneDensity: 0
+  nameMs: Pejabat Syahbandar
+  descriptionMs: Syahbandar mengurus pedagang asing dan cukai pelabuhan.
+  sejarahpediaTitleMs: Syahbandar
+  sejarahpediaMs: Pegawai pelabuhan Melaka yang mengurus pedagang asing mengikut
+    asal mereka.
+  nameEn: "Harbour Master\u2019s Office"
+  descriptionEn: The shahbandar manages foreign traders and port duties.
+  sejarahpediaTitleEn: The Shahbandar (Harbour Master)
+  sejarahpediaEn: "Melaka\u2019s port officials, each responsible for traders from
+    particular regions."
+  footprint: 4
+  cost: 700
+  upkeep: 3
+  jobs: 6
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 8937129418325262460, guid: c09aeb9bfa97c4a4ebde741badf69988, type: 3}
+  Era2Mesh: {fileID: 8937129418325262460, guid: c09aeb9bfa97c4a4ebde741badf69988, type: 3}
+  Era3Mesh: {fileID: 8937129418325262460, guid: c09aeb9bfa97c4a4ebde741badf69988, type: 3}
+  Era4Mesh: {fileID: 8937129418325262460, guid: c09aeb9bfa97c4a4ebde741badf69988, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}

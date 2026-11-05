@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: stesen
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: stesen
+  kind: 0
+  era: 2
+  category: trade
+  zoneDensity: 0
+  nameMs: Stesen Kereta Api
+  descriptionMs: Menghubungkan landasan kereta api dengan jalan raya. Mesti bersebelahan
+    landasan.
+  sejarahpediaTitleMs: Kereta Api Tanah Melayu
+  sejarahpediaMs: "Landasan pertama, Taiping\u2013Port Weld, dibuka pada 1885 untuk
+    mengangkut bijih timah."
+  nameEn: Railway Station
+  descriptionEn: Links the railway with roads. Must touch a rail line.
+  sejarahpediaTitleEn: Railways of Malaya
+  sejarahpediaEn: "The first line, Taiping\u2013Port Weld, opened in 1885 to carry
+    tin."
+  footprint: 8
+  cost: 1600
+  upkeep: 5
+  jobs: 15
+  yields: []
+  inputs: []
+  placement: rail
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 5256542518256189199, guid: c7112d8af1785284ea50868b9a71c9c9, type: 3}
+  Era2Mesh: {fileID: 5256542518256189199, guid: c7112d8af1785284ea50868b9a71c9c9, type: 3}
+  Era3Mesh: {fileID: 5256542518256189199, guid: c7112d8af1785284ea50868b9a71c9c9, type: 3}
+  Era4Mesh: {fileID: 5256542518256189199, guid: c7112d8af1785284ea50868b9a71c9c9, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

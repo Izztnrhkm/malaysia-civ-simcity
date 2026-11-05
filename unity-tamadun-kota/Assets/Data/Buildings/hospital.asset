@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: hospital
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: hospital
+  kind: 0
+  era: 2
+  category: service
+  zoneDensity: 0
+  nameMs: Hospital
+  descriptionMs: Rawatan perubatan moden dan kawalan wabak.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Hospital
+  descriptionEn: Modern medical care and epidemic control.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 8
+  cost: 1500
+  upkeep: 7
+  jobs: 25
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 3572826583346455301, guid: 7724a6584f1a07d43ba9042d72743ed2, type: 3}
+  Era2Mesh: {fileID: 3572826583346455301, guid: 7724a6584f1a07d43ba9042d72743ed2, type: 3}
+  Era3Mesh: {fileID: 3572826583346455301, guid: 7724a6584f1a07d43ba9042d72743ed2, type: 3}
+  Era4Mesh: {fileID: 3572826583346455301, guid: 7724a6584f1a07d43ba9042d72743ed2, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

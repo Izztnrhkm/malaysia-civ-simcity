@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: pelabuhan
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: pelabuhan
+  kind: 0
+  era: 1
+  category: trade
+  zoneDensity: 0
+  nameMs: "Pelabuhan Entrep\xF4t"
+  descriptionMs: Tempat kapal asing berlabuh, berdagang dan menunggu angin monsun.
+  sejarahpediaTitleMs: "Pelabuhan Entrep\xF4t"
+  sejarahpediaMs: Pelabuhan tempat barang diimport untuk dieksport semula, bukan
+    dihasilkan sendiri.
+  nameEn: "Entrep\xF4t Harbour"
+  descriptionEn: Where foreign ships anchor, trade and wait for the monsoon winds.
+  sejarahpediaTitleEn: "The Entrep\xF4t Port"
+  sejarahpediaEn: A port where goods are imported to be re-exported rather than produced
+    locally.
+  footprint: 8
+  cost: 1200
+  upkeep: 6
+  jobs: 30
+  yields: []
+  inputs: []
+  placement: coast
+  landmark: 0
+  upgradable: 1
+  Era1Mesh: {fileID: 1231267798169086514, guid: 9cb68ff5e165219458c95aa2054c40b6, type: 3}
+  Era2Mesh: {fileID: 7818366750972823688, guid: cb07e1e77a2dc1f46993d0a29e4b5a19, type: 3}
+  Era3Mesh: {fileID: 2692811478800241000, guid: 16ee58096963f184f8487b0f9cbefec7, type: 3}
+  Era4Mesh: {fileID: 7765580935890427667, guid: 751bc5b060649db45846f948312f538f, type: 3}
+  GreyboxPrefab: {fileID: 8272653712214874278, guid: 81b0cd815f515c1459608c6b3b67d900, type: 3}

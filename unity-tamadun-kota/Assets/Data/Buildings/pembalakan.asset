@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: pembalakan
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: pembalakan
+  kind: 0
+  era: 1
+  category: production
+  zoneDensity: 0
+  nameMs: Kem Pembalakan
+  descriptionMs: Kayu keras hutan hujan untuk kapal dan rumah.
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Logging Camp
+  descriptionEn: Rainforest hardwood for ships and houses.
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 100
+  upkeep: 0.6
+  jobs: 8
+  yields:
+  - resource: 2
+    amountPerTick: 4
+  inputs: []
+  placement: forest
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 781034717153294201, guid: 6b7bfca0dfd977d49b195d55dcb9b6fc, type: 3}
+  Era2Mesh: {fileID: 781034717153294201, guid: 6b7bfca0dfd977d49b195d55dcb9b6fc, type: 3}
+  Era3Mesh: {fileID: 781034717153294201, guid: 6b7bfca0dfd977d49b195d55dcb9b6fc, type: 3}
+  Era4Mesh: {fileID: 781034717153294201, guid: 6b7bfca0dfd977d49b195d55dcb9b6fc, type: 3}
+  GreyboxPrefab: {fileID: 7658692174889179149, guid: cb2bac4a656fc0046ba6fe1fc9fa107f, type: 3}

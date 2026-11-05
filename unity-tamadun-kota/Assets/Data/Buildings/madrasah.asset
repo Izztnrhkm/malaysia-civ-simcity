@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab1057f7fead2459d2df5c61fee84c, type: 3}
+  m_Name: madrasah
+  m_EditorClassIdentifier: TamadunKota.Runtime::TamadunKota.Data.BuildingData
+  id: madrasah
+  kind: 0
+  era: 1
+  category: research
+  zoneDensity: 0
+  nameMs: Madrasah
+  descriptionMs: 'Pusat ilmu: bahasa, falak dan undang-undang.'
+  sejarahpediaTitleMs: 
+  sejarahpediaMs: 
+  nameEn: Madrasah
+  descriptionEn: 'A centre of learning: language, astronomy and law.'
+  sejarahpediaTitleEn: 
+  sejarahpediaEn: 
+  footprint: 4
+  cost: 500
+  upkeep: 2.5
+  jobs: 4
+  yields: []
+  inputs: []
+  placement: land
+  landmark: 0
+  upgradable: 0
+  Era1Mesh: {fileID: 4175546730357309631, guid: 860983ab2d1f8f2499d33bed790e2104, type: 3}
+  Era2Mesh: {fileID: 4175546730357309631, guid: 860983ab2d1f8f2499d33bed790e2104, type: 3}
+  Era3Mesh: {fileID: 4175546730357309631, guid: 860983ab2d1f8f2499d33bed790e2104, type: 3}
+  Era4Mesh: {fileID: 4175546730357309631, guid: 860983ab2d1f8f2499d33bed790e2104, type: 3}
+  GreyboxPrefab: {fileID: 1787302650551682154, guid: 521728bdef0ff454fab79dbf68c00105, type: 3}
