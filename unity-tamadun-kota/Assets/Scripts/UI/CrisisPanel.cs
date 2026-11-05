@@ -65,6 +65,7 @@ namespace TamadunKota.UI
                 t.alignment = TextAnchor.MiddleLeft;
                 b.GetComponent<LayoutElement>().preferredHeight = 64;
             }
+            crisisPanel.SetAsLastSibling();   // over any open window
             crisisPanel.gameObject.SetActive(true);
             if (!crisisPaused) { ctx.Time?.PushPause(); crisisPaused = true; }
         }

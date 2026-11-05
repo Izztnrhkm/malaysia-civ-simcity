@@ -183,6 +183,7 @@ namespace TamadunKota.Systems
             Add(ctx.Inspector = new InspectorPanel(ctx), root);
             Add(ctx.Research = new ResearchPanel(ctx), root);
             Add(ctx.SaveLoadMenu = new SaveLoadPanel(ctx), root);
+            Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
             ctx.ShowMessage = ctx.Message.Show;
             Add(ctx.MainMenu = new MainMenuPanel(ctx), root);   // last: drawn over the whole HUD
