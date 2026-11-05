@@ -10,9 +10,9 @@ cleanly in Unity 6000.3, and has CI that runs the rules-engine tests on every pu
 
 | Lane | Agent | Branch | Owns (may edit) |
 |---|---|---|---|
-| A. Lead: Editor, scene, play-testing, performance, merges | Claude (lead session) | `lead/playtest-perf` | `Assets/Editor/**`, `Assets/Scripts/Core/**`, `Assets/Scripts/Data/**`, `Assets/Scenes`, `Assets/Prefabs`, `Assets/Materials`, `Assets/Settings`, `ProjectSettings/**`, `Packages/**`, `README.md`, `docs/GDD.md`, this file |
+| A. Lead: Editor, scene, play-testing, performance, merges | Claude (lead session) | `lead/playtest-perf` | `Assets/Editor/**`, `Assets/Scripts/Core/**`, `Assets/Scripts/Data/**`, `Assets/Scenes`, `Assets/Prefabs`, `Assets/Materials`, `Assets/Settings`, `Assets/Tests/PlayMode/**` (new), `ProjectSettings/**`, `Packages/**`, `README.md`, `docs/GDD.md`, this file |
 | B. HUD and UI parity | Claude (second session) | `claude/unity-hud-parity` | `Assets/Scripts/Systems/UIManager.cs`, new `Assets/Scripts/UI/**`, new `Assets/Resources/Localization/**`, `scripts/export-unity-data.ts` (repo root) |
-| C. Rules-engine parity and CI | Codex | `codex/sim-parity` | `Assets/Scripts/Simulation/**`, `Assets/Tests/**`, `ci/**`, `.github/workflows/unity-sim.yml` (new) |
+| C. Rules-engine parity and CI | Codex | `codex/sim-parity` | `Assets/Scripts/Simulation/**`, `Assets/Tests/EditMode/**`, `ci/**`, `.github/workflows/unity-sim.yml` (new) |
 
 Files not listed (the web game in `src/`, `Assets/Art/**`, `Systems/SaveLoadManager.cs`,
 `Systems/AudioAtmosphereManager.cs`, `Systems/SteamworksManager.cs`) are frozen for this milestone.
