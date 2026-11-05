@@ -29,12 +29,14 @@ namespace TamadunKota.UI
         public Action<string> ShowMessage = _ => { };
         /// <summary>Opens the Settings window (null until it exists).</summary>
         public Action OpenSettings;
+        /// <summary>Opens the Sejarahpedia at an entry id (null until it exists).</summary>
+        public Action<string> OpenEntry;
 
         // panels, assigned by the UIManager as it builds them
         public TopBarPanel TopBar;
         public ToolBarPanel ToolBar;
         public BuildPalettePanel Palette;
-        public NoticeListPanel Notices;
+        public NotificationFeed Feed;
         public MessageBanner Message;
         public InspectorPanel Inspector;
         public ResearchPanel Research;

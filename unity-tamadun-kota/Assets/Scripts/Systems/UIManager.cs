@@ -16,7 +16,7 @@ namespace TamadunKota.Systems
     /// resource bar (Treasury, Food, Timber, Tin, Rubber, Energy, Tech), date / era / population,
     /// speed controls, tool bar (inspect, transport, R/C/I zones, bulldoze), a build palette of
     /// the buildings unlocked in the current era, research picker, era advance, crisis dialog,
-    /// notices, building inspector with its Sejarahpedia summary, BM/EN toggle, save/load,
+    /// notification feed, building inspector with its Sejarahpedia summary, BM/EN toggle, save/load,
     /// the "Greybox / Full 3D Art" toggle and the main menu (Esc closes the open window).
     ///
     /// Each part is a panel class in Assets/Scripts/UI (TamadunKota.UI); this component finds the
@@ -178,7 +178,7 @@ namespace TamadunKota.Systems
             artToggleButton = ctx.TopBar.ArtToggleButton;
             Add(ctx.ToolBar = new ToolBarPanel(ctx), root);
             Add(ctx.Palette = new BuildPalettePanel(ctx), root);
-            Add(ctx.Notices = new NoticeListPanel(ctx), root);
+            Add(ctx.Feed = new NotificationFeed(ctx), root);
             Add(ctx.Message = new MessageBanner(ctx), root);
             Add(ctx.Inspector = new InspectorPanel(ctx), root);
             Add(ctx.Research = new ResearchPanel(ctx), root);
@@ -213,7 +213,7 @@ namespace TamadunKota.Systems
 
         void ShowMessage(string msg) => ctx.ShowMessage(msg);
 
-        void OnNotice(Notice n) => ctx.Notices.OnNotice(n);
+        void OnNotice(Notice n) => ctx.Feed.OnNotice(n);
 
         void Inspect(int x, int y) => ctx.Inspector.Inspect(x, y);
 

@@ -3,7 +3,10 @@ using UnityEngine.UI;
 
 namespace TamadunKota.UI
 {
-    /// <summary>Short centred message above the tool row (placement errors, saves, era changes), hidden after 3 s.</summary>
+    /// <summary>
+    /// Short centred message above the tool row (placement errors, saves, era changes), hidden after
+    /// 3 s. Kept to the middle 40 % of the screen so it clears the notification feed on the left.
+    /// </summary>
     public sealed class MessageBanner : HudPanel
     {
         Text messageText;
@@ -14,7 +17,7 @@ namespace TamadunKota.UI
         public override void Build(RectTransform root)
         {
             messageText = Kit.Label(root, "Message", FontSize + 2, TextAnchor.MiddleCenter);
-            HudKit.Stretch(messageText.rectTransform, new Vector2(0.2f, 0), new Vector2(0.8f, 0), new Vector2(0, 186), new Vector2(0, 226));
+            HudKit.Stretch(messageText.rectTransform, new Vector2(0.3f, 0), new Vector2(0.7f, 0), new Vector2(0, 186), new Vector2(0, 226));
             messageText.color = Kit.AccentColor;
             messageText.enabled = false;
         }
