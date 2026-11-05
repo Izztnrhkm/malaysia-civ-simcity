@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759930278123441557}
   - component: {fileID: 1154335708575343797}
+  - component: {fileID: 7512951053807357828}
   m_Layer: 0
   m_Name: tree_oilpalm
   m_TagString: Untagged
@@ -242,6 +243,29 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3371703368741102769}
   m_Enabled: 1
+--- !u!136 &7512951053807357828
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5715844467530823197}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.561186
+  m_Height: 6.48
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.24, z: 0}
 --- !u!1 &5869601226196835497
 GameObject:
   m_ObjectHideFlags: 0

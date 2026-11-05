@@ -44,6 +44,19 @@ namespace TamadunKota.Core
 
         public void TogglePause() => SetSpeed(speed == 0 ? resumeSpeed : 0);
 
+        /// <summary>
+        /// Runs <paramref name="ticks"/> ticks immediately, ignoring speed and pause. For tests and
+        /// tools that need many turns without waiting for real time.
+        /// </summary>
+        public void Advance(int ticks)
+        {
+            for (int i = 0; i < ticks; i++)
+            {
+                TickCount++;
+                Tick?.Invoke(TickCount);
+            }
+        }
+
         /// <summary>Modal dialogs (crises, menus) pause the clock without changing the chosen speed.</summary>
         public void PushPause() => externallyPaused++;
         public void PopPause() => externallyPaused = Mathf.Max(0, externallyPaused - 1);

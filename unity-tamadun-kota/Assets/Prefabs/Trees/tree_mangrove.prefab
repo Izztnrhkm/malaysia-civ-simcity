@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6724151787941013659}
   - component: {fileID: 8107622219983893209}
+  - component: {fileID: 4879948398204989121}
   m_Layer: 0
   m_Name: tree_mangrove
   m_TagString: Untagged
@@ -152,6 +153,29 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8538152203967327192}
   m_Enabled: 1
+--- !u!136 &4879948398204989121
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884564548673505314}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.48153824
+  m_Height: 5.2717857
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.584107, z: 0}
 --- !u!1 &2440109112235698719
 GameObject:
   m_ObjectHideFlags: 0

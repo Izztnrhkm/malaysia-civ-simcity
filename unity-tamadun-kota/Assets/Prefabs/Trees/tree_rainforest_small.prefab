@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6651798701236091991}
   - component: {fileID: 6401633522526595228}
+  - component: {fileID: 2482551565211499733}
   m_Layer: 0
   m_Name: tree_rainforest_small
   m_TagString: Untagged
@@ -152,6 +153,29 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1806919224468415175}
   m_Enabled: 1
+--- !u!136 &2482551565211499733
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737536417515648326}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5560335
+  m_Height: 7.56
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.78, z: 0}
 --- !u!1 &5506659990606775184
 GameObject:
   m_ObjectHideFlags: 0

@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211802877956206043}
   - component: {fileID: 1301611096750488042}
+  - component: {fileID: 5052033792742659980}
   m_Layer: 0
   m_Name: tree_rubber
   m_TagString: Untagged
@@ -242,6 +243,29 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6949814593167781045}
   m_Enabled: 1
+--- !u!136 &5052033792742659980
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148602720456754305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35928226
+  m_Height: 9.072
+  m_Direction: 1
+  m_Center: {x: 0, y: 4.536, z: 0}
 --- !u!1 &8122649829457009602
 GameObject:
   m_ObjectHideFlags: 0

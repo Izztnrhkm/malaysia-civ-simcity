@@ -469,6 +469,21 @@ namespace TamadunKota.EditorTools
                 group.SetLODs(lods.ToArray());
                 group.fadeMode = LODFadeMode.None;
                 group.RecalculateBounds();
+
+                // Trees on the terrain are baked into the villagers' NavMesh, which is built from physics
+                // colliders: a trunk capsule makes them obstacles (and stops the bake warning about tree
+                // prototypes with nothing to bake).
+                if (kind == "tree" && inst.GetComponent<Collider>() == null)
+                {
+                    var b = levels[0][0].bounds;
+                    foreach (var r in levels[0]) b.Encapsulate(r.bounds);
+                    var trunk = inst.AddComponent<CapsuleCollider>();
+                    trunk.direction = 1;
+                    trunk.radius = Mathf.Clamp(Mathf.Min(b.extents.x, b.extents.z) * 0.25f, 0.15f, 0.6f);
+                    trunk.height = Mathf.Max(trunk.radius * 2f, b.size.y);
+                    trunk.center = new Vector3(0f, b.min.y + trunk.height * 0.5f, 0f);
+                }
+
                 var prefab = PrefabUtility.SaveAsPrefabAsset(inst, path);
                 return prefab;
             }

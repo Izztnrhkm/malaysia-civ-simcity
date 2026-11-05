@@ -152,6 +152,9 @@ namespace TamadunKota.Core
             int wantVehicles = Mathf.Min(maxVehicles, roadCells.Count / 5);
             int wantTrains = railCells.Count >= 6 ? Mathf.Min(maxTrains, 1 + railCells.Count / 40) : 0;
             int wantShips = Mathf.Min(maxShips, 2 + HarbourCount() * 2);
+            // vehicles and trains left without a route (see StepMover) are replaced below
+            for (int i = vehicles.Count - 1; i >= 0; i--) if (vehicles[i].path.Count < 2) RemoveAt(vehicles, i);
+            for (int i = trains.Count - 1; i >= 0; i--) if (trains[i].path.Count < 2) RemoveAt(trains, i);
             while (villagers.Count < wantVillagers && SpawnVillager()) { }
             while (vehicles.Count > wantVehicles) RemoveAt(vehicles, vehicles.Count - 1);
             while (vehicles.Count < wantVehicles && SpawnVehicle(era)) { }
@@ -279,6 +282,7 @@ namespace TamadunKota.Core
 
         bool NewRoute(Mover m, List<int> cells, System.Func<int, bool> walkable)
         {
+            if (cells.Count < 2) { m.path.Clear(); return false; }
             for (int attempt = 0; attempt < 6; attempt++)
             {
                 int a = m.path.Count > 0 ? m.path[m.path.Count - 1] : cells[rng.Int(0, cells.Count - 1)];
@@ -309,6 +313,9 @@ namespace TamadunKota.Core
                     break;
                 }
             }
+            // A failed reroute leaves the path empty (FindPath clears it), e.g. after the road under
+            // the vehicle was removed or the network split. Park it; the next Survey/Respawn re-seeds it.
+            if (m.path.Count < 2) return;
             int i0 = m.path[Mathf.Min(m.index, m.path.Count - 1)];
             int i1 = m.path[Mathf.Min(m.index + 1, m.path.Count - 1)];
             Vector3 a = ship ? SeaPos(i0) : CellPos(i0, m.lift + DeckLift(i0));
