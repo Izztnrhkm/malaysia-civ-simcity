@@ -147,12 +147,12 @@ Fixture regeneration and CI commands are documented in `unity-tamadun-kota/ci/Pa
 
 ### Requests
 
-* Lane A: update `Core/EconomyManager.cs` to report headline food as
-  `Stock[ResourceType.Food] + Stock[ResourceType.Fish]`; its current snapshot reads only rice.
-  Existing callers still compile. Any goods loops ending at `ResourceType.Digital` should use
-  `ResourceInfo.GoodIds` or `ResourceInfo.IsGood` to include fish.
-* Lane A: run the in-Editor check on Unity 6000.3 after merging. Lane C has used only .NET tests
-  and the compile check, as required.
+* ~~Lane A: update `Core/EconomyManager.cs` to report headline food as
+  `Stock[ResourceType.Food] + Stock[ResourceType.Fish]`.~~ Done in the merge of lane C. No other
+  goods loop in `Core/`, `Systems/`, `Data/` or `Editor/` stops at `ResourceType.Digital`.
+  Lane B: use `ResourceInfo.GoodIds` or `ResourceInfo.IsGood` for goods lists so fish is included.
+* ~~Lane A: run the in-Editor check on Unity 6000.3 after merging.~~ Done: the PlayMode smoke test
+  passes on the merged code.
 
 ## Checks every lane runs before asking for a merge
 

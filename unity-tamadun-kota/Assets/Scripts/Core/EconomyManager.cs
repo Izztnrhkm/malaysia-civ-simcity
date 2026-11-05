@@ -65,7 +65,7 @@ namespace TamadunKota.Core
             var s = sim.Stock;
             Current.treasury = s[ResourceType.Treasury];
             Current.netIncome = e.Budget.Net;
-            Current.food = s[ResourceType.Food];
+            Current.food = s[ResourceType.Food] + s[ResourceType.Fish]; // rice and fish are separate goods
             Current.timber = s[ResourceType.Timber];
             Current.tin = s[ResourceType.Tin];
             Current.rubber = s[ResourceType.Rubber];
