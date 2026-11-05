@@ -1,0 +1,35 @@
+name: Unity simulation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          lfs: true
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: unity-tamadun-kota/ci/Parity/package-lock.json
+      - name: Install parity fixture tooling
+        run: npm ci --prefix unity-tamadun-kota/ci/Parity --ignore-scripts
+      - name: Verify fixtures against the TypeScript engine
+        run: npm run check --prefix unity-tamadun-kota/ci/Parity
+      - name: Test the engine without Unity
+        run: dotnet test unity-tamadun-kota/ci/SimulationTests
+      - name: Fetch compile-check dependencies
+        run: bash unity-tamadun-kota/ci/UnityCompileCheck/fetch-deps.sh
+      - name: Compile runtime and editor scripts
+        run: dotnet build unity-tamadun-kota/ci/UnityCompileCheck/Game.csproj

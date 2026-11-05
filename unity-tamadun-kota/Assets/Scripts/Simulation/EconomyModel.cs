@@ -1,6 +1,5 @@
 // C# port of the web game's economy (src/core/sim/economy.ts), demand and zone growth
-// (zoning.ts) and happiness (environment.ts). Logistics is simplified to "served by the
-// transport network or not" (the web game uses a multi-source Dijkstra cost field).
+// (zoning.ts) and happiness (environment.ts). TransportModel provides delivery costs.
 // Every buffer is preallocated: Tick() performs no heap allocations.
 using System;
 
@@ -62,8 +61,8 @@ namespace TamadunKota.Simulation
     [Serializable]
     public struct Budget
     {
-        public double taxR, taxC, taxI, exports, upkeepBuildings, upkeepTransport, imports, admin, infrastructure, advisors;
-        public double Income => taxR + taxC + taxI + exports;
+        public double taxR, taxC, taxI, exports, deals, upkeepBuildings, upkeepTransport, imports, admin, infrastructure, advisors;
+        public double Income => taxR + taxC + taxI + exports + deals;
         public double Expenses => upkeepBuildings + upkeepTransport + imports + admin + infrastructure + advisors;
         public double Net => Income - Expenses;
     }
@@ -144,6 +143,7 @@ namespace TamadunKota.Simulation
             switch (r)
             {
                 case ResourceType.Timber: return "kayu";
+                case ResourceType.Fish: return "ikan";
                 case ResourceType.Spices: return "rempah";
                 case ResourceType.Iron: return "besi";
                 case ResourceType.Tin: return "timah";
@@ -180,7 +180,7 @@ namespace TamadunKota.Simulation
         /// <summary>
         /// One economy tick. Mutates the stockpile and treasury in <paramref name="stock"/>.
         /// </summary>
-        public void Tick(CityState city, ResourceLedger stock, int era, EffectTotals fx, ActiveEffectsView events, double taxR, double taxC, double taxI, bool[] researched, double advisorUpkeep)
+        public void Tick(CityState city, ResourceLedger stock, int era, EffectTotals fx, ActiveEffectsView events, double taxR, double taxC, double taxI, bool[] researched, double advisorUpkeep, DiplomacyState diplomacy = null)
         {
             EraRecord eraDef = db.Era(era);
             Production.Clear();
@@ -239,7 +239,8 @@ namespace TamadunKota.Simulation
                 for (int r = 0; r < prod.Length; r++) if (prod[r] > 0) { producer = true; break; }
                 if (producer)
                 {
-                    eff *= city.HasAccess(b.x, b.y, b.cells) ? 1 : 0.25;
+                    int centre = (b.y + b.cells / 2) * city.Grid.Width + b.x + b.cells / 2;
+                    eff *= TransportModel.CostToEfficiency(city.Network.Cost[centre], era);
                     if (events.Flood && FloodRisk(city, b) && !FloodGuarded(city, b)) eff *= 0.5;
                     eff *= SiteFactor(city, b, d.placement);
                     double f = 1;
@@ -273,7 +274,7 @@ namespace TamadunKota.Simulation
             for (int i = 0; i < city.Zone.Length; i++)
             {
                 if (city.Zone[i] != (byte)ZoneType.Industrial || city.Density[i] == 0) continue;
-                double jobsHere = DensityJobsI[city.Density[i]] * StaffRatio * (city.Access[i] != 0 ? 1 : 0.25) * iUtil;
+                double jobsHere = DensityJobsI[city.Density[i]] * StaffRatio * TransportModel.CostToEfficiency(city.Network.Cost[i], era) * iUtil;
                 AddOutput(stock, ResourceType.Goods, jobsHere * perGoods, fx, events);
                 AddOutput(stock, ResourceType.Electronics, jobsHere * perElec, fx, events);
                 AddOutput(stock, ResourceType.Digital, jobsHere * perDigital, fx, events);
@@ -285,6 +286,10 @@ namespace TamadunKota.Simulation
             stock.Add(ResourceType.Food, -take);
             Consumption.Add(ResourceType.Food, take);
             double foodGot = take;
+            double fish = Math.Min(stock[ResourceType.Fish], Math.Max(0, foodNeed - foodGot));
+            stock.Add(ResourceType.Fish, -fish);
+            Consumption.Add(ResourceType.Fish, fish);
+            foodGot += fish;
             if (foodGot < foodNeed - 1e-6 && hasHub)
             {
                 double unit = BasePrice(ResourceType.Food, era) * 1.5;
@@ -304,9 +309,11 @@ namespace TamadunKota.Simulation
             // ---- exports: surplus at world prices, highest price first ----
             ExportCapacity = hasHub ? rawExportCap * Math.Max(0, 1 + fx.ExportCap) * events.ExportCapMult : 0;
             double capLeft = ExportCapacity;
+            if (diplomacy != null) capLeft = diplomacy.SettleDeals(stock, Exported, capLeft, events, ref Budget);
             int nSell = 0;
-            for (int r = (int)ResourceType.Food; r <= (int)ResourceType.Digital; r++)
+            for (int g = 0; g < ResourceInfo.GoodIds.Length; g++)
             {
+                int r = (int)ResourceInfo.FromGood(ResourceInfo.GoodIds[g]);
                 price[r] = BasePrice((ResourceType)r, era) * events.PriceMult[r] * (1 + fx.ExportPrice);
                 reserve[r] = 0;
                 if (price[r] > 0) sellOrder[nSell++] = r;
@@ -318,6 +325,7 @@ namespace TamadunKota.Simulation
                 for (int r = 0; r < cons.Length; r++) reserve[r] += cons[r] * 4;
             }
             reserve[(int)ResourceType.Food] = foodNeed * 6;
+            reserve[(int)ResourceType.Fish] = foodNeed * 6;
             reserve[(int)ResourceType.Goods] += cGoodsNeed * 4;
             // insertion sort by price (descending) - tiny array, no allocation
             for (int a = 1; a < nSell; a++)
@@ -373,11 +381,7 @@ namespace TamadunKota.Simulation
             stock.Add(ResourceType.Culture, CulturePerTick);
 
             // ---- happiness (smoothed towards its target) ----
-            double h = 55 + (FoodSatisfaction - 1) * 45 - Unemployment * 45;
-            h -= (taxR - 9) * 1.6 + (taxC - 9) * 0.5 + (taxI - 9) * 0.5;
-            h += fx.Happiness + events.Happiness + Math.Min(20, BuildingHappiness);
-            if (era >= 3) h -= (1 - Math.Min(PowerRatio, WaterRatio)) * 25;
-            h = Math.Max(0, Math.Min(100, h));
+            double h = ComputeHappinessTarget(city, era, fx, events, taxR, taxC, taxI);
             Happiness += (h - Happiness) * 0.15;
 
             // ---- RCI demand (port of computeDemand) ----
@@ -392,6 +396,22 @@ namespace TamadunKota.Simulation
             DemandR = Clamp100(dR);
             DemandC = Clamp100(dC);
             DemandI = Clamp100(dI);
+        }
+
+        public double ComputeHappinessTarget(CityState city, int era, EffectTotals fx, ActiveEffectsView events, double taxR, double taxC, double taxI)
+        {
+            double h = 55 + (FoodSatisfaction - 1) * 45 - Unemployment * 45;
+            double coverage = 0, pollution = 0;
+            int occupied = 0;
+            for (int i = 0; i < city.Zone.Length; i++)
+                if (city.Zone[i] == (byte)ZoneType.Residential && city.Density[i] > 0)
+                { coverage += city.Coverage[i]; pollution += city.Pollution[i]; occupied++; }
+            h += Math.Min(30, (occupied > 0 ? coverage / occupied : 60) * 0.15);
+            h -= (occupied > 0 ? pollution / occupied : 0) * 0.18;
+            h -= (taxR - 9) * 1.6 + (taxC - 9) * 0.5 + (taxI - 9) * 0.5;
+            h += fx.Happiness + events.Happiness + Math.Min(20, BuildingHappiness);
+            if (era >= 3) h -= (1 - Math.Min(PowerRatio, WaterRatio)) * 25;
+            return Math.Max(0, Math.Min(100, h));
         }
 
         static double Clamp100(double v) => v < -100 ? -100 : v > 100 ? 100 : v;
@@ -447,10 +467,7 @@ namespace TamadunKota.Simulation
             int cx = Math.Min(city.Grid.Width - 1, b.x + b.cells / 2), cy = Math.Min(city.Grid.Height - 1, b.y + b.cells / 2);
             int i = cy * city.Grid.Width + cx;
             if (city.Map.Elevation[i] >= MapData.SeaLevel + 14) return false;
-            for (int dy = -2; dy <= 2; dy++)
-                for (int dx = -2; dx <= 2; dx++)
-                    if (city.Grid.InBounds(cx + dx, cy + dy) && TerrainTypes.IsWater(city.Map.Terrain[(cy + dy) * city.Grid.Width + cx + dx])) return true;
-            return false;
+            return city.WaterDistance[i] <= 2;
         }
 
         bool FloodGuarded(CityState city, PlacedBuilding b)
@@ -484,8 +501,12 @@ namespace TamadunKota.Simulation
                     continue;
                 }
                 int maxD = maxDensity;
+                double lv = city.LandValue[i] + (z == (byte)ZoneType.Industrial ? city.Pollution[i] * 0.75 : z == (byte)ZoneType.Commercial ? city.Pollution[i] * 0.4 : 0);
+                if (lv < 90) maxD = Math.Min(maxD, 2);
+                else if (lv < 140) maxD = Math.Min(maxD, 3);
                 if (!utilitiesOk) maxD = Math.Min(maxD, 2);
-                if (flood && city.Map.Elevation[i] < MapData.SeaLevel + 14) continue;
+                if (z == (byte)ZoneType.Residential && city.Pollution[i] > 150) maxD = Math.Min(maxD, 1);
+                if (flood && city.Map.Elevation[i] < MapData.SeaLevel + 14 && city.WaterDistance[i] <= 2) continue;
                 double dem = z == (byte)ZoneType.Residential ? DemandR : z == (byte)ZoneType.Commercial ? DemandC : DemandI;
                 if (d > maxD)
                 {
@@ -494,7 +515,7 @@ namespace TamadunKota.Simulation
                 }
                 if (dem > 0 && d < maxD)
                 {
-                    double p = 0.05 * (dem / 100) * 1.0 * growthMult;
+                    double p = 0.05 * (dem / 100) * (0.5 + lv / 255) * growthMult;
                     if (rng.Chance(p)) { d++; city.Style[i] = (byte)era; changed = true; }
                 }
                 else if (dem < -25 && d > 0)

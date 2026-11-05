@@ -1,6 +1,9 @@
 <Project>
   <!-- Shared settings for the Unity compile check (see README.md in this folder). -->
   <PropertyGroup>
+    <!-- Projects in Packages/ must not overwrite each other's NuGet assets file. -->
+    <BaseIntermediateOutputPath>obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin/$(MSBuildProjectName)/</BaseOutputPath>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
