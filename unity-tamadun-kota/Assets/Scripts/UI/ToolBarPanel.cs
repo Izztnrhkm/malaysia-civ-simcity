@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TamadunKota.UI
 {
-    /// <summary>Bottom tool row: inspect, transport, R/C/I zones, bulldoze and the residential tax buttons.</summary>
+    /// <summary>Bottom tool row: inspect, transport, R/C/I zones and bulldoze (tax rates are in the Economy window).</summary>
     public sealed class ToolBarPanel : HudPanel
     {
         public ToolBarPanel(HudContext context) : base(context) { }
@@ -22,9 +22,6 @@ namespace TamadunKota.UI
             Kit.Btn(tools, () => T("Zon I", "Zone I"), () => ctx.Placement?.SelectZone(ZoneType.Industrial), 100);
             Kit.Spacer(tools, 12);
             Kit.Btn(tools, () => T("Roboh", "Bulldoze"), () => ctx.Placement?.SelectBulldoze(), 110);
-            Kit.Spacer(tools, 12);
-            Kit.Btn(tools, () => T("Cukai K +", "Tax R +"), () => Tax(ZoneType.Residential, 1), 110);
-            Kit.Btn(tools, () => T("Cukai K -", "Tax R -"), () => Tax(ZoneType.Residential, -1), 110);
         }
 
         void SelectTransport(string key)
@@ -37,14 +34,6 @@ namespace TamadunKota.UI
                 return;
             }
             ctx.Placement.SelectTransport(key);
-        }
-
-        void Tax(ZoneType z, int delta)
-        {
-            var sim = Sim;
-            if (sim == null || ctx.Economy == null) return;
-            ctx.Economy.SetTax(z, (z == ZoneType.Residential ? sim.TaxR : z == ZoneType.Commercial ? sim.TaxC : sim.TaxI) + delta);
-            ctx.TopBar.OnEconomy(ctx.Economy.Current);
         }
     }
 }

@@ -44,6 +44,7 @@ namespace TamadunKota.UI
         public CrisisPanel Crisis;
         public MainMenuPanel MainMenu;
         public AdvisorsPanel Advisors;
+        public EconomyPanel EconomyWindow;
 
         public HudContext(HudKit kit) { Kit = kit; }
 

@@ -1397,6 +1397,14 @@
    "value": "Slot dasar: {used}/{max}"
   },
   {
+   "key": "unity.eco.power",
+   "value": "Elektrik"
+  },
+  {
+   "key": "unity.eco.water",
+   "value": "Air"
+  },
+  {
    "key": "unity.eco.noLoans",
    "value": "Pinjaman belum ada dalam edisi Unity."
   },

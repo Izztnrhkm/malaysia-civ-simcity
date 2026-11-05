@@ -1397,6 +1397,14 @@
    "value": "Policy slots: {used}/{max}"
   },
   {
+   "key": "unity.eco.power",
+   "value": "Power"
+  },
+  {
+   "key": "unity.eco.water",
+   "value": "Water"
+  },
+  {
    "key": "unity.eco.noLoans",
    "value": "Loans are not in the Unity edition yet."
   },

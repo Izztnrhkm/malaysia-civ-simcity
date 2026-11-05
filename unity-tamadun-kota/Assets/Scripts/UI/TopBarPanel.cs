@@ -38,6 +38,7 @@ namespace TamadunKota.UI
             Kit.Spacer(bar, 16);
             Kit.Btn(bar, () => T("Kajian", "Research"), () => ctx.Research.Toggle(), 130);
             Kit.Btn(bar, () => T("Maju Era", "Advance Era"), AdvanceEra, 150);
+            Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
             Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
             Kit.Btn(bar, () => "BM / EN", () => GameRoot.Instance?.SetLanguage(!Malay), 110);

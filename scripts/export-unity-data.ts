@@ -308,6 +308,8 @@ const UNITY_STRINGS: Record<string, { ms: string; en: string }> = {
     en: 'WASD / arrows, screen edges or middle drag to pan; Q / E or right drag to rotate; mouse wheel to zoom; Space pauses, 1-3 set the speed; G switches art mode; F5 / F9 quick save / load; Esc closes panels.',
   },
   'unity.eco.policySlots': { ms: 'Slot dasar: {used}/{max}', en: 'Policy slots: {used}/{max}' },
+  'unity.eco.power': { ms: 'Elektrik', en: 'Power' },
+  'unity.eco.water': { ms: 'Air', en: 'Water' },
   'unity.eco.noLoans': { ms: 'Pinjaman belum ada dalam edisi Unity.', en: 'Loans are not in the Unity edition yet.' },
   'unity.timeline.table': { ms: 'Jadual', en: 'Table' },
   'unity.timeline.charts': { ms: 'Carta', en: 'Charts' },
