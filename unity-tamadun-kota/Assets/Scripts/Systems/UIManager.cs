@@ -113,6 +113,7 @@ namespace TamadunKota.Systems
                 GameRoot.Instance.SimulationChanged -= Bind;
                 GameRoot.Instance.LanguageChanged -= OnLanguage;
             }
+            TextFocus.Release();
             Bind(null);
         }
 
@@ -126,6 +127,7 @@ namespace TamadunKota.Systems
 
         void Update()
         {
+            TextFocus.Update(time, saveLoad);
             var kb = Keyboard.current;
             if (kb != null && kb.escapeKey.wasPressedThisFrame)
             {

@@ -137,7 +137,7 @@ namespace TamadunKota.UI
         void Dismiss(Card c)
         {
             c.active = false;
-            c.rt.gameObject.SetActive(false);
+            if (c.rt != null) c.rt.gameObject.SetActive(false);   // null while the scene unloads
         }
 
         public override void Tick()

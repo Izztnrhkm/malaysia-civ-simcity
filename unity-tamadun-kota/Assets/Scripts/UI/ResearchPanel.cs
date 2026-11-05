@@ -45,9 +45,10 @@ namespace TamadunKota.UI
             if (IsOpen) Rebuild();
         }
 
-        public override void Tick()
+        /// <summary>Progress only moves once per tick, so the status is rewritten then, not every frame.</summary>
+        public override void OnEconomy(TamadunKota.Core.EconomySnapshot s)
         {
-            if (IsOpen) UpdateStatus();
+            if (IsOpen && Sim != null) UpdateStatus();
         }
 
         void Rebuild()
