@@ -270,13 +270,10 @@ namespace TamadunKota.UI
             if (ctx.SaveLoad.Load(continueSlot)) Hide();
         }
 
-        static void Quit()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-        }
+        /// <summary>
+        /// Quits the player. Unity ignores this in the Editor; the runtime assembly stays free of
+        /// UnityEditor so the Steam compile check (which defines UNITY_EDITOR) builds.
+        /// </summary>
+        static void Quit() => Application.Quit();
     }
 }
