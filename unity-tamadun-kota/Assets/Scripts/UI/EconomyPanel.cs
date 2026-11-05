@@ -16,16 +16,17 @@ namespace TamadunKota.UI
     {
         static readonly ZoneType[] Zones = { ZoneType.Residential, ZoneType.Commercial, ZoneType.Industrial };
         static readonly string[] ZoneKeys = { "zone.R", "zone.C", "zone.I" };
-        static readonly string[] IncomeKeys = { "eco.taxR", "eco.taxC", "eco.taxI", "eco.exports" };
+        static readonly string[] IncomeKeys = { "eco.taxR", "eco.taxC", "eco.taxI", "eco.exports", "eco.deals" };
         static readonly string[] ExpenseKeys = { "eco.upkeepBuildings", "eco.upkeepTransport", "eco.admin", "eco.infrastructure", "eco.advisors", "eco.imports" };
-        const int FirstGood = (int)ResourceType.Food, LastGood = (int)ResourceType.Digital;
+        /// <summary>Goods rows in the web GOODS order (rice, fish, timber, ...), as resource indices.</summary>
+        static readonly int[] GoodIndices = BuildGoodIndices();
 
         readonly Text[] taxValues = new Text[3];
         readonly Text[] income = new Text[IncomeKeys.Length];
         readonly Text[] expenses = new Text[ExpenseKeys.Length];
         Text net, labour;
-        readonly GameObject[] goodRows = new GameObject[LastGood + 1];
-        readonly Text[,] goodCells = new Text[LastGood + 1, 6];
+        readonly GameObject[] goodRows = new GameObject[ResourceInfo.Count];
+        readonly Text[,] goodCells = new Text[ResourceInfo.Count, 6];
         RectTransform policyList;
         Text policySlots;
         int policySignature = -1;
@@ -91,8 +92,9 @@ namespace TamadunKota.UI
                 head[k].color = Kit.AccentColor;
                 Kit.Localize(head[k], () => Loc.Get(key));
             }
-            for (int r = FirstGood; r <= LastGood; r++)
+            for (int g = 0; g < GoodIndices.Length; g++)
             {
+                int r = GoodIndices[g];
                 var cells = GoodsRow(goods, ((ResourceType)r).ToString());
                 goodRows[r] = cells[0].transform.parent.gameObject;
                 for (int k = 0; k < 6; k++) goodCells[r, k] = cells[k];
@@ -102,6 +104,14 @@ namespace TamadunKota.UI
             policySlots = Kit.Line(pol, "", FontSize - 4, 24);
             policyList = Kit.Card(pol, "List", null, 0);
             policyList.GetComponent<VerticalLayoutGroup>().spacing = 6;
+        }
+
+        static int[] BuildGoodIndices()
+        {
+            var ids = ResourceInfo.GoodIds;
+            var result = new int[ids.Length];
+            for (int i = 0; i < ids.Length; i++) result[i] = (int)ResourceInfo.FromGood(ids[i]);
+            return result;
         }
 
         Text BudgetRow(Transform parent, string key)
@@ -175,6 +185,7 @@ namespace TamadunKota.UI
             income[1].text = HudFormat.Fmt(b.taxC);
             income[2].text = HudFormat.Fmt(b.taxI);
             income[3].text = HudFormat.Fmt(b.exports);
+            income[4].text = HudFormat.Fmt(b.deals);
             expenses[0].text = "-" + HudFormat.Fmt(b.upkeepBuildings);
             expenses[1].text = "-" + HudFormat.Fmt(b.upkeepTransport);
             expenses[2].text = "-" + HudFormat.Fmt(b.admin);
@@ -185,8 +196,9 @@ namespace TamadunKota.UI
             net.color = b.Net >= 0 ? HudKit.GoodColor : HudKit.BadColor;
 
             var priceMult = sim.Events.View.PriceMult;
-            for (int r = FirstGood; r <= LastGood; r++)
+            for (int g = 0; g < GoodIndices.Length; g++)
             {
+                int r = GoodIndices[g];
                 var rt = (ResourceType)r;
                 double price = e.BasePrice(rt, era);
                 double stock = sim.Stock.amounts[r];
