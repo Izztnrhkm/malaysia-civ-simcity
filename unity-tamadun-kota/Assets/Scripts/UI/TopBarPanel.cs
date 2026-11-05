@@ -9,12 +9,12 @@ namespace TamadunKota.UI
     /// <summary>
     /// Top bar (resources on the left, population / happiness / date / era on the right) and the
     /// controls row under it: speed, the window buttons (research, era & timeline, economy,
-    /// advisors, save/load, menu), language, the
-    /// "Greybox / Full 3D Art" toggle and the demand / tax status.
+    /// advisors, Sejarahpedia, save/load, settings, menu) and the "Greybox / Full 3D Art" toggle.
+    /// Language is in Settings and the main menu; the demand / tax status is on the tool row.
     /// </summary>
     public sealed class TopBarPanel : HudPanel
     {
-        Text resourceText, dateText, statusText, artToggleLabel;
+        Text resourceText, dateText, artToggleLabel;
         readonly StringBuilder sb = new StringBuilder(256);
 
         /// <summary>The scene's art toggle (from the setup menu) or the one created here.</summary>
@@ -43,7 +43,7 @@ namespace TamadunKota.UI
             Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
             Kit.Btn(bar, () => Loc.Get("panel.encyclopedia"), () => ctx.Sejarahpedia.Toggle(), 140);
             Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
-            Kit.Btn(bar, () => "BM / EN", () => GameRoot.Instance?.SetLanguage(!Malay), 110);
+            Kit.Btn(bar, () => Loc.Get("panel.settings"), () => ctx.Settings.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 80);
             Kit.Spacer(bar, 16);
             if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 220);
@@ -57,8 +57,6 @@ namespace TamadunKota.UI
             }
             artToggleLabel = ArtToggleButton.GetComponentInChildren<Text>();
             OnArtMode(ArtMode.Greybox);
-            statusText = Kit.Label(bar, "Status", FontSize - 2, TextAnchor.MiddleLeft);
-            statusText.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
         }
 
         public override void OnLanguage() => OnArtMode(ArtMode.Greybox);
@@ -91,11 +89,6 @@ namespace TamadunKota.UI
             sb.Append("   ").Append(HudFormat.MonthName(s.month, Malay)).Append(' ').Append(s.year.ToString());
             if (era != null) sb.Append("   ").Append(T(era.shortMs, era.shortEn));
             dateText.text = sb.ToString();
-
-            sb.Clear();
-            sb.Append("R ").Append(((int)s.demandR).ToString()).Append("  C ").Append(((int)s.demandC).ToString()).Append("  I ").Append(((int)s.demandI).ToString());
-            if (sim != null) sb.Append("   ").Append(T("Cukai ", "Tax ")).Append(sim.TaxR.ToString("0")).Append('/').Append(sim.TaxC.ToString("0")).Append('/').Append(sim.TaxI.ToString("0")).Append('%');
-            statusText.text = sb.ToString();
         }
     }
 }

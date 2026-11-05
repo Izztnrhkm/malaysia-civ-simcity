@@ -1,11 +1,20 @@
+using System.Text;
+using TamadunKota.Core;
 using TamadunKota.Simulation;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TamadunKota.UI
 {
-    /// <summary>Bottom tool row: inspect, transport, R/C/I zones and bulldoze (tax rates are in the Economy window).</summary>
+    /// <summary>
+    /// Bottom tool row: inspect, transport, R/C/I zones and bulldoze, then the R/C/I demand and tax
+    /// status (tax rates are set in the Economy window).
+    /// </summary>
     public sealed class ToolBarPanel : HudPanel
     {
+        Text statusText;
+        readonly StringBuilder sb = new StringBuilder(96);
+
         public ToolBarPanel(HudContext context) : base(context) { }
 
         public override void Build(RectTransform root)
@@ -22,6 +31,18 @@ namespace TamadunKota.UI
             Kit.Btn(tools, () => T("Zon I", "Zone I"), () => ctx.Placement?.SelectZone(ZoneType.Industrial), 100);
             Kit.Spacer(tools, 12);
             Kit.Btn(tools, () => T("Roboh", "Bulldoze"), () => ctx.Placement?.SelectBulldoze(), 110);
+            Kit.Spacer(tools, 16);
+            statusText = Kit.Label(tools, "Status", FontSize - 2, TextAnchor.MiddleLeft);
+            statusText.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+        }
+
+        public override void OnEconomy(EconomySnapshot s)
+        {
+            var sim = Sim;
+            sb.Clear();
+            sb.Append(Loc.Get("top.demand")).Append(":  R ").Append(((int)s.demandR).ToString()).Append("  C ").Append(((int)s.demandC).ToString()).Append("  I ").Append(((int)s.demandI).ToString());
+            if (sim != null) sb.Append("     ").Append(T("Cukai ", "Tax ")).Append(sim.TaxR.ToString("0")).Append('/').Append(sim.TaxC.ToString("0")).Append('/').Append(sim.TaxI.ToString("0")).Append('%');
+            statusText.text = sb.ToString();
         }
 
         void SelectTransport(string key)

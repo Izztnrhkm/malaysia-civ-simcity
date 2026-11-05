@@ -60,6 +60,9 @@ namespace TamadunKota.Systems
             if (saveLoad == null) saveLoad = FindAnyObjectByType<SaveLoadManager>();
             if (catalog == null && GameRoot.Instance != null) catalog = GameRoot.Instance.catalog;
             EnsureEventSystem();
+            // saved settings first, so every label starts in the saved language and art mode
+            HudSettings.ApplyLanguage();
+            HudSettings.ApplyScene(FindAnyObjectByType<AudioAtmosphereManager>(), FindAnyObjectByType<RTSCameraController>());
             Build();
         }
 
@@ -186,6 +189,8 @@ namespace TamadunKota.Systems
             Add(ctx.EraWindow = new EraTimelinePanel(ctx), root);
             Add(ctx.Sejarahpedia = new SejarahpediaPanel(ctx), root);
             ctx.OpenEntry = ctx.Sejarahpedia.OpenAt;
+            Add(ctx.Settings = new SettingsPanel(ctx), root);
+            ctx.OpenSettings = ctx.Settings.Open;
             Add(ctx.EconomyWindow = new EconomyPanel(ctx), root);
             Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
@@ -209,12 +214,17 @@ namespace TamadunKota.Systems
 
         void OnLanguage(bool malay)
         {
+            HudSettings.SaveLanguage(malay);
             ctx.Kit.Relabel();
             for (int i = 0; i < panels.Count; i++) panels[i].OnLanguage();
             if (economy != null) OnEconomy(economy.Current);
         }
 
-        void OnArtMode(bool greybox) => ctx.TopBar.OnArtMode(greybox);
+        void OnArtMode(bool greybox)
+        {
+            ctx.TopBar.OnArtMode(greybox);
+            ctx.Settings.OnArtMode(greybox);
+        }
 
         void ShowMessage(string msg) => ctx.ShowMessage(msg);
 
