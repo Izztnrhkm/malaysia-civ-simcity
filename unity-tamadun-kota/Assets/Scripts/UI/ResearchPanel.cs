@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>Research picker: current technology and civic with progress, and up to 12 available choices.</summary>
-    public sealed class ResearchPanel : HudPanel
+    public sealed class ResearchPanel : HudPanel, IHudModal
     {
         RectTransform researchPanel, researchList;
         Text researchStatus;
@@ -26,9 +26,18 @@ namespace TamadunKota.UI
 
         public void Toggle()
         {
-            bool show = !researchPanel.gameObject.activeSelf;
-            researchPanel.gameObject.SetActive(show);
-            if (show) Rebuild();
+            if (IsOpen) { Close(); return; }
+            ctx.ModalOpening(this);
+            researchPanel.SetAsLastSibling();
+            researchPanel.gameObject.SetActive(true);
+            Rebuild();
+        }
+
+        public void Close()
+        {
+            if (!IsOpen) return;
+            researchPanel.gameObject.SetActive(false);
+            ctx.ModalClosed(this);
         }
 
         public override void OnLanguage()

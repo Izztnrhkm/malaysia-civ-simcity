@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>Save / load slots (slot 0 is the autosave and F5/F9 quick slot).</summary>
-    public sealed class SaveLoadPanel : HudPanel
+    public sealed class SaveLoadPanel : HudPanel, IHudModal
     {
         RectTransform savePanel;
 
@@ -21,9 +21,22 @@ namespace TamadunKota.UI
 
         public void Toggle()
         {
-            bool show = !savePanel.gameObject.activeSelf;
-            savePanel.gameObject.SetActive(show);
-            if (!show) return;
+            if (IsOpen) Close();
+            else Open();
+        }
+
+        public void Close()
+        {
+            if (!IsOpen) return;
+            savePanel.gameObject.SetActive(false);
+            ctx.ModalClosed(this);
+        }
+
+        public void Open()
+        {
+            ctx.ModalOpening(this);
+            savePanel.SetAsLastSibling();
+            savePanel.gameObject.SetActive(true);
             HudKit.ClearChildren(savePanel);
             var col = Kit.Column(savePanel, "Slots", Vector2.zero, Vector2.one, new Vector2(12, 12), new Vector2(-12, -12));
             var saveLoad = ctx.SaveLoad;

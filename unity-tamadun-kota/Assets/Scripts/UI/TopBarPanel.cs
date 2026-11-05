@@ -40,6 +40,7 @@ namespace TamadunKota.UI
             Kit.Btn(bar, () => T("Maju Era", "Advance Era"), AdvanceEra, 150);
             Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
             Kit.Btn(bar, () => "BM / EN", () => GameRoot.Instance?.SetLanguage(!Malay), 110);
+            Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 80);
             Kit.Spacer(bar, 16);
             if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 220);
             else ArtToggleButton.transform.SetParent(bar, false);

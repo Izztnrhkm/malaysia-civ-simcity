@@ -5,6 +5,7 @@ using TamadunKota.Simulation;
 using TamadunKota.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
@@ -15,8 +16,8 @@ namespace TamadunKota.Systems
     /// resource bar (Treasury, Food, Timber, Tin, Rubber, Energy, Tech), date / era / population,
     /// speed controls, tool bar (inspect, transport, R/C/I zones, bulldoze), a build palette of
     /// the buildings unlocked in the current era, research picker, era advance, crisis dialog,
-    /// notices, building inspector with its Sejarahpedia summary, BM/EN toggle, save/load and
-    /// the "Greybox / Full 3D Art" toggle.
+    /// notices, building inspector with its Sejarahpedia summary, BM/EN toggle, save/load,
+    /// the "Greybox / Full 3D Art" toggle and the main menu (Esc closes the open window).
     ///
     /// Each part is a panel class in Assets/Scripts/UI (TamadunKota.UI); this component finds the
     /// scene managers, builds the panels in order and forwards events and the frame update to them.
@@ -122,6 +123,12 @@ namespace TamadunKota.Systems
 
         void Update()
         {
+            var kb = Keyboard.current;
+            if (kb != null && kb.escapeKey.wasPressedThisFrame)
+            {
+                if (ctx.ActiveModal != null) ctx.ActiveModal.Close();
+                else ctx.MainMenu.OnEscape();
+            }
             if (ctx.Sim == null) return;
             for (int i = 0; i < panels.Count; i++) panels[i].Tick();
         }
@@ -178,6 +185,7 @@ namespace TamadunKota.Systems
             Add(ctx.SaveLoadMenu = new SaveLoadPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
             ctx.ShowMessage = ctx.Message.Show;
+            Add(ctx.MainMenu = new MainMenuPanel(ctx), root);   // last: drawn over the whole HUD
         }
 
         void Add(HudPanel panel, RectTransform root)
@@ -218,6 +226,10 @@ namespace TamadunKota.Systems
 
         void OnAchievement(string id) => ShowMessage(T("Pencapaian: ", "Achievement: ") + id);
         void OnSaved(int slot) => ShowMessage(T("Disimpan ke slot ", "Saved to slot ") + slot);
-        void OnLoaded(int slot) => ShowMessage(T("Dimuat dari slot ", "Loaded slot ") + slot);
+        void OnLoaded(int slot)
+        {
+            ShowMessage(T("Dimuat dari slot ", "Loaded slot ") + slot);
+            ctx.MainMenu.OnLoaded();
+        }
     }
 }

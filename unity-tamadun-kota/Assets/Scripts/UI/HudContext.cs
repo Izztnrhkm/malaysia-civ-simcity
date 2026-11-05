@@ -27,6 +27,8 @@ namespace TamadunKota.UI
 
         /// <summary>Shows a short centred message (set by the UIManager to its MessageBanner).</summary>
         public Action<string> ShowMessage = _ => { };
+        /// <summary>Opens the Settings window (null until it exists).</summary>
+        public Action OpenSettings;
 
         // panels, assigned by the UIManager as it builds them
         public TopBarPanel TopBar;
@@ -38,8 +40,25 @@ namespace TamadunKota.UI
         public ResearchPanel Research;
         public SaveLoadPanel SaveLoadMenu;
         public CrisisPanel Crisis;
+        public MainMenuPanel MainMenu;
 
         public HudContext(HudKit kit) { Kit = kit; }
+
+        /// <summary>The open HUD window, if any (only one at a time; Esc closes it).</summary>
+        public IHudModal ActiveModal { get; private set; }
+
+        /// <summary>Called by a window as it opens: closes the window that was open before.</summary>
+        public void ModalOpening(IHudModal modal)
+        {
+            var previous = ActiveModal;
+            if (previous != null && previous != modal && previous.IsOpen) previous.Close();
+            ActiveModal = modal;
+        }
+
+        public void ModalClosed(IHudModal modal)
+        {
+            if (ActiveModal == modal) ActiveModal = null;
+        }
 
         public bool Malay => GameRoot.Instance == null || GameRoot.Instance.malay;
         public string T(string ms, string en) => Malay ? ms : en;
