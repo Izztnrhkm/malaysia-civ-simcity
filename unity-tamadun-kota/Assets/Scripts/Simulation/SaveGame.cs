@@ -9,6 +9,7 @@ namespace TamadunKota.Simulation
         public int id;
         public string def;
         public int x, y, cells, rotation, builtTick;
+        public double efficiency = 1;
     }
 
     [Serializable]
@@ -25,6 +26,33 @@ namespace TamadunKota.Simulation
         public double value;
     }
 
+    [Serializable]
+    public class SavedPartner
+    {
+        public string id;
+        public double relation;
+        public int envoyCooldown;
+        public bool exchange;
+    }
+
+    [Serializable]
+    public class SavedDeal
+    {
+        public int id, missed;
+        public string partner, good;
+        public double quantity, price, remaining, delivered;
+    }
+
+    [Serializable]
+    public class SavedOffer
+    {
+        public int id, expires;
+        public string partner;
+        public OfferKind kind;
+        public string good;
+        public double quantity, price, duration, money;
+    }
+
     /// <summary>
     /// JSON save file (written with UnityEngine.JsonUtility by SaveLoadManager). Plain
     /// arrays only so JsonUtility can read it; map terrain is regenerated from the seed and
@@ -34,7 +62,7 @@ namespace TamadunKota.Simulation
     public class SaveGame
     {
         public const string Format = "tamadun-kota-unity-save";
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 2;
 
         public string format = Format;
         public int version = CurrentVersion;
@@ -62,6 +90,16 @@ namespace TamadunKota.Simulation
         public string[] advisors = Array.Empty<string>();
         public SavedRelation[] relations = Array.Empty<SavedRelation>();
         public HistoryPoint[] history = Array.Empty<HistoryPoint>();
+        public SavedPartner[] partners = Array.Empty<SavedPartner>();
+        public SavedDeal[] deals = Array.Empty<SavedDeal>();
+        public SavedOffer[] offers = Array.Empty<SavedOffer>();
+        public string[] milestones = Array.Empty<string>();
+        public bool victory;
+        public int diplomacyNextId;
+        public uint rngState;
+        public double happiness = 60;
+        public string[] policies = Array.Empty<string>();
+        public double[] production = Array.Empty<double>();
     }
 
     public static class SaveCodec
@@ -90,13 +128,19 @@ namespace TamadunKota.Simulation
                 pendingCrisis = sim.Events.PendingCrisis ?? "",
                 advisors = sim.Advisors.ToArray(),
                 history = sim.History.ToArray(),
+                victory = sim.Milestones.Victory,
+                diplomacyNextId = sim.Diplomacy.NextId,
+                rngState = sim.Rng.State,
+                happiness = sim.Economy.Happiness,
+                policies = sim.Policies.ToArray(),
+                production = (double[])sim.Economy.Production.amounts.Clone(),
             };
             var done = new List<string>();
             for (int i = 0; i < sim.Tech.Done.Length; i++) if (sim.Tech.Done[i]) done.Add(sim.Db.Research[i].id);
             s.researchDone = done.ToArray();
             var bs = new List<SavedBuilding>();
             foreach (var b in sim.City.Buildings)
-                bs.Add(new SavedBuilding { id = b.id, def = sim.Db.Buildings[b.defIndex].id, x = b.x, y = b.y, cells = b.cells, rotation = b.rotation, builtTick = b.builtTick });
+                bs.Add(new SavedBuilding { id = b.id, def = sim.Db.Buildings[b.defIndex].id, x = b.x, y = b.y, cells = b.cells, rotation = b.rotation, builtTick = b.builtTick, efficiency = b.efficiency });
             s.buildings = bs.ToArray();
             var tr = new List<SavedCell>();
             var zs = new List<SavedCell>();
@@ -115,6 +159,28 @@ namespace TamadunKota.Simulation
             var rel = new List<SavedRelation>();
             foreach (var kv in sim.Relations) rel.Add(new SavedRelation { partner = kv.Key, value = kv.Value });
             s.relations = rel.ToArray();
+            var partners = new List<SavedPartner>();
+            for (int i = 0; i < sim.Diplomacy.Partners.Count; i++)
+            {
+                var p = sim.Diplomacy.Partners[i];
+                if (p.Known) partners.Add(new SavedPartner { id = p.Id, relation = p.Relation, envoyCooldown = p.EnvoyCooldown, exchange = p.Exchange });
+            }
+            s.partners = partners.ToArray();
+            s.deals = new SavedDeal[sim.Diplomacy.Deals.Count];
+            for (int i = 0; i < s.deals.Length; i++)
+            {
+                var d = sim.Diplomacy.Deals[i];
+                s.deals[i] = new SavedDeal { id = d.Id, partner = d.Partner, good = d.Good, quantity = d.Quantity, price = d.Price, remaining = d.Remaining, delivered = d.Delivered, missed = d.Missed };
+            }
+            s.offers = new SavedOffer[sim.Diplomacy.Offers.Count];
+            for (int i = 0; i < s.offers.Length; i++)
+            {
+                var o = sim.Diplomacy.Offers[i];
+                s.offers[i] = new SavedOffer { id = o.Id, partner = o.Partner, kind = o.Kind, good = o.Good, quantity = o.Quantity, price = o.Price, duration = o.Duration, money = o.Money, expires = o.Expires };
+            }
+            var reached = new List<string>();
+            for (int i = 0; i < sim.Milestones.All.Count; i++) if (sim.Milestones.All[i].Reached) reached.Add(sim.Milestones.All[i].Id);
+            s.milestones = reached.ToArray();
             return s;
         }
 
@@ -150,19 +216,48 @@ namespace TamadunKota.Simulation
             {
                 int di = db.BuildingIndex(b.def);
                 if (di < 0) continue; // unknown building ids are skipped rather than failing the load
-                sim.City.Restore(b.id, di, b.x, b.y, b.cells, b.rotation, b.builtTick);
+                var restored = sim.City.Restore(b.id, di, b.x, b.y, b.cells, b.rotation, b.builtTick);
+                restored.efficiency = s.version >= 2 ? b.efficiency : 1;
             }
             sim.City.RecomputeAccess();
+            EnvironmentModel.ComputeWaterDistance(sim.City);
             foreach (var e in s.firedEvents) sim.Events.Fired.Add(e);
             sim.Events.PendingCrisis = string.IsNullOrEmpty(s.pendingCrisis) || db.CrisisIndex(s.pendingCrisis) < 0 ? null : s.pendingCrisis;
             sim.Events.PendingSince = s.tick;
             sim.Advisors.Clear();
             foreach (var a in s.advisors) sim.Advisors.Add(a);
-            foreach (var r in s.relations) sim.Relations[r.partner] = r.value;
+            sim.Relations.Clear();
+            foreach (var r in s.relations ?? Array.Empty<SavedRelation>()) sim.Relations[r.partner] = r.value;
+            foreach (var p in s.partners ?? Array.Empty<SavedPartner>())
+            {
+                var partner = sim.Diplomacy.FindPartner(p.id);
+                if (partner == null) continue;
+                partner.SetRelation(p.relation); partner.EnvoyCooldown = p.envoyCooldown; partner.Exchange = p.exchange;
+            }
+            var deals = new TradeDeal[s.deals?.Length ?? 0];
+            for (int i = 0; i < deals.Length; i++)
+            {
+                var d = s.deals[i];
+                deals[i] = new TradeDeal { Id = d.id, Partner = d.partner, Good = d.good, Quantity = d.quantity, Price = d.price, Remaining = d.remaining, Delivered = d.delivered, Missed = d.missed };
+            }
+            var offers = new DiplomaticOffer[s.offers?.Length ?? 0];
+            for (int i = 0; i < offers.Length; i++)
+            {
+                var o = s.offers[i];
+                offers[i] = new DiplomaticOffer { Id = o.id, Partner = o.partner, Kind = o.kind, Good = o.good, Quantity = o.quantity, Price = o.price, Duration = o.duration, Money = o.money, Expires = o.expires };
+            }
+            sim.Diplomacy.NextId = Math.Max(1, s.diplomacyNextId);
+            sim.Diplomacy.Restore(deals, offers);
+            if (s.production != null) Array.Copy(s.production, sim.Economy.Production.amounts, Math.Min(s.production.Length, ResourceInfo.Count));
+            if (s.version >= 2) { sim.Rng.State = s.rngState; sim.Economy.Happiness = s.happiness; }
+            else sim.Stock[ResourceType.Fish] = 0; // version one stored all food at index one
+            sim.Policies.AddRange(s.policies ?? Array.Empty<string>());
             sim.History.Clear();
             sim.History.AddRange(s.history);
             sim.RefreshEffects();
             sim.Economy.ComputePopulation(sim.City);
+            sim.Environment.Compute(sim.City, sim.CurrentEra, sim.Effects);
+            sim.Milestones.Restore(s.milestones, s.victory);
             return sim;
         }
     }

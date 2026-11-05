@@ -30,11 +30,14 @@ namespace TamadunKota.Simulation
         public readonly CityState City;
         public readonly ResourceLedger Stock = new ResourceLedger();
         public readonly EconomyModel Economy;
+        public readonly EnvironmentModel Environment;
+        public DiplomacyState Diplomacy { get; }
+        public MilestoneState Milestones { get; }
         public readonly TechTreeState Tech;
         public readonly EraStateMachine Era;
         public readonly GameEventSystem Events;
         public readonly EffectTotals Effects = new EffectTotals();
-        public readonly Dictionary<string, double> Relations = new Dictionary<string, double>();
+        public readonly Dictionary<string, double> Relations;
         public readonly List<string> Advisors = new List<string>(4);
         public readonly List<string> Policies = new List<string>(4);
         public readonly List<HistoryPoint> History = new List<HistoryPoint>(512);
@@ -44,21 +47,26 @@ namespace TamadunKota.Simulation
         public string Scenario = "melaka_1400";
         public event Action<Notice> NoticePosted;
         public event Action<int> Ticked;
+        public event Action<string> OnMilestoneReached;
+        public event Action OnVictory;
 
         public GameSimulation(GameDatabase db, int seed, int mapSize = 128)
         {
             Db = db;
+            Relations = new Dictionary<string, double>(db.Partners.Length);
             Map = MapGenerator.Generate(mapSize, mapSize, seed);
-            City = new CityState(Map);
+            City = new CityState(Map, database: db);
             Economy = new EconomyModel(db);
+            Environment = new EnvironmentModel(db, City);
             Tech = new TechTreeState(db);
             Era = new EraStateMachine(db);
             Events = new GameEventSystem(db);
             Rng = new Rng((uint)(seed * 2654435761u) == 0 ? 1u : (uint)(seed * 2654435761u));
             Year = db.Era(1).startYear;
             Stock[ResourceType.Treasury] = 12000;
-            Stock[ResourceType.Food] = 120;
-            foreach (var p in db.Partners) if (Array.IndexOf(p.eras, 1) >= 0) Relations[p.id] = p.baseRelation;
+            Stock[ResourceType.Food] = 80;
+            Stock[ResourceType.Fish] = 40;
+            Diplomacy = new DiplomacyState(this);
 
             Tech.Completed += i =>
             {
@@ -73,25 +81,30 @@ namespace TamadunKota.Simulation
             {
                 var e = db.Era(newEra);
                 if (Year < e.startYear) { Year = e.startYear; Month = 0; }
-                foreach (var p in db.Partners) if (Array.IndexOf(p.eras, newEra) >= 0 && !Relations.ContainsKey(p.id)) Relations[p.id] = p.baseRelation;
+                Diplomacy.EnsurePartners();
                 for (int k = Advisors.Count - 1; k >= 0; k--)
                 {
                     var a = FindAdvisor(Advisors[k]);
                     if (a == null || Array.IndexOf(a.eras, newEra) < 0) Advisors.RemoveAt(k);
                 }
                 Events.FireEraStart(newEra, Stock, Tech, Relations, Tick);
+                Diplomacy.EnsurePartners();
                 RefreshEffects();
                 Post(NoticeKind.Era, "Era baharu: " + e.nameMs, "A new era begins: " + e.nameEn, e.introMs, e.introEn);
             };
             RefreshEffects();
             Economy.ComputePopulation(City);
+            Environment.Compute(City, CurrentEra, Effects);
+            Milestones = new MilestoneState(this);
         }
 
         public int CurrentEra => Era.CurrentEra;
         public EraRecord EraDef => Db.Era(Era.CurrentEra);
 
-        void Post(NoticeKind kind, string tMs, string tEn, string bMs, string bEn) =>
+        internal void Post(NoticeKind kind, string tMs, string tEn, string bMs, string bEn) =>
             NoticePosted?.Invoke(new Notice { kind = kind, titleMs = tMs, titleEn = tEn, bodyMs = bMs, bodyEn = bEn });
+        internal void RaiseMilestone(string id) => OnMilestoneReached?.Invoke(id);
+        internal void RaiseVictory() => OnVictory?.Invoke();
 
         AdvisorRecord FindAdvisor(string id) { foreach (var a in Db.Advisors) if (a.id == id) return a; return null; }
 
@@ -111,9 +124,14 @@ namespace TamadunKota.Simulation
         {
             int era = Era.CurrentEra;
             Events.Tick(era, Year, Month, Tick, Rng, City, Stock, Tech, Relations);
+            Environment.Compute(City, era, Effects);
             double advisorUpkeep = 0;
             foreach (var a in Advisors) advisorUpkeep += FindAdvisor(a)?.upkeep ?? 0;
-            Economy.Tick(City, Stock, era, Effects, Events.View, TaxR, TaxC, TaxI, Tech.Done, advisorUpkeep);
+            Diplomacy.CaptureProduction();
+            Economy.Tick(City, Stock, era, Effects, Events.View, TaxR, TaxC, TaxI, Tech.Done, advisorUpkeep, Diplomacy);
+            double knowledge = Diplomacy.Tick();
+            Economy.ResearchPerTick += knowledge;
+            Stock.Add(ResourceType.Tech, knowledge);
             Tech.Advance(Economy.ResearchPerTick, Economy.CulturePerTick);
             Economy.GrowZones(City, era, EraDef.maxDensity, Rng, Effects.Growth, Events.View.Flood);
 
@@ -124,14 +142,23 @@ namespace TamadunKota.Simulation
             if (Tick % 6 == 0)
             {
                 double output = 0;
-                for (int r = (int)ResourceType.Food; r <= (int)ResourceType.Digital; r++) output += Economy.Production.amounts[r] * Economy.BasePrice((ResourceType)r, era);
+                foreach (var good in ResourceInfo.GoodIds)
+                { var r = ResourceInfo.FromGood(good); output += Economy.Production[r] * Economy.BasePrice(r, era); }
                 History.Add(new HistoryPoint { tick = Tick, year = Year, era = era, treasury = Stock[ResourceType.Treasury], population = Economy.Population, output = output });
                 if (History.Count > 400) History.RemoveAt(0);
             }
+            Milestones.Check();
             Ticked?.Invoke(Tick);
         }
 
         // ------------------------------------------------------------ commands
+
+        public CommandResult SendEnvoy(string partnerId) => Diplomacy.SendEnvoy(partnerId);
+        public CommandResult ProposeDeal(string partnerId, string good, double quantity, double duration) => Diplomacy.ProposeDeal(partnerId, good, quantity, duration);
+        public CommandResult CancelDeal(int dealId) => Diplomacy.CancelDeal(dealId);
+        public CommandResult ToggleExchange(string partnerId) => Diplomacy.ToggleExchange(partnerId);
+        public CommandResult AcceptOffer(int offerId) => Diplomacy.ResolveOffer(offerId, true);
+        public CommandResult DeclineOffer(int offerId) => Diplomacy.ResolveOffer(offerId, false);
 
         public bool IsUnlocked(int defIndex) => Tech.IsBuildingUnlocked(Db.Buildings[defIndex], Era.CurrentEra);
 

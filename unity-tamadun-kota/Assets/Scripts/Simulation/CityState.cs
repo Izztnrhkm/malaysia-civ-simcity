@@ -45,6 +45,8 @@ namespace TamadunKota.Simulation
         public readonly byte[] Style;
         /// <summary>1 when a cell is within reach of the transport network.</summary>
         public readonly byte[] Access;
+        public readonly byte[] Coverage, Pollution, LandValue, WaterDistance;
+        public readonly TransportModel Network;
         public readonly List<PlacedBuilding> Buildings = new List<PlacedBuilding>(256);
         public int NextId = 1;
         /// <summary>Incremented on every change so views know to refresh.</summary>
@@ -53,7 +55,7 @@ namespace TamadunKota.Simulation
         static readonly int[] DX = { 1, -1, 0, 0 };
         static readonly int[] DY = { 0, 0, 1, -1 };
 
-        public CityState(MapData map, float cellSize = 4f)
+        public CityState(MapData map, float cellSize = 4f, GameDatabase database = null)
         {
             Map = map;
             Grid = new GridSpec(map.Width, map.Height, cellSize);
@@ -65,8 +67,9 @@ namespace TamadunKota.Simulation
             Density = new byte[n];
             Style = new byte[n];
             Access = new byte[n];
-            accessQueue = new int[n];
-            accessDist = new byte[n];
+            Coverage = new byte[n]; Pollution = new byte[n]; LandValue = new byte[n]; WaterDistance = new byte[n];
+            Network = new TransportModel(n, database);
+            RecomputeAccess();
         }
 
         public PlacedBuilding FindBuilding(int id)
@@ -319,40 +322,13 @@ namespace TamadunKota.Simulation
 
         // ------------------------------------------------------------ access
 
-        readonly int[] accessQueue;
-        readonly byte[] accessDist;
-        /// <summary>Cells within this many steps of a road/rail/transfer building count as served.</summary>
+        /// <summary>Chebyshev distance to road-like nodes; water has a radius of one.</summary>
         public const int AccessRange = 3;
 
-        /// <summary>Multi-source BFS from the transport network (and building footprints) out to <see cref="AccessRange"/> cells.</summary>
+        /// <summary>Refresh multimodal delivery costs and zone access after a network change.</summary>
         public void RecomputeAccess()
         {
-            int n = Access.Length;
-            int head = 0, tail = 0;
-            for (int i = 0; i < n; i++)
-            {
-                accessDist[i] = 255;
-                Access[i] = 0;
-                if (Transport[i] != 0) { accessDist[i] = 0; accessQueue[tail++] = i; }
-            }
-            int W = Grid.Width;
-            while (head < tail)
-            {
-                int i = accessQueue[head++];
-                Access[i] = 1;
-                int d = accessDist[i] + 1;
-                if (d > AccessRange) continue;
-                int x = i % W, y = i / W;
-                for (int k = 0; k < 4; k++)
-                {
-                    int nx = x + DX[k], ny = y + DY[k];
-                    if (!Grid.InBounds(nx, ny)) continue;
-                    int j = ny * W + nx;
-                    if (accessDist[j] <= d) continue;
-                    accessDist[j] = (byte)d;
-                    accessQueue[tail++] = j;
-                }
-            }
+            Network.Rebuild(this);
         }
 
         /// <summary>True if any cell of a footprint is served by the network.</summary>

@@ -23,21 +23,23 @@ namespace TamadunKota.Simulation
         Energy = 11,
         Tech = 12,
         Culture = 13,
+        // Appended so version-one save indices remain valid.
+        Fish = 14,
     }
 
     public static class ResourceInfo
     {
-        public const int Count = 14;
+        public const int Count = 15;
 
-        /// <summary>Tradable goods in the order of the web game's GOODS list (padi and ikan both map to Food).</summary>
+        /// <summary>Tradable goods in the order of the web game's GOODS list. Food is rice; Fish is separate.</summary>
         public static readonly string[] GoodIds = { "padi", "ikan", "kayu", "rempah", "besi", "timah", "getah", "sawit", "barang", "elektronik", "digital" };
 
         public static ResourceType FromGood(string good)
         {
             switch (good)
             {
-                case "padi":
-                case "ikan": return ResourceType.Food;
+                case "padi": return ResourceType.Food;
+                case "ikan": return ResourceType.Fish;
                 case "kayu": return ResourceType.Timber;
                 case "rempah": return ResourceType.Spices;
                 case "besi": return ResourceType.Iron;
@@ -52,7 +54,7 @@ namespace TamadunKota.Simulation
         }
 
         /// <summary>True for stockpiled, sellable goods (not treasury, energy, tech or culture).</summary>
-        public static bool IsGood(ResourceType r) => r >= ResourceType.Food && r <= ResourceType.Digital;
+        public static bool IsGood(ResourceType r) => (r >= ResourceType.Food && r <= ResourceType.Digital) || r == ResourceType.Fish;
 
         public static string NameEn(ResourceType r)
         {
@@ -69,6 +71,7 @@ namespace TamadunKota.Simulation
             {
                 case ResourceType.Treasury: return "Perbendaharaan";
                 case ResourceType.Food: return "Makanan";
+                case ResourceType.Fish: return "Ikan";
                 case ResourceType.Timber: return "Kayu";
                 case ResourceType.Spices: return "Rempah";
                 case ResourceType.Iron: return "Besi";
@@ -104,8 +107,9 @@ namespace TamadunKota.Simulation
         /// <summary>Clamp goods to [0, storage]; treasury may go negative (debt).</summary>
         public void ClampGoods(double storage)
         {
-            for (int i = (int)ResourceType.Food; i <= (int)ResourceType.Digital; i++)
+            for (int i = 0; i < amounts.Length; i++)
             {
+                if (!ResourceInfo.IsGood((ResourceType)i)) continue;
                 if (amounts[i] < 0) amounts[i] = 0;
                 else if (amounts[i] > storage) amounts[i] = storage;
             }
