@@ -114,7 +114,12 @@ namespace TamadunKota.Core
                 cam.FocusOn(new UnityEngine.Vector3(cx, 0, cz), instant: true);
             }
             var time = UnityEngine.Object.FindAnyObjectByType<TimeManager>();
-            if (time != null) time.SetSpeed(3);
+            if (time != null)
+            {
+                time.SetSpeed(3);
+                if (time.Paused)
+                    UnityEngine.Debug.LogWarning("[Tamadun & Kota] The clock is paused by an open menu or window; close it so the stress run measures a ticking city.");
+            }
             var probe = root.gameObject.AddComponent<PerfProbe>();
             probe.label = label;
             probe.sampleSeconds = sampleSeconds;
@@ -131,10 +136,20 @@ namespace TamadunKota.Core
     /// </summary>
     public class StressCommandLine : UnityEngine.MonoBehaviour
     {
+        static bool Requested => System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-tamadunStress") >= 0;
+
+        // The HUD builds the main menu in Awake, so this has to run before the scene loads: the menu
+        // would cover the city and pause the clock for the whole measurement.
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
+        static void SkipMainMenu()
+        {
+            if (Requested) TamadunKota.UI.MainMenuPanel.ShowOnStartup = false;
+        }
+
         [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Init()
         {
-            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-tamadunStress") < 0) return;
+            if (!Requested) return;
             var go = new UnityEngine.GameObject("Stress Command Line");
             DontDestroyOnLoad(go);
             go.AddComponent<StressCommandLine>();
