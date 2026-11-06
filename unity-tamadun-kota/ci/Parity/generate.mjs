@@ -14,7 +14,7 @@ require.extensions['.ts'] = (module, filename) => {
   }).outputText, filename);
 };
 const load = (name) => require(path.join(root, 'src/core', name + '.ts'));
-const { createGame, createContext, ensurePartners } = load('sim/context');
+const { createGame, createContext, ensurePartners, refreshModifiers } = load('sim/context');
 const { BUILDING_MAP } = load('data/buildings');
 const { ERAS } = load('data/eras');
 const { GOODS } = load('types');
@@ -25,6 +25,10 @@ const dip = load('sim/diplomacy');
 const { runEconomy } = load('sim/economy');
 const { MILESTONES, checkMilestones } = load('sim/milestones');
 const { checkVictory } = load('sim/research');
+const { ADVISORS } = load('data/advisors');
+const advisors = load('sim/advisors');
+const { ALL_RESEARCH, POLICIES } = load('data/research');
+const { GameEngine } = load('engine');
 
 function flat(size = 16) {
   const s = createGame(42, 'Parity', size);
@@ -47,6 +51,59 @@ const array = (name, values) => {
   for (let i = 0; i < list.length; i += 12) lines.push('            ' + list.slice(i, i + 12).join(', ') + ',');
   fields.push(`        public static readonly double[] ${name} = {\n${lines.join('\n')}\n        };`);
 };
+const strings = (name, values) => fields.push(`        public static readonly string[] ${name} = { ${values.map((v) => JSON.stringify(v ?? null)).join(', ')} };`);
+const effectValues = (e) => [e.productionAll, e.exportCap, e.exportPrice, e.tax, e.research, e.culture,
+  e.happiness, e.pollution, e.growth, e.upkeep, e.construction, e.relationGain, ...GOODS.map((g) => e.production[g] ?? 0)];
+
+// Advisor validation order, fees, seat limits, dismissal, retirement and effect refresh in every era.
+for (let era = 1; era <= 4; era++) {
+  const s = flat(); s.era = era; s.money = 0; const ctx = createContext(s);
+  const reasons = [], values = [];
+  const first = ADVISORS.find((a) => a.eras.includes(era)).id;
+  const record = (id) => {
+    const check = advisors.canRecruit(s, id);
+    const result = advisors.recruitAdvisor(s, ctx, id);
+    reasons.push(result.reason ?? null);
+    values.push(Number(result.ok), check.cost ?? 0, s.money, s.advisors?.length ?? 0, ...effectValues(ctx.effects));
+  };
+  record('unknown'); record(first); s.money = 100000;
+  for (const def of ADVISORS) record(def.id);
+  record(first);
+  for (let i = 0; i < 2; i++) {
+    const result = advisors.dismissAdvisor(s, ctx, first);
+    reasons.push(result.reason ?? null);
+    values.push(Number(result.ok), 0, s.money, s.advisors.length, ...effectValues(ctx.effects));
+  }
+  if (era < 4) { s.era++; advisors.retireAdvisors(s, ctx); }
+  scalar(`AdvisorSlots${era}`, advisors.advisorSlots({ ...s, era }));
+  array(`AdvisorCommands${era}`, values); strings(`AdvisorReasons${era}`, reasons);
+  strings(`AdvisorsAfterRetirement${era}`, s.advisors);
+  strings(`AdvisorNoticeIds${era}`, s.notices.map((n) => n.params.id));
+  strings(`AdvisorNoticeKeys${era}`, s.notices.map((n) => n.key));
+}
+
+// Policy commands retain their error order and stack effects with completed civics and technologies.
+for (let era = 1; era <= 4; era++) {
+  const s = flat(); s.era = era;
+  for (const r of ALL_RESEARCH) if (r.era <= era) (r.kind === 'tech' ? s.research : s.civics).done.push(r.id);
+  const engine = new GameEngine(s); refreshModifiers(s, engine.ctx);
+  const values = [], reasons = [], unlocked = [];
+  const record = (result) => {
+    reasons.push(result.reason ?? null);
+    values.push(Number(result.ok), s.policies.length, s.money, ...effectValues(engine.ctx.effects));
+  };
+  record(engine.adoptPolicy('unknown'));
+  for (const p of POLICIES) {
+    unlocked.push(Number(load('sim/context').isPolicyUnlocked(s, p.id)));
+    record(engine.adoptPolicy(p.id));
+  }
+  record(engine.adoptPolicy(POLICIES[0].id));
+  record(engine.revokePolicy(POLICIES[0].id)); record(engine.revokePolicy(POLICIES[0].id));
+  record(engine.adoptPolicy(POLICIES[0].id));
+  scalar(`PolicySlots${era}`, ERAS[era].policySlots);
+  array(`PolicyUnlocked${era}`, unlocked); array(`PolicyCommands${era}`, values); strings(`PolicyReasons${era}`, reasons);
+  strings(`PoliciesAfterCommands${era}`, s.policies);
+}
 
 // Mixed roads, water, rail and MRT with a transfer hub, isolated rail and off-network carting.
 {
