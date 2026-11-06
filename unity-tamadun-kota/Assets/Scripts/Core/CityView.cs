@@ -60,6 +60,7 @@ namespace TamadunKota.Core
             Clear();
             sim = s;
             syncedVersion = -1;
+            transportSignature = 0;
         }
 
         void Clear()
@@ -82,6 +83,22 @@ namespace TamadunKota.Core
         public void ForceSync()
         {
             syncedVersion = -1;
+            transportSignature = 0;
+        }
+
+        // Road/rail meshes are rebuilt only when the transport grid or the era changes, not on every
+        // city version (zone growth bumps the version almost every tick).
+        int transportSignature;
+
+        static int TransportSignature(CityState city, int era)
+        {
+            unchecked
+            {
+                int h = (int)2166136261 ^ era;
+                var t = city.Transport;
+                for (int i = 0; i < t.Length; i++) h = (h ^ t[i]) * 16777619;
+                return h == 0 ? 1 : h;
+            }
         }
 
         void Sync()
@@ -132,7 +149,12 @@ namespace TamadunKota.Core
                 lotKey[i] = LotKey(city, i);
             }
 
-            RebuildTransport(city, era);
+            int signature = TransportSignature(city, era);
+            if (signature != transportSignature)
+            {
+                transportSignature = signature;
+                RebuildTransport(city, era);
+            }
         }
 
         static int LotKey(CityState c, int i) => c.Zone[i] | c.Density[i] << 4 | c.Style[i] << 8;

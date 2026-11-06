@@ -108,6 +108,37 @@ namespace TamadunKota.EditorTools
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) EditorSceneManager.OpenScene(ScenePath);
         }
 
+        const string StressMenu = MenuRoot + "4. Performance: 5,000-Building Stress Test (Play mode)";
+
+        /// <summary>
+        /// In Play mode: fills the map with a 5,000-building era-4 city (StressCity), frames it from
+        /// a high overview, runs the clock at top speed and samples 10 s of frames with PerfProbe.
+        /// The report goes to the Console and to Logs/perf_stress5000.txt.
+        /// </summary>
+        [MenuItem(StressMenu, priority = 40)]
+        public static void RunStressTest() => StressCity.StartProbe("stress5000");
+
+        [MenuItem(StressMenu, validate = true)]
+        static bool RunStressTestValidate() => Application.isPlaying && GameRoot.Instance != null;
+
+        /// <summary>
+        /// Batch-mode entry point: builds a Windows player of MainGame to Builds/Perf/TamadunKota.exe
+        /// for measuring rendering with -tamadunStress (see StressCommandLine).
+        /// </summary>
+        public static void BuildPerfPlayer()
+        {
+            PlayerSettings.enableFrameTimingStats = true; // CPU/GPU split in PerfProbe
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { ScenePath },
+                locationPathName = "Builds/Perf/TamadunKota.exe",
+                target = BuildTarget.StandaloneWindows64,
+                options = BuildOptions.None,
+            });
+            Debug.Log("[Tamadun & Kota] Perf player build: " + report.summary.result + ", " + report.summary.totalSize / (1024 * 1024) + " MB, errors " + report.summary.totalErrors);
+            if (Application.isBatchMode) EditorApplication.Exit(report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded ? 0 : 1);
+        }
+
         [MenuItem(MenuRoot + "3. Re-run Blender Pipeline (needs blender on PATH)", priority = 20)]
         public static void RunBlender()
         {
