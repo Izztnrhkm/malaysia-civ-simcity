@@ -1,0 +1,1440 @@
+{
+ "items": [
+  {
+   "key": "app.title",
+   "value": "Tamadun & Kota"
+  },
+  {
+   "key": "app.subtitle",
+   "value": "A History of Malaysia"
+  },
+  {
+   "key": "menu.new",
+   "value": "New Game"
+  },
+  {
+   "key": "menu.continue",
+   "value": "Continue"
+  },
+  {
+   "key": "menu.load",
+   "value": "Load Game"
+  },
+  {
+   "key": "menu.cityName",
+   "value": "City name"
+  },
+  {
+   "key": "menu.seed",
+   "value": "Map seed"
+  },
+  {
+   "key": "menu.random",
+   "value": "Random"
+  },
+  {
+   "key": "menu.start",
+   "value": "Start Building"
+  },
+  {
+   "key": "menu.tagline",
+   "value": "Grow a city from a maritime entrepôt into a digital smart city across four eras of Malaysian history."
+  },
+  {
+   "key": "menu.howto",
+   "value": "How to play"
+  },
+  {
+   "key": "menu.howto.1",
+   "value": "Build an Entrepôt Harbour on the coast and a Pasar nearby."
+  },
+  {
+   "key": "menu.howto.2",
+   "value": "Lay roads, then zone Kampung (R), Bazaar (C) and Workshops (I) beside them."
+  },
+  {
+   "key": "menu.howto.3",
+   "value": "Feed people with Paddy Fields and Fishing Villages. Pick research and civics."
+  },
+  {
+   "key": "menu.howto.4",
+   "value": "Meet the era requirements (era button in the top bar) to advance."
+  },
+  {
+   "key": "top.population",
+   "value": "Population"
+  },
+  {
+   "key": "top.money",
+   "value": "Treasury"
+  },
+  {
+   "key": "top.happiness",
+   "value": "Wellbeing"
+  },
+  {
+   "key": "top.perTick",
+   "value": "/turn"
+  },
+  {
+   "key": "top.demand",
+   "value": "Demand"
+  },
+  {
+   "key": "speed.pause",
+   "value": "Pause"
+  },
+  {
+   "key": "speed.1",
+   "value": "Slow"
+  },
+  {
+   "key": "speed.2",
+   "value": "Normal"
+  },
+  {
+   "key": "speed.3",
+   "value": "Fast"
+  },
+  {
+   "key": "panel.tech",
+   "value": "Technology"
+  },
+  {
+   "key": "panel.civics",
+   "value": "Civics & Policy"
+  },
+  {
+   "key": "panel.diplomacy",
+   "value": "Diplomacy"
+  },
+  {
+   "key": "panel.economy",
+   "value": "Economy"
+  },
+  {
+   "key": "panel.encyclopedia",
+   "value": "Sejarahpedia"
+  },
+  {
+   "key": "panel.save",
+   "value": "Save / Load"
+  },
+  {
+   "key": "panel.settings",
+   "value": "Settings"
+  },
+  {
+   "key": "panel.era",
+   "value": "Era Progress"
+  },
+  {
+   "key": "panel.close",
+   "value": "Close"
+  },
+  {
+   "key": "tool.inspect",
+   "value": "Inspect"
+  },
+  {
+   "key": "tool.bulldoze",
+   "value": "Bulldoze"
+  },
+  {
+   "key": "tool.zones",
+   "value": "Zones"
+  },
+  {
+   "key": "tool.transport",
+   "value": "Transport"
+  },
+  {
+   "key": "tool.dezone",
+   "value": "De-zone"
+  },
+  {
+   "key": "zone.R",
+   "value": "Residential"
+  },
+  {
+   "key": "zone.C",
+   "value": "Commercial"
+  },
+  {
+   "key": "zone.I",
+   "value": "Industrial"
+  },
+  {
+   "key": "cat.trade",
+   "value": "Trade"
+  },
+  {
+   "key": "cat.production",
+   "value": "Production"
+  },
+  {
+   "key": "cat.service",
+   "value": "Services"
+  },
+  {
+   "key": "cat.culture",
+   "value": "Culture"
+  },
+  {
+   "key": "cat.research",
+   "value": "Learning"
+  },
+  {
+   "key": "cat.utility",
+   "value": "Utilities"
+  },
+  {
+   "key": "cat.landmark",
+   "value": "Landmarks"
+  },
+  {
+   "key": "build.cost",
+   "value": "Cost"
+  },
+  {
+   "key": "build.upkeep",
+   "value": "Upkeep"
+  },
+  {
+   "key": "build.jobs",
+   "value": "Jobs"
+  },
+  {
+   "key": "build.produces",
+   "value": "Produces"
+  },
+  {
+   "key": "build.consumes",
+   "value": "Consumes"
+  },
+  {
+   "key": "build.locked",
+   "value": "Locked"
+  },
+  {
+   "key": "build.unlockBy",
+   "value": "Unlocked by"
+  },
+  {
+   "key": "build.size",
+   "value": "Size"
+  },
+  {
+   "key": "build.export",
+   "value": "Export capacity"
+  },
+  {
+   "key": "build.research",
+   "value": "Research"
+  },
+  {
+   "key": "build.culture",
+   "value": "Culture"
+  },
+  {
+   "key": "build.power",
+   "value": "Power"
+  },
+  {
+   "key": "build.water",
+   "value": "Water"
+  },
+  {
+   "key": "build.needs",
+   "value": "Site rule"
+  },
+  {
+   "key": "place.coast",
+   "value": "On the coast"
+  },
+  {
+   "key": "place.water",
+   "value": "Beside water"
+  },
+  {
+   "key": "place.river",
+   "value": "On a riverbank"
+  },
+  {
+   "key": "place.tin",
+   "value": "On tin ore"
+  },
+  {
+   "key": "place.fertile",
+   "value": "Fertile soil"
+  },
+  {
+   "key": "place.forest",
+   "value": "Near forest"
+  },
+  {
+   "key": "place.rail",
+   "value": "Touching a railway"
+  },
+  {
+   "key": "info.terrain",
+   "value": "Terrain"
+  },
+  {
+   "key": "info.zone",
+   "value": "Zone"
+  },
+  {
+   "key": "info.density",
+   "value": "Density"
+  },
+  {
+   "key": "info.landValue",
+   "value": "Land value"
+  },
+  {
+   "key": "info.pollution",
+   "value": "Pollution"
+  },
+  {
+   "key": "info.coverage",
+   "value": "Service coverage"
+  },
+  {
+   "key": "info.logistics",
+   "value": "Logistics efficiency"
+  },
+  {
+   "key": "info.access",
+   "value": "Transport access"
+  },
+  {
+   "key": "info.tin",
+   "value": "Tin ore"
+  },
+  {
+   "key": "info.fertility",
+   "value": "Fertility"
+  },
+  {
+   "key": "info.efficiency",
+   "value": "Efficiency"
+  },
+  {
+   "key": "info.yes",
+   "value": "Yes"
+  },
+  {
+   "key": "info.no",
+   "value": "None"
+  },
+  {
+   "key": "info.readMore",
+   "value": "Read in Sejarahpedia"
+  },
+  {
+   "key": "info.empty",
+   "value": "Click a tile to see details."
+  },
+  {
+   "key": "terrain.deep",
+   "value": "Deep sea"
+  },
+  {
+   "key": "terrain.sea",
+   "value": "Straits of Melaka"
+  },
+  {
+   "key": "terrain.shallow",
+   "value": "Shallows"
+  },
+  {
+   "key": "terrain.beach",
+   "value": "Beach"
+  },
+  {
+   "key": "terrain.mangrove",
+   "value": "Mangrove"
+  },
+  {
+   "key": "terrain.river",
+   "value": "River"
+  },
+  {
+   "key": "terrain.plain",
+   "value": "Plain"
+  },
+  {
+   "key": "terrain.jungle",
+   "value": "Rainforest"
+  },
+  {
+   "key": "terrain.hill",
+   "value": "Hills"
+  },
+  {
+   "key": "terrain.mountain",
+   "value": "Main Range"
+  },
+  {
+   "key": "overlay.title",
+   "value": "Overlay"
+  },
+  {
+   "key": "overlay.none",
+   "value": "None"
+  },
+  {
+   "key": "overlay.landValue",
+   "value": "Land value"
+  },
+  {
+   "key": "overlay.pollution",
+   "value": "Pollution"
+  },
+  {
+   "key": "overlay.coverage",
+   "value": "Services"
+  },
+  {
+   "key": "overlay.logistics",
+   "value": "Logistics"
+  },
+  {
+   "key": "overlay.resources",
+   "value": "Resources"
+  },
+  {
+   "key": "overlay.access",
+   "value": "Access"
+  },
+  {
+   "key": "tech.researching",
+   "value": "Researching"
+  },
+  {
+   "key": "tech.done",
+   "value": "Done"
+  },
+  {
+   "key": "tech.available",
+   "value": "Available"
+  },
+  {
+   "key": "tech.locked",
+   "value": "Not yet available"
+  },
+  {
+   "key": "tech.perTick",
+   "value": "pts/turn"
+  },
+  {
+   "key": "tech.choose",
+   "value": "Choose"
+  },
+  {
+   "key": "tech.prereqs",
+   "value": "Requires"
+  },
+  {
+   "key": "tech.unlocks",
+   "value": "Unlocks"
+  },
+  {
+   "key": "tech.none",
+   "value": "No research selected"
+  },
+  {
+   "key": "tech.bank",
+   "value": "Banked"
+  },
+  {
+   "key": "civic.policies",
+   "value": "Policies"
+  },
+  {
+   "key": "civic.slots",
+   "value": "Policy slots"
+  },
+  {
+   "key": "civic.adopt",
+   "value": "Adopt"
+  },
+  {
+   "key": "civic.revoke",
+   "value": "Revoke"
+  },
+  {
+   "key": "civic.noPolicies",
+   "value": "Complete civics to unlock policies."
+  },
+  {
+   "key": "era.requirements",
+   "value": "Requirements to advance"
+  },
+  {
+   "key": "era.advance",
+   "value": "Advance to the Next Era"
+  },
+  {
+   "key": "era.current",
+   "value": "Current era"
+  },
+  {
+   "key": "era.next",
+   "value": "Next era"
+  },
+  {
+   "key": "era.final",
+   "value": "Victory requirements"
+  },
+  {
+   "key": "era.victory",
+   "value": "Congratulations! Your city is now a Developed Nation."
+  },
+  {
+   "key": "era.victoryBody",
+   "value": "You have taken your city from a maritime entrepôt to a digital smart city. Keep building as long as you like."
+  },
+  {
+   "key": "era.keepPlaying",
+   "value": "Keep playing"
+  },
+  {
+   "key": "era.req.tech",
+   "value": "Technology"
+  },
+  {
+   "key": "era.req.civic",
+   "value": "Civic"
+  },
+  {
+   "key": "era.req.population",
+   "value": "Population"
+  },
+  {
+   "key": "era.req.landmark",
+   "value": "Landmark"
+  },
+  {
+   "key": "dip.relation",
+   "value": "Relation"
+  },
+  {
+   "key": "dip.buys",
+   "value": "Buys"
+  },
+  {
+   "key": "dip.envoy",
+   "value": "Send envoy"
+  },
+  {
+   "key": "dip.deal",
+   "value": "Propose deal"
+  },
+  {
+   "key": "dip.exchange",
+   "value": "Knowledge exchange"
+  },
+  {
+   "key": "dip.exchangeOn",
+   "value": "Active"
+  },
+  {
+   "key": "dip.exchangeOff",
+   "value": "Start"
+  },
+  {
+   "key": "dip.qty",
+   "value": "Quantity/turn"
+  },
+  {
+   "key": "dip.duration",
+   "value": "Duration (turns)"
+  },
+  {
+   "key": "dip.price",
+   "value": "Price"
+  },
+  {
+   "key": "dip.deals",
+   "value": "Active deals"
+  },
+  {
+   "key": "dip.offers",
+   "value": "Offers"
+  },
+  {
+   "key": "dip.accept",
+   "value": "Accept"
+  },
+  {
+   "key": "dip.decline",
+   "value": "Decline"
+  },
+  {
+   "key": "dip.cancel",
+   "value": "Cancel"
+  },
+  {
+   "key": "dip.noDeals",
+   "value": "No active deals."
+  },
+  {
+   "key": "dip.noOffers",
+   "value": "No offers right now."
+  },
+  {
+   "key": "dip.remaining",
+   "value": "left"
+  },
+  {
+   "key": "dip.investment",
+   "value": "Investment"
+  },
+  {
+   "key": "dip.cooldown",
+   "value": "Envoy travelling"
+  },
+  {
+   "key": "eco.taxes",
+   "value": "Tax rates"
+  },
+  {
+   "key": "eco.income",
+   "value": "Income"
+  },
+  {
+   "key": "eco.expenses",
+   "value": "Expenses"
+  },
+  {
+   "key": "eco.net",
+   "value": "Net"
+  },
+  {
+   "key": "eco.taxR",
+   "value": "Residential tax"
+  },
+  {
+   "key": "eco.taxC",
+   "value": "Commercial tax"
+  },
+  {
+   "key": "eco.taxI",
+   "value": "Industrial tax"
+  },
+  {
+   "key": "eco.exports",
+   "value": "Exports"
+  },
+  {
+   "key": "eco.deals",
+   "value": "Trade deals"
+  },
+  {
+   "key": "eco.upkeepBuildings",
+   "value": "Building upkeep"
+  },
+  {
+   "key": "eco.upkeepTransport",
+   "value": "Road & rail upkeep"
+  },
+  {
+   "key": "eco.imports",
+   "value": "Food imports"
+  },
+  {
+   "key": "eco.interest",
+   "value": "Loan interest"
+  },
+  {
+   "key": "eco.admin",
+   "value": "Public administration"
+  },
+  {
+   "key": "eco.goods",
+   "value": "Goods"
+  },
+  {
+   "key": "eco.stock",
+   "value": "Stock"
+  },
+  {
+   "key": "eco.produced",
+   "value": "Made"
+  },
+  {
+   "key": "eco.used",
+   "value": "Used"
+  },
+  {
+   "key": "eco.exported",
+   "value": "Exported"
+  },
+  {
+   "key": "eco.priceCol",
+   "value": "Price"
+  },
+  {
+   "key": "eco.loan",
+   "value": "Loans"
+  },
+  {
+   "key": "eco.debt",
+   "value": "Debt"
+  },
+  {
+   "key": "eco.borrow",
+   "value": "Borrow"
+  },
+  {
+   "key": "eco.repay",
+   "value": "Repay"
+  },
+  {
+   "key": "eco.history",
+   "value": "City history"
+  },
+  {
+   "key": "eco.labour",
+   "value": "Labour"
+  },
+  {
+   "key": "eco.workers",
+   "value": "Workers"
+  },
+  {
+   "key": "eco.jobs",
+   "value": "Jobs"
+  },
+  {
+   "key": "eco.unemployment",
+   "value": "Unemployment"
+  },
+  {
+   "key": "eco.food",
+   "value": "Food supply"
+  },
+  {
+   "key": "eco.exportCap",
+   "value": "Export capacity"
+  },
+  {
+   "key": "eco.utilities",
+   "value": "Utilities"
+  },
+  {
+   "key": "eco.storage",
+   "value": "Storage capacity"
+  },
+  {
+   "key": "enc.search",
+   "value": "Search topics…"
+  },
+  {
+   "key": "enc.all",
+   "value": "All"
+  },
+  {
+   "key": "enc.inGame",
+   "value": "In the game"
+  },
+  {
+   "key": "enc.sources",
+   "value": "Sources"
+  },
+  {
+   "key": "enc.related",
+   "value": "Related"
+  },
+  {
+   "key": "enc.disclaimer",
+   "value": "Facts were checked against online sources; disputed dates are flagged as such."
+  },
+  {
+   "key": "save.slots",
+   "value": "Save slots"
+  },
+  {
+   "key": "save.empty",
+   "value": "Empty"
+  },
+  {
+   "key": "save.save",
+   "value": "Save"
+  },
+  {
+   "key": "save.load",
+   "value": "Load"
+  },
+  {
+   "key": "save.delete",
+   "value": "Delete"
+  },
+  {
+   "key": "save.export",
+   "value": "Export JSON"
+  },
+  {
+   "key": "save.import",
+   "value": "Import JSON"
+  },
+  {
+   "key": "save.saved",
+   "value": "Game saved."
+  },
+  {
+   "key": "save.loaded",
+   "value": "Game loaded."
+  },
+  {
+   "key": "save.autosave",
+   "value": "Autosave"
+  },
+  {
+   "key": "save.error",
+   "value": "Failed"
+  },
+  {
+   "key": "save.confirmOverwrite",
+   "value": "Click again to overwrite"
+  },
+  {
+   "key": "save.copy",
+   "value": "Copy JSON"
+  },
+  {
+   "key": "save.copied",
+   "value": "Save JSON copied to the clipboard."
+  },
+  {
+   "key": "save.copyFallback",
+   "value": "Copy the JSON from the box below."
+  },
+  {
+   "key": "save.paste",
+   "value": "Paste JSON"
+  },
+  {
+   "key": "save.pasteHelp",
+   "value": "Paste a JSON save here, then click Load."
+  },
+  {
+   "key": "settings.language",
+   "value": "Language"
+  },
+  {
+   "key": "settings.autosave",
+   "value": "Autosave every 2 minutes"
+  },
+  {
+   "key": "settings.mainMenu",
+   "value": "Back to main menu"
+  },
+  {
+   "key": "settings.controls",
+   "value": "Controls"
+  },
+  {
+   "key": "settings.controls.body",
+   "value": "Drag with the right/middle mouse button or use arrow keys/WASD to move the camera. Mouse wheel zooms. Esc cancels the tool. Space pauses."
+  },
+  {
+   "key": "notice.techDone",
+   "value": "Technology complete: {name}"
+  },
+  {
+   "key": "notice.civicDone",
+   "value": "Civic complete: {name}"
+  },
+  {
+   "key": "notice.newEra",
+   "value": "A new era begins: {name}"
+  },
+  {
+   "key": "notice.victory",
+   "value": "Victory! Developed Nation achieved."
+  },
+  {
+   "key": "notice.offer",
+   "value": "New offer from {name}"
+  },
+  {
+   "key": "err.money",
+   "value": "Not enough money"
+  },
+  {
+   "key": "err.locked",
+   "value": "Not unlocked yet"
+  },
+  {
+   "key": "err.occupied",
+   "value": "Site already in use"
+  },
+  {
+   "key": "err.terrain",
+   "value": "Unsuitable terrain"
+  },
+  {
+   "key": "err.bounds",
+   "value": "Outside the map"
+  },
+  {
+   "key": "err.needCoast",
+   "value": "Must be on the coast"
+  },
+  {
+   "key": "err.needWater",
+   "value": "Must be beside a river or the sea"
+  },
+  {
+   "key": "err.needRiver",
+   "value": "Must be on a riverbank"
+  },
+  {
+   "key": "err.needTin",
+   "value": "Needs tin-bearing ground"
+  },
+  {
+   "key": "err.needFertile",
+   "value": "Needs fertile soil"
+  },
+  {
+   "key": "err.needForest",
+   "value": "Needs nearby forest"
+  },
+  {
+   "key": "err.needRail",
+   "value": "Must touch a railway"
+  },
+  {
+   "key": "err.unique",
+   "value": "This landmark is already built"
+  },
+  {
+   "key": "err.invalid",
+   "value": "Invalid action"
+  },
+  {
+   "key": "err.nothing",
+   "value": "Nothing to bulldoze"
+  },
+  {
+   "key": "err.noPartner",
+   "value": "Partner not available"
+  },
+  {
+   "key": "err.cooldown",
+   "value": "Envoy still travelling"
+  },
+  {
+   "key": "err.notWanted",
+   "value": "This partner does not buy that good"
+  },
+  {
+   "key": "err.tooManyDeals",
+   "value": "Deal limit with this partner reached"
+  },
+  {
+   "key": "err.relation",
+   "value": "Relations are too weak"
+  },
+  {
+   "key": "err.noSlot",
+   "value": "No free policy slot"
+  },
+  {
+   "key": "err.requirements",
+   "value": "Requirements not met"
+  },
+  {
+   "key": "err.debtLimit",
+   "value": "Debt limit reached"
+  },
+  {
+   "key": "month.0",
+   "value": "Jan"
+  },
+  {
+   "key": "month.1",
+   "value": "Feb"
+  },
+  {
+   "key": "month.2",
+   "value": "Mar"
+  },
+  {
+   "key": "month.3",
+   "value": "Apr"
+  },
+  {
+   "key": "month.4",
+   "value": "May"
+  },
+  {
+   "key": "month.5",
+   "value": "Jun"
+  },
+  {
+   "key": "month.6",
+   "value": "Jul"
+  },
+  {
+   "key": "month.7",
+   "value": "Aug"
+  },
+  {
+   "key": "month.8",
+   "value": "Sep"
+  },
+  {
+   "key": "month.9",
+   "value": "Oct"
+  },
+  {
+   "key": "month.10",
+   "value": "Nov"
+  },
+  {
+   "key": "month.11",
+   "value": "Dec"
+  },
+  {
+   "key": "hint.noPort",
+   "value": "Build an Entrepôt Harbour on the coast to start trading."
+  },
+  {
+   "key": "hint.noResearch",
+   "value": "Choose a technology to research."
+  },
+  {
+   "key": "hint.noCivic",
+   "value": "Choose a civic to develop."
+  },
+  {
+   "key": "hint.canAdvance",
+   "value": "Era requirements met! Advance to the next era."
+  },
+  {
+   "key": "transport.road",
+   "value": "Road"
+  },
+  {
+   "key": "transport.rail",
+   "value": "Railway"
+  },
+  {
+   "key": "transport.highway",
+   "value": "Expressway"
+  },
+  {
+   "key": "transport.mrt",
+   "value": "MRT"
+  },
+  {
+   "key": "common.cost",
+   "value": "Cost"
+  },
+  {
+   "key": "common.on",
+   "value": "On"
+  },
+  {
+   "key": "common.off",
+   "value": "Off"
+  },
+  {
+   "key": "view.to2d",
+   "value": "Switch to 2D Classic View"
+  },
+  {
+   "key": "view.to3d",
+   "value": "Switch to 3D View"
+  },
+  {
+   "key": "view.reset",
+   "value": "Reset camera"
+  },
+  {
+   "key": "view.rotateLeft",
+   "value": "Rotate left"
+  },
+  {
+   "key": "view.rotateRight",
+   "value": "Rotate right"
+  },
+  {
+   "key": "view.daynight",
+   "value": "Day / Night"
+  },
+  {
+   "key": "view.day.day",
+   "value": "Day"
+  },
+  {
+   "key": "view.day.night",
+   "value": "Night"
+  },
+  {
+   "key": "view.day.cycle",
+   "value": "Day-night cycle"
+  },
+  {
+   "key": "view.weather",
+   "value": "Weather"
+  },
+  {
+   "key": "view.weather.auto",
+   "value": "Automatic (follows the monsoon)"
+  },
+  {
+   "key": "view.weather.rain",
+   "value": "Monsoon rain"
+  },
+  {
+   "key": "view.weather.clear",
+   "value": "Clear"
+  },
+  {
+   "key": "settings.graphics",
+   "value": "3D graphics"
+  },
+  {
+   "key": "settings.graphics.auto",
+   "value": "Automatic"
+  },
+  {
+   "key": "settings.graphics.high",
+   "value": "High (shadows)"
+  },
+  {
+   "key": "settings.graphics.low",
+   "value": "Low (fast)"
+  },
+  {
+   "key": "settings.graphics.body",
+   "value": "Automatic picks Low on software renderers. High adds real-time shadows and antialiasing."
+  },
+  {
+   "key": "sound.mute",
+   "value": "Mute sound"
+  },
+  {
+   "key": "sound.unmute",
+   "value": "Unmute sound"
+  },
+  {
+   "key": "sound.volume",
+   "value": "Volume"
+  },
+  {
+   "key": "sound.master",
+   "value": "Master"
+  },
+  {
+   "key": "sound.music",
+   "value": "Music"
+  },
+  {
+   "key": "sound.sfx",
+   "value": "Effects"
+  },
+  {
+   "key": "notice.crisisResolved",
+   "value": "Crisis decision: {name}"
+  },
+  {
+   "key": "notice.crisisAuto",
+   "value": "No decision made, default applied: {name}"
+  },
+  {
+   "key": "notice.advisorJoined",
+   "value": "{name} joins your council of advisors"
+  },
+  {
+   "key": "notice.advisorRetired",
+   "value": "{name} retires from your council"
+  },
+  {
+   "key": "notice.milestone",
+   "value": "Victory milestone achieved: {name}!"
+  },
+  {
+   "key": "eco.infrastructure",
+   "value": "Infrastructure maintenance"
+  },
+  {
+   "key": "eco.advisors",
+   "value": "Advisors' stipends"
+  },
+  {
+   "key": "eco.infrastructure.hint",
+   "value": "Eras 3-4: building depreciation and network maintenance grow with the city."
+  },
+  {
+   "key": "panel.advisors",
+   "value": "Historical Advisors"
+  },
+  {
+   "key": "panel.timeline",
+   "value": "Timeline & Victory"
+  },
+  {
+   "key": "advisors.intro",
+   "value": "Appoint historical figures as advisors. Each grants a passive bonus while serving and retires once the city moves beyond their era."
+  },
+  {
+   "key": "advisors.slots",
+   "value": "Council seats: {used}/{max}"
+  },
+  {
+   "key": "advisors.recruit",
+   "value": "Appoint"
+  },
+  {
+   "key": "advisors.dismiss",
+   "value": "Dismiss"
+  },
+  {
+   "key": "advisors.serving",
+   "value": "Serving"
+  },
+  {
+   "key": "advisors.otherEra",
+   "value": "Available in another era"
+  },
+  {
+   "key": "advisors.cost",
+   "value": "Appointment cost"
+  },
+  {
+   "key": "advisors.upkeep",
+   "value": "Stipend/turn"
+  },
+  {
+   "key": "advisors.sources",
+   "value": "Sources"
+  },
+  {
+   "key": "crisis.title",
+   "value": "Historical Crisis"
+  },
+  {
+   "key": "crisis.choose",
+   "value": "Choose your policy response:"
+  },
+  {
+   "key": "crisis.cost",
+   "value": "Cost"
+  },
+  {
+   "key": "crisis.free",
+   "value": "No cost"
+  },
+  {
+   "key": "crisis.timeout",
+   "value": "If you do not decide within {n} turns, the default applies."
+  },
+  {
+   "key": "crisis.default",
+   "value": "default"
+  },
+  {
+   "key": "timeline.treasury",
+   "value": "Treasury"
+  },
+  {
+   "key": "timeline.population",
+   "value": "Population"
+  },
+  {
+   "key": "timeline.output",
+   "value": "Output"
+  },
+  {
+   "key": "timeline.happiness",
+   "value": "Happiness"
+  },
+  {
+   "key": "timeline.empty",
+   "value": "History is recorded every 6 turns."
+  },
+  {
+   "key": "timeline.milestones",
+   "value": "Victory milestones"
+  },
+  {
+   "key": "timeline.achieved",
+   "value": "Achieved"
+  },
+  {
+   "key": "timeline.classic",
+   "value": "Developed Nation (Twin Towers and the Era 4 requirements)"
+  },
+  {
+   "key": "timeline.chart",
+   "value": "History chart"
+  },
+  {
+   "key": "menu.scenario",
+   "value": "Scenario"
+  },
+  {
+   "key": "menu.objectives",
+   "value": "Objectives"
+  },
+  {
+   "key": "tool.collapse",
+   "value": "Collapse panel"
+  },
+  {
+   "key": "tool.expand",
+   "value": "Expand panel"
+  },
+  {
+   "key": "enc.cat.era",
+   "value": "Eras"
+  },
+  {
+   "key": "enc.cat.trade",
+   "value": "Trade"
+  },
+  {
+   "key": "enc.cat.economy",
+   "value": "Economy"
+  },
+  {
+   "key": "enc.cat.society",
+   "value": "Society & Government"
+  },
+  {
+   "key": "enc.cat.place",
+   "value": "Places & Buildings"
+  },
+  {
+   "key": "enc.cat.event",
+   "value": "Events"
+  },
+  {
+   "key": "enc.cat.technology",
+   "value": "Technology"
+  },
+  {
+   "key": "unity.menu.settings",
+   "value": "Settings"
+  },
+  {
+   "key": "unity.menu.quit",
+   "value": "Quit"
+  },
+  {
+   "key": "unity.menu.resume",
+   "value": "Resume"
+  },
+  {
+   "key": "unity.menu.button",
+   "value": "Menu"
+  },
+  {
+   "key": "unity.menu.noSaves",
+   "value": "No saved games"
+  },
+  {
+   "key": "unity.top.research",
+   "value": "Research"
+  },
+  {
+   "key": "unity.top.era",
+   "value": "Era"
+  },
+  {
+   "key": "unity.panel.eraTimeline",
+   "value": "Era & Timeline"
+  },
+  {
+   "key": "unity.top.advisors",
+   "value": "Advisors"
+  },
+  {
+   "key": "unity.settings.volume",
+   "value": "Master volume"
+  },
+  {
+   "key": "unity.settings.music",
+   "value": "Music"
+  },
+  {
+   "key": "unity.settings.ambience",
+   "value": "Ambience"
+  },
+  {
+   "key": "unity.settings.artMode",
+   "value": "Art mode"
+  },
+  {
+   "key": "unity.settings.fullArt",
+   "value": "Full 3D art"
+  },
+  {
+   "key": "unity.settings.greybox",
+   "value": "Greybox"
+  },
+  {
+   "key": "unity.settings.edgeScroll",
+   "value": "Edge scrolling"
+  },
+  {
+   "key": "unity.settings.on",
+   "value": "On"
+  },
+  {
+   "key": "unity.settings.off",
+   "value": "Off"
+  },
+  {
+   "key": "unity.settings.controls.body",
+   "value": "WASD / arrows, screen edges or middle drag to pan; Q / E or right drag to rotate; mouse wheel to zoom; Space pauses, 1-3 set the speed; G switches art mode; F5 / F9 quick save / load; Esc closes panels."
+  },
+  {
+   "key": "unity.eco.policySlots",
+   "value": "Policy slots: {used}/{max}"
+  },
+  {
+   "key": "unity.eco.power",
+   "value": "Power"
+  },
+  {
+   "key": "unity.eco.water",
+   "value": "Water"
+  },
+  {
+   "key": "unity.eco.noLoans",
+   "value": "Loans are not in the Unity edition yet."
+  },
+  {
+   "key": "unity.timeline.table",
+   "value": "Table"
+  },
+  {
+   "key": "unity.timeline.charts",
+   "value": "Charts"
+  },
+  {
+   "key": "unity.timeline.year",
+   "value": "Year"
+  },
+  {
+   "key": "unity.era.cannot",
+   "value": "Requirements not met"
+  },
+  {
+   "key": "unity.enc.open",
+   "value": "Open"
+  },
+  {
+   "key": "unity.notif.close",
+   "value": "x"
+  }
+ ]
+}

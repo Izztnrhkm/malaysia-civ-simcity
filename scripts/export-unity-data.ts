@@ -4,6 +4,7 @@
  * of truth. The output is shaped for UnityEngine.JsonUtility: every file is an
  * object with an `items` array, maps become arrays of {key, value} records,
  * bilingual text becomes flat `...Ms` / `...En` fields and missing numbers are 0.
+ * The UI strings go to unity-tamadun-kota/Assets/Resources/Localization/{ms,en}.json.
  *
  *   npx vite-node scripts/export-unity-data.ts      (npm run unity:data)
  */
@@ -18,10 +19,11 @@ import { EVENTS, EventEffect } from '../src/core/data/events';
 import { GOOD_DEFS } from '../src/core/data/goods';
 import { PARTNERS } from '../src/core/data/partners';
 import { ALL_RESEARCH, POLICIES, STARTING_BUILDINGS } from '../src/core/data/research';
-import { ENTRIES, ENTRY_MAP } from '../src/content/sejarahpedia';
+import { CATEGORY_NAMES, ENTRIES, ENTRY_MAP } from '../src/content/sejarahpedia';
 import { SCENARIOS } from '../src/core/scenarios';
 import { MILESTONES } from '../src/core/sim/milestones';
 import { GOODS, EraId } from '../src/core/types';
+import { STRINGS } from '../src/i18n/strings';
 
 const OUT = 'unity-tamadun-kota/Assets/Resources/GameData';
 mkdirSync(OUT, { recursive: true });
@@ -277,3 +279,55 @@ for (const [name, items] of Object.entries(tables)) {
   console.log(`${name}.json: ${items.length}`);
 }
 console.log(`${total} records -> ${OUT}`);
+
+/**
+ * UI strings for the Unity HUD: every web string (src/i18n/strings.ts), the Sejarahpedia
+ * category names as `enc.cat.<id>`, and the few labels only the Unity edition has as
+ * `unity.*`. One file per language, shaped for JsonUtility as { items: [{ key, value }] }.
+ */
+const UNITY_STRINGS: Record<string, { ms: string; en: string }> = {
+  'unity.menu.settings': { ms: 'Tetapan', en: 'Settings' },
+  'unity.menu.quit': { ms: 'Keluar', en: 'Quit' },
+  'unity.menu.resume': { ms: 'Sambung', en: 'Resume' },
+  'unity.menu.button': { ms: 'Menu', en: 'Menu' },
+  'unity.menu.noSaves': { ms: 'Tiada permainan disimpan', en: 'No saved games' },
+  'unity.top.research': { ms: 'Kajian', en: 'Research' },
+  'unity.top.era': { ms: 'Era', en: 'Era' },
+  'unity.panel.eraTimeline': { ms: 'Era & Garis Masa', en: 'Era & Timeline' },
+  'unity.top.advisors': { ms: 'Penasihat', en: 'Advisors' },
+  'unity.settings.volume': { ms: 'Kelantangan utama', en: 'Master volume' },
+  'unity.settings.music': { ms: 'Muzik', en: 'Music' },
+  'unity.settings.ambience': { ms: 'Bunyi persekitaran', en: 'Ambience' },
+  'unity.settings.artMode': { ms: 'Mod seni', en: 'Art mode' },
+  'unity.settings.fullArt': { ms: 'Seni 3D penuh', en: 'Full 3D art' },
+  'unity.settings.greybox': { ms: 'Greybox', en: 'Greybox' },
+  'unity.settings.edgeScroll': { ms: 'Skrol tepi skrin', en: 'Edge scrolling' },
+  'unity.settings.on': { ms: 'Hidup', en: 'On' },
+  'unity.settings.off': { ms: 'Mati', en: 'Off' },
+  'unity.settings.controls.body': {
+    ms: 'WASD / anak panah, tepi skrin atau seret tengah untuk gerak; Q / E atau seret kanan untuk putar; roda tetikus untuk zum; Space jeda, 1-3 kelajuan; G tukar mod seni; F5 / F9 simpan / muat pantas; Esc tutup panel.',
+    en: 'WASD / arrows, screen edges or middle drag to pan; Q / E or right drag to rotate; mouse wheel to zoom; Space pauses, 1-3 set the speed; G switches art mode; F5 / F9 quick save / load; Esc closes panels.',
+  },
+  'unity.eco.policySlots': { ms: 'Slot dasar: {used}/{max}', en: 'Policy slots: {used}/{max}' },
+  'unity.eco.power': { ms: 'Elektrik', en: 'Power' },
+  'unity.eco.water': { ms: 'Air', en: 'Water' },
+  'unity.eco.noLoans': { ms: 'Pinjaman belum ada dalam edisi Unity.', en: 'Loans are not in the Unity edition yet.' },
+  'unity.timeline.table': { ms: 'Jadual', en: 'Table' },
+  'unity.timeline.charts': { ms: 'Carta', en: 'Charts' },
+  'unity.timeline.year': { ms: 'Tahun', en: 'Year' },
+  'unity.era.cannot': { ms: 'Syarat belum dipenuhi', en: 'Requirements not met' },
+  'unity.enc.open': { ms: 'Buka', en: 'Open' },
+  'unity.notif.close': { ms: 'x', en: 'x' },
+};
+
+const LOC_OUT = 'unity-tamadun-kota/Assets/Resources/Localization';
+mkdirSync(LOC_OUT, { recursive: true });
+for (const lang of ['ms', 'en'] as const) {
+  const items = [
+    ...Object.entries(STRINGS[lang]).map(([key, value]) => ({ key, value })),
+    ...Object.entries(CATEGORY_NAMES).map(([id, name]) => ({ key: `enc.cat.${id}`, value: name[lang] })),
+    ...Object.entries(UNITY_STRINGS).map(([key, value]) => ({ key, value: value[lang] })),
+  ];
+  writeFileSync(join(LOC_OUT, `${lang}.json`), JSON.stringify({ items }, null, 1) + '\n');
+  console.log(`Localization/${lang}.json: ${items.length}`);
+}

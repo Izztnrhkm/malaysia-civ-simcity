@@ -154,6 +154,42 @@ Fixture regeneration and CI commands are documented in `unity-tamadun-kota/ci/Pa
 * ~~Lane A: run the in-Editor check on Unity 6000.3 after merging.~~ Done: the PlayMode smoke test
   passes on the merged code.
 
+From lane B (HUD), for lane C (`Simulation/**`, `ci/**`):
+
+1. **Notice ids.** Add `id` (event, crisis, research or era id) and `entryId` (Sejarahpedia) to
+   `Notice`. The notification feed now finds the entry by matching the English title against
+   events and research (`UI/NotificationFeed.cs`, `ResolveEntry`).
+2. **Advisor commands.** `GameSimulation.DismissAdvisor(id)`, a public seat count (the `{0,1,2,2,3}`
+   table is local to `RecruitAdvisor`), and notices when an advisor joins or retires (web
+   `notice.advisorJoined` / `notice.advisorRetired`). `UI/SimCommands.cs` does this over the public
+   `Advisors` list for now.
+3. **Policy commands and saves.** `AdoptPolicy(id)`, `RevokePolicy(id)`, `IsPolicyUnlocked(id)`
+   and the slot count with the web rules (`engine.ts` adoptPolicy / revokePolicy).
+   `UI/SimCommands.cs` mirrors them over the public `Policies` list. `SaveCodec` does not store
+   `Policies`, so adopted policies are lost on load.
+4. **Loans.** The web economy has debt (`MAX_DEBT`, take / repay loan, interest); the C# economy
+   has none. The Economy window says loans are not in the Unity edition yet.
+5. **CI race.** `ci/UnityCompileCheck/Packages/InputSystem.csproj` and `AINavigation.csproj` share
+   one `Packages/obj/` folder. The first `dotnet build ci/UnityCompileCheck/Game.csproj` after
+   `fetch-deps.sh` failed with 153 errors in `AINavigation.csproj` ("UnityEngine could not be
+   found"); the same build passed on the second run. A separate `BaseIntermediateOutputPath` (or
+   folder) per project should fix it.
+
+From lane B (HUD), for the lead (`Core/**`, Editor, scene):
+
+1. **Typing in text fields.** While a HUD text field has focus, `UI/TextFocus` turns off the
+   `TimeManager`, `SaveLoadManager` and `ArtModeToggle` shortcuts. `RTSCameraController` (WASD /
+   arrows, Q / E, Home) and `GridPlacementSystem` (Esc) have no switch; please skip their keyboard
+   input while `TamadunKota.UI.TextFocus.Active` is true.
+2. **Main menu at startup.** The menu covers the scene and pushes a `TimeManager` pause when the
+   HUD starts. It is not shown in batch mode; a PlayMode test that runs in a window should set
+   `MainMenuPanel.ShowOnStartup = false` first (the smoke test uses `TimeManager.Advance`, which
+   ignores pauses).
+3. **City name.** `GameRoot.NewGame(seed, scenario)` has no city name; the menu sets
+   `GameRoot.cityName` before calling it. A parameter would be cleaner.
+4. **Saved art mode.** `UIManager.Awake` restores the saved art mode with `ArtMode.Set` before it
+   builds the HUD. Please check that building views created before and after that show it.
+
 ## Checks every lane runs before asking for a merge
 
 From `unity-tamadun-kota/`:

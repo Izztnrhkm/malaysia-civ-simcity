@@ -1,0 +1,1440 @@
+{
+ "items": [
+  {
+   "key": "app.title",
+   "value": "Tamadun & Kota"
+  },
+  {
+   "key": "app.subtitle",
+   "value": "Sejarah Malaysia"
+  },
+  {
+   "key": "menu.new",
+   "value": "Permainan Baharu"
+  },
+  {
+   "key": "menu.continue",
+   "value": "Teruskan"
+  },
+  {
+   "key": "menu.load",
+   "value": "Muat Permainan"
+  },
+  {
+   "key": "menu.cityName",
+   "value": "Nama bandar"
+  },
+  {
+   "key": "menu.seed",
+   "value": "Benih peta"
+  },
+  {
+   "key": "menu.random",
+   "value": "Rawak"
+  },
+  {
+   "key": "menu.start",
+   "value": "Mula Membina"
+  },
+  {
+   "key": "menu.tagline",
+   "value": "Bina bandar dari pelabuhan entrepôt hingga bandar pintar digital, merentasi empat era sejarah Malaysia."
+  },
+  {
+   "key": "menu.howto",
+   "value": "Cara bermain"
+  },
+  {
+   "key": "menu.howto.1",
+   "value": "Bina Pelabuhan Entrepôt di pantai dan Pasar berhampiran."
+  },
+  {
+   "key": "menu.howto.2",
+   "value": "Bina jalan, kemudian zon Kampung (R), Bazar (C) dan Bengkel (I) di tepinya."
+  },
+  {
+   "key": "menu.howto.3",
+   "value": "Sediakan makanan dengan Sawah dan Nelayan. Pilih penyelidikan dan sivik."
+  },
+  {
+   "key": "menu.howto.4",
+   "value": "Penuhi syarat era (butang era di bar atas) untuk mara ke era seterusnya."
+  },
+  {
+   "key": "top.population",
+   "value": "Penduduk"
+  },
+  {
+   "key": "top.money",
+   "value": "Wang"
+  },
+  {
+   "key": "top.happiness",
+   "value": "Kesejahteraan"
+  },
+  {
+   "key": "top.perTick",
+   "value": "/giliran"
+  },
+  {
+   "key": "top.demand",
+   "value": "Permintaan"
+  },
+  {
+   "key": "speed.pause",
+   "value": "Jeda"
+  },
+  {
+   "key": "speed.1",
+   "value": "Perlahan"
+  },
+  {
+   "key": "speed.2",
+   "value": "Biasa"
+  },
+  {
+   "key": "speed.3",
+   "value": "Laju"
+  },
+  {
+   "key": "panel.tech",
+   "value": "Teknologi"
+  },
+  {
+   "key": "panel.civics",
+   "value": "Sivik & Dasar"
+  },
+  {
+   "key": "panel.diplomacy",
+   "value": "Diplomasi"
+  },
+  {
+   "key": "panel.economy",
+   "value": "Ekonomi"
+  },
+  {
+   "key": "panel.encyclopedia",
+   "value": "Sejarahpedia"
+  },
+  {
+   "key": "panel.save",
+   "value": "Simpan / Muat"
+  },
+  {
+   "key": "panel.settings",
+   "value": "Tetapan"
+  },
+  {
+   "key": "panel.era",
+   "value": "Kemajuan Era"
+  },
+  {
+   "key": "panel.close",
+   "value": "Tutup"
+  },
+  {
+   "key": "tool.inspect",
+   "value": "Periksa"
+  },
+  {
+   "key": "tool.bulldoze",
+   "value": "Roboh"
+  },
+  {
+   "key": "tool.zones",
+   "value": "Zon"
+  },
+  {
+   "key": "tool.transport",
+   "value": "Pengangkutan"
+  },
+  {
+   "key": "tool.dezone",
+   "value": "Buang zon"
+  },
+  {
+   "key": "zone.R",
+   "value": "Kediaman"
+  },
+  {
+   "key": "zone.C",
+   "value": "Perniagaan"
+  },
+  {
+   "key": "zone.I",
+   "value": "Perindustrian"
+  },
+  {
+   "key": "cat.trade",
+   "value": "Perdagangan"
+  },
+  {
+   "key": "cat.production",
+   "value": "Pengeluaran"
+  },
+  {
+   "key": "cat.service",
+   "value": "Perkhidmatan"
+  },
+  {
+   "key": "cat.culture",
+   "value": "Budaya"
+  },
+  {
+   "key": "cat.research",
+   "value": "Ilmu"
+  },
+  {
+   "key": "cat.utility",
+   "value": "Utiliti"
+  },
+  {
+   "key": "cat.landmark",
+   "value": "Mercu Tanda"
+  },
+  {
+   "key": "build.cost",
+   "value": "Kos"
+  },
+  {
+   "key": "build.upkeep",
+   "value": "Penyelenggaraan"
+  },
+  {
+   "key": "build.jobs",
+   "value": "Pekerjaan"
+  },
+  {
+   "key": "build.produces",
+   "value": "Menghasilkan"
+  },
+  {
+   "key": "build.consumes",
+   "value": "Menggunakan"
+  },
+  {
+   "key": "build.locked",
+   "value": "Terkunci"
+  },
+  {
+   "key": "build.unlockBy",
+   "value": "Dibuka oleh"
+  },
+  {
+   "key": "build.size",
+   "value": "Saiz"
+  },
+  {
+   "key": "build.export",
+   "value": "Kapasiti eksport"
+  },
+  {
+   "key": "build.research",
+   "value": "Ilmu"
+  },
+  {
+   "key": "build.culture",
+   "value": "Budaya"
+  },
+  {
+   "key": "build.power",
+   "value": "Elektrik"
+  },
+  {
+   "key": "build.water",
+   "value": "Air"
+  },
+  {
+   "key": "build.needs",
+   "value": "Syarat tapak"
+  },
+  {
+   "key": "place.coast",
+   "value": "Tepi laut"
+  },
+  {
+   "key": "place.water",
+   "value": "Tepi air"
+  },
+  {
+   "key": "place.river",
+   "value": "Tebing sungai"
+  },
+  {
+   "key": "place.tin",
+   "value": "Tanah bertimah"
+  },
+  {
+   "key": "place.fertile",
+   "value": "Tanah subur"
+  },
+  {
+   "key": "place.forest",
+   "value": "Dekat hutan"
+  },
+  {
+   "key": "place.rail",
+   "value": "Bersebelahan landasan"
+  },
+  {
+   "key": "info.terrain",
+   "value": "Rupa bumi"
+  },
+  {
+   "key": "info.zone",
+   "value": "Zon"
+  },
+  {
+   "key": "info.density",
+   "value": "Kepadatan"
+  },
+  {
+   "key": "info.landValue",
+   "value": "Nilai tanah"
+  },
+  {
+   "key": "info.pollution",
+   "value": "Pencemaran"
+  },
+  {
+   "key": "info.coverage",
+   "value": "Liputan perkhidmatan"
+  },
+  {
+   "key": "info.logistics",
+   "value": "Kecekapan logistik"
+  },
+  {
+   "key": "info.access",
+   "value": "Akses pengangkutan"
+  },
+  {
+   "key": "info.tin",
+   "value": "Bijih timah"
+  },
+  {
+   "key": "info.fertility",
+   "value": "Kesuburan"
+  },
+  {
+   "key": "info.efficiency",
+   "value": "Kecekapan"
+  },
+  {
+   "key": "info.yes",
+   "value": "Ya"
+  },
+  {
+   "key": "info.no",
+   "value": "Tiada"
+  },
+  {
+   "key": "info.readMore",
+   "value": "Baca di Sejarahpedia"
+  },
+  {
+   "key": "info.empty",
+   "value": "Klik jubin untuk melihat butiran."
+  },
+  {
+   "key": "terrain.deep",
+   "value": "Laut dalam"
+  },
+  {
+   "key": "terrain.sea",
+   "value": "Selat Melaka"
+  },
+  {
+   "key": "terrain.shallow",
+   "value": "Perairan cetek"
+  },
+  {
+   "key": "terrain.beach",
+   "value": "Pantai"
+  },
+  {
+   "key": "terrain.mangrove",
+   "value": "Hutan bakau"
+  },
+  {
+   "key": "terrain.river",
+   "value": "Sungai"
+  },
+  {
+   "key": "terrain.plain",
+   "value": "Dataran"
+  },
+  {
+   "key": "terrain.jungle",
+   "value": "Hutan hujan"
+  },
+  {
+   "key": "terrain.hill",
+   "value": "Bukit"
+  },
+  {
+   "key": "terrain.mountain",
+   "value": "Banjaran"
+  },
+  {
+   "key": "overlay.title",
+   "value": "Lapisan"
+  },
+  {
+   "key": "overlay.none",
+   "value": "Tiada"
+  },
+  {
+   "key": "overlay.landValue",
+   "value": "Nilai tanah"
+  },
+  {
+   "key": "overlay.pollution",
+   "value": "Pencemaran"
+  },
+  {
+   "key": "overlay.coverage",
+   "value": "Perkhidmatan"
+  },
+  {
+   "key": "overlay.logistics",
+   "value": "Logistik"
+  },
+  {
+   "key": "overlay.resources",
+   "value": "Sumber"
+  },
+  {
+   "key": "overlay.access",
+   "value": "Akses"
+  },
+  {
+   "key": "tech.researching",
+   "value": "Sedang dikaji"
+  },
+  {
+   "key": "tech.done",
+   "value": "Selesai"
+  },
+  {
+   "key": "tech.available",
+   "value": "Boleh dikaji"
+  },
+  {
+   "key": "tech.locked",
+   "value": "Belum tersedia"
+  },
+  {
+   "key": "tech.perTick",
+   "value": "mata/giliran"
+  },
+  {
+   "key": "tech.choose",
+   "value": "Pilih"
+  },
+  {
+   "key": "tech.prereqs",
+   "value": "Prasyarat"
+  },
+  {
+   "key": "tech.unlocks",
+   "value": "Membuka"
+  },
+  {
+   "key": "tech.none",
+   "value": "Tiada penyelidikan dipilih"
+  },
+  {
+   "key": "tech.bank",
+   "value": "Simpanan"
+  },
+  {
+   "key": "civic.policies",
+   "value": "Dasar"
+  },
+  {
+   "key": "civic.slots",
+   "value": "Slot dasar"
+  },
+  {
+   "key": "civic.adopt",
+   "value": "Laksana"
+  },
+  {
+   "key": "civic.revoke",
+   "value": "Batal"
+  },
+  {
+   "key": "civic.noPolicies",
+   "value": "Siapkan sivik untuk membuka dasar."
+  },
+  {
+   "key": "era.requirements",
+   "value": "Syarat untuk mara"
+  },
+  {
+   "key": "era.advance",
+   "value": "Mara ke Era Baharu"
+  },
+  {
+   "key": "era.current",
+   "value": "Era semasa"
+  },
+  {
+   "key": "era.next",
+   "value": "Era seterusnya"
+  },
+  {
+   "key": "era.final",
+   "value": "Syarat kemenangan"
+  },
+  {
+   "key": "era.victory",
+   "value": "Tahniah! Bandar anda kini sebuah Negara Maju."
+  },
+  {
+   "key": "era.victoryBody",
+   "value": "Anda telah membawa bandar dari pelabuhan entrepôt ke bandar pintar digital. Teruskan membina sesuka hati."
+  },
+  {
+   "key": "era.keepPlaying",
+   "value": "Teruskan bermain"
+  },
+  {
+   "key": "era.req.tech",
+   "value": "Teknologi"
+  },
+  {
+   "key": "era.req.civic",
+   "value": "Sivik"
+  },
+  {
+   "key": "era.req.population",
+   "value": "Penduduk"
+  },
+  {
+   "key": "era.req.landmark",
+   "value": "Mercu tanda"
+  },
+  {
+   "key": "dip.relation",
+   "value": "Hubungan"
+  },
+  {
+   "key": "dip.buys",
+   "value": "Membeli"
+  },
+  {
+   "key": "dip.envoy",
+   "value": "Hantar duta"
+  },
+  {
+   "key": "dip.deal",
+   "value": "Cadang perjanjian"
+  },
+  {
+   "key": "dip.exchange",
+   "value": "Pertukaran ilmu"
+  },
+  {
+   "key": "dip.exchangeOn",
+   "value": "Aktif"
+  },
+  {
+   "key": "dip.exchangeOff",
+   "value": "Mula"
+  },
+  {
+   "key": "dip.qty",
+   "value": "Kuantiti/giliran"
+  },
+  {
+   "key": "dip.duration",
+   "value": "Tempoh (giliran)"
+  },
+  {
+   "key": "dip.price",
+   "value": "Harga"
+  },
+  {
+   "key": "dip.deals",
+   "value": "Perjanjian aktif"
+  },
+  {
+   "key": "dip.offers",
+   "value": "Tawaran"
+  },
+  {
+   "key": "dip.accept",
+   "value": "Terima"
+  },
+  {
+   "key": "dip.decline",
+   "value": "Tolak"
+  },
+  {
+   "key": "dip.cancel",
+   "value": "Batal"
+  },
+  {
+   "key": "dip.noDeals",
+   "value": "Tiada perjanjian aktif."
+  },
+  {
+   "key": "dip.noOffers",
+   "value": "Tiada tawaran buat masa ini."
+  },
+  {
+   "key": "dip.remaining",
+   "value": "baki"
+  },
+  {
+   "key": "dip.investment",
+   "value": "Pelaburan"
+  },
+  {
+   "key": "dip.cooldown",
+   "value": "Duta dalam perjalanan"
+  },
+  {
+   "key": "eco.taxes",
+   "value": "Kadar cukai"
+  },
+  {
+   "key": "eco.income",
+   "value": "Pendapatan"
+  },
+  {
+   "key": "eco.expenses",
+   "value": "Perbelanjaan"
+  },
+  {
+   "key": "eco.net",
+   "value": "Bersih"
+  },
+  {
+   "key": "eco.taxR",
+   "value": "Cukai kediaman"
+  },
+  {
+   "key": "eco.taxC",
+   "value": "Cukai perniagaan"
+  },
+  {
+   "key": "eco.taxI",
+   "value": "Cukai industri"
+  },
+  {
+   "key": "eco.exports",
+   "value": "Eksport"
+  },
+  {
+   "key": "eco.deals",
+   "value": "Perjanjian dagang"
+  },
+  {
+   "key": "eco.upkeepBuildings",
+   "value": "Penyelenggaraan bangunan"
+  },
+  {
+   "key": "eco.upkeepTransport",
+   "value": "Penyelenggaraan jalan"
+  },
+  {
+   "key": "eco.imports",
+   "value": "Import makanan"
+  },
+  {
+   "key": "eco.interest",
+   "value": "Faedah pinjaman"
+  },
+  {
+   "key": "eco.admin",
+   "value": "Pentadbiran awam"
+  },
+  {
+   "key": "eco.goods",
+   "value": "Barangan"
+  },
+  {
+   "key": "eco.stock",
+   "value": "Stok"
+  },
+  {
+   "key": "eco.produced",
+   "value": "Hasil"
+  },
+  {
+   "key": "eco.used",
+   "value": "Guna"
+  },
+  {
+   "key": "eco.exported",
+   "value": "Eksport"
+  },
+  {
+   "key": "eco.priceCol",
+   "value": "Harga"
+  },
+  {
+   "key": "eco.loan",
+   "value": "Pinjaman"
+  },
+  {
+   "key": "eco.debt",
+   "value": "Hutang"
+  },
+  {
+   "key": "eco.borrow",
+   "value": "Pinjam"
+  },
+  {
+   "key": "eco.repay",
+   "value": "Bayar balik"
+  },
+  {
+   "key": "eco.history",
+   "value": "Sejarah bandar"
+  },
+  {
+   "key": "eco.labour",
+   "value": "Tenaga kerja"
+  },
+  {
+   "key": "eco.workers",
+   "value": "Pekerja"
+  },
+  {
+   "key": "eco.jobs",
+   "value": "Pekerjaan"
+  },
+  {
+   "key": "eco.unemployment",
+   "value": "Pengangguran"
+  },
+  {
+   "key": "eco.food",
+   "value": "Bekalan makanan"
+  },
+  {
+   "key": "eco.exportCap",
+   "value": "Kapasiti eksport"
+  },
+  {
+   "key": "eco.utilities",
+   "value": "Utiliti"
+  },
+  {
+   "key": "eco.storage",
+   "value": "Kapasiti stor"
+  },
+  {
+   "key": "enc.search",
+   "value": "Cari topik…"
+  },
+  {
+   "key": "enc.all",
+   "value": "Semua"
+  },
+  {
+   "key": "enc.inGame",
+   "value": "Dalam permainan"
+  },
+  {
+   "key": "enc.sources",
+   "value": "Sumber"
+  },
+  {
+   "key": "enc.related",
+   "value": "Berkaitan"
+  },
+  {
+   "key": "enc.disclaimer",
+   "value": "Fakta disemak dengan sumber dalam talian; tarikh yang dipertikaikan dinyatakan begitu."
+  },
+  {
+   "key": "save.slots",
+   "value": "Slot simpanan"
+  },
+  {
+   "key": "save.empty",
+   "value": "Kosong"
+  },
+  {
+   "key": "save.save",
+   "value": "Simpan"
+  },
+  {
+   "key": "save.load",
+   "value": "Muat"
+  },
+  {
+   "key": "save.delete",
+   "value": "Padam"
+  },
+  {
+   "key": "save.export",
+   "value": "Eksport JSON"
+  },
+  {
+   "key": "save.import",
+   "value": "Import JSON"
+  },
+  {
+   "key": "save.saved",
+   "value": "Permainan disimpan."
+  },
+  {
+   "key": "save.loaded",
+   "value": "Permainan dimuatkan."
+  },
+  {
+   "key": "save.autosave",
+   "value": "Autosimpan"
+  },
+  {
+   "key": "save.error",
+   "value": "Gagal"
+  },
+  {
+   "key": "save.confirmOverwrite",
+   "value": "Klik lagi untuk tulis ganti"
+  },
+  {
+   "key": "save.copy",
+   "value": "Salin JSON"
+  },
+  {
+   "key": "save.copied",
+   "value": "JSON simpanan disalin ke papan klip."
+  },
+  {
+   "key": "save.copyFallback",
+   "value": "Salin JSON dari kotak di bawah."
+  },
+  {
+   "key": "save.paste",
+   "value": "Tampal JSON"
+  },
+  {
+   "key": "save.pasteHelp",
+   "value": "Tampal fail simpanan JSON di sini, kemudian klik Muat."
+  },
+  {
+   "key": "settings.language",
+   "value": "Bahasa"
+  },
+  {
+   "key": "settings.autosave",
+   "value": "Autosimpan setiap 2 minit"
+  },
+  {
+   "key": "settings.mainMenu",
+   "value": "Kembali ke menu utama"
+  },
+  {
+   "key": "settings.controls",
+   "value": "Kawalan"
+  },
+  {
+   "key": "settings.controls.body",
+   "value": "Seret dengan butang kanan/tengah atau kekunci anak panah/WASD untuk menggerakkan kamera. Roda tetikus untuk zum. Esc membatalkan alat. Ruang untuk jeda."
+  },
+  {
+   "key": "notice.techDone",
+   "value": "Teknologi selesai: {name}"
+  },
+  {
+   "key": "notice.civicDone",
+   "value": "Sivik selesai: {name}"
+  },
+  {
+   "key": "notice.newEra",
+   "value": "Era baharu bermula: {name}"
+  },
+  {
+   "key": "notice.victory",
+   "value": "Kemenangan! Negara Maju tercapai."
+  },
+  {
+   "key": "notice.offer",
+   "value": "Tawaran baharu daripada {name}"
+  },
+  {
+   "key": "err.money",
+   "value": "Wang tidak mencukupi"
+  },
+  {
+   "key": "err.locked",
+   "value": "Belum dibuka"
+  },
+  {
+   "key": "err.occupied",
+   "value": "Tapak sudah digunakan"
+  },
+  {
+   "key": "err.terrain",
+   "value": "Rupa bumi tidak sesuai"
+  },
+  {
+   "key": "err.bounds",
+   "value": "Di luar peta"
+  },
+  {
+   "key": "err.needCoast",
+   "value": "Mesti di tepi laut"
+  },
+  {
+   "key": "err.needWater",
+   "value": "Mesti di tepi sungai atau laut"
+  },
+  {
+   "key": "err.needRiver",
+   "value": "Mesti di tebing sungai"
+  },
+  {
+   "key": "err.needTin",
+   "value": "Perlu tanah bertimah"
+  },
+  {
+   "key": "err.needFertile",
+   "value": "Perlu tanah subur"
+  },
+  {
+   "key": "err.needForest",
+   "value": "Perlu berhampiran hutan"
+  },
+  {
+   "key": "err.needRail",
+   "value": "Mesti bersebelahan landasan"
+  },
+  {
+   "key": "err.unique",
+   "value": "Mercu tanda ini sudah dibina"
+  },
+  {
+   "key": "err.invalid",
+   "value": "Tindakan tidak sah"
+  },
+  {
+   "key": "err.nothing",
+   "value": "Tiada apa untuk dirobohkan"
+  },
+  {
+   "key": "err.noPartner",
+   "value": "Rakan dagang tiada"
+  },
+  {
+   "key": "err.cooldown",
+   "value": "Duta masih dalam perjalanan"
+  },
+  {
+   "key": "err.notWanted",
+   "value": "Rakan ini tidak membeli barangan itu"
+  },
+  {
+   "key": "err.tooManyDeals",
+   "value": "Had perjanjian dengan rakan ini dicapai"
+  },
+  {
+   "key": "err.relation",
+   "value": "Hubungan terlalu lemah"
+  },
+  {
+   "key": "err.noSlot",
+   "value": "Tiada slot dasar kosong"
+  },
+  {
+   "key": "err.requirements",
+   "value": "Syarat belum dipenuhi"
+  },
+  {
+   "key": "err.debtLimit",
+   "value": "Had hutang dicapai"
+  },
+  {
+   "key": "month.0",
+   "value": "Jan"
+  },
+  {
+   "key": "month.1",
+   "value": "Feb"
+  },
+  {
+   "key": "month.2",
+   "value": "Mac"
+  },
+  {
+   "key": "month.3",
+   "value": "Apr"
+  },
+  {
+   "key": "month.4",
+   "value": "Mei"
+  },
+  {
+   "key": "month.5",
+   "value": "Jun"
+  },
+  {
+   "key": "month.6",
+   "value": "Jul"
+  },
+  {
+   "key": "month.7",
+   "value": "Ogo"
+  },
+  {
+   "key": "month.8",
+   "value": "Sep"
+  },
+  {
+   "key": "month.9",
+   "value": "Okt"
+  },
+  {
+   "key": "month.10",
+   "value": "Nov"
+  },
+  {
+   "key": "month.11",
+   "value": "Dis"
+  },
+  {
+   "key": "hint.noPort",
+   "value": "Bina Pelabuhan Entrepôt di tepi laut untuk mula berdagang."
+  },
+  {
+   "key": "hint.noResearch",
+   "value": "Pilih teknologi untuk dikaji."
+  },
+  {
+   "key": "hint.noCivic",
+   "value": "Pilih sivik untuk dikembangkan."
+  },
+  {
+   "key": "hint.canAdvance",
+   "value": "Syarat era dipenuhi! Mara ke era baharu."
+  },
+  {
+   "key": "transport.road",
+   "value": "Jalan"
+  },
+  {
+   "key": "transport.rail",
+   "value": "Kereta Api"
+  },
+  {
+   "key": "transport.highway",
+   "value": "Lebuhraya"
+  },
+  {
+   "key": "transport.mrt",
+   "value": "MRT"
+  },
+  {
+   "key": "common.cost",
+   "value": "Kos"
+  },
+  {
+   "key": "common.on",
+   "value": "Hidup"
+  },
+  {
+   "key": "common.off",
+   "value": "Mati"
+  },
+  {
+   "key": "view.to2d",
+   "value": "Tukar ke paparan 2D Klasik"
+  },
+  {
+   "key": "view.to3d",
+   "value": "Tukar ke paparan 3D"
+  },
+  {
+   "key": "view.reset",
+   "value": "Set semula kamera"
+  },
+  {
+   "key": "view.rotateLeft",
+   "value": "Putar kiri"
+  },
+  {
+   "key": "view.rotateRight",
+   "value": "Putar kanan"
+  },
+  {
+   "key": "view.daynight",
+   "value": "Siang / Malam"
+  },
+  {
+   "key": "view.day.day",
+   "value": "Siang"
+  },
+  {
+   "key": "view.day.night",
+   "value": "Malam"
+  },
+  {
+   "key": "view.day.cycle",
+   "value": "Kitaran siang-malam"
+  },
+  {
+   "key": "view.weather",
+   "value": "Cuaca"
+  },
+  {
+   "key": "view.weather.auto",
+   "value": "Automatik (ikut monsun)"
+  },
+  {
+   "key": "view.weather.rain",
+   "value": "Hujan monsun"
+  },
+  {
+   "key": "view.weather.clear",
+   "value": "Cerah"
+  },
+  {
+   "key": "settings.graphics",
+   "value": "Grafik 3D"
+  },
+  {
+   "key": "settings.graphics.auto",
+   "value": "Automatik"
+  },
+  {
+   "key": "settings.graphics.high",
+   "value": "Tinggi (bayang)"
+  },
+  {
+   "key": "settings.graphics.low",
+   "value": "Rendah (pantas)"
+  },
+  {
+   "key": "settings.graphics.body",
+   "value": "Automatik memilih Rendah pada pemapar perisian. Tinggi menambah bayang masa nyata dan antialias."
+  },
+  {
+   "key": "sound.mute",
+   "value": "Senyapkan bunyi"
+  },
+  {
+   "key": "sound.unmute",
+   "value": "Hidupkan bunyi"
+  },
+  {
+   "key": "sound.volume",
+   "value": "Kelantangan"
+  },
+  {
+   "key": "sound.master",
+   "value": "Utama"
+  },
+  {
+   "key": "sound.music",
+   "value": "Muzik"
+  },
+  {
+   "key": "sound.sfx",
+   "value": "Kesan bunyi"
+  },
+  {
+   "key": "notice.crisisResolved",
+   "value": "Keputusan krisis: {name}"
+  },
+  {
+   "key": "notice.crisisAuto",
+   "value": "Tiada keputusan dibuat, pilihan lalai diguna: {name}"
+  },
+  {
+   "key": "notice.advisorJoined",
+   "value": "{name} menyertai majlis penasihat anda"
+  },
+  {
+   "key": "notice.advisorRetired",
+   "value": "{name} bersara daripada majlis penasihat"
+  },
+  {
+   "key": "notice.milestone",
+   "value": "Pencapaian kemenangan: {name}!"
+  },
+  {
+   "key": "eco.infrastructure",
+   "value": "Penyelenggaraan infrastruktur"
+  },
+  {
+   "key": "eco.advisors",
+   "value": "Elaun penasihat"
+  },
+  {
+   "key": "eco.infrastructure.hint",
+   "value": "Era 3-4: susut nilai aset bangunan dan penyelenggaraan rangkaian meningkat dengan saiz bandar."
+  },
+  {
+   "key": "panel.advisors",
+   "value": "Tokoh Sejarah"
+  },
+  {
+   "key": "panel.timeline",
+   "value": "Garis Masa & Kemenangan"
+  },
+  {
+   "key": "advisors.intro",
+   "value": "Lantik tokoh sejarah sebagai penasihat. Setiap tokoh memberi kelebihan pasif selagi berkhidmat dan bersara apabila bandar maju melepasi era mereka."
+  },
+  {
+   "key": "advisors.slots",
+   "value": "Kerusi majlis: {used}/{max}"
+  },
+  {
+   "key": "advisors.recruit",
+   "value": "Lantik"
+  },
+  {
+   "key": "advisors.dismiss",
+   "value": "Lepaskan"
+  },
+  {
+   "key": "advisors.serving",
+   "value": "Sedang berkhidmat"
+  },
+  {
+   "key": "advisors.otherEra",
+   "value": "Tersedia dalam era lain"
+  },
+  {
+   "key": "advisors.cost",
+   "value": "Kos lantikan"
+  },
+  {
+   "key": "advisors.upkeep",
+   "value": "Elaun/giliran"
+  },
+  {
+   "key": "advisors.sources",
+   "value": "Sumber"
+  },
+  {
+   "key": "crisis.title",
+   "value": "Krisis Sejarah"
+  },
+  {
+   "key": "crisis.choose",
+   "value": "Pilih tindak balas dasar anda:"
+  },
+  {
+   "key": "crisis.cost",
+   "value": "Kos"
+  },
+  {
+   "key": "crisis.free",
+   "value": "Tiada kos"
+  },
+  {
+   "key": "crisis.timeout",
+   "value": "Jika tiada keputusan dalam {n} giliran, pilihan lalai akan diguna."
+  },
+  {
+   "key": "crisis.default",
+   "value": "lalai"
+  },
+  {
+   "key": "timeline.treasury",
+   "value": "Tabung"
+  },
+  {
+   "key": "timeline.population",
+   "value": "Penduduk"
+  },
+  {
+   "key": "timeline.output",
+   "value": "Keluaran"
+  },
+  {
+   "key": "timeline.happiness",
+   "value": "Kebahagiaan"
+  },
+  {
+   "key": "timeline.empty",
+   "value": "Sejarah akan dirakam setiap 6 giliran."
+  },
+  {
+   "key": "timeline.milestones",
+   "value": "Pencapaian kemenangan"
+  },
+  {
+   "key": "timeline.achieved",
+   "value": "Tercapai"
+  },
+  {
+   "key": "timeline.classic",
+   "value": "Negara Maju (Menara Berkembar dan syarat Era 4)"
+  },
+  {
+   "key": "timeline.chart",
+   "value": "Carta sejarah"
+  },
+  {
+   "key": "menu.scenario",
+   "value": "Senario"
+  },
+  {
+   "key": "menu.objectives",
+   "value": "Objektif"
+  },
+  {
+   "key": "tool.collapse",
+   "value": "Lipat panel"
+  },
+  {
+   "key": "tool.expand",
+   "value": "Buka panel"
+  },
+  {
+   "key": "enc.cat.era",
+   "value": "Era"
+  },
+  {
+   "key": "enc.cat.trade",
+   "value": "Perdagangan"
+  },
+  {
+   "key": "enc.cat.economy",
+   "value": "Ekonomi"
+  },
+  {
+   "key": "enc.cat.society",
+   "value": "Masyarakat & Pentadbiran"
+  },
+  {
+   "key": "enc.cat.place",
+   "value": "Tempat & Binaan"
+  },
+  {
+   "key": "enc.cat.event",
+   "value": "Peristiwa"
+  },
+  {
+   "key": "enc.cat.technology",
+   "value": "Teknologi"
+  },
+  {
+   "key": "unity.menu.settings",
+   "value": "Tetapan"
+  },
+  {
+   "key": "unity.menu.quit",
+   "value": "Keluar"
+  },
+  {
+   "key": "unity.menu.resume",
+   "value": "Sambung"
+  },
+  {
+   "key": "unity.menu.button",
+   "value": "Menu"
+  },
+  {
+   "key": "unity.menu.noSaves",
+   "value": "Tiada permainan disimpan"
+  },
+  {
+   "key": "unity.top.research",
+   "value": "Kajian"
+  },
+  {
+   "key": "unity.top.era",
+   "value": "Era"
+  },
+  {
+   "key": "unity.panel.eraTimeline",
+   "value": "Era & Garis Masa"
+  },
+  {
+   "key": "unity.top.advisors",
+   "value": "Penasihat"
+  },
+  {
+   "key": "unity.settings.volume",
+   "value": "Kelantangan utama"
+  },
+  {
+   "key": "unity.settings.music",
+   "value": "Muzik"
+  },
+  {
+   "key": "unity.settings.ambience",
+   "value": "Bunyi persekitaran"
+  },
+  {
+   "key": "unity.settings.artMode",
+   "value": "Mod seni"
+  },
+  {
+   "key": "unity.settings.fullArt",
+   "value": "Seni 3D penuh"
+  },
+  {
+   "key": "unity.settings.greybox",
+   "value": "Greybox"
+  },
+  {
+   "key": "unity.settings.edgeScroll",
+   "value": "Skrol tepi skrin"
+  },
+  {
+   "key": "unity.settings.on",
+   "value": "Hidup"
+  },
+  {
+   "key": "unity.settings.off",
+   "value": "Mati"
+  },
+  {
+   "key": "unity.settings.controls.body",
+   "value": "WASD / anak panah, tepi skrin atau seret tengah untuk gerak; Q / E atau seret kanan untuk putar; roda tetikus untuk zum; Space jeda, 1-3 kelajuan; G tukar mod seni; F5 / F9 simpan / muat pantas; Esc tutup panel."
+  },
+  {
+   "key": "unity.eco.policySlots",
+   "value": "Slot dasar: {used}/{max}"
+  },
+  {
+   "key": "unity.eco.power",
+   "value": "Elektrik"
+  },
+  {
+   "key": "unity.eco.water",
+   "value": "Air"
+  },
+  {
+   "key": "unity.eco.noLoans",
+   "value": "Pinjaman belum ada dalam edisi Unity."
+  },
+  {
+   "key": "unity.timeline.table",
+   "value": "Jadual"
+  },
+  {
+   "key": "unity.timeline.charts",
+   "value": "Carta"
+  },
+  {
+   "key": "unity.timeline.year",
+   "value": "Tahun"
+  },
+  {
+   "key": "unity.era.cannot",
+   "value": "Syarat belum dipenuhi"
+  },
+  {
+   "key": "unity.enc.open",
+   "value": "Buka"
+  },
+  {
+   "key": "unity.notif.close",
+   "value": "x"
+  }
+ ]
+}
