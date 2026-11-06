@@ -174,6 +174,13 @@ From lane B (HUD), for lane C (`Simulation/**`, `ci/**`):
    `fetch-deps.sh` failed with 153 errors in `AINavigation.csproj` ("UnityEngine could not be
    found"); the same build passed on the second run. A separate `BaseIntermediateOutputPath` (or
    folder) per project should fix it.
+6. **Partner Sejarahpedia entries.** The web partners have `entry` (for example `zheng_he`,
+   `melaka_1511`) for the diplomacy window's "Read in Sejarahpedia" link. Please add
+   `public string entryId;` to `PartnerRecord` and expose it on `PartnerView`; lane B will then
+   export it in `scripts/export-unity-data.ts` and add the link to `UI/DiplomacyPanel.cs`.
+7. **Milestone notices.** Milestone and victory notices use `NoticeKind.Era`, the same as era
+   changes; the feed tells them apart by the "A new era begins: ..." title. The `id` from item 1
+   (or a separate kind) would remove that guess.
 
 From lane B (HUD), for the lead (`Core/**`, Editor, scene):
 

@@ -30,8 +30,11 @@ namespace TamadunKota.UI
 
         RectTransform chartsView, tableView;
         readonly Text[] tableColumns = new Text[5];
-        Button viewToggle;
-        bool showTable;
+        Button viewToggle, milestonesButton;
+        bool showTable, showMilestones;
+        MilestoneList milestones;
+        RectTransform legend;
+        Text header, victoryText;
         readonly LineChartGraphic[] charts = new LineChartGraphic[3];
         readonly HoverFlag[] chartHover = new HoverFlag[3];
         readonly Text[] chartValue = new Text[3];
@@ -69,17 +72,33 @@ namespace TamadunKota.UI
             Kit.Localize(advance.GetComponentInChildren<Text>(), () => Loc.Get("era.advance"));
             advance.GetComponent<LayoutElement>().preferredHeight = 46;
             Kit.SetSelected(advance, true);
+            victoryText = Kit.Para(left, "", FontSize - 2, HudKit.GoodColor);
+            victoryText.fontStyle = FontStyle.Bold;
 
             // right: charts or table
             var right = new GameObject("Timeline", typeof(RectTransform)).GetComponent<RectTransform>();
             right.SetParent(Body, false);
             HudKit.Stretch(right, new Vector2(0.39f, 0), Vector2.one, Vector2.zero, Vector2.zero);
-            var header = Kit.Label(right, "Header", FontSize - 2, TextAnchor.MiddleLeft);
+            header = Kit.Label(right, "Header", FontSize - 2, TextAnchor.MiddleLeft);
             header.color = Kit.AccentColor;
             header.fontStyle = FontStyle.Bold;
-            HudKit.Stretch(header.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, -34), new Vector2(-140, 0));
-            Kit.Localize(header, () => Loc.Get("timeline.chart"));
-            viewToggle = Kit.Btn(right, "", () => { showTable = !showTable; historyStamp = -1; UpdateTimeline(); }, 130);
+            HudKit.Stretch(header.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, -34), new Vector2(-346, 0));
+            milestonesButton = Kit.Btn(right, () => Loc.Get("timeline.milestones"), () =>
+            {
+                showMilestones = !showMilestones;
+                if (showMilestones) Sim?.Milestones.Refresh();   // values for a window opened between ticks
+                historyStamp = -1;
+                UpdateTimeline();
+            }, 200);
+            HudKit.Stretch((RectTransform)milestonesButton.transform, new Vector2(1, 1), new Vector2(1, 1), new Vector2(-336, -34), new Vector2(-136, 0));
+            milestonesButton.GetComponentInChildren<Text>().fontSize = FontSize - 5;
+            viewToggle = Kit.Btn(right, "", () =>
+            {
+                if (showMilestones) showMilestones = false;
+                else showTable = !showTable;
+                historyStamp = -1;
+                UpdateTimeline();
+            }, 130);
             HudKit.Stretch((RectTransform)viewToggle.transform, new Vector2(1, 1), new Vector2(1, 1), new Vector2(-130, -34), Vector2.zero);
             viewToggle.GetComponentInChildren<Text>().fontSize = FontSize - 5;
 
@@ -108,7 +127,9 @@ namespace TamadunKota.UI
             }
 
             // era legend
-            var legend = new GameObject("Legend", typeof(RectTransform)).GetComponent<RectTransform>();
+            milestones = new MilestoneList(ctx, right, Vector2.zero, new Vector2(0, -42));
+
+            legend = new GameObject("Legend", typeof(RectTransform)).GetComponent<RectTransform>();
             legend.SetParent(right, false);
             HudKit.Stretch(legend, Vector2.zero, new Vector2(1, 0), Vector2.zero, new Vector2(0, 26));
             var lh = legend.gameObject.AddComponent<HorizontalLayoutGroup>();
@@ -175,6 +196,7 @@ namespace TamadunKota.UI
 
         public override void Refresh()
         {
+            if (showMilestones) Sim?.Milestones.Refresh();
             historyStamp = -1;
             UpdateEra();
             UpdateTimeline();
@@ -227,6 +249,9 @@ namespace TamadunKota.UI
             nextEra.gameObject.SetActive(!last);
             advance.gameObject.SetActive(!last);
             advance.interactable = !last && sim.Era.CanAdvance(sim.Tech, sim.Economy.Population, sim.City);
+            bool won = last && sim.Milestones.Victory;
+            if (won) victoryText.text = Loc.Get("era.victory");
+            victoryText.gameObject.SetActive(won);
         }
 
         string RequirementName(GameSimulation sim, EraRequirement r)
@@ -261,7 +286,19 @@ namespace TamadunKota.UI
             if (sim == null) return;
             var h = sim.History;
             int stamp = h.Count == 0 ? 0 : h.Count * 100003 + h[h.Count - 1].tick + (Malay ? 1 : 0);
-            HudKit.SetLabel(viewToggle, Loc.Get(showTable ? "unity.timeline.charts" : "unity.timeline.table"));
+            HudKit.SetLabel(viewToggle, Loc.Get(showTable || showMilestones ? "unity.timeline.charts" : "unity.timeline.table"));
+            Kit.SetSelected(milestonesButton, showMilestones);
+            header.text = Loc.Get(showMilestones ? "timeline.milestones" : "timeline.chart");
+            milestones.Root.gameObject.SetActive(showMilestones);
+            legend.gameObject.SetActive(!showMilestones);
+            if (showMilestones)
+            {
+                emptyText.gameObject.SetActive(false);
+                chartsView.gameObject.SetActive(false);
+                tableView.gameObject.SetActive(false);
+                milestones.Fill(sim);
+                return;
+            }
             bool empty = h.Count < 2;
             emptyText.gameObject.SetActive(empty);
             chartsView.gameObject.SetActive(!empty && !showTable);

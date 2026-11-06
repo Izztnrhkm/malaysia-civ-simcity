@@ -119,9 +119,17 @@ namespace TamadunKota.Systems
 
         void Bind(GameSimulation s)
         {
-            if (ctx.Sim != null) ctx.Sim.NoticePosted -= OnNotice;
+            if (ctx.Sim != null)
+            {
+                ctx.Sim.NoticePosted -= OnNotice;
+                ctx.Sim.OnVictory -= OnVictory;
+            }
             ctx.Sim = s;
-            if (s != null) s.NoticePosted += OnNotice;
+            if (s != null)
+            {
+                s.NoticePosted += OnNotice;
+                s.OnVictory += OnVictory;   // raised once when won; a loaded game that had won does not raise it
+            }
             for (int i = 0; i < panels.Count; i++) panels[i].OnBind(s);
         }
 
@@ -195,6 +203,8 @@ namespace TamadunKota.Systems
             ctx.OpenSettings = ctx.Settings.Open;
             Add(ctx.EconomyWindow = new EconomyPanel(ctx), root);
             Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
+            Add(ctx.Diplomacy = new DiplomacyPanel(ctx), root);
+            Add(ctx.Victory = new VictoryPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
             ctx.ShowMessage = ctx.Message.Show;
             Add(ctx.MainMenu = new MainMenuPanel(ctx), root);   // last: drawn over the whole HUD
@@ -244,6 +254,8 @@ namespace TamadunKota.Systems
                 if (ctx.Sim.Db.Entry(e.entryId) != null) ctx.Sejarahpedia.OpenAt(e.entryId);   // read about the new era
             }
         }
+
+        void OnVictory() => ctx.Victory.Open();
 
         void OnAchievement(string id) => ShowMessage(T("Pencapaian: ", "Achievement: ") + id);
         void OnSaved(int slot) => ShowMessage(T("Disimpan ke slot ", "Saved to slot ") + slot);
