@@ -9,7 +9,7 @@ namespace TamadunKota.UI
     /// <summary>
     /// Top bar (resources on the left, population / happiness / date / era on the right) and the
     /// controls row under it: speed, the window buttons (research, era & timeline, economy,
-    /// advisors, Sejarahpedia, save/load, settings, menu) and the "Greybox / Full 3D Art" toggle.
+    /// advisors, diplomacy, Sejarahpedia, save/load, settings, menu) and the "Greybox / Full 3D Art" toggle.
     /// Language is in Settings and the main menu; the demand / tax status is on the tool row.
     /// </summary>
     public sealed class TopBarPanel : HudPanel
@@ -41,12 +41,13 @@ namespace TamadunKota.UI
             Kit.Btn(bar, () => Loc.Get("unity.top.era"), () => ctx.EraWindow.Toggle(), 80);
             Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
+            Kit.Btn(bar, () => Loc.Get("panel.diplomacy"), () => ctx.Diplomacy.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("panel.encyclopedia"), () => ctx.Sejarahpedia.Toggle(), 140);
-            Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
+            Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 130);
             Kit.Btn(bar, () => Loc.Get("panel.settings"), () => ctx.Settings.Toggle(), 110);
             Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 80);
             Kit.Spacer(bar, 16);
-            if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 220);
+            if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 200);
             else ArtToggleButton.transform.SetParent(bar, false);
             // The setup menu wires a persistent listener (ArtModeToggle.Toggle) visible in the
             // Inspector; only add a runtime one when the button has none, or it would toggle twice.

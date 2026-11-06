@@ -48,6 +48,8 @@ namespace TamadunKota.UI
         public EraTimelinePanel EraWindow;
         public SejarahpediaPanel Sejarahpedia;
         public SettingsPanel Settings;
+        public DiplomacyPanel Diplomacy;
+        public VictoryPanel Victory;
 
         public HudContext(HudKit kit) { Kit = kit; }
 
