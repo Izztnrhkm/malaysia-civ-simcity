@@ -180,7 +180,8 @@ namespace TamadunKota.UI
             switch (n.kind)
             {
                 case NoticeKind.Era:
-                    id = sim.EraDef.entryId;
+                    // era changes only; milestone and victory notices are also of kind Era
+                    if (n.titleEn != null && n.titleEn.EndsWith(": " + sim.EraDef.nameEn, StringComparison.Ordinal)) id = sim.EraDef.entryId;
                     break;
                 case NoticeKind.Bad:
                     int ci = db.CrisisIndex(sim.Events.PendingCrisis);
