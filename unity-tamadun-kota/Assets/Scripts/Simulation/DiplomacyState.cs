@@ -282,7 +282,7 @@ namespace TamadunKota.Simulation
             }
             offer.Id = NextId++;
             offers.Add(offer);
-            sim.Post(NoticeKind.Info, "Tawaran rakan dagang", "Trade partner offer", partner.NameMs, partner.NameEn);
+            sim.Post(NoticeKind.Info, "Tawaran rakan dagang", "Trade partner offer", partner.NameMs, partner.NameEn, partner.Id);
             return knowledge;
         }
 
