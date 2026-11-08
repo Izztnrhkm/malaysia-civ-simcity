@@ -15,6 +15,7 @@ namespace TamadunKota.UI
     public sealed class HudContext
     {
         public readonly HudKit Kit;
+        public readonly MenuSession Menu;
         public GridPlacementSystem Placement;
         public TimeManager Time;
         public EconomyManager Economy;
@@ -49,7 +50,7 @@ namespace TamadunKota.UI
         public SejarahpediaPanel Sejarahpedia;
         public SettingsPanel Settings;
 
-        public HudContext(HudKit kit) { Kit = kit; }
+        public HudContext(HudKit kit) { Kit = kit; Menu = new MenuSession(this); }
 
         /// <summary>The open HUD window, if any (only one at a time; Esc closes it).</summary>
         public IHudModal ActiveModal { get; private set; }

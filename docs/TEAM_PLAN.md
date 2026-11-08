@@ -8,6 +8,52 @@ cleanly in Unity 6000.3, and has CI that runs the rules-engine tests on every pu
 
 ## Lanes
 
+### User-requested menu polish (2026-11-08)
+
+Codex is implementing the approved Unity menu redesign in the separate
+`tamadun-menu-codex` worktree on `codex/unity-menu-polish`, based on `main`.
+This task covers the title, scenario setup, Save/Load, Settings and pause menus;
+their shared UI navigation/input helpers; `Systems/UIManager.cs`; menu artwork
+and fonts under `Assets/Resources/Menu`; the localization exporter and generated
+localization tables; and focused menu PlayMode tests. Other HUD panels, simulation,
+save formats, Steam services and scenes remain outside this task. This explicit
+user assignment extends Codex's lane C scope for this branch only.
+
+The lead must run the new PlayMode tests and capture BM/EN screenshots at
+1280x720, 1920x1080 and 2560x1080. Codex does not open or launch Unity.
+
+Menu review handoff:
+
+* Run `TamadunKota.Tests.MenuFlowTests` in the Unity PlayMode Test Runner.
+  The fixture restores local save files and touched settings. It skips when Steam
+  Cloud is active so test saves cannot overwrite cloud files.
+* At each target resolution run `CaptureMenusAtTheCurrentTargetViewport` in a
+  rendered Game view or test player. It captures both languages, the three scenario
+  forms with a 40-character city name, empty/mixed slots, failed loads, saved-slot
+  feedback, all Settings sections and pause.
+  It checks control bounds, 44-pixel targets, navigation containment and text height.
+  The test skips batch mode and unsupported viewport sizes rather than inventing
+  screenshot evidence.
+* Captures go to `unity-tamadun-kota/ci/.cache/menu-review/`, or the directory set
+  by `TAMADUN_MENU_REVIEW_DIR`. `Assets/Tests/PlayMode/MenuReviewEvidence.json`
+  is an explicitly untested template. Copy it beside the captures if necessary,
+  record the actual observed accessibility, responsive and save-operation states,
+  and add a screenshot entry for each viewport to `renderedEvidence`.
+* Run the installed frontend-design-direction skill's
+  `scripts/check-evidence.js <capture-directory>/evidence.json` after review.
+  An untested template is expected to fail; compiled source is not rendered proof.
+* Check that the illustrated skyline crops acceptably on ultrawide, the body text
+  and focus indicator remain readable, keyboard focus never reaches the covered
+  HUD, and closing utility screens returns to the correct title/pause/game view.
+
+Codex local checks: `npm run check` passed (377 tests); `dotnet test
+unity-tamadun-kota/ci/SimulationTests` passed (56 tests); Game and SteamCheck builds
+passed without warnings or errors; TypeScript parity fixtures match. The new
+PlayMode source also compiles against the installed Unity test-runner assemblies
+using an ignored local .NET project. No Unity runtime or rendered review has run
+on this branch; the evidence checker correctly rejects the untested template.
+
+
 | Lane | Agent | Branch | Owns (may edit) |
 |---|---|---|---|
 | A. Lead: Editor, scene, play-testing, performance, merges | Claude (lead session) | `lead/playtest-perf` | `Assets/Editor/**`, `Assets/Scripts/Core/**`, `Assets/Scripts/Data/**`, `Assets/Scenes`, `Assets/Prefabs`, `Assets/Materials`, `Assets/Settings`, `Assets/Tests/PlayMode/**` (new), `ProjectSettings/**`, `Packages/**`, `README.md`, `docs/GDD.md`, this file |

@@ -1,0 +1,43 @@
+{
+  "contract": "Unity title, scenario setup, Save/Load, Settings and pause menus. Malaysian heritage panorama, teal/brass/ivory. BM and EN. Keyboard navigation stays inside the menu. Minimum 44px targets. No clipped text at target viewports. New game and Continue are primary according to save availability. No save writes from startup. Failed operations keep recovery controls visible. Existing external pauses and input states survive menu navigation.",
+  "targetViewports": [
+    "1280x720",
+    "1920x1080",
+    "2560x1080"
+  ],
+  "accessibility": {
+    "status": "untested",
+    "evidence": "Requires lead-run Unity review: focus visibility, navigation, contrast and target sizes."
+  },
+  "responsive": {
+    "status": "untested",
+    "evidence": "Requires lead-run screenshots and layout assertions at each target viewport in BM and EN."
+  },
+  "contentStates": {
+    "loading": {
+      "status": "not-applicable",
+      "reason": "Local resources and the existing synchronous save service are retained; there is no asynchronous menu request or cancellable loader."
+    },
+    "empty": {
+      "status": "untested",
+      "evidence": "Startup without readable saves; Continue and slot Load disabled, New Game primary."
+    },
+    "error": {
+      "status": "untested",
+      "evidence": "Load newer-version save and blocked save target; inline error and Back remain available."
+    },
+    "partial": {
+      "status": "untested",
+      "evidence": "Mix readable, empty and malformed save slots; only readable slots offer Load."
+    },
+    "success": {
+      "status": "untested",
+      "evidence": "Save refreshes metadata without closing; Load/Continue enter the city and release the menu lease."
+    },
+    "permission": {
+      "status": "not-applicable",
+      "reason": "No account, permission request or new external service is introduced."
+    }
+  },
+  "renderedEvidence": []
+}

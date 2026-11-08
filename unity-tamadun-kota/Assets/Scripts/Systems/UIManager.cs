@@ -45,6 +45,7 @@ namespace TamadunKota.Systems
         public int fontSize = 20;
 
         HudContext ctx;
+        Canvas menuCanvas;
         readonly List<HudPanel> panels = new List<HudPanel>(16);
 
         string T(string ms, string en) => ctx.T(ms, en);
@@ -68,6 +69,7 @@ namespace TamadunKota.Systems
 
         void OnEnable()
         {
+            if (menuCanvas != null) menuCanvas.gameObject.SetActive(true);
             if (economy != null) economy.Updated += OnEconomy;
             if (placement != null)
             {
@@ -93,6 +95,7 @@ namespace TamadunKota.Systems
 
         void OnDisable()
         {
+            if (menuCanvas != null) menuCanvas.gameObject.SetActive(false);
             if (economy != null) economy.Updated -= OnEconomy;
             if (placement != null)
             {
@@ -113,8 +116,17 @@ namespace TamadunKota.Systems
                 GameRoot.Instance.SimulationChanged -= Bind;
                 GameRoot.Instance.LanguageChanged -= OnLanguage;
             }
+            ctx.Settings.Close();
+            ctx.SaveLoadMenu.Close();
+            ctx.MainMenu.Hide();
+            ctx.Menu.End();
             TextFocus.Release();
             Bind(null);
+        }
+
+        void OnDestroy()
+        {
+            if (menuCanvas != null) Destroy(menuCanvas.gameObject);
         }
 
         void Bind(GameSimulation s)
@@ -128,11 +140,13 @@ namespace TamadunKota.Systems
         void Update()
         {
             TextFocus.Update(time, saveLoad);
+            ctx.Menu.UpdateKeyboard();
             var kb = Keyboard.current;
             if (kb != null && kb.escapeKey.wasPressedThisFrame)
             {
                 if (ctx.ActiveModal != null) ctx.ActiveModal.Close();
-                else ctx.MainMenu.OnEscape();
+                else if (ctx.MainMenu.IsOpen) ctx.MainMenu.OnEscape();
+                else ctx.MainMenu.Show(true);
             }
             if (ctx.Sim == null) return;
             for (int i = 0; i < panels.Count; i++) panels[i].Tick();
@@ -166,6 +180,17 @@ namespace TamadunKota.Systems
                 existingScaler.matchWidthOrHeight = 0.5f;
             }
             var root = (RectTransform)canvas.transform;
+            // Keep a full 900-unit menu height on ultrawide without changing HUD scaling.
+            var menuObject = new GameObject("Menu Canvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+            menuObject.transform.SetParent(canvas.transform.parent, false);
+            menuCanvas = menuObject.GetComponent<Canvas>();
+            menuCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            menuCanvas.sortingOrder = canvas.sortingOrder + 10;
+            var menuScaler = menuObject.GetComponent<CanvasScaler>();
+            menuScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            menuScaler.referenceResolution = new Vector2(1600, 900);
+            menuScaler.matchWidthOrHeight = 1;
+            var menuRoot = (RectTransform)menuObject.transform;
 
             var kit = new HudKit(panelColor, buttonColor, accentColor, textColor, fontSize);
             ctx = new HudContext(kit)
@@ -187,17 +212,17 @@ namespace TamadunKota.Systems
             Add(ctx.Message = new MessageBanner(ctx), root);
             Add(ctx.Inspector = new InspectorPanel(ctx), root);
             Add(ctx.Research = new ResearchPanel(ctx), root);
-            Add(ctx.SaveLoadMenu = new SaveLoadPanel(ctx), root);
+            Add(ctx.SaveLoadMenu = new SaveLoadPanel(ctx), menuRoot);
             Add(ctx.EraWindow = new EraTimelinePanel(ctx), root);
             Add(ctx.Sejarahpedia = new SejarahpediaPanel(ctx), root);
             ctx.OpenEntry = ctx.Sejarahpedia.OpenAt;
-            Add(ctx.Settings = new SettingsPanel(ctx), root);
+            Add(ctx.Settings = new SettingsPanel(ctx), menuRoot);
             ctx.OpenSettings = ctx.Settings.Open;
             Add(ctx.EconomyWindow = new EconomyPanel(ctx), root);
             Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
             ctx.ShowMessage = ctx.Message.Show;
-            Add(ctx.MainMenu = new MainMenuPanel(ctx), root);   // last: drawn over the whole HUD
+            Add(ctx.MainMenu = new MainMenuPanel(ctx), menuRoot);
         }
 
         void Add(HudPanel panel, RectTransform root)

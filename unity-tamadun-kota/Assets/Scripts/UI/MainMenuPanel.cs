@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TamadunKota.Core;
 using TamadunKota.Simulation;
@@ -7,273 +8,270 @@ using UnityEngine.UI;
 
 namespace TamadunKota.UI
 {
-    /// <summary>
-    /// Main menu (web: src/ui/MainMenu.tsx): New game with city name, map seed and scenario
-    /// (scenarios.json), Continue (newest save), Load, Settings and Quit, plus Resume when opened
-    /// from the game. Shown over the running scene at startup, and pauses the clock while open.
-    /// </summary>
+    /// <summary>The title, pause and scenario screens share one navigation session.</summary>
     public sealed class MainMenuPanel : HudPanel
     {
-        /// <summary>
-        /// Show the menu when the HUD starts. Never shown in batch mode (headless PlayMode tests);
-        /// tests that run in a window can set this to false before the scene loads.
-        /// </summary>
         public static bool ShowOnStartup = true;
-
         static readonly string[] Names = { "Kota Baharu", "Bandar Seri Selat", "Kuala Muara", "Pengkalan Emas", "Bandar Hilir", "Kuala Damai" };
-
-        RectTransform overlay, mainView, newView, objectives;
-        Button resumeButton, continueButton, langMs, langEn;
-        Text continueInfo, scenarioDesc;
+        MenuShell shell;
+        RectTransform mainView, newView;
+        Button resume, newGame, continueButton, load, settings, quit, back, start;
+        Text continueInfo, description, objectives, chapterTitle, feedback;
         InputField cityInput, seedInput;
-        readonly List<Button> scenarioButtons = new List<Button>(4);
-        readonly List<string> scenarioIds = new List<string>(4);
-        string scenario = "melaka_1400";
+        readonly List<Button> scenarioButtons = new List<Button>();
+        readonly List<ScenarioRecord> scenarios = new List<ScenarioRecord>();
+        string scenario = "melaka_1400", feedbackKey;
         int continueSlot = -1;
-        bool paused, inGame;
+        bool inGame, settingUp;
 
         public MainMenuPanel(HudContext context) : base(context) { }
-
-        public bool IsOpen => overlay != null && overlay.gameObject.activeSelf;
+        public bool IsOpen => shell != null && shell.Root.gameObject.activeSelf;
+        public bool IsPauseMenu => inGame;
+        public RectTransform MenuRoot => shell?.Root;
 
         public override void Build(RectTransform root)
         {
-            overlay = new GameObject("Main Menu", typeof(RectTransform), typeof(Image)).GetComponent<RectTransform>();
-            overlay.SetParent(root, false);
-            HudKit.Stretch(overlay, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            overlay.GetComponent<Image>().color = new Color(0.02f, 0.05f, 0.06f, 0.72f);   // blocks clicks on the world
-            var window = Kit.Panel(overlay, "Window", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(-420, -390), new Vector2(420, 390));
-
-            // header: title, subtitle, language
-            var title = Kit.Label(window, "Title", FontSize + 20, TextAnchor.UpperLeft);
-            title.color = Kit.AccentColor;
-            title.fontStyle = FontStyle.Bold;
-            HudKit.Stretch(title.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(24, -70), new Vector2(-180, -16));
-            Kit.Localize(title, () => Loc.Get("app.title"));
-            var subtitle = Kit.Label(window, "Subtitle", FontSize + 2, TextAnchor.UpperLeft);
-            HudKit.Stretch(subtitle.rectTransform, new Vector2(0, 1), new Vector2(1, 1), new Vector2(26, -104), new Vector2(-180, -70));
-            Kit.Localize(subtitle, () => Loc.Get("app.subtitle"));
-            var lang = new GameObject("Language", typeof(RectTransform)).GetComponent<RectTransform>();
-            lang.SetParent(window, false);
-            HudKit.Stretch(lang, new Vector2(1, 1), new Vector2(1, 1), new Vector2(-164, -60), new Vector2(-20, -20));
-            var lh = lang.gameObject.AddComponent<HorizontalLayoutGroup>();
-            lh.spacing = 6;
-            lh.childControlWidth = true;
-            lh.childControlHeight = true;
-            lh.childForceExpandWidth = false;
-            langMs = Kit.Btn(lang, "BM", () => GameRoot.Instance?.SetLanguage(true), 66);
-            langEn = Kit.Btn(lang, "EN", () => GameRoot.Instance?.SetLanguage(false), 66);
-
-            BuildMainView(window);
-            BuildNewView(window);
-            overlay.gameObject.SetActive(false);
-
+            shell = new MenuShell(ctx, root, "Main Menu", "app.title", "app.subtitle");
+            BuildMain();
+            BuildNew();
+            back = MenuTheme.Button(ctx, shell.Footer, "Back", () => Loc.Get("unity.menu.back"), () => ShowNew(false), 180);
+            HudKit.Stretch((RectTransform)back.transform, new Vector2(1, 0), Vector2.one, new Vector2(-520, 0), new Vector2(-320, 0));
+            start = MenuTheme.Button(ctx, shell.Footer, "Start City", () => Loc.Get("menu.start"), StartGame, 300, true);
+            HudKit.Stretch((RectTransform)start.transform, new Vector2(1, 0), Vector2.one, new Vector2(-300, 0), Vector2.zero);
             if (ShowOnStartup && !Application.isBatchMode) Show(false);
         }
 
-        void BuildMainView(RectTransform window)
+        void BuildMain()
         {
-            mainView = Kit.Column(window, "Main", Vector2.zero, Vector2.one, new Vector2(24, 20), new Vector2(-24, -116));
-            mainView.GetComponent<VerticalLayoutGroup>().spacing = 8;
-            Kit.Localize(Kit.Para(mainView, "", FontSize - 2), () => Loc.Get("menu.tagline"));
-            Kit.Localize(Kit.Para(mainView, "", FontSize - 4), HowTo);
-
-            resumeButton = MenuButton(() => Loc.Get("unity.menu.resume"), () => Hide());
-            MenuButton(() => Loc.Get("menu.new"), () => ShowNew(true));
-            continueButton = MenuButton(() => Loc.Get("menu.continue"), Continue);
-            continueInfo = Kit.Line(mainView, "", FontSize - 5, 22, TextAnchor.MiddleCenter);
-            MenuButton(() => Loc.Get("menu.load"), () => ctx.SaveLoadMenu?.Open());
-            MenuButton(() => Loc.Get("unity.menu.settings"), () => ctx.OpenSettings?.Invoke());
-            MenuButton(() => Loc.Get("unity.menu.quit"), Quit);
+            mainView = MenuTheme.Column(shell.Content, "Title Navigation", 10);
+            HudKit.Stretch(mainView, Vector2.zero, new Vector2(0.39f, 1), Vector2.zero, Vector2.zero);
+            MenuTheme.Line(ctx, mainView, () => Loc.Get("unity.menu.tagline"), 30, 76, true);
+            continueInfo = MenuTheme.Line(ctx, mainView, () => "", 20, 104);
+            continueInfo.color = MenuTheme.Muted;
+            resume = MenuTheme.Button(ctx, mainView, "Resume", () => Loc.Get("unity.menu.resume"), Hide, primary: true);
+            newGame = MenuTheme.Button(ctx, mainView, "New Game", () => Loc.Get("menu.new"), () => ShowNew(true));
+            continueButton = MenuTheme.Button(ctx, mainView, "Continue", () => Loc.Get("menu.continue"), Continue);
+            load = MenuTheme.Button(ctx, mainView, "Load Cities", () => Loc.Get(inGame ? "unity.menu.saveLoad" : "menu.load"), () => ctx.SaveLoadMenu.Open());
+            settings = MenuTheme.Button(ctx, mainView, "Settings", () => Loc.Get("unity.menu.settings"), () => ctx.Settings.Open());
+            quit = MenuTheme.Button(ctx, mainView, "Quit", () => Loc.Get("unity.menu.quit"), () => Application.Quit());
+            feedback = MenuTheme.Line(ctx, mainView, () => feedbackKey == null ? "" : Loc.Get(feedbackKey), 22, 64);
+            feedback.color = MenuTheme.Error;
+            erasBackdrop = new GameObject("Era Story Backdrop", typeof(RectTransform), typeof(Image)).GetComponent<RectTransform>();
+            erasBackdrop.SetParent(shell.Content, false);
+            HudKit.Stretch(erasBackdrop, new Vector2(0.58f, 0), new Vector2(1, 0), new Vector2(-20, -12), new Vector2(16, 140));
+            erasBackdrop.GetComponent<Image>().color = new Color(0.03f, 0.1f, 0.11f, 0.76f);
+            erasBackdrop.GetComponent<Image>().raycastTarget = false;
+            var eras = MenuTheme.Text(ctx, shell.Content, "Era Story", 24);
+            eras.alignment = TextAnchor.LowerRight;
+            eras.color = MenuTheme.Ivory;
+            ctx.Kit.Localize(eras, () => Loc.Get("unity.menu.eraStory"));
+            HudKit.Stretch(eras.rectTransform, new Vector2(0.5f, 0), Vector2.one, new Vector2(40, 0), Vector2.zero);
+            erasStory = eras;
         }
 
-        Button MenuButton(System.Func<string> label, UnityEngine.Events.UnityAction onClick)
+        Text erasStory;
+        RectTransform erasBackdrop;
+        void BuildNew()
         {
-            var b = Kit.Btn(mainView, label, onClick, 0);
-            var le = b.GetComponent<LayoutElement>();
-            le.preferredHeight = 46;
-            le.minHeight = 46;
-            b.GetComponentInChildren<Text>().fontSize = FontSize;
-            return b;
-        }
-
-        static string HowTo()
-        {
-            return "<b>" + Loc.Get("menu.howto") + "</b>\n1. " + Loc.Get("menu.howto.1") + "\n2. " + Loc.Get("menu.howto.2") +
-                   "\n3. " + Loc.Get("menu.howto.3") + "\n4. " + Loc.Get("menu.howto.4");
-        }
-
-        void BuildNewView(RectTransform window)
-        {
-            newView = Kit.Column(window, "New Game", Vector2.zero, Vector2.one, new Vector2(24, 20), new Vector2(-24, -116));
-            newView.GetComponent<VerticalLayoutGroup>().spacing = 8;
-
-            var nameRow = Kit.HRow(newView, "City", 36);
-            Kit.Localize(Fixed(Kit.Line(nameRow, "", FontSize - 3, 36), 170), () => Loc.Get("menu.cityName"));
-            cityInput = Kit.Input(nameRow, Names[0], "", 0);
-            cityInput.characterLimit = 40;
-
-            var seedRow = Kit.HRow(newView, "Seed", 36);
-            Kit.Localize(Fixed(Kit.Line(seedRow, "", FontSize - 3, 36), 170), () => Loc.Get("menu.seed"));
-            seedInput = Kit.Input(seedRow, "42", "", 0, InputField.ContentType.IntegerNumber);
-            seedInput.characterLimit = 9;
-            Kit.Btn(seedRow, () => Loc.Get("menu.random"), () => seedInput.text = Random.Range(1, 100000).ToString(), 130);
-
-            Kit.Localize(Kit.Line(newView, "", FontSize - 2, 28), () => "<b>" + Loc.Get("menu.scenario") + "</b>");
-            var scenRow = Kit.HRow(newView, "Scenarios", 64);
+            newView = new GameObject("New Game Setup", typeof(RectTransform)).GetComponent<RectTransform>();
+            newView.SetParent(shell.Content, false);
+            HudKit.Stretch(newView, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            var chapters = MenuTheme.Column(newView, "Chapters", 16);
+            HudKit.Stretch(chapters, Vector2.zero, new Vector2(0.37f, 1), Vector2.zero, Vector2.zero);
+            MenuTheme.Line(ctx, chapters, () => Loc.Get("unity.menu.chooseChapter"), 24, 40);
             var db = GameRoot.Instance != null ? GameRoot.Instance.Db : null;
-            if (db != null)
+            if (db != null) foreach (var record in db.Scenarios)
             {
-                foreach (var s in db.Scenarios)
-                {
-                    var rec = s;
-                    var b = Kit.Btn(scenRow, () => Malay ? rec.nameMs : rec.nameEn, () => SelectScenario(rec.id), 0);
-                    b.GetComponent<LayoutElement>().flexibleWidth = 1;
-                    var t = b.GetComponentInChildren<Text>();
-                    t.fontSize = FontSize - 4;
-                    scenarioButtons.Add(b);
-                    scenarioIds.Add(rec.id);
-                }
+                var rec = record;
+                var button = MenuTheme.Button(ctx, chapters, "Scenario " + rec.id, () => ScenarioTitle(rec), () => SelectScenario(rec.id));
+                HudKit.Size(button, -1, 138);
+                var label = button.GetComponentInChildren<Text>();
+                label.alignment = TextAnchor.MiddleLeft;
+                HudKit.Stretch(label.rectTransform, Vector2.zero, Vector2.one, new Vector2(124, 14), new Vector2(-18, -14));
+                var year = MenuTheme.Text(ctx, button.transform, "Year", 38, true);
+                year.text = rec.year.ToString();
+                year.alignment = TextAnchor.MiddleCenter;
+                HudKit.Stretch(year.rectTransform, Vector2.zero, new Vector2(0, 1), new Vector2(16, 0), new Vector2(112, 0));
+                scenarioButtons.Add(button);
+                scenarios.Add(rec);
             }
-            scenarioDesc = Kit.Para(newView, "", FontSize - 3);
-            objectives = Kit.Card(newView, "Objectives", HudKit.CardTint, 8);
-
-            var actions = Kit.HRow(newView, "Actions", 48);
-            var start = Kit.Btn(actions, () => Loc.Get("menu.start"), StartGame, 0);
-            start.GetComponent<LayoutElement>().flexibleWidth = 1;
-            Kit.SetSelected(start, true);
-            Kit.Btn(actions, () => Loc.Get("panel.close"), () => ShowNew(false), 160);
-            newView.gameObject.SetActive(false);
+            var details = MenuTheme.Column(newView, "Chapter Details", 6);
+            HudKit.Stretch(details, new Vector2(0.41f, 0), Vector2.one, Vector2.zero, Vector2.zero);
+            chapterTitle = MenuTheme.Line(ctx, details, () => "", 36, 60, true);
+            description = MenuTheme.Line(ctx, details, () => "", 22, 80);
+            description.color = MenuTheme.Muted;
+            var objectiveHeading = MenuTheme.Line(ctx, details, () => Loc.Get("menu.objectives"), 22, 22);
+            objectiveHeading.color = MenuTheme.Brass;
+            objectives = MenuTheme.Line(ctx, details, () => "", 22, 132);
+            MenuTheme.Line(ctx, details, () => Loc.Get("menu.cityName"), 22, 24);
+            cityInput = Kit.Input(details, Names[0], "", 0);
+            cityInput.name = "City Name";
+            cityInput.characterLimit = 40;
+            StyleInput(cityInput);
+            MenuTheme.Line(ctx, details, () => Loc.Get("menu.seed"), 22, 24);
+            var seedRow = Kit.HRow(details, "Seed Controls", 58);
+            seedInput = Kit.Input(seedRow, "42", "", 0, InputField.ContentType.IntegerNumber);
+            seedInput.name = "Map Seed";
+            seedInput.characterLimit = 9;
+            StyleInput(seedInput);
+            MenuTheme.Button(ctx, seedRow, "Random Seed", () => Loc.Get("menu.random"), () => seedInput.text = UnityEngine.Random.Range(1, 100000).ToString(), 190);
         }
 
-        static Text Fixed(Text t, float width)
+        static void StyleInput(InputField input)
         {
-            HudKit.Size(t, width, -1);
-            return t;
+            HudKit.Size(input, -1, 58);
+            input.textComponent.fontSize = 24;
+            input.textComponent.color = MenuTheme.Ivory;
+            input.GetComponent<Image>().color = MenuTheme.Teal;
+            input.selectionColor = new Color(0.85f, 0.71f, 0.45f, 0.4f);
+            input.gameObject.AddComponent<MenuFieldFocus>().Initialize();
         }
 
-        // ------------------------------------------------------------ show / hide
+        string ScenarioTitle(ScenarioRecord rec)
+        {
+            string value = Malay ? rec.nameMs : rec.nameEn;
+            int colon = value.IndexOf(':');
+            return colon >= 0 ? value.Substring(colon + 1).Trim() : value;
+        }
 
-        /// <summary>Open the menu. <paramref name="fromGame"/> adds Resume.</summary>
         public void Show(bool fromGame)
         {
-            inGame = fromGame;
             ctx.ActiveModal?.Close();
-            overlay.SetAsLastSibling();
-            overlay.gameObject.SetActive(true);
-            if (!paused) { ctx.Time?.PushPause(); paused = true; }
+            inGame = fromGame;
+            ctx.Menu.Begin(fromGame ? MenuOrigin.Pause : MenuOrigin.Startup);
+            feedbackKey = null;
+            shell.Show(inGame, false);
             ShowNew(false);
         }
 
         public void Hide()
         {
             if (!IsOpen) return;
-            overlay.gameObject.SetActive(false);
-            if (paused) { ctx.Time?.PopPause(); paused = false; }
+            shell.Root.gameObject.SetActive(false);
+            ctx.Menu.End();
         }
 
-        /// <summary>Esc with no window open: leave the menu if it was opened from the game.</summary>
         public void OnEscape()
         {
-            if (IsOpen && inGame) Hide();
+            if (!IsOpen) return;
+            if (settingUp) ShowNew(false);
+            else if (inGame) Hide();
         }
 
-        /// <summary>A game was loaded (from Continue or the Load window): back to the city.</summary>
         public void OnLoaded()
         {
-            if (IsOpen) Hide();
+            ctx.Menu.EnterCity();
+            Hide();
         }
 
         void ShowNew(bool show)
         {
+            shell.Show(inGame, show);
+            settingUp = show;
             mainView.gameObject.SetActive(!show);
+            erasStory.gameObject.SetActive(!show);
+            erasBackdrop.gameObject.SetActive(!show);
             newView.gameObject.SetActive(show);
+            back.gameObject.SetActive(show);
+            start.gameObject.SetActive(show);
             Refresh();
+            FocusDefault();
         }
 
-        public override void OnLanguage()
+        public void FocusDefault()
         {
-            if (IsOpen) Refresh();
+            MenuSession.ConfigureNavigation(MenuRoot);
+            if (settingUp) MenuSession.Focus(start);
+            else MenuSession.Focus(inGame ? resume : continueSlot >= 0 ? continueButton : newGame);
         }
+
+        public override void OnLanguage() { if (IsOpen) Refresh(); }
 
         void Refresh()
         {
-            Kit.SetSelected(langMs, Malay);
-            Kit.SetSelected(langEn, !Malay);
-            resumeButton.gameObject.SetActive(inGame);
+            shell.RefreshLanguage(Malay);
+            shell.Heading.text = Loc.Get(settingUp ? "unity.menu.newChapter" : "app.title");
+            shell.Kicker.text = Loc.Get(inGame ? "unity.menu.paused" : "app.subtitle");
             RefreshContinue();
+            resume.gameObject.SetActive(inGame);
+            continueButton.gameObject.SetActive(!inGame);
+            MenuTheme.Emphasis(newGame, !inGame && continueSlot < 0);
+            MenuTheme.Emphasis(continueButton, !inGame && continueSlot >= 0);
+            if (inGame)
+            {
+                resume.transform.SetSiblingIndex(2);
+                load.transform.SetSiblingIndex(3);
+                settings.transform.SetSiblingIndex(4);
+                newGame.transform.SetSiblingIndex(5);
+                quit.transform.SetSiblingIndex(6);
+            }
+            else
+            {
+                continueButton.transform.SetSiblingIndex(2);
+                newGame.transform.SetSiblingIndex(continueSlot >= 0 ? 3 : 2);
+                load.transform.SetSiblingIndex(4);
+                settings.transform.SetSiblingIndex(5);
+                quit.transform.SetSiblingIndex(6);
+            }
+            feedback.text = feedbackKey == null ? "" : Loc.Get(feedbackKey);
+            feedback.gameObject.SetActive(feedbackKey != null);
             RefreshScenario();
+            MenuSession.ConfigureNavigation(MenuRoot);
         }
 
         void RefreshContinue()
         {
             continueSlot = -1;
-            string newest = null;
-            SaveSlotInfo best = default;
-            var saveLoad = ctx.SaveLoad;
-            if (saveLoad != null)
+            SaveSlotInfo newest = default;
+            if (ctx.SaveLoad != null) for (int slot = 0; slot < SaveLoadManager.SlotCount; slot++)
             {
-                for (int s = 0; s < SaveLoadManager.SlotCount; s++)
-                {
-                    var info = saveLoad.Info(s);
-                    if (!info.exists) continue;
-                    if (newest == null || string.CompareOrdinal(info.savedAt ?? "", newest) > 0)
-                    {
-                        newest = info.savedAt ?? "";
-                        continueSlot = s;
-                        best = info;
-                    }
-                }
+                var info = ctx.SaveLoad.Info(slot);
+                if (!info.exists || (continueSlot >= 0 && string.CompareOrdinal(info.savedAt ?? "", newest.savedAt ?? "") <= 0)) continue;
+                continueSlot = slot;
+                newest = info;
             }
             continueButton.interactable = continueSlot >= 0;
-            continueInfo.text = continueSlot >= 0 ? best.cityName + "  " + best.year + "  (Era " + best.era + ")" : Loc.Get("unity.menu.noSaves");
+            continueButton.GetComponent<MenuButtonVisual>().Refresh();
+            continueInfo.text = inGame ? (GameRoot.Instance?.cityName ?? "") + "\n" + Loc.Get("unity.menu.pauseHint") :
+                continueSlot < 0 ? Loc.Get("unity.menu.noSavesHint") : newest.cityName + "\n" + MenuTheme.SaveMetadata(newest);
         }
 
         void RefreshScenario()
         {
-            var db = GameRoot.Instance != null ? GameRoot.Instance.Db : null;
-            if (db == null) return;
-            ScenarioRecord sel = null;
-            foreach (var s in db.Scenarios) if (s.id == scenario) sel = s;
-            if (sel == null && db.Scenarios.Length > 0) { sel = db.Scenarios[0]; scenario = sel.id; }
-            for (int i = 0; i < scenarioButtons.Count; i++) Kit.SetSelected(scenarioButtons[i], scenarioIds[i] == scenario);
-            if (sel == null) return;
-            scenarioDesc.text = Malay ? sel.descMs : sel.descEn;
-            HudKit.ClearChildren(objectives);
-            Kit.Line(objectives, "<b>" + Loc.Get("menu.objectives") + "</b>", FontSize - 4, 24);
-            var list = Malay ? sel.objectivesMs : sel.objectivesEn;
-            foreach (var o in list) Kit.Para(objectives, "- " + o, FontSize - 4);
+            ScenarioRecord selected = null;
+            for (int i = 0; i < scenarios.Count; i++)
+            {
+                bool active = scenarios[i].id == scenario;
+                MenuTheme.Emphasis(scenarioButtons[i], false, active);
+                if (active) selected = scenarios[i];
+            }
+            start.interactable = selected != null;
+            start.GetComponent<MenuButtonVisual>().Refresh();
+            if (selected == null) return;
+            chapterTitle.text = ScenarioTitle(selected);
+            description.text = Malay ? selected.descMs : selected.descEn;
+            var list = Malay ? selected.objectivesMs : selected.objectivesEn;
+            objectives.text = "• " + string.Join("\n• ", list);
         }
 
-        void SelectScenario(string id)
-        {
-            scenario = id;
-            RefreshScenario();
-        }
-
-        // ------------------------------------------------------------ actions
-
+        void SelectScenario(string id) { scenario = id; RefreshScenario(); }
         void StartGame()
         {
             var root = GameRoot.Instance;
             if (root == null) return;
             string name = cityInput.text.Trim();
-            root.cityName = name.Length > 0 ? name : Names[0];
-            if (!int.TryParse(seedInput.text, out int seed) || seed == 0) seed = Random.Range(1, 100000);
-            root.NewGame(System.Math.Abs(seed), scenario);
+            root.cityName = name.Length == 0 ? Names[0] : name;
+            if (!int.TryParse(seedInput.text, out int seed) || seed == 0) seed = UnityEngine.Random.Range(1, 100000);
+            root.NewGame((int)Math.Min(int.MaxValue, Math.Abs((long)seed)), scenario);
+            ctx.Menu.EnterCity();
             Hide();
         }
 
         void Continue()
         {
             if (continueSlot < 0 || ctx.SaveLoad == null) return;
-            if (ctx.SaveLoad.Load(continueSlot)) Hide();
+            if (ctx.SaveLoad.Load(continueSlot)) { ctx.Menu.EnterCity(); Hide(); }
+            else { feedbackKey = "unity.menu.loadFailed"; Refresh(); }
         }
-
-        /// <summary>
-        /// Quits the player. Unity ignores this in the Editor; the runtime assembly stays free of
-        /// UnityEditor so the Steam compile check (which defines UNITY_EDITOR) builds.
-        /// </summary>
-        static void Quit() => Application.Quit();
     }
 }
