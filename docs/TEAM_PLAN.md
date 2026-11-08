@@ -53,6 +53,13 @@ PlayMode source also compiles against the installed Unity test-runner assemblies
 using an ignored local .NET project. No Unity runtime or rendered review has run
 on this branch; the evidence checker correctly rejects the untested template.
 
+Menu compile follow-up: the screenshot test now uses `Texture2D.ReadPixels`
+after the end-of-frame wait, with render-target restoration and texture cleanup.
+The project does not declare `com.unity.modules.screencapture`, so tests must not
+depend on `ScreenCapture`. The local PlayMode compile check now uses the engine
+references from Unity's generated test project rather than every installed engine
+module; the original error reproduced with those references before this fix.
+
 
 | Lane | Agent | Branch | Owns (may edit) |
 |---|---|---|---|

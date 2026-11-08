@@ -393,9 +393,21 @@ namespace TamadunKota.Tests
             string template = Path.Combine(Application.dataPath, "Tests", "PlayMode", "MenuReviewEvidence.json");
             string report = Path.Combine(directory, "evidence.json");
             if (!File.Exists(report) && File.Exists(template)) File.Copy(template, report);
-            var texture = ScreenCapture.CaptureScreenshotAsTexture();
-            File.WriteAllBytes(Path.Combine(directory, name + ".png"), texture.EncodeToPNG());
-            Object.Destroy(texture);
+            // Read the finished frame with the project's existing Core and ImageConversion modules.
+            var previousTarget = RenderTexture.active;
+            var texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            try
+            {
+                RenderTexture.active = null;
+                texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false);
+                texture.Apply(false, false);
+                File.WriteAllBytes(Path.Combine(directory, name + ".png"), texture.EncodeToPNG());
+            }
+            finally
+            {
+                RenderTexture.active = previousTarget;
+                Object.Destroy(texture);
+            }
         }
 
         void StartCity()
