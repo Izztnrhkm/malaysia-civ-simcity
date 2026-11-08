@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Unity.Profiling;
 using UnityEngine;
 
 namespace TamadunKota.Core
 {
     /// <summary>
-    /// Samples frame time (and, in the Editor, batches, SetPass calls and triangles) for a fixed
+    /// Samples frame time (plus batches, SetPass calls and triangles from the profiler) for a fixed
     /// time after a warm-up, then logs a report and writes it to Logs/perf_&lt;label&gt;.txt in the
     /// project folder. Add it at runtime; it destroys itself when done.
     /// </summary>
@@ -25,7 +26,10 @@ namespace TamadunKota.Core
         public float P95Ms { get; private set; }
 
         readonly List<float> frameMs = new List<float>(4096);
+        // Render counters from the profiler. They read 0 in batch mode, where nothing is drawn.
+        ProfilerRecorder batchRec, setPassRec, triangleRec;
         double batches, setPass, triangles;
+        int statFrames;
         readonly FrameTiming[] timing = new FrameTiming[1];
         double cpuMain, gpu;
         int timedFrames;
@@ -39,12 +43,18 @@ namespace TamadunKota.Core
             savedTargetFps = Application.targetFrameRate;
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = -1;
+            batchRec = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Batches Count");
+            setPassRec = ProfilerRecorder.StartNew(ProfilerCategory.Render, "SetPass Calls Count");
+            triangleRec = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Triangles Count");
         }
 
         void OnDisable()
         {
             QualitySettings.vSyncCount = savedVSync;
             Application.targetFrameRate = savedTargetFps;
+            batchRec.Dispose();
+            setPassRec.Dispose();
+            triangleRec.Dispose();
         }
 
         void Update()
@@ -64,11 +74,13 @@ namespace TamadunKota.Core
                 gpu += timing[0].gpuFrameTime;
                 timedFrames++;
             }
-#if UNITY_EDITOR
-            batches += UnityEditor.UnityStats.batches;
-            setPass += UnityEditor.UnityStats.setPassCalls;
-            triangles += UnityEditor.UnityStats.triangles;
-#endif
+            if (batchRec.Valid && batchRec.Count > 0)
+            {
+                batches += batchRec.LastValue;
+                setPass += setPassRec.LastValue;
+                triangles += triangleRec.LastValue;
+                statFrames++;
+            }
             if (elapsed >= warmupSeconds + sampleSeconds) Finish();
         }
 
@@ -99,9 +111,10 @@ namespace TamadunKota.Core
                 sb.AppendLine($"FrameTimingManager avg: CPU main thread {cpuMain / timedFrames:0.00} ms, GPU {gpu / timedFrames:0.00} ms ({timedFrames} frames)");
             else
                 sb.AppendLine("FrameTimingManager: no data (enable Player Settings > Frame Timing Stats)");
-#if UNITY_EDITOR
-            if (n > 0) sb.AppendLine($"Per frame (Editor stats): batches {batches / n:0}, SetPass calls {setPass / n:0}, triangles {triangles / n:0}");
-#endif
+            if (statFrames > 0)
+                sb.AppendLine($"Per frame (profiler counters): batches {batches / statFrames:0}, SetPass calls {setPass / statFrames:0}, triangles {triangles / statFrames:0}");
+            else
+                sb.AppendLine("Render counters: not available");
             Report = sb.ToString();
             Debug.Log(Report);
             try
