@@ -133,6 +133,69 @@ namespace TamadunKota.Tests
             Assert.AreEqual(startTick + TotalTicks + 50, loaded.Tick, "ticks after load");
         }
 
+        /// <summary>
+        /// The 5,000-building stress city: builds, every building and lot gets a view, the clock keeps
+        /// ticking, and a short PerfProbe run reports frame times (headless numbers are CPU-side only;
+        /// use the menu item in the Editor for real rendering numbers).
+        /// </summary>
+        [UnityTest]
+        public IEnumerator StressCityOfFiveThousandBuildingsRuns()
+        {
+            var root = GameRoot.Instance;
+            var time = Object.FindAnyObjectByType<TimeManager>();
+            var cityView = Object.FindAnyObjectByType<CityView>();
+            Object.FindAnyObjectByType<SaveLoadManager>().autosaveEveryTicks = 0;
+            time.SetSpeed(0);
+
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            var result = StressCity.Build(root.Sim, 5000);
+            long buildMs = sw.ElapsedMilliseconds;
+            Assert.GreaterOrEqual(result.Total, 5000, result.ToString());
+            Assert.AreEqual(4, root.Sim.CurrentEra);
+
+            sw.Restart();
+            yield return null;
+            long syncMs = sw.ElapsedMilliseconds;
+            int views = cityView.AllViews().Count();
+            Assert.GreaterOrEqual(views, result.Total * 95 / 100, "CityView views for " + result);
+
+            sw.Restart();
+            var perFrame = new System.Text.StringBuilder();
+            var part = new System.Diagnostics.Stopwatch();
+            for (int f = 0; f < 10; f++)
+            {
+                part.Restart();
+                time.Advance(6);
+                double advanceMs = part.Elapsed.TotalMilliseconds;
+                part.Restart();
+                yield return null;
+                perFrame.Append($" [{advanceMs:0}+{part.Elapsed.TotalMilliseconds:0}]");
+            }
+            long tickMs = sw.ElapsedMilliseconds;
+
+            // Break the tick cost down: the rules engine alone, then one full CityView re-sync.
+            sw.Restart();
+            for (int t = 0; t < 30; t++) root.Sim.Step();
+            double simStepMs = sw.Elapsed.TotalMilliseconds / 30;
+            yield return null;
+            var frame = System.Diagnostics.Stopwatch.StartNew();
+            cityView.ForceSync();
+            yield return null;
+            double resyncFrameMs = frame.Elapsed.TotalMilliseconds;
+            frame.Restart();
+            yield return null;
+            double quietFrameMs = frame.Elapsed.TotalMilliseconds;
+
+            var probe = root.gameObject.AddComponent<PerfProbe>();
+            probe.label = "stress5000_headless";
+            probe.warmupSeconds = 1f;
+            probe.sampleSeconds = 3f;
+            probe.context = $"City: {result}; views {views}; build {buildMs} ms, first sync {syncMs} ms, 60 ticks over 10 frames {tickMs} ms\n" +
+                            $"Sim.Step alone {simStepMs:0.0} ms/tick; frame with a full CityView re-sync {resyncFrameMs:0.0} ms; quiet frame {quietFrameMs:0.0} ms\n" +
+                            $"Per frame [6 ticks ms + frame ms]:{perFrame}";
+            while (probe != null) yield return null;
+        }
+
         /// <summary>Harbour at the river mouth, four rows of road and zones, four rice fields (as the EditMode soak test).</summary>
         static void BuildStarterCity(GameSimulation sim)
         {

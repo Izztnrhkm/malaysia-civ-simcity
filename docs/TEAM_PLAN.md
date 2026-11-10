@@ -94,11 +94,43 @@ public CommandResult CancelDeal(int dealId);
 public CommandResult ToggleExchange(string partnerId);
 public CommandResult AcceptOffer(int offerId);
 public CommandResult DeclineOffer(int offerId);
+
+public int AdvisorSlots { get; }
+public CommandResult CanRecruitAdvisor(string id);
+public bool RecruitAdvisor(string id); // existing signature retained
+public bool DismissAdvisor(string id);
+
+public int PolicySlots { get; }
+public bool IsPolicyUnlocked(string id);
+public CommandResult AdoptPolicy(string id);
+public CommandResult RevokePolicy(string id);
 ```
 
 `CommandResult` exposes `bool Ok`, `string Reason` (`err.*` key, null on success), and
 `double Cost` (envoy fee). Good ids are the web ids, for example `rempah`, `ikan`, `elektronik`.
 Invalid non-finite quantities and durations return `err.invalid`.
+
+Advisor seats are 1/2/2/3 across eras 1-4. `CanRecruitAdvisor` checks era/known id, duplicates,
+seats and money in web order; it returns the fee in `Cost` on success or `err.money`.
+Recruitment charges once, refreshes effects and posts a `Good` joining notice. Dismissal returns
+false for an absent advisor, removes the advisor's effects immediately, and gives no refund or
+retirement notice. An era change retires ineligible advisors in list order with `Info` notices,
+then caps the retained list to the new seat count. `Advisors` is already restored by `SaveCodec`.
+
+Policies require a completed civic whose `unlockPolicies` includes their id. `AdoptPolicy`
+checks known/unlocked, duplicate and slot count, returning `err.locked`, `err.invalid` or
+`err.noSlot`. `RevokePolicy` returns `err.invalid` for an inactive policy. Both refresh effects
+immediately on success and leave money unchanged. `PolicySlots` comes from the current era.
+The existing version-two save stores adopted policies and restores their effects without
+replaying recruitment or notification events.
+
+`Notice` keeps its bilingual text fields and adds `string id` and `string entryId`. `id` is the
+subject's catalog id, not a unique delivery id: event, crisis, research, advisor, partner or
+milestone id; era notices use invariant strings `"1"`..`"4"`. Crisis start and resolution share
+the crisis id and entry even after the pending crisis is cleared. Victory uses `id = "victory"`
+and `entryId = "menara_berkembar"`. Missing/empty entries normalize to null; advisor and milestone
+records currently have no linked entry. UI code should use `entryId` for Sejarahpedia links
+rather than guessing from translated titles or the current era.
 
 `DiplomacyState` exposes these read-only views and prices:
 
@@ -156,24 +188,17 @@ Fixture regeneration and CI commands are documented in `unity-tamadun-kota/ci/Pa
 
 From lane B (HUD), for lane C (`Simulation/**`, `ci/**`):
 
-1. **Notice ids.** Add `id` (event, crisis, research or era id) and `entryId` (Sejarahpedia) to
-   `Notice`. The notification feed now finds the entry by matching the English title against
-   events and research (`UI/NotificationFeed.cs`, `ResolveEntry`).
-2. **Advisor commands.** `GameSimulation.DismissAdvisor(id)`, a public seat count (the `{0,1,2,2,3}`
-   table is local to `RecruitAdvisor`), and notices when an advisor joins or retires (web
-   `notice.advisorJoined` / `notice.advisorRetired`). `UI/SimCommands.cs` does this over the public
-   `Advisors` list for now.
-3. **Policy commands and saves.** `AdoptPolicy(id)`, `RevokePolicy(id)`, `IsPolicyUnlocked(id)`
-   and the slot count with the web rules (`engine.ts` adoptPolicy / revokePolicy).
-   `UI/SimCommands.cs` mirrors them over the public `Policies` list. `SaveCodec` does not store
-   `Policies`, so adopted policies are lost on load.
+1. **Notice ids — implemented in the lane C follow-up.** Engine notices carry subject and
+   Sejarahpedia ids; final semantics are in Published API above.
+2. **Advisor commands — implemented in the lane C follow-up.** Dismissal, public seat counts,
+   recruitment validation and joining/retirement notices match the web rules.
+3. **Policy commands and saves — implemented.** The lane C follow-up adds adoption, revocation,
+   unlock checks and slots. Policy persistence was already included in PR #1; a JSON round-trip
+   regression test now covers the list, effects and commands after loading.
 4. **Loans.** The web economy has debt (`MAX_DEBT`, take / repay loan, interest); the C# economy
    has none. The Economy window says loans are not in the Unity edition yet.
-5. **CI race.** `ci/UnityCompileCheck/Packages/InputSystem.csproj` and `AINavigation.csproj` share
-   one `Packages/obj/` folder. The first `dotnet build ci/UnityCompileCheck/Game.csproj` after
-   `fetch-deps.sh` failed with 153 errors in `AINavigation.csproj` ("UnityEngine could not be
-   found"); the same build passed on the second run. A separate `BaseIntermediateOutputPath` (or
-   folder) per project should fix it.
+5. **CI race — resolved in PR #1.** Compile-check projects have separate intermediate and output
+   directories in `ci/UnityCompileCheck/Directory.Build.props`.
 6. **Partner Sejarahpedia entries.** The web partners have `entry` (for example `zheng_he`,
    `melaka_1511`) for the diplomacy window's "Read in Sejarahpedia" link. Please add
    `public string entryId;` to `PartnerRecord` and expose it on `PartnerView`; lane B will then
@@ -181,6 +206,11 @@ From lane B (HUD), for lane C (`Simulation/**`, `ci/**`):
 7. **Milestone notices.** Milestone and victory notices use `NoticeKind.Era`, the same as era
    changes; the feed tells them apart by the "A new era begins: ..." title. The `id` from item 1
    (or a separate kind) would remove that guess.
+
+Lane B integration after this follow-up merges: make `UI/SimCommands.cs` forward to the native
+methods and properties above (`AdoptPolicy(...).Reason`, `RevokePolicy(...).Ok`), and use
+`Notice.entryId` in `NotificationFeed.ResolveEntry`. `RecruitAdvisor` now posts a joining notice;
+the separate joining message in `AdvisorsPanel` can be removed if it duplicates the feed.
 
 From lane B (HUD), for the lead (`Core/**`, Editor, scene):
 

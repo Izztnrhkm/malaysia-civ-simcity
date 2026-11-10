@@ -9,6 +9,10 @@ namespace TamadunKota.Simulation
     {
         public NoticeKind kind;
         public string titleMs, titleEn, bodyMs, bodyEn;
+        /// <summary>Subject id (event, crisis, research, era, advisor, partner or milestone), not a unique delivery id.</summary>
+        public string id;
+        /// <summary>Sejarahpedia entry id, or null when the subject has no linked entry.</summary>
+        public string entryId;
     }
 
     /// <summary>A sample of the city's history for the timeline chart.</summary>
@@ -25,6 +29,7 @@ namespace TamadunKota.Simulation
     /// </summary>
     public sealed class GameSimulation
     {
+        static readonly int[] AdvisorSlotsByEra = { 0, 1, 2, 2, 3 };
         public readonly GameDatabase Db;
         public readonly MapData Map;
         public readonly CityState City;
@@ -72,25 +77,31 @@ namespace TamadunKota.Simulation
             {
                 RefreshEffects();
                 var r = db.Research[i];
-                Post(NoticeKind.Good, (r.IsTech ? "Teknologi selesai: " : "Sivik selesai: ") + r.nameMs, (r.IsTech ? "Technology complete: " : "Civic complete: ") + r.nameEn, r.descMs, r.descEn);
+                Post(NoticeKind.Good, (r.IsTech ? "Teknologi selesai: " : "Sivik selesai: ") + r.nameMs, (r.IsTech ? "Technology complete: " : "Civic complete: ") + r.nameEn, r.descMs, r.descEn, r.id, r.entryId);
             };
-            Events.EventFired += ev => Post(NoticeKind.Event, ev.nameMs, ev.nameEn, ev.descMs, ev.descEn);
-            Events.CrisisStarted += c => Post(NoticeKind.Bad, "Krisis: " + c.nameMs, "Crisis: " + c.nameEn, c.descMs, c.descEn);
-            Events.CrisisResolved += (c, ch, auto) => Post(NoticeKind.Info, c.nameMs + ": " + ch.nameMs, c.nameEn + ": " + ch.nameEn, ch.descMs, ch.descEn);
+            Events.EventFired += ev => Post(NoticeKind.Event, ev.nameMs, ev.nameEn, ev.descMs, ev.descEn, ev.id, ev.entryId);
+            Events.CrisisStarted += c => Post(NoticeKind.Bad, "Krisis: " + c.nameMs, "Crisis: " + c.nameEn, c.descMs, c.descEn, c.id, c.entryId);
+            Events.CrisisResolved += (c, ch, auto) => Post(NoticeKind.Info, c.nameMs + ": " + ch.nameMs, c.nameEn + ": " + ch.nameEn, ch.descMs, ch.descEn, c.id, c.entryId);
             Era.EraAdvanced += (oldEra, newEra) =>
             {
                 var e = db.Era(newEra);
                 if (Year < e.startYear) { Year = e.startYear; Month = 0; }
                 Diplomacy.EnsurePartners();
-                for (int k = Advisors.Count - 1; k >= 0; k--)
+                for (int k = 0; k < Advisors.Count;)
                 {
                     var a = FindAdvisor(Advisors[k]);
-                    if (a == null || Array.IndexOf(a.eras, newEra) < 0) Advisors.RemoveAt(k);
+                    if (a != null && Array.IndexOf(a.eras, newEra) >= 0) { k++; continue; }
+                    string id = Advisors[k];
+                    Advisors.RemoveAt(k);
+                    RefreshEffects();
+                    string name = a?.name ?? id;
+                    Post(NoticeKind.Info, "Penasihat bersara: " + name, "Advisor retired: " + name, a?.titleMs, a?.titleEn, id);
                 }
+                if (Advisors.Count > AdvisorSlots) Advisors.RemoveRange(AdvisorSlots, Advisors.Count - AdvisorSlots);
                 Events.FireEraStart(newEra, Stock, Tech, Relations, Tick);
                 Diplomacy.EnsurePartners();
                 RefreshEffects();
-                Post(NoticeKind.Era, "Era baharu: " + e.nameMs, "A new era begins: " + e.nameEn, e.introMs, e.introEn);
+                Post(NoticeKind.Era, "Era baharu: " + e.nameMs, "A new era begins: " + e.nameEn, e.introMs, e.introEn, e.id.ToString(System.Globalization.CultureInfo.InvariantCulture), e.entryId);
             };
             RefreshEffects();
             Economy.ComputePopulation(City);
@@ -100,9 +111,11 @@ namespace TamadunKota.Simulation
 
         public int CurrentEra => Era.CurrentEra;
         public EraRecord EraDef => Db.Era(Era.CurrentEra);
+        public int AdvisorSlots => AdvisorSlotsByEra[CurrentEra];
+        public int PolicySlots => EraDef.policySlots;
 
-        internal void Post(NoticeKind kind, string tMs, string tEn, string bMs, string bEn) =>
-            NoticePosted?.Invoke(new Notice { kind = kind, titleMs = tMs, titleEn = tEn, bodyMs = bMs, bodyEn = bEn });
+        internal void Post(NoticeKind kind, string tMs, string tEn, string bMs, string bEn, string id = null, string entryId = null) =>
+            NoticePosted?.Invoke(new Notice { kind = kind, titleMs = tMs, titleEn = tEn, bodyMs = bMs, bodyEn = bEn, id = id, entryId = string.IsNullOrEmpty(entryId) ? null : entryId });
         internal void RaiseMilestone(string id) => OnMilestoneReached?.Invoke(id);
         internal void RaiseVictory() => OnVictory?.Invoke();
 
@@ -206,16 +219,64 @@ namespace TamadunKota.Simulation
         public bool AdvanceEra(bool force = false) => Era.Advance(Tech, Economy.Population, City, force);
         public bool ResolveCrisis(int choice) => Events.Resolve(choice, Stock, Tech, Relations, Tick);
 
-        public bool RecruitAdvisor(string id)
+        /// <summary>Web canRecruit: era, duplicate, seats, then treasury, in that order.</summary>
+        public CommandResult CanRecruitAdvisor(string id)
         {
             var a = FindAdvisor(id);
-            int[] slots = { 0, 1, 2, 2, 3 };
-            if (a == null || Advisors.Contains(id) || Array.IndexOf(a.eras, Era.CurrentEra) < 0) return false;
-            if (Advisors.Count >= slots[Era.CurrentEra] || Stock[ResourceType.Treasury] < a.cost) return false;
-            Stock.Add(ResourceType.Treasury, -a.cost);
+            if (a == null || Array.IndexOf(a.eras, CurrentEra) < 0) return new CommandResult(false, "err.locked");
+            if (Advisors.Contains(id)) return new CommandResult(false, "err.invalid");
+            if (Advisors.Count >= AdvisorSlots) return new CommandResult(false, "err.noSlot");
+            if (Stock[ResourceType.Treasury] < a.cost) return new CommandResult(false, "err.money", a.cost);
+            return new CommandResult(true, cost: a.cost);
+        }
+
+        public bool RecruitAdvisor(string id)
+        {
+            var check = CanRecruitAdvisor(id);
+            if (!check.Ok) return false;
+            Stock.Add(ResourceType.Treasury, -check.Cost);
             Advisors.Add(id);
             RefreshEffects();
+            var a = FindAdvisor(id);
+            Post(NoticeKind.Good, "Penasihat baharu: " + a.name, "Advisor joined: " + a.name, a.bonusMs, a.bonusEn, id);
             return true;
+        }
+
+        /// <summary>Dismiss without refund or retirement notice, matching the web command.</summary>
+        public bool DismissAdvisor(string id)
+        {
+            if (!Advisors.Contains(id)) return false;
+            for (int i = Advisors.Count - 1; i >= 0; i--) if (Advisors[i] == id) Advisors.RemoveAt(i);
+            RefreshEffects();
+            return true;
+        }
+
+        /// <summary>A completed civic must explicitly unlock the policy.</summary>
+        public bool IsPolicyUnlocked(string id)
+        {
+            for (int i = 0; i < Db.Research.Length; i++)
+                if (Tech.Done[i] && !Db.Research[i].IsTech && Array.IndexOf(Db.Research[i].unlockPolicies, id) >= 0) return true;
+            return false;
+        }
+
+        public CommandResult AdoptPolicy(string id)
+        {
+            bool known = false;
+            foreach (var p in Db.Policies) if (p.id == id) { known = true; break; }
+            if (!known || !IsPolicyUnlocked(id)) return new CommandResult(false, "err.locked");
+            if (Policies.Contains(id)) return new CommandResult(false, "err.invalid");
+            if (Policies.Count >= PolicySlots) return new CommandResult(false, "err.noSlot");
+            Policies.Add(id);
+            RefreshEffects();
+            return new CommandResult(true);
+        }
+
+        public CommandResult RevokePolicy(string id)
+        {
+            if (!Policies.Contains(id)) return new CommandResult(false, "err.invalid");
+            for (int i = Policies.Count - 1; i >= 0; i--) if (Policies[i] == id) Policies.RemoveAt(i);
+            RefreshEffects();
+            return new CommandResult(true);
         }
 
         // ------------------------------------------------------------ scenarios

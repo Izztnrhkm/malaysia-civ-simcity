@@ -97,7 +97,7 @@ namespace TamadunKota.Simulation
                 if (met)
                 {
                     Victory = true;
-                    sim.Post(NoticeKind.Era, "Kemenangan", "Victory", "Bandar pintar telah berjaya.", "The smart city has succeeded.");
+                    sim.Post(NoticeKind.Era, "Kemenangan", "Victory", "Bandar pintar telah berjaya.", "The smart city has succeeded.", "victory", "menara_berkembar");
                     sim.RaiseVictory();
                 }
             }
@@ -109,7 +109,7 @@ namespace TamadunKota.Simulation
                 for (int j = 0; j < milestone.Items.Length; j++) if (!milestone.Items[j].Met) { met = false; break; }
                 if (!met) continue;
                 milestone.Reached = true;
-                sim.Post(NoticeKind.Era, milestone.NameMs, milestone.NameEn, milestone.DescriptionMs, milestone.DescriptionEn);
+                sim.Post(NoticeKind.Era, milestone.NameMs, milestone.NameEn, milestone.DescriptionMs, milestone.DescriptionEn, milestone.Id);
                 sim.RaiseMilestone(milestone.Id);
             }
         }
