@@ -6,7 +6,7 @@ namespace TamadunKota.Simulation
     public enum TransportType : byte { None = 0, Road = 1, Rail = 2, Highway = 3, Mrt = 4 }
     public enum ZoneType : byte { None = 0, Residential = 1, Commercial = 2, Industrial = 3 }
 
-    /// <summary>Why a placement was refused (mirrors the web game's err.* reasons).</summary>
+    /// <summary>Why a placement was refused; error identifiers are stable localization keys.</summary>
     public enum PlacementResult
     {
         Ok, OutOfBounds, Occupied, Terrain, Locked, Unique, Money, NeedCoast, NeedWater, NeedRiver, NeedTin, NeedFertile, NeedForest, NeedRail, Nothing,

@@ -1,13 +1,12 @@
 # Tamadun & Kota: Game Design Document (Unity 6 LTS edition)
 
-*Version 1.0 for the Unity 6.3 LTS (URP) project in `unity-tamadun-kota/`. The rules are shared with the
-web game in the repository root: both read the same catalog (`src/core/data/*`), exported to
-`Assets/Resources/GameData/*.json` by `npm run unity:data`.*
+*Unity-only states and leaders milestone. Unity 6000.3 with URP. The authoritative data is
+`Assets/Resources/GameData/*.json`; no web source or catalog exporter is required.*
 
 ## 1. Vision
 
-A city builder that is also a history lesson. The player grows one settlement on a procedurally
-generated stretch of the Straits of Melaka coast from a 15th-century entrepôt into a 21st-century
+A city builder that is also a history lesson. The player chooses one of thirteen Malaysian states and its historical leader, then grows a
+settlement on an offline geographic city region from a 15th-century entrepôt into a 21st-century
 smart metropolis. Every building, technology, crisis and advisor links to a bilingual (Bahasa Melayu
 and English) **Sejarahpedia** entry with its sources, so the game can be played for fun or used in a
 classroom.
@@ -16,7 +15,7 @@ classroom.
 |---|---|
 | Genre | City builder with a Civilization-style tech and civics tree |
 | Platform | PC (Windows, macOS, Linux) through Steam; Unity 6.3 LTS, Universal Render Pipeline |
-| Camera | Free RTS camera (pan, rotate, zoom, tilt) over a 512 x 512 m map |
+| Camera | Free RTS camera (pan, rotate, zoom, tilt) over a 1,024 x 1,024 m geographic map |
 | Session | 2 to 6 hours for a full four-era game; 3 scenarios start later |
 | Languages | Bahasa Melayu (default), English; switchable at any time |
 
@@ -223,3 +222,22 @@ For classroom or commercial release it should be reviewed against the national c
 
 Where sources disagree (the Bujang Valley dates, 1912 or 1913 for the first dredge, 1 February or
 1 June 1885 for the Port Weld line) the game text states the uncertainty instead of picking silently.
+
+## States and leaders
+
+Each state has one fixed historical leader, a permanent state passive and a leader passive.
+Profiles, bilingual biographies, historical references and exact balance values live in
+`Assets/Resources/GameData/states.json` and `leaders.json`. Melaka/Tun Perak is the default.
+Leaders represent their state throughout the four eras; they do not consume advisor seats and
+cannot also be recruited as advisors. Abilities stack additively within existing effect categories.
+
+The state selector shows an animated full-body character, map region, biography and both bonuses.
+A leader panel can be reopened during play. Reduced motion disables preview animations. Maps
+preserve source coastlines, rivers and elevation, while resources are gameplay abstractions.
+No modern road network or city buildings are imported into historical starts. All map assets ship
+with the game; there is no runtime download.
+
+Version-three saves contain exact map layers and the selected pairing. Older saves retain the
+procedural generator and remain neutral legacy cities. Changing geographic assets must not move
+terrain in an existing save. The lead verifies import, gameplay, character visuals and performance
+in Unity 6000.3 before merging the milestone.

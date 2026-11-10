@@ -1,0 +1,353 @@
+[
+  {
+    "landCells": 49870,
+    "seaCells": 15047,
+    "riverCells": 619,
+    "largestConnectedLandCells": 29482,
+    "harborFootprints": 724,
+    "harborX": 216,
+    "harborY": 175,
+    "stateId": "johor",
+    "mapId": "johor_region",
+    "bounds": {
+      "south": 1.4526929042807477,
+      "west": 103.75990299253687,
+      "north": 1.4619070957192524,
+      "east": 103.76909700746313
+    },
+    "layerSha256": {
+      "terrain": "c12f221d9ae1f49da2687aeb2a42812778ed0431c22a8fd6215bbecd2a55d1bc",
+      "elevation": "99cb7cdea3ccda9c8c7bbe94981ee0323e3367f1b18728f5735ce3236888db0f",
+      "fertility": "b734f831e9ec5ef9644fbc56b7b2897e4bc2b8a7d6c085705a9a8a9e0009fab8",
+      "tin": "38f1d7437694cee358110d73d53194f1fa538f89ac158044157ce6a03b4525bc"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "e325faee84013989f15f911df9d54ac4a2f2103f85bc7f1ba1e2d84af1c39a21",
+      "dsm_samples.npz": "43125fd31362059ebcb59e91f52543648f70a3c97dd479c92872c958f5648550"
+    }
+  },
+  {
+    "landCells": 51875,
+    "seaCells": 12373,
+    "riverCells": 1288,
+    "largestConnectedLandCells": 28063,
+    "harborFootprints": 220,
+    "harborX": 75,
+    "harborY": 156,
+    "stateId": "kedah",
+    "mapId": "kedah_region",
+    "bounds": {
+      "south": 6.1014929042807475,
+      "west": 100.28177825853982,
+      "north": 6.110707095719252,
+      "east": 100.29102174146018
+    },
+    "layerSha256": {
+      "terrain": "182a9568b24b0e2e890c76283a3460f1a914d649870bccab1d1211645cbd8899",
+      "elevation": "dabbe009a1f9c63dd238f6457a110437ac2c08fc43a36cbe89e3f476873dab8b",
+      "fertility": "9464fd915453c9dca6b182d77c6d088b94e1379f36b64c784eb661a5f4f25af9",
+      "tin": "651d8777740c32afd0d0695c40e831d49b52c328280a72edb3a76077b885dfbe"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "165d41a5a1e473d8fff7c005963b7c3e661a743e79e320f70f0cda29a27f45b4",
+      "dsm_samples.npz": "9531bd7a290117d0d01da8a3e3efb98a5b14bae5672de91e421637fda4eb03c8"
+    }
+  },
+  {
+    "landCells": 34997,
+    "seaCells": 30184,
+    "riverCells": 355,
+    "largestConnectedLandCells": 24156,
+    "harborFootprints": 284,
+    "harborX": 115,
+    "harborY": 123,
+    "stateId": "kelantan",
+    "mapId": "kelantan_region",
+    "bounds": {
+      "south": 6.214092904280748,
+      "west": 102.22937727775432,
+      "north": 6.223307095719252,
+      "east": 102.23862272224567
+    },
+    "layerSha256": {
+      "terrain": "24defeba9ee8deeeede9267a089ce08b81406c6482f62605cc041c46081a39db",
+      "elevation": "2698dc126c334255c50aa9f3bb68130473900a1cf36e0379da973dbd98d751df",
+      "fertility": "8e145d7b5bad85cd0c0988e39c5c34eaa32b9c99998683c9545e707bc32737f3",
+      "tin": "c0eb5d71d6a5b4958ad8561dcb1c42add9dbfa094bd4a073dfebefb0837dd375"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "9f9429c3886e83fb761c132088f1cd9a93a7c3b5ffe2cd077877abff4a2c1fec",
+      "dsm_samples.npz": "17f7281a5fb9569fe3be82cce44a88b2582f59f367d8c38ebe3b51e7030de053"
+    }
+  },
+  {
+    "landCells": 45955,
+    "seaCells": 16426,
+    "riverCells": 3155,
+    "largestConnectedLandCells": 28471,
+    "harborFootprints": 354,
+    "harborX": 120,
+    "harborY": 189,
+    "stateId": "melaka",
+    "mapId": "melaka_region",
+    "bounds": {
+      "south": 2.183092904280748,
+      "west": 102.23940112745146,
+      "north": 2.192307095719252,
+      "east": 102.24859887254854
+    },
+    "layerSha256": {
+      "terrain": "f10937ff3d8022f463dfd548df459a77f876fbefdd820d180aa756cf1de8dc8a",
+      "elevation": "f7b120499ab23784afe96c0a6ff48c99217cb391c9910f95228c426734f8fcde",
+      "fertility": "702c210f3737621fade4179c05a4ab3bcc8be783c7f5302394dc314f8f25f8f5",
+      "tin": "4da908a4082593f6245e26e692b5ab875fac4674369d557d3b8b40b38eeefaf4"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "0de9c8967d717717ce7eb7aa51e015af34ea4c469daa45199dba80fcf00d8729",
+      "dsm_samples.npz": "92e06a9b798c16ddf3ae1163ee5135e68b6d6fec27c1dfd7324dc0de64e6a612"
+    }
+  },
+  {
+    "landCells": 28687,
+    "seaCells": 36849,
+    "riverCells": 0,
+    "largestConnectedLandCells": 28684,
+    "harborFootprints": 462,
+    "harborX": 81,
+    "harborY": 159,
+    "stateId": "negeri_sembilan",
+    "mapId": "negeri_sembilan_region",
+    "bounds": {
+      "south": 2.518392904280748,
+      "west": 101.78740002033486,
+      "north": 2.5276070957192522,
+      "east": 101.79659997966515
+    },
+    "layerSha256": {
+      "terrain": "c23cb7dab79c9aae116422a0200fd4deadd863c265af3ceaf85646567df3bdb9",
+      "elevation": "22b749a87dc30f2f1a117bcc235d1f2f8ee0eb4802938de80e41145e609cca1e",
+      "fertility": "bb4867db4743943ef1702466d94289875ab538bd5849d03eea2700fa9fe51e4f",
+      "tin": "57ce911a848183a54861823d5807289e0d87fdf3646b1c5b8e2447aea87130b4"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "c400145cd9a21783446f5145ed19d2b96bad106e2dee63919ac9f39614f6dca3",
+      "dsm_samples.npz": "e4f98b0cfc4f5bbfdc9b0e28c33dc7bdac3e365e869d736c0b6848e054a549c5"
+    }
+  },
+  {
+    "landCells": 45274,
+    "seaCells": 18766,
+    "riverCells": 1496,
+    "largestConnectedLandCells": 20556,
+    "harborFootprints": 252,
+    "harborX": 125,
+    "harborY": 129,
+    "stateId": "pahang",
+    "mapId": "pahang_region",
+    "bounds": {
+      "south": 3.8010929042807478,
+      "west": 103.33739432329683,
+      "north": 3.810307095719252,
+      "east": 103.34660567670316
+    },
+    "layerSha256": {
+      "terrain": "5cec67404c626c8dc190107ff146faddfedba52ddc599441d78094c2569dad76",
+      "elevation": "14310f25b3e29d196bea78cd71ae2f609e95a16767ac9380364b787ae454bcf2",
+      "fertility": "1744c38a3f330137c20984d2287585d3189e998e631da3b32ec7c732bf1676e6",
+      "tin": "e26b6063eb45000023da3fcda024c66526775e89645be47ce837409c6007151f"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "1ff4c2be92a449f6513bf877aa33fe61017cd8dd9d58699e105d57ec947baad4",
+      "dsm_samples.npz": "9410bb977643c778c2d91c485e1f636256c8113e1dd638e8ff3ac8eed35b7aa5"
+    }
+  },
+  {
+    "landCells": 39868,
+    "seaCells": 25015,
+    "riverCells": 653,
+    "largestConnectedLandCells": 22410,
+    "harborFootprints": 621,
+    "harborX": 216,
+    "harborY": 123,
+    "stateId": "perak",
+    "mapId": "perak_region",
+    "bounds": {
+      "south": 4.786892904280748,
+      "west": 100.6167883629493,
+      "north": 4.796107095719252,
+      "east": 100.6260116370507
+    },
+    "layerSha256": {
+      "terrain": "c54d48f312672c70d31a5373b189d39904f26210d75d637f0ca9e9ffbb79c565",
+      "elevation": "f17f1ab88db7fe0655de7a08a692cba61a2939629885c234c8032bb8af368d21",
+      "fertility": "2cc2453010bd8741db910190f104b6dbfb6a6776e9dad442bd2b669f0b09ad41",
+      "tin": "29385722dcf1ef96cff0a42fa57f92b09ae833b609f3dffb0329e8b067a16a40"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "20dc21c8a96a5fcc755f4f6f596e4857b77a019aa393511f1de44c79d4b0ad31",
+      "dsm_samples.npz": "0961f9db45e1fe7055ff38d7671836c86d1d7f77a8f29509502f393431996d6e"
+    }
+  },
+  {
+    "landCells": 34626,
+    "seaCells": 30534,
+    "riverCells": 376,
+    "largestConnectedLandCells": 22349,
+    "harborFootprints": 532,
+    "harborX": 186,
+    "harborY": 147,
+    "stateId": "perlis",
+    "mapId": "perlis_region",
+    "bounds": {
+      "south": 6.394692904280748,
+      "west": 100.12337566648893,
+      "north": 6.403907095719252,
+      "east": 100.13262433351107
+    },
+    "layerSha256": {
+      "terrain": "b1bf5a2acd8672bfd737617e30b5853e506fa2acf3a9fe5a29d8ae8e90b54582",
+      "elevation": "1e2637d7e73f586b8abfb7b43d8904610a14d7635c30248ed8b79408cb5456da",
+      "fertility": "d6ecd8c32c815619243bef40a857d0103b8b051216f58d828e041511a16f5c01",
+      "tin": "72b94d8be45175389af43e49d64d912ead2fc5ddc04a04b3bbbdaa534511c61f"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "01836e633d73fea287ac6e3089854e500b51e36e4635d50373c457c51e72f317",
+      "dsm_samples.npz": "4e2311906df06d907cf609243c16453466d9884e9843dcff8bd1f4ebbf5fc439"
+    }
+  },
+  {
+    "landCells": 30481,
+    "seaCells": 35055,
+    "riverCells": 0,
+    "largestConnectedLandCells": 29741,
+    "harborFootprints": 600,
+    "harborX": 147,
+    "harborY": 146,
+    "stateId": "pulau_pinang",
+    "mapId": "pulau_pinang_region",
+    "bounds": {
+      "south": 5.408992904280748,
+      "west": 100.33768388970688,
+      "north": 5.418207095719252,
+      "east": 100.34691611029311
+    },
+    "layerSha256": {
+      "terrain": "3bf85a81f15fbf32c1f4625bf401816710f922eaea2c9986abf196d885605c05",
+      "elevation": "8304655d3230b8d5c042965d6c74378ef3b55254a09388a1fe7f45d9216d0643",
+      "fertility": "f6bfe9f230fc31b870b5118c6989642364fd97face6bcf7cdeba2d83cd111d68",
+      "tin": "7c5c8dabfea4635e35fe24d359b41eb4b67ee691f79f877635762a8ad8899a18"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "99945ab2911744eea214f1fab9046a1abd75f57db0fc8a4bd06854d1800b1818",
+      "dsm_samples.npz": "9c95ca7618c863bb427a3d3945bba0840a60f94cd0eb7e8ea16cfde81e9b5d4c"
+    }
+  },
+  {
+    "landCells": 45291,
+    "seaCells": 20209,
+    "riverCells": 36,
+    "largestConnectedLandCells": 45131,
+    "harborFootprints": 414,
+    "harborX": 56,
+    "harborY": 141,
+    "stateId": "sabah",
+    "mapId": "sabah_region",
+    "bounds": {
+      "south": 5.977892904280748,
+      "west": 116.06917931411868,
+      "north": 5.987107095719252,
+      "east": 116.07842068588133
+    },
+    "layerSha256": {
+      "terrain": "50c9cc2c998c29f1a87aec446bdbbb967748de7799eda374b5917546de05f42a",
+      "elevation": "95da982923f9cdbead313f8dd9c3a5094d3ce38adf606fae29580e0702ae2075",
+      "fertility": "3fb6117b04f80d5b940d6702179dab7440a5d925a421584532e69a1b7dab1eb3",
+      "tin": "4f5fec394fae8f405c09012be371a9c039f426c5194a53bf06ade1b68aa67b72"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "79408bb7b02e566f472bf9b62690bcf508aa4eeca42e61a48dacb4d88e39ffd7",
+      "dsm_samples.npz": "f9b00339ac24bd756273c1aba70607694d5562ceeebf6d84ae999f12c0e33177"
+    }
+  },
+  {
+    "landCells": 42292,
+    "seaCells": 22950,
+    "riverCells": 294,
+    "largestConnectedLandCells": 42292,
+    "harborFootprints": 255,
+    "harborX": 77,
+    "harborY": 127,
+    "stateId": "sarawak",
+    "mapId": "sarawak_region",
+    "bounds": {
+      "south": 1.7168929042807477,
+      "west": 110.31140240432208,
+      "north": 1.7261070957192524,
+      "east": 110.32059759567792
+    },
+    "layerSha256": {
+      "terrain": "b988070b565bf82fcba77a7b3f52e1647b53bef240396d3e3a913a0596689590",
+      "elevation": "a99cffab85aeba8eb653c5b7b8d718ac43c2f768949133f8b6c78f7a9b67782a",
+      "fertility": "2591d2d2963f75434a49ba406abf74c19a4d4099a5860b6571c3c8bae3b85ce3",
+      "tin": "1237af0f9dee1eac86efe5cafc28878e5af3acaa7d9c784d6cda091bbf8219a9"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "14d87648766c96882c96ab88120cbc382e62d4525c60a23968fa4845ae26b601",
+      "dsm_samples.npz": "f47c9bb53a4aacf073b87fea34358f56ca3cab61b8040b91f20b90b0fdd93965"
+    }
+  },
+  {
+    "landCells": 48194,
+    "seaCells": 15663,
+    "riverCells": 1679,
+    "largestConnectedLandCells": 25651,
+    "harborFootprints": 272,
+    "harborX": 141,
+    "harborY": 182,
+    "stateId": "selangor",
+    "mapId": "selangor_region",
+    "bounds": {
+      "south": 2.997992904280748,
+      "west": 101.38439816181881,
+      "north": 3.0072070957192523,
+      "east": 101.39360183818118
+    },
+    "layerSha256": {
+      "terrain": "86689e4fa9bf8c360e8be947d1f19b190c18798903e5b253fe7fe4305132fbd3",
+      "elevation": "51e96026fe30f684b981b2b30209645f3c12002021a6df06a84b80fbae5edbfa",
+      "fertility": "8de3174cdabb1e24a7dbb8f17068095b5c38ba8e325e76afb3227606120c1cb5",
+      "tin": "262a3f131bf67bb39d28ce71d21b2443f5eaba1c1eb48bb17f7d068640bb79a7"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "cc04004855d09f27d9b431fb1c3ed44cfa9cbe69a8aa134d67dc3704591068a7",
+      "dsm_samples.npz": "25266c07c00287164c99f20112afe06013a0fb4f893703181e1b74d60dff2a94"
+    }
+  },
+  {
+    "landCells": 27514,
+    "seaCells": 33029,
+    "riverCells": 4993,
+    "largestConnectedLandCells": 27514,
+    "harborFootprints": 257,
+    "harborX": 126,
+    "harborY": 128,
+    "stateId": "terengganu",
+    "mapId": "terengganu_region",
+    "bounds": {
+      "south": 5.342792904280748,
+      "west": 103.13578439201154,
+      "north": 5.3520070957192525,
+      "east": 103.14501560798846
+    },
+    "layerSha256": {
+      "terrain": "255f57352a0ba31f1c9329212c6ca67b34f29ec3c81142fc314f114d5e173ba2",
+      "elevation": "13b8212f4abd991ddba9f7fb7da79a1cfc5a6f04b87d436310f8e48a8e3f85c0",
+      "fertility": "640edcf9606a039346c3733703089aad163cc36e8f441f8a3f2319d6554d85b7",
+      "tin": "ab87665e2f84f0593bde012cbbeca5deebb125e2a7877f3388e27bd3bec0d6c1"
+    },
+    "snapshotSha256": {
+      "osm.geojson": "1c07994fbf4d2a9f1baa8e7ab81f9edf9c9e602353e244382192090b5eca27e5",
+      "dsm_samples.npz": "640724f87974113006b97a99ca3baf1a2dfd66c0a2f15b0204c3dbad1b667fa0"
+    }
+  }
+]

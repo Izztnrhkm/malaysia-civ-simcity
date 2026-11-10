@@ -1,0 +1,298 @@
+{
+  "items": [
+    {
+      "id": "sultan_abu_bakar",
+      "name": "Sultan Abu Bakar",
+      "titleMs": "Sultan Johor",
+      "titleEn": "Sultan of Johor",
+      "bioMs": "Sultan Abu Bakar memajukan pentadbiran dan bandar Johor pada abad ke-19. Beliau dikenang sebagai Bapa Johor Moden.",
+      "bioEn": "Sultan Abu Bakar advanced Johor’s administration and urban development in the nineteenth century. He is remembered as the Father of Modern Johor.",
+      "abilityMs": "Pemoden Johor: −10% kos pembinaan.",
+      "abilityEn": "Modernizing Johor: −10% construction costs.",
+      "effects": {
+        "construction": -0.1
+      },
+      "modelResource": "Leaders/sultan_abu_bakar",
+      "portraitResource": "Leaders/sultan_abu_bakar_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Sultan Abu Bakar — historical reference",
+          "url": "https://kemahkotaan.johor.gov.my/pengenalan/sejarah-kesultanan-johor/"
+        }
+      ]
+    },
+    {
+      "id": "sultan_abdul_hamid",
+      "name": "Sultan Abdul Hamid Halim Shah",
+      "titleMs": "Sultan Kedah",
+      "titleEn": "Sultan of Kedah",
+      "bioMs": "Sultan Abdul Hamid Halim Shah dikaitkan dengan pemodenan pentadbiran Kedah. Pemerintahannya meneruskan pembaharuan institusi negeri.",
+      "bioEn": "Sultan Abdul Hamid Halim Shah is associated with the modernization of Kedah’s administration. His reign continued reforms to the state’s institutions.",
+      "abilityMs": "Ilmu Pentadbiran: +10% penyelidikan.",
+      "abilityEn": "Administrative learning: +10% research.",
+      "effects": {
+        "research": 0.1
+      },
+      "modelResource": "Leaders/sultan_abdul_hamid",
+      "portraitResource": "Leaders/sultan_abdul_hamid_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Sultan Abdul Hamid Halim Shah — historical reference",
+          "url": "https://mmk.kedah.gov.my/sejarah/"
+        }
+      ]
+    },
+    {
+      "id": "tok_janggut",
+      "name": "Tok Janggut",
+      "titleMs": "Pejuang Kelantan",
+      "titleEn": "Kelantan resistance leader",
+      "bioMs": "Haji Hassan bin Munas, dikenali sebagai Tok Janggut, terlibat dalam penentangan terhadap pentadbiran British di Kelantan pada 1915. Rupanya dalam permainan ialah tafsiran seni.",
+      "bioEn": "Haji Hassan bin Munas, known as Tok Janggut, participated in resistance to British administration in Kelantan in 1915. His game appearance is an artistic interpretation.",
+      "abilityMs": "Semangat Rakyat: +4 kebahagiaan.",
+      "abilityEn": "Community spirit: +4 happiness.",
+      "effects": {
+        "happiness": 4
+      },
+      "modelResource": "Leaders/tok_janggut",
+      "portraitResource": "Leaders/tok_janggut_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Tok Janggut — historical reference",
+          "url": "https://mdtumpat.kelantan.gov.my/index.php?catid=113&id=285%3Amakam-tok-janggut&view=article"
+        }
+      ]
+    },
+    {
+      "id": "tun_perak",
+      "name": "Tun Perak",
+      "titleMs": "Bendahara Melaka",
+      "titleEn": "Bendahara of Melaka",
+      "bioMs": "Tun Perak berkhidmat sebagai Bendahara Kesultanan Melaka pada abad ke-15. Beliau dikenang dalam sejarah pentadbiran, pertahanan dan diplomasi Melaka. Rupanya ialah tafsiran seni.",
+      "bioEn": "Tun Perak served as Bendahara of the Melaka Sultanate in the fifteenth century. He is remembered in Melaka’s administrative, defensive and diplomatic history. His appearance is an artistic interpretation.",
+      "abilityMs": "Diplomasi Bendahara: +15% pertumbuhan hubungan.",
+      "abilityEn": "Bendahara diplomacy: +15% relationship growth.",
+      "effects": {
+        "relationGain": 0.15
+      },
+      "modelResource": "Leaders/tun_perak",
+      "portraitResource": "Leaders/tun_perak_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Tun Perak — historical reference",
+          "url": "https://www.melaka.gov.my/kerajaan/info-negeri/sejarah.html"
+        }
+      ]
+    },
+    {
+      "id": "yamtuan_antah",
+      "name": "Yamtuan Antah",
+      "titleMs": "Yamtuan Negeri Sembilan",
+      "titleEn": "Yamtuan of Negeri Sembilan",
+      "bioMs": "Yamtuan Antah ialah tokoh pemerintahan Seri Menanti pada abad ke-19. Beliau dikenang kerana mempertahankan kuasa tempatan di Negeri Sembilan. Rupanya ialah tafsiran seni.",
+      "bioEn": "Yamtuan Antah was a nineteenth-century ruler of Seri Menanti. He is remembered for defending local authority in Negeri Sembilan. His appearance is an artistic interpretation.",
+      "abilityMs": "Muafakat Negeri: +10% budaya dan +2 kebahagiaan.",
+      "abilityEn": "State consensus: +10% culture and +2 happiness.",
+      "effects": {
+        "culture": 0.1,
+        "happiness": 2
+      },
+      "modelResource": "Leaders/yamtuan_antah",
+      "portraitResource": "Leaders/yamtuan_antah_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Yamtuan Antah — historical reference",
+          "url": "https://prpm.dbp.gov.my/Cari1?d=243192&keyword=Yamtuan"
+        }
+      ]
+    },
+    {
+      "id": "mat_kilau",
+      "name": "Mat Kilau",
+      "titleMs": "Pejuang Pahang",
+      "titleEn": "Pahang resistance leader",
+      "bioMs": "Mat Kilau menyertai penentangan terhadap campur tangan British di Pahang bersama Tok Gajah dan tokoh tempatan lain. Wajah pada usia mudanya dalam permainan ialah tafsiran seni.",
+      "bioEn": "Mat Kilau participated in resistance to British intervention in Pahang alongside Tok Gajah and other local figures. His youthful game appearance is an artistic interpretation.",
+      "abilityMs": "Daya Masyarakat: +10% pertumbuhan kediaman.",
+      "abilityEn": "Community resilience: +10% residential growth.",
+      "effects": {
+      "residentialGrowth": 0.1
+      },
+      "modelResource": "Leaders/mat_kilau",
+      "portraitResource": "Leaders/mat_kilau_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Mat Kilau — historical reference",
+          "url": "https://www.arkib.gov.my/images/penerbitan/edaran%20awam/puspawangsa/Puspawangsa%20Bil.1.2022.pdf"
+        }
+      ]
+    },
+    {
+      "id": "long_jaafar",
+      "name": "Long Jaafar",
+      "titleMs": "Pembesar Larut",
+      "titleEn": "Chief of Larut",
+      "bioMs": "Long Jaafar berperanan dalam perkembangan perlombongan timah di Larut pada abad ke-19. Perusahaan ini membantu membentuk pertumbuhan ekonomi Perak. Rupanya ialah tafsiran seni.",
+      "bioEn": "Long Jaafar played a role in the development of tin mining in nineteenth-century Larut. This industry helped shape Perak’s economic growth. His appearance is an artistic interpretation.",
+      "abilityMs": "Rangkaian Saudagar: +8% harga eksport.",
+      "abilityEn": "Merchant networks: +8% export prices.",
+      "effects": {
+        "exportPrice": 0.08
+      },
+      "modelResource": "Leaders/long_jaafar",
+      "portraitResource": "Leaders/long_jaafar_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Long Jaafar — historical reference",
+          "url": "https://pustakailmu.arkib.gov.my/index.php/ms/pustaka-ilmu/mercu-tanda/kota-long-jaafar-perak"
+        }
+      ]
+    },
+    {
+      "id": "syed_putra",
+      "name": "Tuanku Syed Putra Jamalullail",
+      "titleMs": "Raja Perlis",
+      "titleEn": "Raja of Perlis",
+      "bioMs": "Tuanku Syed Putra Jamalullail ialah Raja Perlis dari 1945 hingga 2000. Baginda juga berkhidmat sebagai Yang di-Pertuan Agong ketiga.",
+      "bioEn": "Tuanku Syed Putra Jamalullail was Raja of Perlis from 1945 to 2000. He also served as Malaysia’s third Yang di-Pertuan Agong.",
+      "abilityMs": "Naungan Warisan: +15% budaya.",
+      "abilityEn": "Heritage patronage: +15% culture.",
+      "effects": {
+        "culture": 0.15
+      },
+      "modelResource": "Leaders/syed_putra",
+      "portraitResource": "Leaders/syed_putra_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Tuanku Syed Putra Jamalullail — historical reference",
+          "url": "https://istananegara.gov.my/v1/istana-negara/informasi/pengenalan-institusi"
+        }
+      ]
+    },
+    {
+      "id": "lim_chong_eu",
+      "name": "Lim Chong Eu",
+      "titleMs": "Ketua Menteri Pulau Pinang",
+      "titleEn": "Chief Minister of Penang",
+      "bioMs": "Lim Chong Eu ialah Ketua Menteri Pulau Pinang dari 1969 hingga 1990. Pentadbirannya dikaitkan dengan peralihan negeri kepada perindustrian berorientasikan eksport dan elektronik.",
+      "bioEn": "Lim Chong Eu was Chief Minister of Penang from 1969 to 1990. His administration is associated with the state’s transition to export-oriented and electronics manufacturing.",
+      "abilityMs": "Perindustrian Elektronik: +20% pengeluaran elektronik.",
+      "abilityEn": "Electronics industrialization: +20% electronics production.",
+      "effects": {
+        "production": [
+          {
+            "key": "elektronik",
+            "value": 0.2
+          }
+        ]
+      },
+      "modelResource": "Leaders/lim_chong_eu",
+      "portraitResource": "Leaders/lim_chong_eu_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Lim Chong Eu — historical reference",
+          "url": "https://www.ehm.my/publications/articles/penangs-industrialization-and-economic-transformation-1960s-to-1980s"
+        }
+      ]
+    },
+    {
+      "id": "mat_salleh",
+      "name": "Mat Salleh",
+      "titleMs": "Pemimpin penentangan Sabah",
+      "titleEn": "Sabah resistance leader",
+      "bioMs": "Mat Salleh memimpin penentangan terhadap Syarikat Borneo Utara British. Tapak kubunya di Tambunan diperingati oleh Muzium Sabah. Rupanya dalam permainan ialah tafsiran seni.",
+      "bioEn": "Mat Salleh led resistance to the British North Borneo Company. Sabah Museum commemorates his stronghold at Tambunan. His game appearance is an artistic interpretation.",
+      "abilityMs": "Usaha Tempatan: +10% hasil cukai.",
+      "abilityEn": "Local enterprise: +10% tax income.",
+      "effects": {
+        "tax": 0.1
+      },
+      "modelResource": "Leaders/mat_salleh",
+      "portraitResource": "Leaders/mat_salleh_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Mat Salleh — historical reference",
+          "url": "https://museum.sabah.gov.my/index.php/node/80"
+        }
+      ]
+    },
+    {
+      "id": "rentap",
+      "name": "Rentap",
+      "titleMs": "Pemimpin Iban Sarawak",
+      "titleEn": "Iban leader of Sarawak",
+      "bioMs": "Rentap ialah pemimpin Iban yang menentang pemerintahan Brooke di Sarawak pada abad ke-19. Rupanya dalam permainan dibina sebagai tafsiran seni berasaskan konteks zaman dan budaya.",
+      "bioEn": "Rentap was an Iban leader who resisted Brooke rule in nineteenth-century Sarawak. His game appearance is an artistic interpretation informed by the period and cultural context.",
+      "abilityMs": "Laluan Sungai: +15% kapasiti eksport.",
+      "abilityEn": "River networks: +15% export capacity.",
+      "effects": {
+        "exportCap": 0.15
+      },
+      "modelResource": "Leaders/rentap",
+      "portraitResource": "Leaders/rentap_portrait",
+      "interpretive": true,
+      "sources": [
+        {
+          "title": "Rentap — historical reference",
+          "url": "https://museum.sarawak.gov.my/web/attachment/show/?docid=ZmR3aHhtMFVzOWxIeUNrZ0s4TU5JZz09OjpKEnS7jZUVe4XaLglxMb-V"
+        }
+      ]
+    },
+    {
+      "id": "sultan_abdul_samad",
+      "name": "Sultan Abdul Samad",
+      "titleMs": "Sultan Selangor",
+      "titleEn": "Sultan of Selangor",
+      "bioMs": "Sultan Abdul Samad ialah Sultan Selangor keempat. Pemerintahannya meliputi perubahan besar dalam ekonomi dan institusi pentadbiran negeri pada abad ke-19.",
+      "bioEn": "Sultan Abdul Samad was Selangor’s fourth Sultan. His reign spanned major changes to the state’s economy and administrative institutions in the nineteenth century.",
+      "abilityMs": "Naungan Bandar: +10% pertumbuhan dan −5% kos pembinaan.",
+      "abilityEn": "Urban patronage: +10% growth and −5% construction costs.",
+      "effects": {
+        "growth": 0.1,
+        "construction": -0.05
+      },
+      "modelResource": "Leaders/sultan_abdul_samad",
+      "portraitResource": "Leaders/sultan_abdul_samad_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Sultan Abdul Samad — historical reference",
+          "url": "https://dewan.selangor.gov.my/sejarah/"
+        }
+      ]
+    },
+    {
+      "id": "sultan_zainal_abidin_iii",
+      "name": "Sultan Zainal Abidin III",
+      "titleMs": "Sultan Terengganu",
+      "titleEn": "Sultan of Terengganu",
+      "bioMs": "Sultan Zainal Abidin III memerintah Terengganu dari 1881 hingga 1918. Pemerintahannya dikaitkan dengan pengukuhan institusi dan undang-undang negeri.",
+      "bioEn": "Sultan Zainal Abidin III ruled Terengganu from 1881 to 1918. His reign is associated with strengthening the state’s institutions and laws.",
+      "abilityMs": "Ilmu dan Budaya: +15% budaya dan +5% penyelidikan.",
+      "abilityEn": "Learning and culture: +15% culture and +5% research.",
+      "effects": {
+        "culture": 0.15,
+        "research": 0.05
+      },
+      "modelResource": "Leaders/sultan_zainal_abidin_iii",
+      "portraitResource": "Leaders/sultan_zainal_abidin_iii_portrait",
+      "interpretive": false,
+      "sources": [
+        {
+          "title": "Sultan Zainal Abidin III — historical reference",
+          "url": "https://www.mkn.gov.my/web/ms/2024/12/18/sisipan-sejarah-pertabalan-sultan-zainal-abidin-iii-sebagai-sultan-terengganu/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "sultan_abu_bakar",
+  "name": "Sultan Abu Bakar",
+  "state": "Johor",
+  "referenceType": "photographic",
+  "sources": [
+    "https://kemahkotaan.johor.gov.my/arkib/arkib-gambar/dymm-almarhum-sultan-abu-bakar/",
+    "https://biblioasia.nlb.gov.sg/vol-18/issue-3/oct-dec-2022/johor-chicago-world-fair/"
+  ],
+  "resource": "Leaders/sultan_abu_bakar",
+  "portraitResource": "Leaders/sultan_abu_bakar_portrait",
+  "source": "Assets/Art/Leaders/sultan_abu_bakar/sultan_abu_bakar.blend",
+  "fbx": "Assets/Art/Leaders/sultan_abu_bakar/sultan_abu_bakar.fbx",
+  "materialSlots": 4,
+  "textureSize": 2048,
+  "triangles": [
+    45000,
+    14999,
+    5000
+  ],
+  "bones": 20,
+  "animations": [
+    {
+      "name": "Idle",
+      "firstFrame": 0,
+      "lastFrame": 119,
+      "loop": true
+    },
+    {
+      "name": "Greeting",
+      "firstFrame": 120,
+      "lastFrame": 179,
+      "loop": false
+    }
+  ],
+  "blink": "Weighted upper-eyelid bones BlinkL/BlinkR, frames 55–59 of Idle",
+  "quality": "Procedurally authored semi-realistic interpretation; not a scanned historical likeness"
+}

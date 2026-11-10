@@ -8,6 +8,17 @@ namespace TamadunKota.Tests
 {
     public class AllocationTests
     {
+        [Test]
+        public void TicksWithStateAndLeaderBonusesDoNotAllocate()
+        {
+            var sim = new GameSimulation(TestData.QuietDatabase(), new GameSetup(), MapGenerator.Generate(32, 32, 42));
+            for (int t = 0; t < 50; t++) sim.Step();
+            long before = GC.GetAllocatedBytesForCurrentThread();
+            for (int t = 0; t < 100; t++) sim.Step();
+            long allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+            Assert.AreEqual(0, allocated);
+        }
+
         [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
         public void TicksWithAdvisorsAndPoliciesDoNotAllocate(int era)
         {

@@ -1,0 +1,28 @@
+[
+  {
+    "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N02_00_E101_00_DEM/Copernicus_DSM_COG_10_N02_00_E101_00_DEM.tif",
+    "sha256": "2c983d6d4c16549b62e9fc9e35b490cdf423b56e633b600b1d1e594b3aa4ce3f",
+    "bytes": 18785487,
+    "dataset": "Copernicus DEM 2021 GLO-30 Public",
+    "retrievedUtc": "2026-11-08T16:16:11.909633+00:00",
+    "sampleBounds": [
+      101.38439816181881,
+      2.997992904280748,
+      101.39360183818118,
+      3.0072070957192523
+    ]
+  },
+  {
+    "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N03_00_E101_00_DEM/Copernicus_DSM_COG_10_N03_00_E101_00_DEM.tif",
+    "sha256": "fd6118e48029c4b974d9a020bd146e6da97ff524f096bcfc75bb052c2267f8bf",
+    "bytes": 44187222,
+    "dataset": "Copernicus DEM 2021 GLO-30 Public",
+    "retrievedUtc": "2026-11-08T16:16:20.451789+00:00",
+    "sampleBounds": [
+      101.38439816181881,
+      2.997992904280748,
+      101.39360183818118,
+      3.0072070957192523
+    ]
+  }
+]

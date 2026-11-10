@@ -1,0 +1,5 @@
+numpy==2.4.6
+Pillow==12.2.0
+requests==2.33.0
+rasterio==1.4.4
+shapely==2.2.0

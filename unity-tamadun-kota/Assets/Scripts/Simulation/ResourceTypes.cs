@@ -31,7 +31,7 @@ namespace TamadunKota.Simulation
     {
         public const int Count = 15;
 
-        /// <summary>Tradable goods in the order of the web game's GOODS list. Food is rice; Fish is separate.</summary>
+        /// <summary>Stable tradable-good order. Food is rice; Fish is separate.</summary>
         public static readonly string[] GoodIds = { "padi", "ikan", "kayu", "rempah", "besi", "timah", "getah", "sawit", "barang", "elektronik", "digital" };
 
         public static ResourceType FromGood(string good)

@@ -38,6 +38,10 @@ namespace TamadunKota.Simulation
         public readonly EnvironmentModel Environment;
         public DiplomacyState Diplomacy { get; }
         public MilestoneState Milestones { get; }
+        readonly GameSetup setup;
+        public GameSetup Setup => setup?.Copy();
+        public StateRecord State { get; }
+        public LeaderRecord Leader { get; }
         public readonly TechTreeState Tech;
         public readonly EraStateMachine Era;
         public readonly GameEventSystem Events;
@@ -56,10 +60,26 @@ namespace TamadunKota.Simulation
         public event Action OnVictory;
 
         public GameSimulation(GameDatabase db, int seed, int mapSize = 128)
+            : this(db, seed, MapGenerator.Generate(mapSize, mapSize, seed), null) { }
+
+        public GameSimulation(GameDatabase db, GameSetup setup, MapData map)
+            : this(db, setup?.seed ?? throw new ArgumentNullException(nameof(setup)), map, setup)
         {
-            Db = db;
+            if (setup.scenarioId != "melaka_1400") ApplyScenario(setup.scenarioId);
+        }
+
+        internal GameSimulation(GameDatabase db, int seed, MapData map, GameSetup choices)
+        {
+            Db = db ?? throw new ArgumentNullException(nameof(db));
+            if (choices != null)
+            {
+                choices.Validate(db); setup = choices.Copy();
+                if (map == null || map.Seed != setup.seed) throw new ArgumentException("Map and setup seeds must match.");
+                State = db.StateById(setup.stateId); Leader = db.LeaderById(setup.leaderId);
+                Scenario = setup.scenarioId;
+            }
             Relations = new Dictionary<string, double>(db.Partners.Length);
-            Map = MapGenerator.Generate(mapSize, mapSize, seed);
+            Map = map ?? throw new ArgumentNullException(nameof(map));
             City = new CityState(Map, database: db);
             Economy = new EconomyModel(db);
             Environment = new EnvironmentModel(db, City);
@@ -125,6 +145,8 @@ namespace TamadunKota.Simulation
         public void RefreshEffects()
         {
             Effects.Reset();
+            Effects.Add(State?.effects);
+            Effects.Add(Leader?.effects);
             Tech.ApplyEffects(Effects);
             foreach (var p in Policies) foreach (var pr in Db.Policies) if (pr.id == p) Effects.Add(pr.effects);
             foreach (var a in Advisors) Effects.Add(FindAdvisor(a)?.effects);
@@ -146,7 +168,7 @@ namespace TamadunKota.Simulation
             Economy.ResearchPerTick += knowledge;
             Stock.Add(ResourceType.Tech, knowledge);
             Tech.Advance(Economy.ResearchPerTick, Economy.CulturePerTick);
-            Economy.GrowZones(City, era, EraDef.maxDensity, Rng, Effects.Growth, Events.View.Flood);
+            Economy.GrowZones(City, era, EraDef.maxDensity, Rng, Effects.Growth, Events.View.Flood, Effects.ResidentialGrowth);
 
             Tick++;
             Month += EraDef.monthsPerTick;
@@ -222,6 +244,7 @@ namespace TamadunKota.Simulation
         /// <summary>Web canRecruit: era, duplicate, seats, then treasury, in that order.</summary>
         public CommandResult CanRecruitAdvisor(string id)
         {
+            if (Leader != null && Leader.id == id) return new CommandResult(false, "err.invalid");
             var a = FindAdvisor(id);
             if (a == null || Array.IndexOf(a.eras, CurrentEra) < 0) return new CommandResult(false, "err.locked");
             if (Advisors.Contains(id)) return new CommandResult(false, "err.invalid");

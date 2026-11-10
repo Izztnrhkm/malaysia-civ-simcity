@@ -18,6 +18,10 @@ namespace TamadunKota.UI
         const string KeyAmbience = "tk.settings.ambience";
         const string KeyGreybox = "tk.settings.greybox";
         const string KeyEdge = "tk.settings.edgeScroll";
+        const string KeyReducedMotion = "tk.settings.reducedMotion";
+
+        public static bool ReducedMotion => PlayerPrefs.GetInt(KeyReducedMotion, 0) != 0;
+        public static void SaveReducedMotion(bool on) => PlayerPrefs.SetInt(KeyReducedMotion, on ? 1 : 0);
 
         public static void ApplyLanguage()
         {
@@ -47,14 +51,14 @@ namespace TamadunKota.UI
     }
 
     /// <summary>
-    /// Settings window (web: src/ui/modals/Settings.tsx): language BM / EN, master, music and
+    /// Settings window: language BM / EN, master, music and
     /// ambience volume, Full 3D Art / Greybox, edge scrolling, the controls and Back to main menu.
     /// </summary>
     public sealed class SettingsPanel : ModalPanel
     {
         AudioAtmosphereManager audio;
         RTSCameraController cam;
-        Button langMs, langEn, artFull, artGrey, edgeOn, edgeOff;
+        Button langMs, langEn, artFull, artGrey, edgeOn, edgeOff, motionOn, motionOff;
         Slider volume, music, ambience;
         Text volumeValue, musicValue, ambienceValue;
         bool refreshing;
@@ -62,7 +66,7 @@ namespace TamadunKota.UI
         public SettingsPanel(HudContext context) : base(context) { }
 
         protected override string TitleKey => "panel.settings";
-        protected override Vector2 HalfSize => new Vector2(400, 350);
+        protected override Vector2 HalfSize => new Vector2(400, 385);
 
         public override void Build(RectTransform root)
         {
@@ -103,6 +107,10 @@ namespace TamadunKota.UI
             var edge = Row(col, () => Loc.Get("unity.settings.edgeScroll"));
             edgeOn = Kit.Btn(edge, () => Loc.Get("unity.settings.on"), () => SetEdge(true), 180);
             edgeOff = Kit.Btn(edge, () => Loc.Get("unity.settings.off"), () => SetEdge(false), 180);
+
+            var motion = Row(col, () => Loc.Get("leader.reducedMotion"));
+            motionOn = Kit.Btn(motion, () => Loc.Get("unity.settings.on"), () => SetReducedMotion(true), 180);
+            motionOff = Kit.Btn(motion, () => Loc.Get("unity.settings.off"), () => SetReducedMotion(false), 180);
 
             Kit.Localize(Heading(col, ""), () => Loc.Get("settings.controls"));
             Kit.Localize(Kit.Para(col, "", FontSize - 5), () => Loc.Get("unity.settings.controls.body"));
@@ -145,6 +153,12 @@ namespace TamadunKota.UI
             Refresh();
         }
 
+        void SetReducedMotion(bool on)
+        {
+            HudSettings.SaveReducedMotion(on);
+            Refresh();
+        }
+
         /// <summary>The art mode changed (here, from the top bar button or the G key): remember it.</summary>
         public void OnArtMode(bool greybox)
         {
@@ -181,6 +195,8 @@ namespace TamadunKota.UI
             edgeOff.interactable = cam != null;
             Kit.SetSelected(edgeOn, edge);
             Kit.SetSelected(edgeOff, !edge);
+            Kit.SetSelected(motionOn, HudSettings.ReducedMotion);
+            Kit.SetSelected(motionOff, !HudSettings.ReducedMotion);
             refreshing = false;
         }
     }

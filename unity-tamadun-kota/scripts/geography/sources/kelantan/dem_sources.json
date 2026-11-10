@@ -1,0 +1,15 @@
+[
+  {
+    "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N06_00_E102_00_DEM/Copernicus_DSM_COG_10_N06_00_E102_00_DEM.tif",
+    "sha256": "fb280d2f3bc5129cd96ca903b70d0837441265618d720c83dd8e553286d64d07",
+    "bytes": 4784709,
+    "dataset": "Copernicus DEM 2021 GLO-30 Public",
+    "retrievedUtc": "2026-11-08T16:14:07.000743+00:00",
+    "sampleBounds": [
+      102.22937727775432,
+      6.214092904280748,
+      102.23862272224567,
+      6.223307095719252
+    ]
+  }
+]

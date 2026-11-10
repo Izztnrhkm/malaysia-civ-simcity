@@ -1,5 +1,4 @@
-// C# port of the web game's economy (src/core/sim/economy.ts), demand and zone growth
-// (zoning.ts) and happiness (environment.ts). TransportModel provides delivery costs.
+// Economy, demand, zone growth and happiness. TransportModel provides delivery costs.
 // Every buffer is preallocated: Tick() performs no heap allocations.
 using System;
 
@@ -9,12 +8,12 @@ namespace TamadunKota.Simulation
     public sealed class EffectTotals
     {
         public readonly double[] Production = new double[ResourceInfo.Count];
-        public double ProductionAll, ExportCap, ExportPrice, Tax, Research, Culture, Happiness, Pollution, Growth, Upkeep, Construction, RelationGain;
+        public double ProductionAll, ExportCap, ExportPrice, Tax, Research, Culture, Happiness, Pollution, Growth, ResidentialGrowth, Upkeep, Construction, RelationGain;
 
         public void Reset()
         {
             Array.Clear(Production, 0, Production.Length);
-            ProductionAll = ExportCap = ExportPrice = Tax = Research = Culture = Happiness = Pollution = Growth = Upkeep = Construction = RelationGain = 0;
+            ProductionAll = ExportCap = ExportPrice = Tax = Research = Culture = Happiness = Pollution = Growth = ResidentialGrowth = Upkeep = Construction = RelationGain = 0;
         }
 
         public void Add(EffectRecord e)
@@ -30,6 +29,7 @@ namespace TamadunKota.Simulation
             Happiness += e.happiness;
             Pollution += e.pollution;
             Growth += e.growth;
+            ResidentialGrowth += e.residentialGrowth;
             Upkeep += e.upkeep;
             Construction += e.construction;
             RelationGain += e.relationGain;
@@ -388,7 +388,7 @@ namespace TamadunKota.Simulation
             double pioneer = 45 * Math.Exp(-Population / 700);
             double jobsGap = Math.Max(-1, Math.Min(1, (Jobs - Workers) / Math.Max(30, Workers))) * 55;
             double dR = pioneer + jobsGap + (Happiness - 50) * 0.8 + (FoodSatisfaction - 1) * 60 - (taxR - 9) * 3;
-            if (dR > 0) dR *= 1 + fx.Growth;
+            if (dR > 0) dR *= 1 + fx.Growth + fx.ResidentialGrowth;
             double cTarget = Population * eraDef.commercialRatio;
             double dC = (cTarget - CJobs) / Math.Max(10, cTarget) * 100 - (taxC - 9) * 3 + Unemployment * 30;
             double iTarget = Population * eraDef.industrialRatio + ExportCapacity * 0.3;
@@ -485,15 +485,15 @@ namespace TamadunKota.Simulation
         }
 
         /// <summary>Port of growZones: lots develop with demand, network access and utilities.</summary>
-        public void GrowZones(CityState city, int era, int maxDensity, Rng rng, double growth, bool flood)
+        public void GrowZones(CityState city, int era, int maxDensity, Rng rng, double growth, bool flood, double residentialGrowth = 0)
         {
-            double growthMult = Math.Max(0.2, 1 + growth);
             bool utilitiesOk = era < 3 || Math.Min(PowerRatio, WaterRatio) >= 0.9;
             bool changed = false;
             for (int i = 0; i < city.Zone.Length; i++)
             {
                 byte z = city.Zone[i];
                 if (z == 0) continue;
+                double growthMult = Math.Max(0.2, 1 + growth + (z == (byte)ZoneType.Residential ? residentialGrowth : 0));
                 int d = city.Density[i];
                 if (city.Access[i] == 0)
                 {

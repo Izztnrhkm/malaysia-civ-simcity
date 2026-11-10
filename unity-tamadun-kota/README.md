@@ -1,11 +1,10 @@
 # Tamadun & Kota: Unity 6 LTS edition
 
-A Unity 6.3 LTS (Universal Render Pipeline) port of the web city builder in this repository. The web
-game on `main` is untouched; this folder is a separate Unity project.
+The Unity 6.3 LTS (Universal Render Pipeline) edition of Tamadun & Kota. This is the only
+playable edition in the repository; it uses standalone JSON catalogs and Python asset tools.
 
 * Design document: [`docs/GDD.md`](docs/GDD.md)
-* Rules engine: pure C# in `Assets/Scripts/Simulation` (a port of the web game's TypeScript rules,
-  checked against it with parity tests)
+* Rules engine: pure C# in `Assets/Scripts/Simulation` (engine-free C#, checked with frozen regression fixtures and behavioral tests)
 
 ## Open it
 
@@ -69,20 +68,17 @@ Unity creates `.meta` files for everything on first import; commit them so asset
 
 ## Regenerating data and art
 
-From the repository root (Node 20):
+The authoritative game and localization tables are checked into `Assets/Resources`. Validate them
+from this project folder with `dotnet run --project ci/CatalogCheck -- .`. Edit the JSON directly;
+there is no TypeScript export step. Scenery geometry is in `scripts/model_spec.json`.
 
-```bash
-npm run unity:data
-```
-
-writes `Assets/Resources/GameData/*.json` from the TypeScript catalog. Then from `unity-tamadun-kota/`
-with Blender 3.6+ (tested with 4.0.2):
+From this project folder with Blender installed:
 
 ```bash
 blender --background --factory-startup --python scripts/blender_unity_pipeline.py
 ```
 
-writes 131 FBX models (126 shared with the web game plus 5 Unity-only: oil refinery, oil platform,
+writes 131 scenery FBX models (including: oil refinery, oil platform,
 vertical farm, AI and cyber hub, eco tower), the three atlas textures, `atlas_layout.json` and
 `Assets/Art/Models/models_manifest.json`.
 
@@ -112,7 +108,7 @@ Installation steps follow the [Steamworks.NET documentation](https://steamworks.
 
 | Check | Command (from `unity-tamadun-kota/`) | What it proves |
 |---|---|---|
-| Rules engine tests | `dotnet test ci/SimulationTests` | 27 NUnit tests: parity with the TypeScript game (map fingerprints, RNG, music), placement, economy soak, saves, zero allocations per tick |
+| Rules engine tests | `dotnet test ci/SimulationTests` | NUnit regression and behavioral tests: maps, RNG, music, placement, economy, state/leader bonuses, saves and tick allocations |
 | Unity compile check | `ci/UnityCompileCheck/fetch-deps.sh` then `dotnet build ci/UnityCompileCheck/Game.csproj` | all Runtime and Editor scripts compile against real Unity reference assemblies and the real Input System and AI Navigation sources |
 | Steam branch | `dotnet build ci/UnityCompileCheck/SteamCheck.csproj` | the `STEAMWORKS_NET` code compiles against the official Steamworks.NET build |
 | In Unity | Window > General > Test Runner > EditMode > Run All | the same NUnit tests inside the Editor |
@@ -121,3 +117,18 @@ The compile check is strong evidence but not a substitute for opening the projec
 Unity 2021.3 engine reference assemblies (the newest on nuget.org), AI Navigation 1.1.7 (same public
 API as 2.0.9), a 2018.3 uGUI reference, and small stubs for the six URP members the editor script uses.
 See [`ci/UnityCompileCheck/README.md`](ci/UnityCompileCheck/README.md).
+
+## States, leaders and geographic maps
+
+New games select one of thirteen fixed state–leader pairings. Both permanent passives, the leader
+biography and an animated 3D preview are shown before starting. The same profile can be reopened
+from the game HUD. Select **Reduced motion** in Settings to stop character animation.
+
+Each state ships an offline geographic city-region map. Coastline and elevation do not change
+with the resource seed. See [geographic sources and rebuilds](docs/GEOGRAPHY.md) and
+[character sources and exports](docs/LEADER_ART.md).
+
+New saves use format version three, including the selected identity and complete terrain layers.
+Existing version-one/version-two saves remain compatible as neutral legacy cities. Their map
+still uses the original seeded generator. Run the catalog validator and .NET checks before asking
+the lead for a Unity 6000.3 import, PlayMode and 1080p performance check.

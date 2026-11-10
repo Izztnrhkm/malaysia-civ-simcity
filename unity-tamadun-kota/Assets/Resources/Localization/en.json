@@ -1435,6 +1435,82 @@
   {
    "key": "unity.notif.close",
    "value": "x"
+  },
+  {
+   "key": "leader.panel",
+   "value": "Leader"
+  },
+  {
+   "key": "leader.chooseState",
+   "value": "Choose your state and leader"
+  },
+  {
+   "key": "leader.statePassive",
+   "value": "State passive"
+  },
+  {
+   "key": "leader.leaderPassive",
+   "value": "Leader passive"
+  },
+  {
+   "key": "leader.region",
+   "value": "City region"
+  },
+  {
+   "key": "leader.greet",
+   "value": "Greeting"
+  },
+  {
+   "key": "leader.source",
+   "value": "Source"
+  },
+  {
+   "key": "leader.interpretive",
+   "value": "The appearance and some clothing are artistic interpretations informed by historical references."
+  },
+  {
+   "key": "leader.legacy",
+   "value": "This city was loaded from an earlier save. Its original identity and balance are preserved without state or leader bonuses."
+  },
+  {
+   "key": "leader.legacyShort",
+   "value": "Legacy city"
+  },
+  {
+   "key": "leader.mapUnavailable",
+   "value": "The regional map preview could not be loaded."
+  },
+  {
+   "key": "leader.previewUnavailable",
+   "value": "The leader model could not be loaded."
+  },
+  {
+   "key": "leader.startFailed",
+   "value": "The selected region could not be opened. Please try again."
+  },
+  {
+   "key": "leader.alreadyLeading",
+   "value": "Leading this state"
+  },
+  {
+   "key": "leader.startingDate",
+   "value": "Starting date"
+  },
+  {
+   "key": "leader.scenario.campaign",
+   "value": "Full Campaign"
+  },
+  {
+   "key": "leader.scenario.tin",
+   "value": "Tin & Rail"
+  },
+  {
+   "key": "leader.scenario.digital",
+   "value": "Digital Transition"
+  },
+  {
+   "key": "leader.reducedMotion",
+   "value": "Reduced motion"
   }
  ]
 }

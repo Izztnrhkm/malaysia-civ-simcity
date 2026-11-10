@@ -1,61 +1,61 @@
 {
- "items": [
-  {
-   "id": "melaka_1400",
-   "era": 1,
-   "year": 1400,
-   "nameMs": "1400: Kebangkitan Entrepôt Melaka",
-   "nameEn": "1400: Rise of the Melaka Entrepôt",
-   "descMs": "Kempen penuh. Mulakan dengan sebuah kuala sungai di Selat Melaka dan bina tamadun merentasi empat era.",
-   "descEn": "The full campaign. Start at a river mouth on the Straits of Melaka and build a civilisation across all four eras.",
-   "objectivesMs": [
-    "Bina pelabuhan entrepôt dan pasar",
-    "Bina Istana Kesultanan",
-    "Mara ke era seterusnya"
-   ],
-   "objectivesEn": [
-    "Build an entrepôt harbour and a market",
-    "Build the Sultanate Palace",
-    "Advance through the eras"
-   ]
-  },
-  {
-   "id": "larut_1875",
-   "era": 2,
-   "year": 1875,
-   "nameMs": "1875: Demam Bijih Timah Larut & Kinta",
-   "nameEn": "1875: Larut & Kinta Tin Rush",
-   "descMs": "Bandar perlombongan yang pesat dengan lombong di kaki bukit dan pelabuhan kapal wap. Tiada landasan kereta api lagi: hubungkan lombong ke laut!",
-   "descEn": "A booming mining town with foothill mines and a steamship port, but no railway yet: link the mines to the sea!",
-   "objectivesMs": [
-    "Selidik Kereta Api dan bina landasan dari lombong ke pelabuhan",
-    "Bina Stesen Kereta Api",
-    "Capai 5,000 penduduk dan Stesen Besar Moorish"
-   ],
-   "objectivesEn": [
-    "Research Railways and lay track from the mines to the port",
-    "Build a Railway Station",
-    "Reach 5,000 people and the Grand Moorish Station"
-   ]
-  },
-  {
-   "id": "msc_1996",
-   "era": 4,
-   "year": 1996,
-   "nameMs": "1996: Koridor MSC & Negara Pintar",
-   "nameEn": "1996: MSC & Smart Nation Corridor",
-   "descMs": "Bandar perindustrian era Merdeka dengan kilang, janakuasa dan pelabuhan kontena. Peralihan ke ekonomi digital bermula.",
-   "descEn": "A Merdeka-era industrial city with factories, power and a container port. The shift to the digital economy begins.",
-   "objectivesMs": [
-    "Bina Hab Inovasi dan Pusat Data",
-    "Buka laluan MRT",
-    "Capai pencapaian Perintis Negara Pintar"
-   ],
-   "objectivesEn": [
-    "Build an Innovation Hub and a Data Centre",
-    "Open an MRT line",
-    "Earn the Smart Nation Pioneer milestone"
-   ]
-  }
- ]
+  "items": [
+    {
+      "id": "melaka_1400",
+      "era": 1,
+      "year": 1400,
+      "nameMs": "Kempen Penuh (1400)",
+      "nameEn": "Full Campaign (1400)",
+      "descMs": "Kempen penuh. Mulakan dengan sebuah kuala sungai di Selat Melaka dan bina tamadun merentasi empat era.",
+      "descEn": "The full campaign. Start at a river mouth on the Straits of Melaka and build a civilisation across all four eras.",
+      "objectivesMs": [
+        "Bina pelabuhan entrepôt dan pasar",
+        "Bina Istana Kesultanan",
+        "Mara ke era seterusnya"
+      ],
+      "objectivesEn": [
+        "Build an entrepôt harbour and a market",
+        "Build the Sultanate Palace",
+        "Advance through the eras"
+      ]
+    },
+    {
+      "id": "larut_1875",
+      "era": 2,
+      "year": 1875,
+      "nameMs": "Timah & Kereta Api (1875)",
+      "nameEn": "Tin & Rail (1875)",
+      "descMs": "Bandar perlombongan yang pesat dengan lombong di kaki bukit dan pelabuhan kapal wap. Tiada landasan kereta api lagi: hubungkan lombong ke laut!",
+      "descEn": "A booming mining town with foothill mines and a steamship port, but no railway yet: link the mines to the sea!",
+      "objectivesMs": [
+        "Selidik Kereta Api dan bina landasan dari lombong ke pelabuhan",
+        "Bina Stesen Kereta Api",
+        "Capai 5,000 penduduk dan Stesen Besar Moorish"
+      ],
+      "objectivesEn": [
+        "Research Railways and lay track from the mines to the port",
+        "Build a Railway Station",
+        "Reach 5,000 people and the Grand Moorish Station"
+      ]
+    },
+    {
+      "id": "msc_1996",
+      "era": 4,
+      "year": 1996,
+      "nameMs": "Peralihan Digital (1996)",
+      "nameEn": "Digital Transition (1996)",
+      "descMs": "Bandar perindustrian era Merdeka dengan kilang, janakuasa dan pelabuhan kontena. Peralihan ke ekonomi digital bermula.",
+      "descEn": "A Merdeka-era industrial city with factories, power and a container port. The shift to the digital economy begins.",
+      "objectivesMs": [
+        "Bina Hab Inovasi dan Pusat Data",
+        "Buka laluan MRT",
+        "Capai pencapaian Perintis Negara Pintar"
+      ],
+      "objectivesEn": [
+        "Build an Innovation Hub and a Data Centre",
+        "Open an MRT line",
+        "Earn the Smart Nation Pioneer milestone"
+      ]
+    }
+  ]
 }

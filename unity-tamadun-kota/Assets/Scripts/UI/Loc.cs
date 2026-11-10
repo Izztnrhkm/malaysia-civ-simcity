@@ -6,9 +6,7 @@ using UnityEngine;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// UI strings from Assets/Resources/Localization/{ms,en}.json, exported from the web game's
-    /// src/i18n/strings.ts by `npm run unity:data` (plus `enc.cat.*` Sejarahpedia categories and
-    /// Unity-only `unity.*` labels). Keys match the web game, so panels can be ported 1:1.
+    /// UI strings from the authoritative Assets/Resources/Localization/{ms,en}.json catalogs.
     /// A missing key returns the key itself (and logs once), so a gap is visible, not fatal.
     /// </summary>
     public static class Loc
@@ -27,7 +25,7 @@ namespace TamadunKota.UI
             var asset = Resources.Load<TextAsset>("Localization/" + lang);
             if (asset == null)
             {
-                Debug.LogError("Missing Resources/Localization/" + lang + ".json (run `npm run unity:data` in the repository root)");
+                Debug.LogError("Missing Resources/Localization/" + lang + ".json");
                 return map;
             }
             var table = JsonUtility.FromJson<Table>(asset.text);
@@ -48,7 +46,7 @@ namespace TamadunKota.UI
 
         public static bool Has(string key) => (Malay ? (ms ??= Load("ms")) : (en ??= Load("en"))).ContainsKey(key);
 
-        /// <summary>Get with web-style placeholders: Format("advisors.slots", "used", 1, "max", 2).</summary>
+        /// <summary>Get with named placeholders: Format("advisors.slots", "used", 1, "max", 2).</summary>
         public static string Format(string key, string name1, object value1, string name2 = null, object value2 = null)
         {
             string s = Get(key).Replace("{" + name1 + "}", value1?.ToString() ?? "");

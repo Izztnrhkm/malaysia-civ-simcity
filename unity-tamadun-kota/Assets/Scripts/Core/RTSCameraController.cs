@@ -144,7 +144,7 @@ namespace TamadunKota.Core
             var mouse = Mouse.current;
             Vector2 move = Vector2.zero;
             float rotate = 0;
-            if (kb != null)
+            if (kb != null && !TamadunKota.UI.TextFocus.Active)
             {
                 if (kb.wKey.isPressed || kb.upArrowKey.isPressed) move.y += 1;
                 if (kb.sKey.isPressed || kb.downArrowKey.isPressed) move.y -= 1;
@@ -154,7 +154,7 @@ namespace TamadunKota.Core
                 if (kb.eKey.isPressed) rotate += 1;
                 if (kb.homeKey.wasPressedThisFrame) ResetView();
             }
-            if (mouse != null)
+            if (mouse != null && !PointerOverUI())
             {
                 Vector2 p = mouse.position.ReadValue();
                 bool inWindow = p.x >= 0 && p.y >= 0 && p.x <= Screen.width && p.y <= Screen.height;

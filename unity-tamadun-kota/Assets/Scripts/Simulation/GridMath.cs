@@ -7,7 +7,7 @@ namespace TamadunKota.Simulation
     /// The world grid: 1 Unity unit = 1 metre. Each cell is <see cref="CellSize"/> metres
     /// (4 m by default, the footprint of a small building); medium buildings cover 8 x 8 m
     /// (2 x 2 cells) and landmarks 16 x 16 m (4 x 4 cells). Cell (0,0) starts at the origin,
-    /// x grows east and y (world z) grows south, matching the web game's tile layout.
+    /// x grows east and y (world z) grows south, matching the saved tile layout.
     /// </summary>
     public readonly struct GridSpec
     {
@@ -68,7 +68,7 @@ namespace TamadunKota.Simulation
     {
         /// <summary>
         /// L-shaped road/rail path between two cells: horizontal first, then vertical (the
-        /// web game's linePath rule). Results go into <paramref name="cells"/> (cleared first)
+        /// stable horizontal-first line rule). Results go into <paramref name="cells"/> (cleared first)
         /// so dragging does not allocate.
         /// </summary>
         public static void LinePath(int x0, int y0, int x1, int y1, List<(int x, int y)> cells)

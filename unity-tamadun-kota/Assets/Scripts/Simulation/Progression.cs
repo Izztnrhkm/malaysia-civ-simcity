@@ -1,5 +1,5 @@
 // Research & civics, era progression, historical events and crises: ports of
-// src/core/sim/research.ts, events.ts and crises.ts.
+// Research, historical events and crises use the authoritative Unity catalogs.
 using System;
 using System.Collections.Generic;
 

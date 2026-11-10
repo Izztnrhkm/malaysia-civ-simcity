@@ -1435,6 +1435,82 @@
   {
    "key": "unity.notif.close",
    "value": "x"
+  },
+  {
+   "key": "leader.panel",
+   "value": "Pemimpin"
+  },
+  {
+   "key": "leader.chooseState",
+   "value": "Pilih negeri dan pemimpin anda"
+  },
+  {
+   "key": "leader.statePassive",
+   "value": "Keistimewaan negeri"
+  },
+  {
+   "key": "leader.leaderPassive",
+   "value": "Keistimewaan pemimpin"
+  },
+  {
+   "key": "leader.region",
+   "value": "Wilayah bandar"
+  },
+  {
+   "key": "leader.greet",
+   "value": "Salam"
+  },
+  {
+   "key": "leader.source",
+   "value": "Sumber"
+  },
+  {
+   "key": "leader.interpretive",
+   "value": "Rupa wajah dan sebahagian pakaian ialah tafsiran seni berdasarkan rujukan sejarah."
+  },
+  {
+   "key": "leader.legacy",
+   "value": "Bandar ini dimuat daripada simpanan terdahulu. Identiti asal dan imbangan permainan dikekalkan tanpa keistimewaan negeri atau pemimpin."
+  },
+  {
+   "key": "leader.legacyShort",
+   "value": "Bandar legasi"
+  },
+  {
+   "key": "leader.mapUnavailable",
+   "value": "Pratonton wilayah tidak dapat dimuat."
+  },
+  {
+   "key": "leader.previewUnavailable",
+   "value": "Model pemimpin tidak dapat dimuat."
+  },
+  {
+   "key": "leader.startFailed",
+   "value": "Wilayah tidak dapat dibuka. Sila cuba lagi."
+  },
+  {
+   "key": "leader.alreadyLeading",
+   "value": "Memimpin negeri ini"
+  },
+  {
+   "key": "leader.startingDate",
+   "value": "Tarikh permulaan"
+  },
+  {
+   "key": "leader.scenario.campaign",
+   "value": "Kempen Penuh"
+  },
+  {
+   "key": "leader.scenario.tin",
+   "value": "Bijih Timah & Kereta Api"
+  },
+  {
+   "key": "leader.scenario.digital",
+   "value": "Peralihan Digital"
+  },
+  {
+   "key": "leader.reducedMotion",
+   "value": "Kurangkan animasi"
   }
  ]
 }

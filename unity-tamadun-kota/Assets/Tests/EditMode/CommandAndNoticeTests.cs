@@ -50,13 +50,13 @@ namespace TamadunKota.Tests
                 values.AddRange(new[] { ok ? 1.0 : 0, 0, sim.Stock[ResourceType.Treasury], sim.Advisors.Count });
                 Effects(values, sim.Effects);
             }
-            Assert.AreEqual(new[] { WebParity.AdvisorSlots1, WebParity.AdvisorSlots2, WebParity.AdvisorSlots3, WebParity.AdvisorSlots4 }[era - 1], sim.AdvisorSlots);
+            Assert.AreEqual(new[] { RulesRegression.AdvisorSlots1, RulesRegression.AdvisorSlots2, RulesRegression.AdvisorSlots3, RulesRegression.AdvisorSlots4 }[era - 1], sim.AdvisorSlots);
             if (era < 4) Assert.IsTrue(sim.AdvanceEra(true));
-            Equal(new[] { WebParity.AdvisorCommands1, WebParity.AdvisorCommands2, WebParity.AdvisorCommands3, WebParity.AdvisorCommands4 }[era - 1], values);
-            CollectionAssert.AreEqual(new[] { WebParity.AdvisorReasons1, WebParity.AdvisorReasons2, WebParity.AdvisorReasons3, WebParity.AdvisorReasons4 }[era - 1], reasons);
-            CollectionAssert.AreEqual(new[] { WebParity.AdvisorsAfterRetirement1, WebParity.AdvisorsAfterRetirement2, WebParity.AdvisorsAfterRetirement3, WebParity.AdvisorsAfterRetirement4 }[era - 1], sim.Advisors);
-            CollectionAssert.AreEqual(new[] { WebParity.AdvisorNoticeIds1, WebParity.AdvisorNoticeIds2, WebParity.AdvisorNoticeIds3, WebParity.AdvisorNoticeIds4 }[era - 1], noticeIds);
-            CollectionAssert.AreEqual(new[] { WebParity.AdvisorNoticeKeys1, WebParity.AdvisorNoticeKeys2, WebParity.AdvisorNoticeKeys3, WebParity.AdvisorNoticeKeys4 }[era - 1], noticeKeys);
+            Equal(new[] { RulesRegression.AdvisorCommands1, RulesRegression.AdvisorCommands2, RulesRegression.AdvisorCommands3, RulesRegression.AdvisorCommands4 }[era - 1], values);
+            CollectionAssert.AreEqual(new[] { RulesRegression.AdvisorReasons1, RulesRegression.AdvisorReasons2, RulesRegression.AdvisorReasons3, RulesRegression.AdvisorReasons4 }[era - 1], reasons);
+            CollectionAssert.AreEqual(new[] { RulesRegression.AdvisorsAfterRetirement1, RulesRegression.AdvisorsAfterRetirement2, RulesRegression.AdvisorsAfterRetirement3, RulesRegression.AdvisorsAfterRetirement4 }[era - 1], sim.Advisors);
+            CollectionAssert.AreEqual(new[] { RulesRegression.AdvisorNoticeIds1, RulesRegression.AdvisorNoticeIds2, RulesRegression.AdvisorNoticeIds3, RulesRegression.AdvisorNoticeIds4 }[era - 1], noticeIds);
+            CollectionAssert.AreEqual(new[] { RulesRegression.AdvisorNoticeKeys1, RulesRegression.AdvisorNoticeKeys2, RulesRegression.AdvisorNoticeKeys3, RulesRegression.AdvisorNoticeKeys4 }[era - 1], noticeKeys);
         }
 
         [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
@@ -75,11 +75,11 @@ namespace TamadunKota.Tests
             foreach (var p in sim.Db.Policies) { unlocked.Add(sim.IsPolicyUnlocked(p.id) ? 1 : 0); Record(sim.AdoptPolicy(p.id)); }
             string first = sim.Db.Policies[0].id;
             Record(sim.AdoptPolicy(first)); Record(sim.RevokePolicy(first)); Record(sim.RevokePolicy(first)); Record(sim.AdoptPolicy(first));
-            Assert.AreEqual(new[] { WebParity.PolicySlots1, WebParity.PolicySlots2, WebParity.PolicySlots3, WebParity.PolicySlots4 }[era - 1], sim.PolicySlots);
-            Equal(new[] { WebParity.PolicyUnlocked1, WebParity.PolicyUnlocked2, WebParity.PolicyUnlocked3, WebParity.PolicyUnlocked4 }[era - 1], unlocked);
-            Equal(new[] { WebParity.PolicyCommands1, WebParity.PolicyCommands2, WebParity.PolicyCommands3, WebParity.PolicyCommands4 }[era - 1], values);
-            CollectionAssert.AreEqual(new[] { WebParity.PolicyReasons1, WebParity.PolicyReasons2, WebParity.PolicyReasons3, WebParity.PolicyReasons4 }[era - 1], reasons);
-            CollectionAssert.AreEqual(new[] { WebParity.PoliciesAfterCommands1, WebParity.PoliciesAfterCommands2, WebParity.PoliciesAfterCommands3, WebParity.PoliciesAfterCommands4 }[era - 1], sim.Policies);
+            Assert.AreEqual(new[] { RulesRegression.PolicySlots1, RulesRegression.PolicySlots2, RulesRegression.PolicySlots3, RulesRegression.PolicySlots4 }[era - 1], sim.PolicySlots);
+            Equal(new[] { RulesRegression.PolicyUnlocked1, RulesRegression.PolicyUnlocked2, RulesRegression.PolicyUnlocked3, RulesRegression.PolicyUnlocked4 }[era - 1], unlocked);
+            Equal(new[] { RulesRegression.PolicyCommands1, RulesRegression.PolicyCommands2, RulesRegression.PolicyCommands3, RulesRegression.PolicyCommands4 }[era - 1], values);
+            CollectionAssert.AreEqual(new[] { RulesRegression.PolicyReasons1, RulesRegression.PolicyReasons2, RulesRegression.PolicyReasons3, RulesRegression.PolicyReasons4 }[era - 1], reasons);
+            CollectionAssert.AreEqual(new[] { RulesRegression.PoliciesAfterCommands1, RulesRegression.PoliciesAfterCommands2, RulesRegression.PoliciesAfterCommands3, RulesRegression.PoliciesAfterCommands4 }[era - 1], sim.Policies);
         }
 
         [Test]

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Economy window (web: src/ui/modals/Economy.tsx): tax rates per zone, labour and supply
+    /// Economy window: tax rates per zone, labour and supply
     /// figures, the income / upkeep breakdown of the last turn, the goods table and the policies
     /// (policies.json) unlocked by finished civics. The widgets are built once; each tick only
     /// rewrites their numbers. The policy list is rebuilt when it changes.
@@ -18,7 +18,7 @@ namespace TamadunKota.UI
         static readonly string[] ZoneKeys = { "zone.R", "zone.C", "zone.I" };
         static readonly string[] IncomeKeys = { "eco.taxR", "eco.taxC", "eco.taxI", "eco.exports", "eco.deals" };
         static readonly string[] ExpenseKeys = { "eco.upkeepBuildings", "eco.upkeepTransport", "eco.admin", "eco.infrastructure", "eco.advisors", "eco.imports" };
-        /// <summary>Goods rows in the web GOODS order (rice, fish, timber, ...), as resource indices.</summary>
+        /// <summary>Goods rows in catalog order (rice, fish, timber, ...), as resource indices.</summary>
         static readonly int[] GoodIndices = BuildGoodIndices();
 
         readonly Text[] taxValues = new Text[3];
@@ -202,7 +202,7 @@ namespace TamadunKota.UI
                 var rt = (ResourceType)r;
                 double price = e.BasePrice(rt, era);
                 double stock = sim.Stock.amounts[r];
-                bool show = price > 0 || stock > 0;   // web: tradable this era or in stock
+                bool show = price > 0 || stock > 0;   // Tradable this era or present in stock.
                 if (goodRows[r].activeSelf != show) goodRows[r].SetActive(show);
                 if (!show) continue;
                 goodCells[r, 0].text = Malay ? ResourceInfo.NameMs(rt) : ResourceInfo.NameEn(rt);

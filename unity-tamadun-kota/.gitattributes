@@ -1,4 +1,4 @@
-# Unity + Git LFS for unity-tamadun-kota/ (scoped here so the web game's files are unaffected)
+# Unity assets and Git LFS
 # Unity YAML: merge with Smart Merge (UnityYAMLMerge) and keep LF endings
 *.unity        merge=unityyamlmerge eol=lf
 *.prefab       merge=unityyamlmerge eol=lf

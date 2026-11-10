@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Historical advisors, Tokoh Sejarah (web: src/ui/modals/Advisors.tsx, data advisors.json):
+    /// Historical advisors, Tokoh Sejarah, from the advisors catalog:
     /// council seats, and per advisor the bonus, biography, sources, cost and upkeep with Recruit /
     /// Dismiss. Advisors of other eras are listed greyed out. The list is rebuilt on open, on
     /// language change and after a recruit or dismiss; each tick only updates which Recruit
@@ -56,7 +56,7 @@ namespace TamadunKota.UI
                 return (a.eras.Length > 0 ? a.eras[0] : 0) - (b.eras.Length > 0 ? b.eras[0] : 0);
             });
 
-            // two columns, alternating, like the web grid
+            // Two alternating columns keep advisor cards readable.
             var columns = Kit.HRow(list, "Columns", 0, 10);
             var le = columns.GetComponent<LayoutElement>();
             le.preferredHeight = -1;
@@ -76,6 +76,7 @@ namespace TamadunKota.UI
         {
             bool here = Array.IndexOf(a.eras, sim.CurrentEra) >= 0;
             bool on = sim.Advisors.Contains(a.id);
+            bool leading = sim.Leader != null && sim.Leader.id == a.id;
             var tint = on ? new Color(0.08f, 0.3f, 0.16f, 0.55f) : here ? HudKit.CardTint : new Color(0, 0, 0, 0.1f);
             var card = Kit.Card(column, a.id, tint, 10);
             if (!here && !on) card.gameObject.AddComponent<CanvasGroup>().alpha = 0.6f;
@@ -109,6 +110,10 @@ namespace TamadunKota.UI
                 HudKit.Size(status, 150, -1);
                 Kit.Btn(row, Loc.Get("advisors.dismiss"), () => Dismiss(a), 110).GetComponentInChildren<Text>().fontSize = FontSize - 5;
             }
+            else if (leading)
+            {
+                HudKit.Size(Kit.Line(row, Loc.Get("leader.alreadyLeading"), FontSize - 6, 34, TextAnchor.MiddleRight), 200, -1);
+            }
             else if (here)
             {
                 var b = Kit.Btn(row, Loc.Get("advisors.recruit"), () => Recruit(a), 110);
@@ -122,15 +127,13 @@ namespace TamadunKota.UI
             }
         }
 
-        /// <summary>Recruit is enabled when a seat is free and the treasury covers the fee (web canRecruit).</summary>
+        /// <summary>Recruit is enabled when the simulation accepts the command.</summary>
         void UpdateAffordable()
         {
             var sim = Sim;
             if (sim == null) return;
-            bool seat = sim.Advisors.Count < SimCommands.AdvisorSlots(sim);
-            double money = sim.Stock[ResourceType.Treasury];
             for (int i = 0; i < recruitButtons.Count; i++)
-                recruitButtons[i].button.interactable = seat && money >= recruitButtons[i].advisor.cost;
+                recruitButtons[i].button.interactable = sim.CanRecruitAdvisor(recruitButtons[i].advisor.id).Ok;
         }
 
         public override void OnEconomy(EconomySnapshot s)
@@ -147,12 +150,14 @@ namespace TamadunKota.UI
         {
             var sim = Sim;
             if (sim == null) return;
+            var check = sim.CanRecruitAdvisor(a.id);
+            if (!check.Ok) { ctx.ShowMessage(Loc.Get(check.Reason)); return; }
             if (sim.RecruitAdvisor(a.id))
             {
                 ctx.ShowMessage(Loc.Format("notice.advisorJoined", "name", a.name));
                 ctx.Economy?.Publish();
             }
-            else ctx.ShowMessage(Loc.Get(sim.Advisors.Count >= SimCommands.AdvisorSlots(sim) ? "err.noSlot" : "err.money"));
+            else ctx.ShowMessage(Loc.Get("err.invalid"));
             Refresh();
         }
 

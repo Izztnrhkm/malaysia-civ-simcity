@@ -12,7 +12,7 @@ namespace TamadunKota.UI
     }
 
     /// <summary>
-    /// Centred window with a title bar and a close button, like the web game's Modal. Opening it
+    /// Centred window with a title bar and a close button. Opening it
     /// closes any other modal and brings it to the front. Subclasses fill <see cref="Body"/> in
     /// <see cref="BuildBody"/> and refresh their content in <see cref="Refresh"/>.
     /// </summary>

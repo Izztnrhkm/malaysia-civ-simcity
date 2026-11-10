@@ -56,6 +56,8 @@ namespace TamadunKota.Tests
                 Scenarios = Load<ScenarioTable>("scenarios").items,
                 Milestones = Load<MilestoneTable>("milestones").items,
                 Entries = Load<EntryTable>("sejarahpedia").items,
+                States = Load<StateTable>("states").items,
+                Leaders = Load<LeaderTable>("leaders").items,
             }.Index();
             return cached;
         }
@@ -68,6 +70,7 @@ namespace TamadunKota.Tests
             {
                 Buildings = d.Buildings, Zones = d.Zones, Research = d.Research, Policies = d.Policies, Eras = d.Eras, Goods = d.Goods,
                 Transports = d.Transports, Advisors = d.Advisors, Partners = d.Partners, Scenarios = d.Scenarios, Milestones = d.Milestones, Entries = d.Entries,
+                States = d.States, Leaders = d.Leaders,
             }.Index();
         }
     }

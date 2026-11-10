@@ -114,7 +114,14 @@ namespace TamadunKota.Systems
                 GameRoot.Instance.LanguageChanged -= OnLanguage;
             }
             TextFocus.Release();
+            ctx.LeaderWindow?.Close();
+            ctx.MainMenu?.Hide();
             Bind(null);
+        }
+
+        void OnDestroy()
+        {
+            for (int i = 0; i < panels.Count; i++) panels[i].Dispose();
         }
 
         void Bind(GameSimulation s)
@@ -195,6 +202,7 @@ namespace TamadunKota.Systems
             ctx.OpenSettings = ctx.Settings.Open;
             Add(ctx.EconomyWindow = new EconomyPanel(ctx), root);
             Add(ctx.Advisors = new AdvisorsPanel(ctx), root);
+            Add(ctx.LeaderWindow = new LeaderPanel(ctx), root);
             Add(ctx.Crisis = new CrisisPanel(ctx), root);
             ctx.ShowMessage = ctx.Message.Show;
             Add(ctx.MainMenu = new MainMenuPanel(ctx), root);   // last: drawn over the whole HUD

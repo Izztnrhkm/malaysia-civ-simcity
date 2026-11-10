@@ -8,14 +8,14 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Sejarahpedia browser (web: src/ui/modals/Sejarahpedia.tsx, data sejarahpedia.json): search
+    /// Sejarahpedia browser using the encyclopedia catalog: search
     /// and category filter on the left, the article on the right with summary, body, "in the game",
     /// related entries and sources. Opened from the top bar, the inspector, notifications and the
     /// era panel, and on every era change. List buttons are built once and filtered by toggling.
     /// </summary>
     public sealed class SejarahpediaPanel : ModalPanel
     {
-        /// <summary>Category order of the web game's CATEGORY_NAMES.</summary>
+        /// <summary>Encyclopedia category display order.</summary>
         static readonly string[] Categories = { "era", "trade", "economy", "society", "place", "event", "technology" };
 
         InputField search;

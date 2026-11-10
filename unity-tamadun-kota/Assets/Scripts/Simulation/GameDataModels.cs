@@ -1,5 +1,5 @@
-// Serializable records for the JSON tables in Assets/Resources/GameData, exported from the
-// web game by `npm run unity:data` (scripts/export-unity-data.ts). Field names match
+// Serializable records for the authoritative JSON tables in Assets/Resources/GameData.
+// Field names match
 // the JSON exactly so UnityEngine.JsonUtility (and System.Text.Json in the CI tests)
 // can read them. No UnityEngine dependency: this assembly is pure C#.
 using System;
@@ -27,6 +27,7 @@ namespace TamadunKota.Simulation
         public double happiness;
         public double pollution;
         public double growth;
+        public double residentialGrowth;
         public double upkeep;
         public double construction;
         public double relationGain;
@@ -291,6 +292,8 @@ namespace TamadunKota.Simulation
         public ScenarioRecord[] Scenarios = Array.Empty<ScenarioRecord>();
         public MilestoneRecord[] Milestones = Array.Empty<MilestoneRecord>();
         public EntryRecord[] Entries = Array.Empty<EntryRecord>();
+        public StateRecord[] States = Array.Empty<StateRecord>();
+        public LeaderRecord[] Leaders = Array.Empty<LeaderRecord>();
 
         readonly Dictionary<string, int> buildingIndex = new Dictionary<string, int>();
         readonly Dictionary<string, int> researchIndex = new Dictionary<string, int>();
@@ -317,6 +320,8 @@ namespace TamadunKota.Simulation
         public BuildingRecord Building(string id) { int i = BuildingIndex(id); return i < 0 ? null : Buildings[i]; }
         public ResearchRecord ResearchById(string id) { int i = ResearchIndex(id); return i < 0 ? null : Research[i]; }
         public EntryRecord Entry(string id) => id != null && entryIndex.TryGetValue(id, out int i) ? Entries[i] : null;
+        public StateRecord StateById(string id) { foreach (var state in States) if (state.id == id) return state; return null; }
+        public LeaderRecord LeaderById(string id) { foreach (var leader in Leaders) if (leader.id == id) return leader; return null; }
         public EraRecord Era(int era) => Eras[Math.Max(0, Math.Min(Eras.Length - 1, era - 1))];
 
         public int TechCount { get { int n = 0; foreach (var r in Research) if (r.IsTech) n++; return n; } }

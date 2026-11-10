@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TamadunKota.Core
 {
-    /// <summary>Loads Assets/Resources/GameData/*.json (exported from the web game) into a GameDatabase.</summary>
+    /// <summary>Loads the authoritative Unity game catalogs and baked geographic maps.</summary>
     public static class GameDataLoader
     {
         static T Load<T>(string name) where T : new()
@@ -13,7 +13,7 @@ namespace TamadunKota.Core
             var asset = Resources.Load<TextAsset>("GameData/" + name);
             if (asset == null)
             {
-                Debug.LogError("Missing Resources/GameData/" + name + ".json (run `npm run unity:data` in the repository root)");
+                Debug.LogError("Missing Resources/GameData/" + name + ".json");
                 return new T();
             }
             return JsonUtility.FromJson<T>(asset.text);
@@ -37,7 +37,24 @@ namespace TamadunKota.Core
                 Scenarios = Load<ScenarioTable>("scenarios").items,
                 Milestones = Load<MilestoneTable>("milestones").items,
                 Entries = Load<EntryTable>("sejarahpedia").items,
+                States = Load<StateTable>("states").items,
+                Leaders = Load<LeaderTable>("leaders").items,
             }.Index();
+        }
+
+        public static MapDefinition LoadMap(string mapId)
+        {
+            if (string.IsNullOrEmpty(mapId) || mapId.IndexOfAny(new[] { '/', '\\', '.' }) >= 0)
+                throw new ArgumentException("Invalid geographic map id", nameof(mapId));
+            var asset = Resources.Load<TextAsset>("Maps/" + mapId);
+            if (asset == null) throw new InvalidOperationException("Missing geographic map: " + mapId);
+            try
+            {
+                var map = JsonUtility.FromJson<MapDefinition>(asset.text);
+                if (map == null || map.id != mapId) throw new FormatException("Geographic map identity does not match: " + mapId);
+                return map;
+            }
+            finally { Resources.UnloadAsset(asset); }
         }
     }
 
@@ -95,7 +112,8 @@ namespace TamadunKota.Core
             }
             Instance = this;
             Db = GameDataLoader.Load();
-            NewGame(seed, scenario);
+            if (Application.isBatchMode) NewLegacyGame(seed, scenario);
+            else NewGame(seed, scenario);
         }
 
         void OnDestroy()
@@ -104,6 +122,29 @@ namespace TamadunKota.Core
         }
 
         public void NewGame(int newSeed, string newScenario)
+        {
+            var state = Db.StateById("melaka");
+            if (state == null) throw new InvalidOperationException("The Melaka state profile is missing");
+            NewGame(new GameSetup { stateId = state.id, leaderId = state.leaderId, mapId = state.mapId,
+                seed = newSeed, scenarioId = string.IsNullOrEmpty(newScenario) ? "melaka_1400" : newScenario }, cityName);
+        }
+
+        public void NewGame(GameSetup setup, string newCityName)
+        {
+            if (setup == null) throw new ArgumentNullException(nameof(setup));
+            setup.Validate(Db);
+            var definition = GameDataLoader.LoadMap(setup.mapId);
+            if (definition.stateId != setup.stateId) throw new FormatException("Geographic map belongs to a different state");
+            var map = definition.CreateMap(setup.seed);
+            var sim = new GameSimulation(Db, setup, map);
+            seed = setup.seed;
+            scenario = setup.scenarioId;
+            cityName = string.IsNullOrWhiteSpace(newCityName) ? "Kota Baharu" : newCityName.Trim();
+            Replace(sim);
+        }
+
+        /// <summary>Procedural entry point retained for headless smoke tests and legacy tooling.</summary>
+        public void NewLegacyGame(int newSeed, string newScenario)
         {
             seed = newSeed;
             scenario = string.IsNullOrEmpty(newScenario) ? "melaka_1400" : newScenario;

@@ -1,0 +1,19 @@
+{
+  "cellMetres": 4,
+  "cells": 256,
+  "regions": [
+    {"stateId":"johor","regionMs":"Persisiran Johor Bahru","regionEn":"Johor Bahru waterfront","latitude":1.4573,"longitude":103.7645},
+    {"stateId":"kedah","regionMs":"Kuala Kedah","regionEn":"Kuala Kedah","latitude":6.1061,"longitude":100.2864},
+    {"stateId":"kelantan","regionMs":"Delta Kelantan di Kuala Besar","regionEn":"Kelantan delta at Kuala Besar","latitude":6.2187,"longitude":102.2340},
+    {"stateId":"melaka","regionMs":"Muara Sungai Melaka","regionEn":"Melaka River mouth","latitude":2.1877,"longitude":102.2440},
+    {"stateId":"negeri_sembilan","regionMs":"Port Dickson","regionEn":"Port Dickson","latitude":2.5230,"longitude":101.7920},
+    {"stateId":"pahang","regionMs":"Muara Sungai Kuantan","regionEn":"Kuantan River mouth","latitude":3.8057,"longitude":103.3420},
+    {"stateId":"perak","regionMs":"Muara pesisir Kuala Sepetang","regionEn":"Kuala Sepetang coastal estuary","latitude":4.7915,"longitude":100.6214},
+    {"stateId":"perlis","regionMs":"Kuala Perlis","regionEn":"Kuala Perlis","latitude":6.3993,"longitude":100.1280},
+    {"stateId":"pulau_pinang","regionMs":"Persisiran George Town","regionEn":"George Town waterfront","latitude":5.4136,"longitude":100.3423},
+    {"stateId":"sabah","regionMs":"Persisiran Kota Kinabalu","regionEn":"Kota Kinabalu waterfront","latitude":5.9825,"longitude":116.0738},
+    {"stateId":"sarawak","regionMs":"Persisiran Santubong","regionEn":"Santubong waterfront","latitude":1.7215,"longitude":110.3160},
+    {"stateId":"selangor","regionMs":"Pelabuhan Klang","regionEn":"Port Klang","latitude":3.0026,"longitude":101.3890},
+    {"stateId":"terengganu","regionMs":"Muara Sungai Terengganu","regionEn":"Kuala Terengganu River mouth","latitude":5.3474,"longitude":103.1404}
+  ]
+}

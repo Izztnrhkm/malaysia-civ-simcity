@@ -8,9 +8,8 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Main menu (web: src/ui/MainMenu.tsx): New game with city name, map seed and scenario
-    /// (scenarios.json), Continue (newest save), Load, Settings and Quit, plus Resume when opened
-    /// from the game. Shown over the running scene at startup, and pauses the clock while open.
+    /// New game setup with state identity, leader, geographic region, city name and starting date.
+    /// Continue and Load preserve the saved identity. The open menu pauses the clock.
     /// </summary>
     public sealed class MainMenuPanel : HudPanel
     {
@@ -22,12 +21,17 @@ namespace TamadunKota.UI
 
         static readonly string[] Names = { "Kota Baharu", "Bandar Seri Selat", "Kuala Muara", "Pengkalan Emas", "Bandar Hilir", "Kuala Damai" };
 
-        RectTransform overlay, mainView, newView, objectives;
+        RectTransform overlay, mainView, newView;
         Button resumeButton, continueButton, langMs, langEn;
-        Text continueInfo, scenarioDesc;
+        Text continueInfo, startError;
+        Button startButton;
+        LeaderProfileView profile;
         InputField cityInput, seedInput;
         readonly List<Button> scenarioButtons = new List<Button>(4);
         readonly List<string> scenarioIds = new List<string>(4);
+        readonly List<Button> stateButtons = new List<Button>(13);
+        readonly List<string> stateIds = new List<string>(13);
+        string stateId = "melaka";
         string scenario = "melaka_1400";
         int continueSlot = -1;
         bool paused, inGame;
@@ -42,7 +46,7 @@ namespace TamadunKota.UI
             overlay.SetParent(root, false);
             HudKit.Stretch(overlay, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             overlay.GetComponent<Image>().color = new Color(0.02f, 0.05f, 0.06f, 0.72f);   // blocks clicks on the world
-            var window = Kit.Panel(overlay, "Window", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(-420, -390), new Vector2(420, 390));
+            var window = Kit.Panel(overlay, "Window", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(-650, -415), new Vector2(650, 415));
 
             // header: title, subtitle, language
             var title = Kit.Label(window, "Title", FontSize + 20, TextAnchor.UpperLeft);
@@ -73,7 +77,7 @@ namespace TamadunKota.UI
 
         void BuildMainView(RectTransform window)
         {
-            mainView = Kit.Column(window, "Main", Vector2.zero, Vector2.one, new Vector2(24, 20), new Vector2(-24, -116));
+            mainView = Kit.Column(window, "Main", new Vector2(0.2f, 0), new Vector2(0.8f, 1), new Vector2(24, 20), new Vector2(-24, -116));
             mainView.GetComponent<VerticalLayoutGroup>().spacing = 8;
             Kit.Localize(Kit.Para(mainView, "", FontSize - 2), () => Loc.Get("menu.tagline"));
             Kit.Localize(Kit.Para(mainView, "", FontSize - 4), HowTo);
@@ -105,29 +109,51 @@ namespace TamadunKota.UI
 
         void BuildNewView(RectTransform window)
         {
-            newView = Kit.Column(window, "New Game", Vector2.zero, Vector2.one, new Vector2(24, 20), new Vector2(-24, -116));
-            newView.GetComponent<VerticalLayoutGroup>().spacing = 8;
-
-            var nameRow = Kit.HRow(newView, "City", 36);
-            Kit.Localize(Fixed(Kit.Line(nameRow, "", FontSize - 3, 36), 170), () => Loc.Get("menu.cityName"));
+            newView = new GameObject("New Game", typeof(RectTransform)).GetComponent<RectTransform>();
+            newView.SetParent(window, false);
+            HudKit.Stretch(newView, Vector2.zero, Vector2.one, new Vector2(24, 20), new Vector2(-24, -110));
+            var nameRow = Kit.Row(newView, "City and Seed", new Vector2(0, 1), Vector2.one, new Vector2(0, -42), Vector2.zero);
+            Kit.Localize(Fixed(Kit.Line(nameRow, "", FontSize - 4, 36), 120), () => Loc.Get("menu.cityName"));
             cityInput = Kit.Input(nameRow, Names[0], "", 0);
+            cityInput.GetComponent<LayoutElement>().flexibleWidth = 1;
             cityInput.characterLimit = 40;
-
-            var seedRow = Kit.HRow(newView, "Seed", 36);
-            Kit.Localize(Fixed(Kit.Line(seedRow, "", FontSize - 3, 36), 170), () => Loc.Get("menu.seed"));
-            seedInput = Kit.Input(seedRow, "42", "", 0, InputField.ContentType.IntegerNumber);
+            Kit.Localize(Fixed(Kit.Line(nameRow, "", FontSize - 4, 36), 100), () => Loc.Get("menu.seed"));
+            seedInput = Kit.Input(nameRow, "42", "", 140, InputField.ContentType.IntegerNumber);
             seedInput.characterLimit = 9;
-            Kit.Btn(seedRow, () => Loc.Get("menu.random"), () => seedInput.text = Random.Range(1, 100000).ToString(), 130);
+            Kit.Btn(nameRow, () => Loc.Get("menu.random"), () => seedInput.text = Random.Range(1, 100000).ToString(), 110);
 
-            Kit.Localize(Kit.Line(newView, "", FontSize - 2, 28), () => "<b>" + Loc.Get("menu.scenario") + "</b>");
-            var scenRow = Kit.HRow(newView, "Scenarios", 64);
+            var heading = Kit.Label(newView, "Choose a State", FontSize - 2, TextAnchor.MiddleLeft);
+            HudKit.Stretch(heading.rectTransform, new Vector2(0, 1), Vector2.one, new Vector2(0, -76), new Vector2(0, -46));
+            Kit.Localize(heading, () => Loc.Get("leader.chooseState"));
+            var list = Kit.ScrollList(newView, "States", Vector2.zero, new Vector2(0.2f, 1), new Vector2(0, 138), new Vector2(-10, -80), 5);
+            var details = new GameObject("Selected Leader", typeof(RectTransform)).GetComponent<RectTransform>();
+            details.SetParent(newView, false);
+            HudKit.Stretch(details, new Vector2(0.2f, 0), Vector2.one, new Vector2(8, 138), new Vector2(0, -80));
+            profile = new LeaderProfileView(ctx, details);
+
             var db = GameRoot.Instance != null ? GameRoot.Instance.Db : null;
+            if (db != null)
+            {
+                foreach (var state in db.States)
+                {
+                    var rec = state;
+                    var button = Kit.Btn(list, () => T(rec.nameMs, rec.nameEn), () => SelectState(rec.id), 0);
+                    button.GetComponent<LayoutElement>().preferredHeight = 42;
+                    button.GetComponentInChildren<Text>().fontSize = FontSize - 3;
+                    stateButtons.Add(button);
+                    stateIds.Add(rec.id);
+                }
+            }
+            var scenHeading = Kit.Label(newView, "Starting Date", FontSize - 3, TextAnchor.MiddleLeft);
+            HudKit.Stretch(scenHeading.rectTransform, Vector2.zero, new Vector2(1, 0), new Vector2(0, 106), new Vector2(0, 134));
+            Kit.Localize(scenHeading, () => Loc.Get("leader.startingDate"));
+            var scenRow = Kit.Row(newView, "Scenarios", Vector2.zero, new Vector2(1, 0), new Vector2(0, 62), new Vector2(0, 106));
             if (db != null)
             {
                 foreach (var s in db.Scenarios)
                 {
                     var rec = s;
-                    var b = Kit.Btn(scenRow, () => Malay ? rec.nameMs : rec.nameEn, () => SelectScenario(rec.id), 0);
+                    var b = Kit.Btn(scenRow, () => ScenarioTitle(rec), () => SelectScenario(rec.id), 0);
                     b.GetComponent<LayoutElement>().flexibleWidth = 1;
                     var t = b.GetComponentInChildren<Text>();
                     t.fontSize = FontSize - 4;
@@ -135,13 +161,12 @@ namespace TamadunKota.UI
                     scenarioIds.Add(rec.id);
                 }
             }
-            scenarioDesc = Kit.Para(newView, "", FontSize - 3);
-            objectives = Kit.Card(newView, "Objectives", HudKit.CardTint, 8);
-
-            var actions = Kit.HRow(newView, "Actions", 48);
-            var start = Kit.Btn(actions, () => Loc.Get("menu.start"), StartGame, 0);
-            start.GetComponent<LayoutElement>().flexibleWidth = 1;
-            Kit.SetSelected(start, true);
+            var actions = Kit.Row(newView, "Actions", Vector2.zero, new Vector2(1, 0), Vector2.zero, new Vector2(0, 48));
+            startError = Kit.Line(actions, "", FontSize - 5, 40);
+            startError.color = HudKit.BadColor;
+            HudKit.Size(startError, 0, -1).flexibleWidth = 1;
+            startButton = Kit.Btn(actions, () => Loc.Get("menu.start"), StartGame, 220);
+            Kit.SetSelected(startButton, true);
             Kit.Btn(actions, () => Loc.Get("panel.close"), () => ShowNew(false), 160);
             newView.gameObject.SetActive(false);
         }
@@ -169,6 +194,7 @@ namespace TamadunKota.UI
         {
             if (!IsOpen) return;
             overlay.gameObject.SetActive(false);
+            profile.Release();
             if (paused) { ctx.Time?.PopPause(); paused = false; }
         }
 
@@ -186,8 +212,10 @@ namespace TamadunKota.UI
 
         void ShowNew(bool show)
         {
+            if (!show) profile.Release();
             mainView.gameObject.SetActive(!show);
             newView.gameObject.SetActive(show);
+            startError.text = "";
             Refresh();
         }
 
@@ -203,6 +231,7 @@ namespace TamadunKota.UI
             resumeButton.gameObject.SetActive(inGame);
             RefreshContinue();
             RefreshScenario();
+            if (newView.gameObject.activeSelf) RefreshState();
         }
 
         void RefreshContinue()
@@ -238,11 +267,31 @@ namespace TamadunKota.UI
             if (sel == null && db.Scenarios.Length > 0) { sel = db.Scenarios[0]; scenario = sel.id; }
             for (int i = 0; i < scenarioButtons.Count; i++) Kit.SetSelected(scenarioButtons[i], scenarioIds[i] == scenario);
             if (sel == null) return;
-            scenarioDesc.text = Malay ? sel.descMs : sel.descEn;
-            HudKit.ClearChildren(objectives);
-            Kit.Line(objectives, "<b>" + Loc.Get("menu.objectives") + "</b>", FontSize - 4, 24);
-            var list = Malay ? sel.objectivesMs : sel.objectivesEn;
-            foreach (var o in list) Kit.Para(objectives, "- " + o, FontSize - 4);
+        }
+
+        string ScenarioTitle(ScenarioRecord record)
+        {
+            if (record.id == "melaka_1400") return "1400 · " + Loc.Get("leader.scenario.campaign");
+            if (record.id == "larut_1875") return "1875 · " + Loc.Get("leader.scenario.tin");
+            if (record.id == "msc_1996") return "1996 · " + Loc.Get("leader.scenario.digital");
+            return T(record.nameMs, record.nameEn);
+        }
+
+        void SelectState(string id)
+        {
+            stateId = id;
+            startError.text = "";
+            RefreshState();
+        }
+
+        void RefreshState()
+        {
+            var db = GameRoot.Instance != null ? GameRoot.Instance.Db : null;
+            var state = db?.StateById(stateId);
+            var leader = state != null ? db.LeaderById(state.leaderId) : null;
+            for (int i = 0; i < stateButtons.Count; i++) Kit.SetSelected(stateButtons[i], stateIds[i] == stateId);
+            startButton.interactable = state != null && leader != null;
+            profile.Show(state, leader);
         }
 
         void SelectScenario(string id)
@@ -257,11 +306,21 @@ namespace TamadunKota.UI
         {
             var root = GameRoot.Instance;
             if (root == null) return;
+            var state = root.Db.StateById(stateId);
+            if (state == null) return;
             string name = cityInput.text.Trim();
-            root.cityName = name.Length > 0 ? name : Names[0];
             if (!int.TryParse(seedInput.text, out int seed) || seed == 0) seed = Random.Range(1, 100000);
-            root.NewGame(System.Math.Abs(seed), scenario);
-            Hide();
+            try
+            {
+                root.NewGame(new GameSetup { stateId = state.id, leaderId = state.leaderId, mapId = state.mapId,
+                    scenarioId = scenario, seed = seed }, name.Length > 0 ? name : Names[0]);
+                Hide();
+            }
+            catch (System.Exception error)
+            {
+                Debug.LogException(error);
+                startError.text = Loc.Get("leader.startFailed");
+            }
         }
 
         void Continue()
@@ -275,5 +334,7 @@ namespace TamadunKota.UI
         /// UnityEditor so the Steam compile check (which defines UNITY_EDITOR) builds.
         /// </summary>
         static void Quit() => Application.Quit();
+
+        public override void Dispose() => profile.Release();
     }
 }

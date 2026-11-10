@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// One small-multiple time-series chart for the timeline (web: Timeline.tsx Panel): tinted era
+    /// One small-multiple time-series chart for the timeline: tinted era
     /// bands, three horizontal gridlines (min, middle, max), the series line and an optional
     /// hover crosshair. Data lives in preallocated arrays; call <see cref="SetVerticesDirty"/>
     /// after changing it. Drawing writes straight into the VertexHelper, so it does not allocate.

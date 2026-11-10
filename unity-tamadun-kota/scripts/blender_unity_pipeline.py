@@ -7,7 +7,7 @@ Run from ``unity-tamadun-kota/``::
 
 Optional arguments after ``--``::
 
-    -- --spec ../scripts/model_spec.json --project . --only building_pasar,unity_hab_siber
+    -- --spec scripts/model_spec.json --project . --only building_pasar,unity_hab_siber
 
 What it produces
 ----------------
@@ -31,14 +31,9 @@ the target GPU and must be profiled in the Unity Profiler.
 
 Scale (1 Unity unit = 1 metre, grid cell = 4 m)
 -----------------------------------------------
-The shared catalog (``../scripts/model_spec.json``, written by the web game's ``npm run
-models:spec``) is authored in map tiles. Footprints are mapped onto the Unity grid:
-size 1 -> 4 x 4 m, size 2 -> 8 x 8 m, size 3 (landmarks) -> 16 x 16 m. Heights get a x2
-storey factor so a one-storey kampung house is ~4 m tall. Vehicles, trees and transport
-pieces have their own real-world scales (see SCALES below).
-
-Requires Blender 3.6+ (tested with 4.0.2). The part generators are imported from the web
-pipeline (``../scripts/generate_blender_models.py``) so both games share one geometry source.
+The Unity-owned catalog in ``scripts/model_spec.json`` contains the scenery geometry and
+material definitions. The primitive generators live in ``scripts/catalog_geometry.py``.
+Requires Blender 3.6 or newer. No Node or browser source is required.
 """
 
 import argparse
@@ -55,8 +50,8 @@ import bpy  # type: ignore
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(HERE)
 REPO = os.path.dirname(PROJECT)
-sys.path.insert(0, os.path.join(REPO, "scripts"))
-import generate_blender_models as web  # noqa: E402  (part_polygons, polygon_normal, ...)
+sys.path.insert(0, HERE)
+import catalog_geometry as geometry  # noqa: E402  (part_polygons, polygon_normal, ...)
 
 GRID = 16          # atlas cells per side
 ATLAS_SIZE = 512   # pixels
@@ -81,7 +76,7 @@ EXTRA_MATERIALS = {
 def parse_args():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     p = argparse.ArgumentParser(description="Unity 3-LOD FBX + atlas pipeline")
-    p.add_argument("--spec", default=os.path.join(REPO, "scripts", "model_spec.json"))
+    p.add_argument("--spec", default=os.path.join(HERE, "model_spec.json"))
     p.add_argument("--project", default=PROJECT)
     p.add_argument("--only", default="", help="comma-separated model ids (default: all)")
     return p.parse_args(argv)
@@ -257,7 +252,7 @@ def bounds(polys):
 
 def lod2_parts(model, materials):
     """Low-poly stand-in: up to three stacked boxes (one per height band) + a ground slab."""
-    polys_by_part = [(p, web.part_polygons(p)) for p in model["parts"]]
+    polys_by_part = [(p, geometry.part_polygons(p)) for p in model["parts"]]
     polys_by_part = [(p, ps) for p, ps in polys_by_part if ps]
     lo, hi = bounds([poly for _, ps in polys_by_part for poly in ps])
     height = max(1e-4, hi[1] - lo[1])
@@ -294,7 +289,7 @@ def lod2_parts(model, materials):
 
 
 def poly_area(vs):
-    n = web.polygon_normal(vs)
+    n = geometry.polygon_normal(vs)
     ax = ay = az = 0.0
     for i in range(len(vs)):
         a, b = vs[i], vs[(i + 1) % len(vs)]
@@ -387,13 +382,13 @@ def build_mesh(name, parts, uv_of, sx, sy):
     verts, faces, uvs, loop_normals = [], [], [], []
     for part in parts:
         uv = uv_of.get(part["m"], uv_of["greybox"])
-        for poly in web.part_polygons(part):
+        for poly in geometry.part_polygons(part):
             base = len(verts)
             # spec (x, y-up, z) scaled to metres -> Blender (x, -z, z-up)
             verts.extend((v[0] * sx, -v[2] * sx, v[1] * sy) for v in poly["verts"])
             faces.append(tuple(range(base, base + len(poly["verts"]))))
             uvs.extend([uv] * len(poly["verts"]))
-            ns = poly["normals"] or [web.polygon_normal(poly["verts"])] * len(poly["verts"])
+            ns = poly["normals"] or [geometry.polygon_normal(poly["verts"])] * len(poly["verts"])
             for n in ns:
                 # non-uniform scale: transform normals by the inverse scale, then renormalise
                 nx, ny, nz = n[0] / sx, n[1] / sy, n[2] / sx
@@ -440,7 +435,7 @@ def export_fbx(root, path):
 def main():
     args = parse_args()
     if not os.path.exists(args.spec):
-        raise SystemExit("Spec %s not found: run `npm run models:spec` in the repository root" % args.spec)
+        raise SystemExit("Spec %s not found: restore scripts/model_spec.json from Git" % args.spec)
     with open(args.spec, "r", encoding="utf-8") as fh:
         spec = json.load(fh)
     materials = dict(spec["materials"])
@@ -459,7 +454,7 @@ def main():
     for model in models:
         if only and model["id"] not in only:
             continue
-        web.reset_scene()
+        geometry.reset_scene()
         mat = bpy.data.materials.new("MasterPaletteAtlas")
         sx, sy = scale_for(model)
         root = bpy.data.objects.new(model["id"], None)

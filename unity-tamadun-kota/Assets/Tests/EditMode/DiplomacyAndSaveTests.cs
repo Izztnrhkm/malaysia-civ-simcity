@@ -105,18 +105,19 @@ namespace TamadunKota.Tests
             Assert.AreEqual(0, sim.Diplomacy.Deals[0].Delivered);
         }
 
-        [Test]
-        public void VersionTwoJsonPreservesDiplomacyAwardsAndRandomState()
+        [TestCase(2)] [TestCase(3)]
+        public void JsonPreservesDiplomacyAwardsAndRandomState(int version)
         {
             var sim = RulesParityTests.Achievements(); sim.Milestones.Check();
             sim.Relations["jepun"] = 70; Assert.IsTrue(sim.SendEnvoy("jepun").Ok); Assert.IsTrue(sim.ToggleExchange("jepun").Ok);
             Assert.IsTrue(sim.ProposeDeal("jepun", "elektronik", 12, 24).Ok);
             sim.Stock[ResourceType.Fish] = 123; sim.Rng.Next();
             var save = SaveCodec.Capture(sim, "Version two", 42);
+            save.version = version;
             save.offers = new[] { new SavedOffer { id = 50, partner = "jepun", kind = OfferKind.Deal, good = "timah", quantity = 2, price = 3, duration = 4, expires = 99 } };
             var copy = JsonRoundTrip(save);
             var restored = SaveCodec.Restore(TestData.QuietDatabase(), copy);
-            Assert.AreEqual(2, copy.version); Assert.AreEqual(sim.Rng.State, restored.Rng.State);
+            Assert.AreEqual(version, copy.version); Assert.AreEqual(sim.Rng.State, restored.Rng.State);
             Assert.AreEqual(123, restored.Stock[ResourceType.Fish]); Assert.AreEqual(sim.Relations["jepun"], restored.Relations["jepun"]);
             Assert.IsTrue(restored.Diplomacy.FindPartner("jepun").Exchange); Assert.AreEqual(8, restored.Diplomacy.FindPartner("jepun").EnvoyCooldown);
             Assert.AreEqual(12, restored.Diplomacy.Deals[0].Quantity); Assert.AreEqual(24, restored.Diplomacy.Deals[0].Remaining);
@@ -138,7 +139,7 @@ namespace TamadunKota.Tests
             Assert.AreEqual(10, back.Diplomacy.FindPartner("negeri_selat").Relation);
             Assert.AreEqual(0, back.Diplomacy.FindPartner("negeri_selat").EnvoyCooldown);
             back.Step();
-            Assert.Throws<FormatException>(() => SaveCodec.Restore(TestData.QuietDatabase(), new SaveGame { version = 3 }));
+            Assert.Throws<FormatException>(() => SaveCodec.Restore(TestData.QuietDatabase(), new SaveGame { version = SaveGame.CurrentVersion + 1 }));
         }
 
         [Test]

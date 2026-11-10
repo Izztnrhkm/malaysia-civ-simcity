@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Bottom-left notification feed (web: src/ui/Notifications.tsx) for the engine's notices:
+    /// Bottom-left notification feed for the engine's notices:
     /// events, era changes, crises, finished research. Up to five cards, newest on top; each
     /// stays for <see cref="VisibleSeconds"/> (hovering restarts the timer), then fades out.
     /// Cards are pooled: a notice only rewrites texts, and the frame update only sets alpha.

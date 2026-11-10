@@ -1,4 +1,4 @@
-// Procedural era music, ported from the web game's Web Audio engine (src/audio/soundEngine.ts):
+// Procedural era music:
 //  - Eras 1-2: gamelan-inspired. Saron/bonang metallophones in slendro- and pelog-like
 //    tunings with paired, slightly detuned partials (the shimmering "ombak" beat), a gong
 //    closing each 4-bar gongan, kenong strokes and a breathy seruling (bamboo flute).

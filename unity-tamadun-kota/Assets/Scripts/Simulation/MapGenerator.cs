@@ -1,12 +1,10 @@
-// Bit-exact C# port of the web game's seeded map generator
-// (src/core/rng.ts, src/core/noise.ts, src/core/map/terrain.ts): the same seed
-// produces the same Straits of Melaka coastline, river, rainforest and tin fields.
+// Legacy seeded coastline generator, retained for version-one/version-two saves and tests.
 using System;
 using System.Collections.Generic;
 
 namespace TamadunKota.Simulation
 {
-    /// <summary>Terrain codes (same values as the web game's T constants).</summary>
+    /// <summary>Stable terrain codes used by map bakes and saved games.</summary>
     public enum TerrainType : byte
     {
         Deep = 0, Sea = 1, Shallow = 2, Beach = 3, Mangrove = 4, River = 5, Plain = 6, Jungle = 7, Hill = 8, Mountain = 9,
@@ -19,7 +17,7 @@ namespace TamadunKota.Simulation
         public static bool IsLand(byte t) => !IsWater(t);
     }
 
-    /// <summary>Deterministic mulberry32 PRNG, identical to src/core/rng.ts.</summary>
+    /// <summary>Deterministic mulberry32 PRNG. Keep its sequence stable for saved games.</summary>
     public sealed class Rng
     {
         uint s;
@@ -175,7 +173,7 @@ namespace TamadunKota.Simulation
             return dist;
         }
 
-        /// <summary>FNV-1a fingerprint of terrain + elevation (used to check the port against the web game).</summary>
+        /// <summary>FNV-1a fingerprint of terrain + elevation (used by geographic and legacy regression checks).</summary>
         public uint Fingerprint()
         {
             uint h = 2166136261u;

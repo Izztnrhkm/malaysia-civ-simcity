@@ -14,7 +14,7 @@ namespace TamadunKota.UI
     /// </summary>
     public sealed class TopBarPanel : HudPanel
     {
-        Text resourceText, dateText, artToggleLabel;
+        Text resourceText, dateText, artToggleLabel, identityText;
         readonly StringBuilder sb = new StringBuilder(256);
 
         /// <summary>The scene's art toggle (from the setup menu) or the one created here.</summary>
@@ -28,7 +28,11 @@ namespace TamadunKota.UI
             resourceText = Kit.Label(top, "Resources", FontSize, TextAnchor.MiddleLeft);
             HudKit.Stretch(resourceText.rectTransform, new Vector2(0, 0), new Vector2(0.62f, 1), new Vector2(16, 0), Vector2.zero);
             dateText = Kit.Label(top, "Date", FontSize, TextAnchor.MiddleRight);
-            HudKit.Stretch(dateText.rectTransform, new Vector2(0.62f, 0), new Vector2(1, 1), Vector2.zero, new Vector2(-16, 0));
+            HudKit.Stretch(dateText.rectTransform, new Vector2(0.62f, 0.35f), new Vector2(1, 1), Vector2.zero, new Vector2(-16, 0));
+            dateText.fontSize = FontSize - 2;
+            identityText = Kit.Label(top, "State and Leader", FontSize - 6, TextAnchor.MiddleRight);
+            identityText.color = Kit.AccentColor;
+            HudKit.Stretch(identityText.rectTransform, new Vector2(0.62f, 0), new Vector2(1, 0.35f), Vector2.zero, new Vector2(-16, 0));
 
             // second row: speed + options
             var bar = Kit.Row(root, "Controls", new Vector2(0, 1), new Vector2(1, 1), new Vector2(8, -112), new Vector2(-8, -68));
@@ -37,17 +41,19 @@ namespace TamadunKota.UI
             Kit.Btn(bar, ">>", () => ctx.Time?.SetSpeed(2), 52);
             Kit.Btn(bar, ">>>", () => ctx.Time?.SetSpeed(3), 60);
             Kit.Spacer(bar, 16);
-            Kit.Btn(bar, () => T("Kajian", "Research"), () => ctx.Research.Toggle(), 130);
-            Kit.Btn(bar, () => Loc.Get("unity.top.era"), () => ctx.EraWindow.Toggle(), 80);
-            Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 110);
-            Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 120);
-            Kit.Btn(bar, () => Loc.Get("panel.encyclopedia"), () => ctx.Sejarahpedia.Toggle(), 140);
-            Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 150);
-            Kit.Btn(bar, () => Loc.Get("panel.settings"), () => ctx.Settings.Toggle(), 110);
-            Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 80);
+            Kit.Btn(bar, () => T("Kajian", "Research"), () => ctx.Research.Toggle(), 110);
+            Kit.Btn(bar, () => Loc.Get("unity.top.era"), () => ctx.EraWindow.Toggle(), 70);
+            Kit.Btn(bar, () => Loc.Get("panel.economy"), () => ctx.EconomyWindow.Toggle(), 96);
+            Kit.Btn(bar, () => Loc.Get("unity.top.advisors"), () => ctx.Advisors.Toggle(), 100);
+            Kit.Btn(bar, () => Loc.Get("leader.panel"), () => ctx.LeaderWindow.Toggle(), 100);
+            Kit.Btn(bar, () => Loc.Get("panel.encyclopedia"), () => ctx.Sejarahpedia.Toggle(), 110);
+            Kit.Btn(bar, () => T("Simpan/Muat", "Save/Load"), () => ctx.SaveLoadMenu.Toggle(), 124);
+            Kit.Btn(bar, () => Loc.Get("panel.settings"), () => ctx.Settings.Toggle(), 90);
+            Kit.Btn(bar, () => Loc.Get("unity.menu.button"), () => ctx.MainMenu.Show(true), 70);
             Kit.Spacer(bar, 16);
-            if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 220);
+            if (ArtToggleButton == null) ArtToggleButton = Kit.Btn(bar, "", null, 190);
             else ArtToggleButton.transform.SetParent(bar, false);
+            HudKit.Size(ArtToggleButton, 190, 40);
             // The setup menu wires a persistent listener (ArtModeToggle.Toggle) visible in the
             // Inspector; only add a runtime one when the button has none, or it would toggle twice.
             if (ArtToggleButton.onClick.GetPersistentEventCount() == 0)
@@ -59,7 +65,17 @@ namespace TamadunKota.UI
             OnArtMode(ArtMode.Greybox);
         }
 
-        public override void OnLanguage() => OnArtMode(ArtMode.Greybox);
+        public override void OnLanguage() { OnArtMode(ArtMode.Greybox); RefreshIdentity(); }
+
+        public override void OnBind(GameSimulation sim) => RefreshIdentity();
+
+        void RefreshIdentity()
+        {
+            if (identityText == null) return;
+            identityText.text = Sim?.State != null && Sim.Leader != null
+                ? T(Sim.State.nameMs, Sim.State.nameEn) + " · " + Sim.Leader.name
+                : Loc.Get("leader.legacyShort");
+        }
 
         public void OnArtMode(bool greybox)
         {

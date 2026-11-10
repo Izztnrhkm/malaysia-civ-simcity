@@ -41,7 +41,7 @@ namespace TamadunKota.Tests
             city.Transport[255] = 2;
             Building(sim, "pelabuhan", 0, 3); Building(sim, "jeti", 6, 8); Building(sim, "pasar", 9, 10);
             city.RecomputeAccess();
-            Equal(WebParity.Modes, city.Network.Modes); Equal(WebParity.Access, city.Access); Equal(WebParity.Delivery, city.Network.Cost);
+            Equal(RulesRegression.Modes, city.Network.Modes); Equal(RulesRegression.Access, city.Access); Equal(RulesRegression.Delivery, city.Network.Cost);
         }
 
         [Test]
@@ -54,15 +54,15 @@ namespace TamadunKota.Tests
             for (int i = 32; i < 64; i++) { city.Zone[i] = (byte)(i % 3 + 1); city.Density[i] = (byte)(i % 4 + 1); }
             for (int x = 0; x < 16; x++) city.Transport[4 * 16 + x] = 3;
             Building(sim, "masjid", 2, 6, 0); Building(sim, "surau", 5, 7, 0.2);
-            Building(sim, "pasar", 8, 9, 0.6); Building(sim, "relau_besi", 5, 3, 0.75); Building(sim, WebParity.Cleaner, 10, 2);
+            Building(sim, "pasar", 8, 9, 0.6); Building(sim, "relau_besi", 5, 3, 0.75); Building(sim, RulesRegression.Cleaner, 10, 2);
             sim.Effects.Pollution = -0.2;
             city.RecomputeAccess(); EnvironmentModel.ComputeWaterDistance(city);
             sim.Environment.Compute(city, 3, sim.Effects);
-            Equal(WebParity.Coverage, city.Coverage); Equal(WebParity.Pollution, city.Pollution); Equal(WebParity.LandValue, city.LandValue);
-            Assert.AreEqual(WebParity.AverageLandValue, sim.Environment.AverageLandValue, 1e-10);
+            Equal(RulesRegression.Coverage, city.Coverage); Equal(RulesRegression.Pollution, city.Pollution); Equal(RulesRegression.LandValue, city.LandValue);
+            Assert.AreEqual(RulesRegression.AverageLandValue, sim.Environment.AverageLandValue, 1e-10);
             sim.Economy.FoodSatisfaction = 0.85; sim.Economy.Unemployment = 0.12;
             sim.Economy.PowerRatio = 0.8; sim.Economy.WaterRatio = 0.95; sim.Economy.BuildingHappiness = 8;
-            Assert.AreEqual(WebParity.HappinessTarget, sim.Economy.ComputeHappinessTarget(city, 3, sim.Effects, sim.Events.View, 9, 9, 9), 1e-10);
+            Assert.AreEqual(RulesRegression.HappinessTarget, sim.Economy.ComputeHappinessTarget(city, 3, sim.Effects, sim.Events.View, 9, 9, 9), 1e-10);
         }
 
         [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
@@ -78,9 +78,9 @@ namespace TamadunKota.Tests
                 city.Pollution[i] = (byte)((i * 17) % 256); sim.Map.Elevation[i] = (byte)(i % 2 != 0 ? 80 : 120); city.WaterDistance[i] = (byte)(i % 5);
             }
             for (int t = 0; t < 80; t++) sim.Economy.GrowZones(city, era, sim.Db.Era(era).maxDensity, rng, 0.2, true);
-            var densities = new[] { WebParity.Growth1, WebParity.Growth2, WebParity.Growth3, WebParity.Growth4 };
-            var styles = new[] { WebParity.Style1, WebParity.Style2, WebParity.Style3, WebParity.Style4 };
-            var states = new[] { WebParity.GrowthRng1, WebParity.GrowthRng2, WebParity.GrowthRng3, WebParity.GrowthRng4 };
+            var densities = new[] { RulesRegression.Growth1, RulesRegression.Growth2, RulesRegression.Growth3, RulesRegression.Growth4 };
+            var styles = new[] { RulesRegression.Style1, RulesRegression.Style2, RulesRegression.Style3, RulesRegression.Style4 };
+            var states = new[] { RulesRegression.GrowthRng1, RulesRegression.GrowthRng2, RulesRegression.GrowthRng3, RulesRegression.GrowthRng4 };
             Equal(densities[era - 1], city.Density); Equal(styles[era - 1], city.Style); Assert.AreEqual(states[era - 1], rng.State);
         }
 
@@ -94,7 +94,7 @@ namespace TamadunKota.Tests
             double knowledge = 0;
             for (int t = 0; t < 30; t++) { knowledge += sim.Diplomacy.Tick(); sim.Tick++; }
             var p = sim.Diplomacy.FindPartner("ming");
-            Equal(WebParity.Diplomacy, new[] { sim.Stock[ResourceType.Treasury], p.Relation, p.EnvoyCooldown, knowledge, sim.Rng.State, sim.Diplomacy.DealPrice("ming", "rempah") });
+            Equal(RulesRegression.Diplomacy, new[] { sim.Stock[ResourceType.Treasury], p.Relation, p.EnvoyCooldown, knowledge, sim.Rng.State, sim.Diplomacy.DealPrice("ming", "rempah") });
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace TamadunKota.Tests
                 values.AddRange(new[] { sim.Economy.Budget.deals, sim.Economy.Budget.exports, sim.Stock[ResourceType.Spices], sim.Stock[ResourceType.Tin], sim.Relations["ming"], sim.Relations["gujerat"], sim.Diplomacy.Deals.Count,
                     sim.Diplomacy.Deals.Count > 0 ? sim.Diplomacy.Deals[0].Delivered : 0, sim.Diplomacy.Deals.Count > 1 ? sim.Diplomacy.Deals[1].Missed : 0 });
             }
-            Equal(WebParity.Settlement, values.ToArray());
+            Equal(RulesRegression.Settlement, values.ToArray());
         }
 
         [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
@@ -133,8 +133,8 @@ namespace TamadunKota.Tests
                     Assert.IsTrue(sim.AcceptOffer(o.Id).Ok);
                 }
             }
-            var expected = new[] { WebParity.Offers1, WebParity.Offers2, WebParity.Offers3, WebParity.Offers4 };
-            var states = new[] { WebParity.OffersRng1, WebParity.OffersRng2, WebParity.OffersRng3, WebParity.OffersRng4 };
+            var expected = new[] { RulesRegression.Offers1, RulesRegression.Offers2, RulesRegression.Offers3, RulesRegression.Offers4 };
+            var states = new[] { RulesRegression.OffersRng1, RulesRegression.OffersRng2, RulesRegression.OffersRng3, RulesRegression.OffersRng4 };
             Equal(expected[era - 1], values.ToArray()); Assert.AreEqual(states[era - 1], sim.Rng.State);
         }
 
@@ -160,9 +160,9 @@ namespace TamadunKota.Tests
             sim.Milestones.Check();
             var requirements = new List<double>();
             foreach (var m in sim.Milestones.All) foreach (var r in m.Requirements) requirements.Add(r.Met ? 1 : 0);
-            Equal(WebParity.MilestoneRequirements, requirements.ToArray());
-            Assert.AreEqual(WebParity.Victory, victories); Assert.IsTrue(sim.Milestones.Victory);
-            Assert.AreEqual(WebParity.Awards, awards); Assert.AreEqual(120, sim.Milestones.HeritageLots);
+            Equal(RulesRegression.MilestoneRequirements, requirements.ToArray());
+            Assert.AreEqual(RulesRegression.Victory, victories); Assert.IsTrue(sim.Milestones.Victory);
+            Assert.AreEqual(RulesRegression.Awards, awards); Assert.AreEqual(120, sim.Milestones.HeritageLots);
             sim.Milestones.Check(); Assert.AreEqual(3, awards); Assert.AreEqual(1, victories);
         }
 

@@ -1,0 +1,224 @@
+{
+  "items": [
+    {
+      "id": "johor",
+      "leaderId": "sultan_abu_bakar",
+      "mapId": "johor_region",
+      "nameMs": "Johor",
+      "nameEn": "Johor",
+      "descMs": "Bina sebuah bandar di wilayah Johor.",
+      "descEn": "Build a city in Johor.",
+      "abilityMs": "Usahawan Selatan: +8% pengeluaran.",
+      "abilityEn": "Southern enterprise: +8% production.",
+      "effects": {
+        "productionAll": 0.08
+      }
+    },
+    {
+      "id": "kedah",
+      "leaderId": "sultan_abdul_hamid",
+      "mapId": "kedah_region",
+      "nameMs": "Kedah",
+      "nameEn": "Kedah",
+      "descMs": "Bina sebuah bandar di wilayah Kedah.",
+      "descEn": "Build a city in Kedah.",
+      "abilityMs": "Jelapang Padi: +20% pengeluaran padi.",
+      "abilityEn": "Rice bowl: +20% rice production.",
+      "effects": {
+        "production": [
+          {
+            "key": "padi",
+            "value": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "id": "kelantan",
+      "leaderId": "tok_janggut",
+      "mapId": "kelantan_region",
+      "nameMs": "Kelantan",
+      "nameEn": "Kelantan",
+      "descMs": "Bina sebuah bandar di wilayah Kelantan.",
+      "descEn": "Build a city in Kelantan.",
+      "abilityMs": "Seni Warisan: +10% budaya.",
+      "abilityEn": "Living crafts: +10% culture.",
+      "effects": {
+        "culture": 0.1
+      }
+    },
+    {
+      "id": "melaka",
+      "leaderId": "tun_perak",
+      "mapId": "melaka_region",
+      "nameMs": "Melaka",
+      "nameEn": "Melaka",
+      "descMs": "Bina sebuah bandar di wilayah Melaka.",
+      "descEn": "Build a city in Melaka.",
+      "abilityMs": "Entrepôt Melaka: +15% kapasiti eksport.",
+      "abilityEn": "Melaka entrepôt: +15% export capacity.",
+      "effects": {
+        "exportCap": 0.15
+      }
+    },
+    {
+      "id": "negeri_sembilan",
+      "leaderId": "yamtuan_antah",
+      "mapId": "negeri_sembilan_region",
+      "nameMs": "Negeri Sembilan",
+      "nameEn": "Negeri Sembilan",
+      "descMs": "Bina sebuah bandar di wilayah Negeri Sembilan.",
+      "descEn": "Build a city in Negeri Sembilan.",
+      "abilityMs": "Pentadbiran Beradat: −8% kos penyelenggaraan.",
+      "abilityEn": "Adat administration: −8% upkeep.",
+      "effects": {
+        "upkeep": -0.08
+      }
+    },
+    {
+      "id": "pahang",
+      "leaderId": "mat_kilau",
+      "mapId": "pahang_region",
+      "nameMs": "Pahang",
+      "nameEn": "Pahang",
+      "descMs": "Bina sebuah bandar di wilayah Pahang.",
+      "descEn": "Build a city in Pahang.",
+      "abilityMs": "Hasil Rimba: +15% pengeluaran kayu.",
+      "abilityEn": "Forest resources: +15% timber production.",
+      "effects": {
+        "production": [
+          {
+            "key": "kayu",
+            "value": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "id": "perak",
+      "leaderId": "long_jaafar",
+      "mapId": "perak_region",
+      "nameMs": "Perak",
+      "nameEn": "Perak",
+      "descMs": "Bina sebuah bandar di wilayah Perak.",
+      "descEn": "Build a city in Perak.",
+      "abilityMs": "Lembah Timah: +20% pengeluaran timah.",
+      "abilityEn": "Tin valleys: +20% tin production.",
+      "effects": {
+        "production": [
+          {
+            "key": "timah",
+            "value": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "id": "perlis",
+      "leaderId": "syed_putra",
+      "mapId": "perlis_region",
+      "nameMs": "Perlis",
+      "nameEn": "Perlis",
+      "descMs": "Bina sebuah bandar di wilayah Perlis.",
+      "descEn": "Build a city in Perlis.",
+      "abilityMs": "Sawah Komuniti: +10% padi dan +2 kebahagiaan.",
+      "abilityEn": "Community fields: +10% rice and +2 happiness.",
+      "effects": {
+        "production": [
+          {
+            "key": "padi",
+            "value": 0.1
+          }
+        ],
+        "happiness": 2
+      }
+    },
+    {
+      "id": "pulau_pinang",
+      "leaderId": "lim_chong_eu",
+      "mapId": "pulau_pinang_region",
+      "nameMs": "Pulau Pinang",
+      "nameEn": "Penang",
+      "descMs": "Bina sebuah bandar di wilayah Pulau Pinang.",
+      "descEn": "Build a city in Pulau Pinang.",
+      "abilityMs": "Pulau Ilmu: +10% penyelidikan.",
+      "abilityEn": "Island of learning: +10% research.",
+      "effects": {
+        "research": 0.1
+      }
+    },
+    {
+      "id": "sabah",
+      "leaderId": "mat_salleh",
+      "mapId": "sabah_region",
+      "nameMs": "Sabah",
+      "nameEn": "Sabah",
+      "descMs": "Bina sebuah bandar di wilayah Sabah.",
+      "descEn": "Build a city in Sabah.",
+      "abilityMs": "Hasil Pesisir: +15% pengeluaran ikan.",
+      "abilityEn": "Coastal harvest: +15% fish production.",
+      "effects": {
+        "production": [
+          {
+            "key": "ikan",
+            "value": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sarawak",
+      "leaderId": "rentap",
+      "mapId": "sarawak_region",
+      "nameMs": "Sarawak",
+      "nameEn": "Sarawak",
+      "descMs": "Bina sebuah bandar di wilayah Sarawak.",
+      "descEn": "Build a city in Sarawak.",
+      "abilityMs": "Hutan dan Warisan: +10% kayu dan +5% budaya.",
+      "abilityEn": "Forests and heritage: +10% timber and +5% culture.",
+      "effects": {
+        "production": [
+          {
+            "key": "kayu",
+            "value": 0.1
+          }
+        ],
+        "culture": 0.05
+      }
+    },
+    {
+      "id": "selangor",
+      "leaderId": "sultan_abdul_samad",
+      "mapId": "selangor_region",
+      "nameMs": "Selangor",
+      "nameEn": "Selangor",
+      "descMs": "Bina sebuah bandar di wilayah Selangor.",
+      "descEn": "Build a city in Selangor.",
+      "abilityMs": "Ekonomi Lembah Klang: +10% hasil cukai.",
+      "abilityEn": "Klang Valley economy: +10% tax income.",
+      "effects": {
+        "tax": 0.1
+      }
+    },
+    {
+      "id": "terengganu",
+      "leaderId": "sultan_zainal_abidin_iii",
+      "mapId": "terengganu_region",
+      "nameMs": "Terengganu",
+      "nameEn": "Terengganu",
+      "descMs": "Bina sebuah bandar di wilayah Terengganu.",
+      "descEn": "Build a city in Terengganu.",
+      "abilityMs": "Warisan Pesisir: +10% ikan dan +5% budaya.",
+      "abilityEn": "Coastal heritage: +10% fish and +5% culture.",
+      "effects": {
+        "production": [
+          {
+            "key": "ikan",
+            "value": 0.1
+          }
+        ],
+        "culture": 0.05
+      }
+    }
+  ]
+}

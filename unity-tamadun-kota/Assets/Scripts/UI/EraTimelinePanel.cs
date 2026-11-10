@@ -8,8 +8,7 @@ using UnityEngine.UI;
 namespace TamadunKota.UI
 {
     /// <summary>
-    /// Era progress and city timeline in one window (web: src/ui/modals/EraPanel.tsx and
-    /// Timeline.tsx). Left: the current era, its introduction and Sejarahpedia link, the
+    /// Era progress and city timeline. Left: the current era, its introduction and Sejarahpedia link, the
     /// requirements to advance with their state, and Advance. Right: treasury, population and
     /// output over time as small multiples with era bands and a shared hover read-out, or the
     /// same history as a table. Milestones and victory wait for lane C (phase 2).
@@ -18,7 +17,7 @@ namespace TamadunKota.UI
     {
         const int MaxReqRows = 10;
         static readonly string[] SeriesKeys = { "timeline.treasury", "timeline.population", "timeline.output" };
-        /// <summary>The web game's series colours (validated against its dark panel).</summary>
+        /// <summary>Series colors chosen for contrast against the dark panel.</summary>
         static readonly Color[] SeriesColors =
         {
             new Color(0.79f, 0.52f, 0f), new Color(0.22f, 0.53f, 0.90f), new Color(0.10f, 0.62f, 0.44f),
@@ -302,7 +301,7 @@ namespace TamadunKota.UI
             UpdateValues();
         }
 
-        /// <summary>Web niceMax: round the axis top up to 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 or 10 x 10^n.</summary>
+        /// <summary>Round the axis top up to 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 or 10 x 10^n.</summary>
         static double NiceMax(double v)
         {
             if (v <= 0) return 1;
@@ -347,7 +346,7 @@ namespace TamadunKota.UI
             }
         }
 
-        /// <summary>Hover read-out shared by the three charts (like the web crosshair).</summary>
+        /// <summary>Hover read-out shared by the three charts.</summary>
         public override void Tick()
         {
             if (!IsOpen || showTable || !chartsView.gameObject.activeSelf) return;

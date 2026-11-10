@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 458628ddda455b5c92db113756202a55
+TextureImporter:
+  externalObjects: {}
+  textureType: 0
+  mipmaps:
+    enableMipMap: 0
+  isReadable: 0
+  sRGBTexture: 1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    wrapU: 1
+    wrapV: 1

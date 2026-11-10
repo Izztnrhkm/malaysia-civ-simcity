@@ -48,6 +48,7 @@ namespace TamadunKota.UI
         public EraTimelinePanel EraWindow;
         public SejarahpediaPanel Sejarahpedia;
         public SettingsPanel Settings;
+        public LeaderPanel LeaderWindow;
 
         public HudContext(HudKit kit) { Kit = kit; }
 
@@ -119,5 +120,7 @@ namespace TamadunKota.UI
         public virtual void OnEconomy(EconomySnapshot s) { }
         /// <summary>Called every frame while a simulation is bound. Must not allocate.</summary>
         public virtual void Tick() { }
+        /// <summary>Release resources owned by the panel when the HUD is destroyed.</summary>
+        public virtual void Dispose() { }
     }
 }

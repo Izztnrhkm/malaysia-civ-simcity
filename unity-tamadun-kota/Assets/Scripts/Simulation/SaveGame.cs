@@ -55,14 +55,14 @@ namespace TamadunKota.Simulation
 
     /// <summary>
     /// JSON save file (written with UnityEngine.JsonUtility by SaveLoadManager). Plain
-    /// arrays only so JsonUtility can read it; map terrain is regenerated from the seed and
-    /// only changed tiles are stored.
+    /// arrays and base64 map layers so JsonUtility and .NET can read the same file.
+    /// Versions one and two regenerate the original procedural map from the seed.
     /// </summary>
     [Serializable]
     public class SaveGame
     {
         public const string Format = "tamadun-kota-unity-save";
-        public const int CurrentVersion = 2;
+        public const int CurrentVersion = 3;
 
         public string format = Format;
         public int version = CurrentVersion;
@@ -70,6 +70,8 @@ namespace TamadunKota.Simulation
         public string cityName;
         public string scenario;
         public int seed;
+        public GameSetup setup;
+        public MapSnapshot map;
         public int mapSize;
         public int era;
         public int tick, year, month;
@@ -106,12 +108,21 @@ namespace TamadunKota.Simulation
     {
         public static SaveGame Capture(GameSimulation sim, string cityName, int seed)
         {
+            // The seed parameter remains for older callers; the running map is authoritative.
+            var choices = sim.Setup;
+            if (choices != null)
+            {
+                choices.seed = sim.Map.Seed; choices.scenarioId = sim.Scenario;
+                choices.Validate(sim.Db);
+            }
             var s = new SaveGame
             {
                 savedAt = DateTime.UtcNow.ToString("o"),
                 cityName = cityName,
                 scenario = sim.Scenario,
-                seed = seed,
+                seed = sim.Map.Seed,
+                setup = choices,
+                map = MapSnapshot.Capture(sim.Map),
                 mapSize = sim.Map.Width,
                 era = sim.CurrentEra,
                 tick = sim.Tick,
@@ -144,17 +155,13 @@ namespace TamadunKota.Simulation
             s.buildings = bs.ToArray();
             var tr = new List<SavedCell>();
             var zs = new List<SavedCell>();
-            var tc = new List<SavedCell>();
-            var fresh = MapGenerator.Generate(sim.Map.Width, sim.Map.Height, seed);
             for (int i = 0; i < sim.City.Transport.Length; i++)
             {
                 if (sim.City.Transport[i] != 0) tr.Add(new SavedCell { index = i, value = sim.City.Transport[i] });
                 if (sim.City.Zone[i] != 0) zs.Add(new SavedCell { index = i, value = sim.City.Zone[i] | sim.City.Density[i] << 4 | sim.City.Style[i] << 8 });
-                if (sim.Map.Terrain[i] != fresh.Terrain[i]) tc.Add(new SavedCell { index = i, value = sim.Map.Terrain[i] });
             }
             s.transport = tr.ToArray();
             s.zones = zs.ToArray();
-            s.terrainChanges = tc.ToArray();
             s.firedEvents = new List<string>(sim.Events.Fired).ToArray();
             var rel = new List<SavedRelation>();
             foreach (var kv in sim.Relations) rel.Add(new SavedRelation { partner = kv.Key, value = kv.Value });
@@ -188,8 +195,28 @@ namespace TamadunKota.Simulation
         public static GameSimulation Restore(GameDatabase db, SaveGame s)
         {
             if (s == null || s.format != SaveGame.Format) throw new FormatException("Not a Tamadun & Kota (Unity) save");
-            if (s.version > SaveGame.CurrentVersion) throw new FormatException("Save is from a newer version");
-            var sim = new GameSimulation(db, s.seed, s.mapSize > 0 ? s.mapSize : 128) { Scenario = s.scenario ?? "melaka_1400" };
+            if (s.version < 1 || s.version > SaveGame.CurrentVersion) throw new FormatException("Unsupported save version");
+            MapData map;
+            GameSetup choices = null;
+            if (s.version >= 3)
+            {
+                map = (s.map ?? throw new FormatException("The save has no terrain snapshot.")).CreateMap();
+                if (map.Seed != s.seed || map.Width != s.mapSize) throw new FormatException("Conflicting map metadata.");
+                choices = s.setup;
+                if (choices != null)
+                {
+                    try { choices.Validate(db); }
+                    catch (ArgumentException e) { throw new FormatException("The save has an invalid state/leader pairing.", e); }
+                    if (choices.seed != s.seed || choices.scenarioId != s.scenario) throw new FormatException("Conflicting city setup metadata.");
+                }
+            }
+            else
+            {
+                int size = s.mapSize > 0 ? s.mapSize : 128;
+                if (size < 8 || size > 512) throw new FormatException("Invalid legacy map dimensions.");
+                map = MapGenerator.Generate(size, size, s.seed);
+            }
+            var sim = new GameSimulation(db, s.seed, map, choices) { Scenario = s.scenario ?? "melaka_1400" };
             sim.Era.Restore(s.era);
             sim.Tick = s.tick;
             sim.Year = s.year;
@@ -203,7 +230,8 @@ namespace TamadunKota.Simulation
             sim.Tech.CurrentCivic = db.ResearchIndex(s.currentCivic);
             sim.Tech.TechBank = s.techBank;
             sim.Tech.CivicBank = s.civicBank;
-            foreach (var c in s.terrainChanges) if (c.index >= 0 && c.index < sim.Map.Terrain.Length) sim.Map.Terrain[c.index] = (byte)c.value;
+            if (s.version < 3)
+                foreach (var c in s.terrainChanges ?? Array.Empty<SavedCell>()) if (c.index >= 0 && c.index < sim.Map.Terrain.Length) sim.Map.Terrain[c.index] = (byte)c.value;
             foreach (var c in s.transport) if (c.index >= 0 && c.index < sim.City.Transport.Length) sim.City.Transport[c.index] = (byte)c.value;
             foreach (var c in s.zones)
             {
@@ -225,7 +253,7 @@ namespace TamadunKota.Simulation
             sim.Events.PendingCrisis = string.IsNullOrEmpty(s.pendingCrisis) || db.CrisisIndex(s.pendingCrisis) < 0 ? null : s.pendingCrisis;
             sim.Events.PendingSince = s.tick;
             sim.Advisors.Clear();
-            foreach (var a in s.advisors) sim.Advisors.Add(a);
+            foreach (var a in s.advisors) if (sim.Leader == null || sim.Leader.id != a) sim.Advisors.Add(a);
             sim.Relations.Clear();
             foreach (var r in s.relations ?? Array.Empty<SavedRelation>()) sim.Relations[r.partner] = r.value;
             foreach (var p in s.partners ?? Array.Empty<SavedPartner>())

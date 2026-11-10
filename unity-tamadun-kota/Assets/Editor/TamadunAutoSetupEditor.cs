@@ -32,7 +32,7 @@ namespace TamadunKota.EditorTools
     ///     from its _LOD0 / _LOD1 / _LOD2 meshes and the atlas material. Missing models fall back
     ///     to greybox cubes sized to the footprint.
     ///  4. Data: one BuildingData asset per building and zoned lot (from Resources/GameData/*.json,
-    ///     the export of the web game's catalog), the TechCivicTree asset and the BuildingCatalog.
+    ///     the authoritative Unity catalog), the TechCivicTree asset and the BuildingCatalog.
     ///  5. Scene: Assets/Scenes/MainGame.unity with sun, terrain, water, RTS camera, game root,
     ///     every manager wired, a NavMeshSurface, the HUD and the "Greybox / Full 3D Art" button;
     ///     added to Build Settings.
@@ -581,7 +581,7 @@ namespace TamadunKota.EditorTools
             string path = GameDataDir + "/" + name + ".json";
             if (!File.Exists(path))
             {
-                Debug.LogError("Missing " + path + ": run `npm run unity:data` in the repository root");
+                Debug.LogError("Missing " + path + ": restore the authoritative Assets/Resources/GameData catalog from Git");
                 return new T();
             }
             return JsonUtility.FromJson<T>(File.ReadAllText(path));
