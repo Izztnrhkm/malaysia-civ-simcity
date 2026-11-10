@@ -1341,6 +1341,118 @@
    "value": "No saved games"
   },
   {
+   "key": "unity.menu.tagline",
+   "value": "From a river mouth to a smart nation.\nBuild your city’s story."
+  },
+  {
+   "key": "unity.menu.back",
+   "value": "Back"
+  },
+  {
+   "key": "unity.menu.newChapter",
+   "value": "Begin a new chapter"
+  },
+  {
+   "key": "unity.menu.chooseChapter",
+   "value": "Choose your starting point"
+  },
+  {
+   "key": "unity.menu.paused",
+   "value": "GAME PAUSED"
+  },
+  {
+   "key": "unity.menu.pauseHint",
+   "value": "Your city awaits. Resume when you are ready."
+  },
+  {
+   "key": "unity.menu.noSavesHint",
+   "value": "A new city awaits. Choose New Game to begin."
+  },
+  {
+   "key": "unity.menu.eraStory",
+   "value": "MELAKA ENTREPÔT\nTIN, RUBBER & RAIL\nPOST-MERDEKA\nDIGITAL SMART CITY"
+  },
+  {
+   "key": "unity.menu.saveLoad",
+   "value": "Save & Load"
+  },
+  {
+   "key": "unity.menu.yourCities",
+   "value": "YOUR CITIES"
+  },
+  {
+   "key": "unity.menu.saveMetadata",
+   "value": "Era {era}  ·  Year {year}"
+  },
+  {
+   "key": "unity.menu.dateCulture",
+   "value": "en-MY"
+  },
+  {
+   "key": "unity.menu.autoSlot",
+   "value": "Auto / Quick"
+  },
+  {
+   "key": "unity.menu.slot",
+   "value": "Slot {slot}"
+  },
+  {
+   "key": "unity.menu.loadHint",
+   "value": "Choose a saved city to continue its story."
+  },
+  {
+   "key": "unity.menu.saveHint",
+   "value": "Save your progress or return to a saved city."
+  },
+  {
+   "key": "unity.menu.emptySlot",
+   "value": "No city available"
+  },
+  {
+   "key": "unity.menu.emptySlotHint",
+   "value": "There is no readable save in this slot."
+  },
+  {
+   "key": "unity.menu.storageUnavailable",
+   "value": "Save storage is unavailable. Go back and try again."
+  },
+  {
+   "key": "unity.menu.loadFailed",
+   "value": "This city could not be loaded. Try again or choose another slot."
+  },
+  {
+   "key": "unity.menu.saveFailed",
+   "value": "Your progress could not be saved. Try again or choose another slot."
+  },
+  {
+   "key": "unity.menu.saved",
+   "value": "Your city’s progress has been saved."
+  },
+  {
+   "key": "unity.menu.keyboardHint",
+   "value": "Tab / Shift+Tab: move between controls. Enter: select. Esc: go back."
+  },
+  {
+   "key": "unity.settings.kicker",
+   "value": "MAKE YOURSELF AT HOME"
+  },
+  {
+   "key": "unity.settings.general",
+   "value": "General"
+  },
+  {
+   "key": "unity.settings.audio",
+   "value": "Audio"
+  },
+  {
+   "key": "unity.settings.graphics",
+   "value": "Graphics"
+  },
+  {
+   "key": "unity.settings.artHint",
+   "value": "Full 3D art displays detailed buildings. Greybox uses simple shapes for a clearer planning view."
+  },
+  {
    "key": "unity.top.research",
    "value": "Research"
   },

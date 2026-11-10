@@ -4,6 +4,7 @@
     "references": [
         "TamadunKota.Runtime",
         "TamadunKota.Simulation",
+        "Unity.ugui",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

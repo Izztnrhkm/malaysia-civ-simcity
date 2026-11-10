@@ -1,59 +1,134 @@
 using TamadunKota.Systems;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TamadunKota.UI
 {
-    /// <summary>Save / load slots (slot 0 is the autosave and F5/F9 quick slot).</summary>
+    /// <summary>Four stable slot rows keep operation feedback and keyboard focus visible.</summary>
     public sealed class SaveLoadPanel : HudPanel, IHudModal
     {
-        RectTransform savePanel;
+        MenuShell shell;
+        readonly Text[] names = new Text[SaveLoadManager.SlotCount];
+        readonly Text[] metadata = new Text[SaveLoadManager.SlotCount];
+        readonly Button[] saves = new Button[SaveLoadManager.SlotCount];
+        readonly Button[] loads = new Button[SaveLoadManager.SlotCount];
+        Text intro, status;
+        Button back;
+        string statusKey;
+        bool failed;
 
         public SaveLoadPanel(HudContext context) : base(context) { }
-
-        public bool IsOpen => savePanel != null && savePanel.gameObject.activeSelf;
+        public bool IsOpen => shell != null && shell.Root.gameObject.activeSelf;
+        public RectTransform MenuRoot => shell?.Root;
 
         public override void Build(RectTransform root)
         {
-            savePanel = Kit.Panel(root, "Save Load", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(-300, -170), new Vector2(300, 170));
-            savePanel.gameObject.SetActive(false);
+            shell = new MenuShell(ctx, root, "Save Load", "unity.menu.saveLoad", "unity.menu.yourCities");
+            var column = MenuTheme.Column(shell.Content, "Slots", 12);
+            HudKit.Stretch(column, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            intro = MenuTheme.Line(ctx, column, () => "", 24, 40);
+            intro.color = MenuTheme.Muted;
+            for (int i = 0; i < SaveLoadManager.SlotCount; i++)
+            {
+                int slot = i;
+                var row = Kit.HRow(column, "Slot " + slot, 108);
+                row.gameObject.AddComponent<Image>().color = new Color(0.06f, 0.17f, 0.18f, 0.95f);
+                var tag = MenuTheme.Line(ctx, row, () => MenuTheme.SlotName(slot), 24, 108);
+                tag.alignment = TextAnchor.MiddleLeft;
+                tag.color = MenuTheme.Brass;
+                HudKit.Size(tag, 190, -1);
+                var summary = MenuTheme.Column(row, "Summary", 4);
+                summary.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
+                summary.GetComponent<VerticalLayoutGroup>().padding = new RectOffset(8, 12, 4, 4);
+                names[slot] = MenuTheme.Line(ctx, summary, () => "", 24, 54);
+                metadata[slot] = MenuTheme.Line(ctx, summary, () => "", 20, 40);
+                metadata[slot].color = MenuTheme.Muted;
+                saves[slot] = MenuTheme.Button(ctx, row, "Save Slot " + slot, () => Loc.Get("save.save"), () => Save(slot), 150);
+                loads[slot] = MenuTheme.Button(ctx, row, "Load Slot " + slot, () => Loc.Get("save.load"), () => Load(slot), 150);
+            }
+            status = MenuTheme.Line(ctx, column, () => "", 24, 72);
+            back = MenuTheme.Button(ctx, shell.Footer, "Back", () => Loc.Get("unity.menu.back"), Close, 180);
+            HudKit.Stretch((RectTransform)back.transform, new Vector2(1, 0), Vector2.one, new Vector2(-180, 0), Vector2.zero);
         }
 
-        public void Toggle()
+        public void Toggle() { if (IsOpen) Close(); else Open(); }
+
+        public void Open()
         {
-            if (IsOpen) Close();
-            else Open();
+            var origin = ctx.MainMenu != null && ctx.MainMenu.IsOpen ?
+                (ctx.MainMenu.IsPauseMenu ? MenuOrigin.Pause : MenuOrigin.Startup) : MenuOrigin.Gameplay;
+            Open(origin);
+        }
+
+        public void Open(MenuOrigin origin)
+        {
+            ctx.ModalOpening(this);
+            ctx.Menu.Begin(origin);
+            statusKey = null;
+            failed = false;
+            shell.Show(ctx.Menu.Origin != MenuOrigin.Startup);
+            Refresh();
+            for (int i = 0; i < loads.Length; i++) if (loads[i].interactable) { MenuSession.Focus(loads[i]); return; }
+            MenuSession.Focus(ctx.Menu.HasEnteredCity ? saves[1] : back);
         }
 
         public void Close()
         {
             if (!IsOpen) return;
-            savePanel.gameObject.SetActive(false);
+            shell.Root.gameObject.SetActive(false);
             ctx.ModalClosed(this);
+            if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
+            ctx.Menu.ReturnFromUtility();
         }
 
-        public void Open()
+        public override void OnLanguage() { if (IsOpen) Refresh(); }
+
+        void Refresh()
         {
-            ctx.ModalOpening(this);
-            savePanel.SetAsLastSibling();
-            savePanel.gameObject.SetActive(true);
-            HudKit.ClearChildren(savePanel);
-            var col = Kit.Column(savePanel, "Slots", Vector2.zero, Vector2.one, new Vector2(12, 12), new Vector2(-12, -12));
-            var saveLoad = ctx.SaveLoad;
-            if (saveLoad == null) { Kit.Label(col, "None", FontSize, TextAnchor.MiddleCenter).text = "SaveLoadManager missing"; return; }
-            for (int s = 0; s < SaveLoadManager.SlotCount; s++)
+            shell.RefreshLanguage(Malay);
+            shell.Heading.text = Loc.Get(ctx.Menu.HasEnteredCity ? "unity.menu.saveLoad" : "menu.load");
+            intro.text = Loc.Get(ctx.Menu.HasEnteredCity ? "unity.menu.saveHint" : "unity.menu.loadHint");
+            for (int i = 0; i < names.Length; i++)
             {
-                int slot = s;
-                var info = saveLoad.Info(slot);
-                var row = Kit.Row(col, "Slot" + slot, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-                row.gameObject.AddComponent<LayoutElement>().preferredHeight = 56;
-                var l = Kit.Label(row, "Info", FontSize - 3, TextAnchor.MiddleLeft);
-                l.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1;
-                l.text = (slot == 0 ? T("Auto/Pantas", "Auto/Quick") : T("Slot ", "Slot ") + slot) + ": " +
-                         (info.exists ? info.cityName + " " + info.year + " (Era " + info.era + ")" : T("kosong", "empty"));
-                Kit.Btn(row, T("Simpan", "Save"), () => { saveLoad.Save(slot); Toggle(); }, 100);
-                var load = Kit.Btn(row, T("Muat", "Load"), () => { saveLoad.Load(slot); Toggle(); }, 100);
-                load.interactable = info.exists;
+                var info = ctx.SaveLoad != null ? ctx.SaveLoad.Info(i) : default;
+                names[i].text = info.exists ? info.cityName : Loc.Get("unity.menu.emptySlot");
+                metadata[i].text = info.exists ? MenuTheme.SaveMetadata(info) : Loc.Get("unity.menu.emptySlotHint");
+                saves[i].gameObject.SetActive(ctx.Menu.HasEnteredCity);
+                saves[i].interactable = ctx.SaveLoad != null && ctx.Sim != null;
+                loads[i].interactable = info.exists;
+                saves[i].GetComponent<MenuButtonVisual>().Refresh();
+                loads[i].GetComponent<MenuButtonVisual>().Refresh();
+            }
+            status.text = statusKey == null ? "" : Loc.Get(statusKey);
+            status.color = failed ? MenuTheme.Error : MenuTheme.Brass;
+            if (ctx.SaveLoad == null) { status.text = Loc.Get("unity.menu.storageUnavailable"); status.color = MenuTheme.Error; }
+            MenuSession.ConfigureNavigation(MenuRoot);
+        }
+
+        void Save(int slot)
+        {
+            if (!ctx.Menu.HasEnteredCity || ctx.SaveLoad == null) return;
+            bool ok = ctx.SaveLoad.Save(slot);
+            failed = !ok;
+            statusKey = ok ? "unity.menu.saved" : "unity.menu.saveFailed";
+            Refresh();
+        }
+
+        void Load(int slot)
+        {
+            if (ctx.SaveLoad == null) return;
+            if (ctx.SaveLoad.Load(slot))
+            {
+                ctx.Menu.EnterCity();
+                ctx.MainMenu?.OnLoaded();
+                Close();
+            }
+            else
+            {
+                failed = true;
+                statusKey = "unity.menu.loadFailed";
+                Refresh();
             }
         }
     }

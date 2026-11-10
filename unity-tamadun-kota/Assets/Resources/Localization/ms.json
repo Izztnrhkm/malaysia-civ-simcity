@@ -1341,6 +1341,118 @@
    "value": "Tiada permainan disimpan"
   },
   {
+   "key": "unity.menu.tagline",
+   "value": "Dari kuala sungai ke negara pintar.\nBina kisah kota anda."
+  },
+  {
+   "key": "unity.menu.back",
+   "value": "Kembali"
+  },
+  {
+   "key": "unity.menu.newChapter",
+   "value": "Mulakan bab baharu"
+  },
+  {
+   "key": "unity.menu.chooseChapter",
+   "value": "Pilih titik permulaan"
+  },
+  {
+   "key": "unity.menu.paused",
+   "value": "PERMAINAN DIJEDA"
+  },
+  {
+   "key": "unity.menu.pauseHint",
+   "value": "Kota anda menanti. Sambung apabila bersedia."
+  },
+  {
+   "key": "unity.menu.noSavesHint",
+   "value": "Sebuah kota baharu menanti. Pilih Permainan Baharu untuk bermula."
+  },
+  {
+   "key": "unity.menu.eraStory",
+   "value": "ENTREPÔT MELAKA\nBIJIH TIMAH, GETAH & REL\nPASCA-MERDEKA\nKOTA PINTAR DIGITAL"
+  },
+  {
+   "key": "unity.menu.saveLoad",
+   "value": "Simpan & Muat"
+  },
+  {
+   "key": "unity.menu.yourCities",
+   "value": "KOTA-KOTA ANDA"
+  },
+  {
+   "key": "unity.menu.saveMetadata",
+   "value": "Era {era}  ·  Tahun {year}"
+  },
+  {
+   "key": "unity.menu.dateCulture",
+   "value": "ms-MY"
+  },
+  {
+   "key": "unity.menu.autoSlot",
+   "value": "Auto / Pantas"
+  },
+  {
+   "key": "unity.menu.slot",
+   "value": "Slot {slot}"
+  },
+  {
+   "key": "unity.menu.loadHint",
+   "value": "Pilih kota tersimpan untuk menyambung perjalanan."
+  },
+  {
+   "key": "unity.menu.saveHint",
+   "value": "Simpan kemajuan semasa atau sambung kota tersimpan."
+  },
+  {
+   "key": "unity.menu.emptySlot",
+   "value": "Tiada kota tersedia"
+  },
+  {
+   "key": "unity.menu.emptySlotHint",
+   "value": "Tiada simpanan yang boleh dibaca dalam slot ini."
+  },
+  {
+   "key": "unity.menu.storageUnavailable",
+   "value": "Simpanan tidak tersedia. Kembali dan cuba lagi."
+  },
+  {
+   "key": "unity.menu.loadFailed",
+   "value": "Kota tidak dapat dimuat. Cuba lagi atau pilih slot lain."
+  },
+  {
+   "key": "unity.menu.saveFailed",
+   "value": "Kemajuan tidak dapat disimpan. Cuba lagi atau pilih slot lain."
+  },
+  {
+   "key": "unity.menu.saved",
+   "value": "Kemajuan kota telah disimpan."
+  },
+  {
+   "key": "unity.menu.keyboardHint",
+   "value": "Tab / Shift+Tab: tukar kawalan. Enter: pilih. Esc: kembali."
+  },
+  {
+   "key": "unity.settings.kicker",
+   "value": "SESUAIKAN PENGALAMAN ANDA"
+  },
+  {
+   "key": "unity.settings.general",
+   "value": "Umum"
+  },
+  {
+   "key": "unity.settings.audio",
+   "value": "Audio"
+  },
+  {
+   "key": "unity.settings.graphics",
+   "value": "Grafik"
+  },
+  {
+   "key": "unity.settings.artHint",
+   "value": "Seni 3D penuh memaparkan bangunan terperinci. Greybox menggunakan bentuk ringkas untuk pandangan yang lebih jelas."
+  },
+  {
    "key": "unity.top.research",
    "value": "Kajian"
   },
