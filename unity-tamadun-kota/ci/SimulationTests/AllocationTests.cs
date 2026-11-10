@@ -9,6 +9,22 @@ namespace TamadunKota.Tests
     public class AllocationTests
     {
         [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
+        public void TicksWithAdvisorsAndPoliciesDoNotAllocate(int era)
+        {
+            var sim = RulesParityTests.Flat(32); sim.Era.Restore(era);
+            sim.Stock[ResourceType.Treasury] = 1000000;
+            foreach (var a in sim.Db.Advisors)
+                if (Array.IndexOf(a.eras, era) >= 0) { sim.RecruitAdvisor(a.id); break; }
+            sim.Tech.Done[sim.Db.ResearchIndex("gotong_royong")] = true;
+            Assert.IsTrue(sim.AdoptPolicy("gotong_royong").Ok);
+            for (int t = 0; t < 50; t++) sim.Step();
+            long before = GC.GetAllocatedBytesForCurrentThread();
+            for (int t = 0; t < 100; t++) sim.Step();
+            long allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+            Assert.AreEqual(0, allocated);
+        }
+
+        [TestCase(1)] [TestCase(2)] [TestCase(3)] [TestCase(4)]
         public void DiplomacyEnvironmentAndMilestoneTicksDoNotAllocate(int era)
         {
             var sim = RulesParityTests.Flat(32);
