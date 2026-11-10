@@ -199,6 +199,13 @@ From lane B (HUD), for lane C (`Simulation/**`, `ci/**`):
    has none. The Economy window says loans are not in the Unity edition yet.
 5. **CI race — resolved in PR #1.** Compile-check projects have separate intermediate and output
    directories in `ci/UnityCompileCheck/Directory.Build.props`.
+6. **Partner Sejarahpedia entries.** The web partners have `entry` (for example `zheng_he`,
+   `melaka_1511`) for the diplomacy window's "Read in Sejarahpedia" link. Please add
+   `public string entryId;` to `PartnerRecord` and expose it on `PartnerView`; lane B will then
+   export it in `scripts/export-unity-data.ts` and add the link to `UI/DiplomacyPanel.cs`.
+7. **Milestone notices.** Milestone and victory notices use `NoticeKind.Era`, the same as era
+   changes; the feed tells them apart by the "A new era begins: ..." title. The `id` from item 1
+   (or a separate kind) would remove that guess.
 
 Lane B integration after this follow-up merges: make `UI/SimCommands.cs` forward to the native
 methods and properties above (`AdoptPolicy(...).Reason`, `RevokePolicy(...).Ok`), and use
